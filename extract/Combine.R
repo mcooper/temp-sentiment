@@ -1,5 +1,4 @@
 library(data.table)
-library(tidyverse)
 
 setwd('/home/ubuntu/tweets')
 
@@ -39,8 +38,28 @@ setkeyv(sen, cols=c('id', 'tweet_created_at'))
 setkeyv(cli, cols=c('id', 'tweet_created_at'))
 setkeyv(cen, cols=c('id', 'tweet_created_at'))
 
-
 all <- merge(cli, sen, all.x=T, all.y=F)
 all <- merge(all, cen, all.x=T, all.y=F)
 
+#First some simple models with no fixed effects for various income quantiles
+all$income_percap_q <- Hmisc::cut2(all$income_percap, g=5)
+
+#Get date of week
+all$date <- as.Date(all$tweet_created_at)
+all$dow <- weekdays(all$date)
+all$doy <- yday(all$date)
+all$daynum <- as.numeric(all$date - as.Date('2009-01-01'))
+
 fwrite(all, 'all.csv', row.names=F)
+
+sum <- all[ , list(ppt=mean(ppt), 
+                    temp=mean(temp), 
+                    temp.hi=mean(temp.hi),
+                    tmax.hi=mean(tmax.hi),
+                    hedono=mean(hedono),
+                    n=.N), 
+              by=list(dow, doy, daynum, income_percap_q, income_percap, state, county,
+                      race_white, race_black, race_other, race_hisp)]
+
+fwrite(sum, 'summarized.csv', row.names=F)
+

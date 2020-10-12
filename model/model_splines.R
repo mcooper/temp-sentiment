@@ -8,31 +8,22 @@ setwd('/home/ubuntu/tweets')
 
 all <- fread('all.csv')
 
-#First some simple models with no fixed effects for various income quantiles
-all$income_percap_q <- cut2(all$income_percap, g=5)
-
-#Get date of week
-all$date <- as.Date(all$tweet_created_at)
-all$dow <- weekdays(all$date)
-all$doy <- yday(all$date)
-all$daynum <- as.numeric(all$date - as.Date('2009-01-01'))
-
-cl <- makeCluster(32)
-
 ###############################
 # Look at heat
 ################################
 system('~/telegram.sh "Starting Temp"')
+samp <- sample(which(all$temp.hi > 20), 10000000)
 mod <- gam(hedono ~ temp.hi*income_percap_q + dow + 
            s(doy, bs='cc') + 
-           s(lat, lon, bs='sos', k=500) + 
+           s(lat, lon, bs='sos') + 
            s(daynum, bs='cr'), 
-           data=all[all$temp.hi > 20, ],
+           data=all[samp, ],
            #cluster=cl,
+           control=list(nthreads=32),
+           method='REML',
            knots=list(doy=c(0.5, 366.5)))
-
 system('~/telegram.sh "Done with Temp"')
-save(mod, file='temp.hi-smooths.Rdata')
+save(mod, file='heat_inco_smooth.Rdata')
 rm(mod)
 gc()
 
@@ -40,16 +31,18 @@ gc()
 # Look at cold 
 ################################
 system('~/telegram.sh "Starting Cold"')
+samp <- sample(which(all$temp < 20), 10000000)
 mod <- gam(hedono ~ temp*income_percap_q + dow + 
            s(doy, bs='cc') + 
            s(lat, lon, bs='sos', k=500) + 
            s(daynum, bs='cr'), 
-           data=all[all$temp.hi < 20, ],
+           data=all[samp, ],
+           control=list(nthreads=32),
+           method='REML',
            #cluster=cl,
            knots=list(doy=c(0.5, 366.5)))
-
 system('~/telegram.sh "Done with Cold"')
-save(mod, file='temp.co-smooths.Rdata')
+save(mod, file='cold_inco_smooth.Rdata')
 rm(mod)
 gc()
 
@@ -57,14 +50,17 @@ gc()
 # Look at rain 
 ################################
 system('~/telegram.sh "Starting Precip"')
+samp <- sample(1:nrow(all), 10000000)
 mod <- gam(hedono ~ ppt*income_percap_q + dow + 
            s(doy, bs='cc') + 
            s(lat, lon, bs='sos', k=500) + 
            s(daynum, bs='cr'), 
-           data=,
+           data=all,
            #cluster=cl,
            knots=list(doy=c(0.5, 366.5)))
+           control=list(nthreads=32),
+           method='REML',
 system('~/telegram.sh "Done with Precip"')
-save(mod, file='temp.co-smooths.Rdata')
+save(mod, file='rain_inco_smooth.Rdata')
 rm(mod)
 gc()
