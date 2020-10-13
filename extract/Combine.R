@@ -56,15 +56,3 @@ all[ , county:=NULL]
 all[ , state:=NULL]
 
 fwrite(all, 'all.csv', row.names=F)
-
-sum <- all[ , list(ppt=mean(ppt), 
-                    temp=mean(temp), 
-                    temp.hi=mean(temp.hi),
-                    tmax.hi=mean(tmax.hi),
-                    hedono=mean(hedono),
-                    n=.N), 
-              by=list(dow, doy, daynum, income_percap_q, income_percap, state, county,
-                      race_white, race_black, race_other, race_hisp)]
-
-fwrite(sum, 'summarized.csv', row.names=F)
-
