@@ -49,6 +49,11 @@ all$date <- as.Date(all$tweet_created_at)
 all$dow <- weekdays(all$date)
 all$doy <- yday(all$date)
 all$daynum <- as.numeric(all$date - as.Date('2009-01-01'))
+all$FIPS <- paste0(substr(100 + all$state, 2, 3), substr(1000 + all$county, 2, 4))
+all$month <- substr(all$tweet_created_at, 6, 7)
+
+all[ , county:=NULL]
+all[ , state:=NULL]
 
 fwrite(all, 'all.csv', row.names=F)
 
