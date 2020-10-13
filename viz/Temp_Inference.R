@@ -63,13 +63,15 @@ getTempHour <- function(lat, lon, tmax, tmin, time){
 
 df <- data.frame(time=seq(ymd_hms('2020-10-12 00:00:01'), ymd_hms('2020-10-12 23:00:01'), length.out=24))
 
-df$temp <- mapply(FUN=getTempHour, lat=41, lon=-71, tmax=25, tmin=5, time=df$time)
+df$temp <- mapply(FUN=getTempHour, lat=41, lon=-71, tmax=15, tmin=5, time=df$time)
 
 df$const <- 'Hourly Temp'
 
+df$time <- df$time - hours(4)
+
 ggplot() + 
   geom_line(data=df, aes(x=hour(time), y=temp, linetype=const)) + 
-  geom_hline(aes(yintercept=c(5, 25),
+  geom_hline(aes(yintercept=c(5, 15),
                  color=c('#ef8a62', '#67a9cf')),
              linetype=1) + 
   labs(y='Temperature (C)',
@@ -81,5 +83,5 @@ ggplot() +
   labs(linetype="Estimated",
        color="Known") + 
   theme_bw()
-ggsave('~/temp-sentiment/res/Estimating_Hours.png')
+ggsave('~/temp-sentiment/res/Estimating_Hours.png', height=4, width=7)
 
