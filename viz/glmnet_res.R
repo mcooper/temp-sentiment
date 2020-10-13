@@ -56,19 +56,19 @@ ggplot(preddf %>% filter(temp.hi < 40)) +
   labs(y='Hedonometer Score', x='Hourly Heat Index Temperature (C)',
        color='Income Quintile') + 
   theme_bw()
-ggsave('~/temp-sentiment/res/Income Heat.png')
+ggsave('~/temp-sentiment/res/Income_Heat.png')
 
 ggplot(preddf) + 
   geom_line(aes(x=temp, y=cold.res, color=income_percap_q)) + 
   labs(y='Hedonometer Score', x='Hourly Temperature (C)',
        color='Income Quintile') + 
   theme_bw()
-ggsave('~/temp-sentiment/res/Income Cold.png')
+ggsave('~/temp-sentiment/res/Income_Cold.png')
 
 ggplot(preddf) + 
   geom_line(aes(x=ppt, y=rain.res, color=income_percap_q)) + 
   labs(y='Hedonometer Score', x='Daily Precipitation (mm)',
        color='Income Quintile') + 
   theme_bw()
-ggsave('~/temp-sentiment/res/Income Rain.png')
+ggsave('~/temp-sentiment/res/Income_Rain.png')
 

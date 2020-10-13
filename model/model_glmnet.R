@@ -11,7 +11,7 @@ mm <- sparse.model.matrix(hedono ~ 1 + temp.hi + income_percap_q + temp.hi*incom
 
 mod <- glmnet(mm, all$hedono[all$temp.hi > 20], family="gaussian", alpha=0, lambda=0)
 
-save(mod, file='~/tweets/heat_inco.Rdata')
+save(mod, file='~/tweets/heat_inco2.Rdata')
 
 rm(mm)
 gc()
