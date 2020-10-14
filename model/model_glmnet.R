@@ -5,13 +5,25 @@ library(Matrix)
 all <- fread('~/tweets/all.csv')
 
 ####################
-# Model Heat
+# Model Heat Index
 ####################
 mm <- sparse.model.matrix(hedono ~ 1 + temp.hi + income_percap_q + temp.hi*income_percap_q + FIPS + dow + month + daynum, data=all[all$temp.hi > 20, ])
 
 mod <- glmnet(mm, all$hedono[all$temp.hi > 20], family="gaussian", alpha=0, lambda=0)
 
-save(mod, file='~/tweets/heat_inco2.Rdata')
+save(mod, file='~/tweets/heat_inco.Rdata')
+
+rm(mm)
+gc()
+
+####################
+# Model Heat No Index
+####################
+mm <- sparse.model.matrix(hedono ~ 1 + temp.hi + income_percap_q + temp.hi*income_percap_q + FIPS + dow + month + daynum, data=all[all$temp.hi > 20, ])
+
+mod <- glmnet(mm, all$hedono[all$temp.hi > 20], family="gaussian", alpha=0, lambda=0)
+
+save(mod, file='~/tweets/heat_inco.Rdata')
 
 rm(mm)
 gc()
