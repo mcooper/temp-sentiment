@@ -2,25 +2,26 @@
 # Calculate local time and derive variables like doy, dow, etc
 
 library(tidyverse)
+library(data.table)
 library(lubridate)
 library(countytimezones)
 library(foreach)
 library(doParallel)
 
-cl <- makeCluster(16, outfile = '')
+cl <- makeCluster(60, outfile = '')
 registerDoParallel(cl)
 
 setwd('~/tweets/wealth/results/')
 
 fs <- list.files('.', pattern='.csv$')
 
-foreach(f=fs, .packages=c('tidyverse', 'lubridate', 'countytimezones')) %dopar%{
+foreach(f=fs, .packages=c('tidyverse', 'data.table', 'lubridate', 'countytimezones')) %dopar%{
   print(f)
 
-  d <- read.csv(f) %>%
+  d <- fread(paste0('~/tweets/wealth/results/', f)) %>%
     mutate(fips = paste0(substr(100 + FIPS_STATE, 2, 3), 
                          substr(1000 + FIPS_COUNTY, 2, 4))) %>%
-    select(fips, id, tweet_created_at) %>%
+    select(id, tweet_created_at, fips) %>%
     merge(county_tzs %>%
             mutate(fips = substr(100000 + fips, 2, 6)) %>%
             select(fips, tz),
