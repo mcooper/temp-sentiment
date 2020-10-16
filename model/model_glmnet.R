@@ -4,22 +4,10 @@ library(Matrix)
 
 all <- fread('~/tweets/all.csv')
 
-####################
-# Model Heat Index
-####################
-mm <- sparse.model.matrix(hedono ~ 1 + temp.hi + income_percap_q + temp.hi*income_percap_q + FIPS + dow + month + daynum, data=all[all$temp.hi > 20, ])
-
-mod <- glmnet(mm, all$hedono[all$temp.hi > 20], family="gaussian", alpha=0, lambda=0)
-
-save(mod, file='~/tweets/heat_inco.Rdata')
-
-rm(mm)
-gc()
-
-####################
-# Model Heat No Index
-####################
-mm <- sparse.model.matrix(hedono ~ 1 + temp.hi + income_percap_q + temp.hi*income_percap_q + FIPS + dow + month + daynum, data=all[all$temp.hi > 20, ])
+##############################################
+# Model Heat Index With National Quintiles
+###########################################
+mm <- sparse.model.matrix(hedono ~ 1 + temp.hi + income_percap_q + temp.hi*income_percap_q + fips + dow + doy + tod + year*daynum + year, data=all[all$temp.hi > 20, ])
 
 mod <- glmnet(mm, all$hedono[all$temp.hi > 20], family="gaussian", alpha=0, lambda=0)
 
@@ -31,7 +19,7 @@ gc()
 ####################
 # Model Cold
 ####################
-mm <- sparse.model.matrix(hedono ~ 1 + temp + income_percap_q + temp*income_percap_q + FIPS + dow + month + daynum, data=all[all$temp <= 20, ])
+mm <- sparse.model.matrix(hedono ~ 1 + temp + income_percap_q + temp*income_percap_q + fips + dow + doy + tod + year*daynum + year, data=all[all$temp <= 20, ])
 
 mod <- glmnet(mm, all$hedono[all$temp <= 20], family="gaussian", alpha=0, lambda=0)
 
@@ -43,7 +31,7 @@ gc()
 #####################
 # Model Precipitation
 #####################
-mm <- sparse.model.matrix(hedono ~ 1 + ppt + income_percap_q + ppt*income_percap_q + FIPS + dow + month + daynum, data=all)
+mm <- sparse.model.matrix(hedono ~ 1 + ppt + income_percap_q + ppt*income_percap_q + fips + dow + doy + year*daynum + year, data=all)
 
 mod <- glmnet(mm, all$hedono, family="gaussian", alpha=0, lambda=0)
 save(mod, file='~/tweets/rain_inco.Rdata')

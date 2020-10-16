@@ -55,9 +55,7 @@ all <- na.omit(all)
 
 #Get Income Quintiles, nationwide and by state
 class <- c('Poorest', 'Poorer', 'Medium', 'Richer', 'Richest')
-all$income_percap_q_nation <- class[as.numeric(Hmisc::cut2(all$income_percap, g=5))]
-all$state <- substr(all$fips, 1, 2)
-all$income_percap_q_state <- class[all[ , list(out = Hmisc::cut2(all$income_percap, g=5)), by='state']$out]
+all$income_percap_q <- class[as.numeric(Hmisc::cut2(all$income_percap, g=5))]
 
 fwrite(all, 'all.csv', row.names=F)
 
