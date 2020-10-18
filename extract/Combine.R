@@ -11,18 +11,17 @@ setDTthreads(64)
 
 #Get Sentiment Data
 sen <- fread('sentiment_all.csv',
-             col.names=c('id', 'tweet_created_at', # 'weather_term', 
+             col.names=c('id', 'tweet_created_at', 'weather_term', 
                         # 'afinn', 'textblob', 
                         'hedono'),
                         # 'vader', 'swn', 'wkwsci'),
-             drop=c(3, 4, 5, 7, 8, 9))
+             drop=c(4, 5, 7, 8, 9))
 sen <- unique(sen, by=c('id', 'tweet_created_at'))
 
 #Get Climate Data
 cli <- fread('hourly_all.csv', 
              col.names=c('id', 'tweet_created_at', 'ppt', 'temp', 
-                        'temp.hi'), # 'tmax.hi'),
-             drop=c(6))
+                        'temp.hi', 'tmax.hi'))
 cli <- unique(cli, by=c('id', 'tweet_created_at'))
 
 #Get Census Data
@@ -58,5 +57,6 @@ class <- c('Poorest', 'Poorer', 'Medium', 'Richer', 'Richest')
 all$income_percap_q <- class[as.numeric(Hmisc::cut2(all$income_percap, g=5))]
 
 fwrite(all, 'all.csv', row.names=F)
+system('~/telegram.sh "Donezo!"')
 
 

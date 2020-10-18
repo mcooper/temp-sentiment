@@ -35,3 +35,31 @@ mm <- sparse.model.matrix(hedono ~ 1 + ppt + income_percap_q + ppt*income_percap
 
 mod <- glmnet(mm, all$hedono, family="gaussian", alpha=0, lambda=0)
 save(mod, file='~/tweets/rain_inco.Rdata')
+
+
+##############################################
+# Model Daily Tmax
+###########################################
+mm <- sparse.model.matrix(hedono ~ 1 + tmax.hi + income_percap_q + tmax.hi*income_percap_q + fips + dow + doy + year*daynum + year, data=all[all$tmax.hi > 20, ])
+
+mod <- glmnet(mm, all$hedono[all$tmax.hi > 20], family="gaussian", alpha=0, lambda=0)
+
+save(mod, file='~/tweets/heat_daily_inco.Rdata')
+
+rm(mm)
+gc()
+
+####################
+# Model Daily Tmin
+####################
+mm <- sparse.model.matrix(hedono ~ 1 + tmax.hi + income_percap_q + tmax.hi*income_percap_q + fips + dow + doy + year*daynum + year, data=all[all$tmax.hi <= 20, ])
+
+mod <- glmnet(mm, all$hedono[all$tmax.hi <= 20], family="gaussian", alpha=0, lambda=0)
+
+save(mod, file='~/tweets/cold_daily_inco.Rdata')
+
+rm(mm)
+gc()
+
+system('~/telegram.sh "Donezo!"')
+

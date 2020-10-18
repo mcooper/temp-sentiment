@@ -65,6 +65,28 @@ pmm <- sparse.model.matrix( ~ 1 + ppt + income_percap_q + ppt*income_percap_q + 
 
 preddf$rain.res <- predict(mod, pmm)[,1]
 
+#######################
+# Heat
+#########################
+load('~/tweets/heat_daily_inco.Rdata')
+
+preddf$tmax.hi <- 20:50
+
+pmm <- sparse.model.matrix( ~ 1 + tmax.hi + income_percap_q + tmax.hi*income_percap_q + fips + dow + doy + year*daynum + year, data=preddf)
+
+preddf$heat.day.res <- predict(mod, pmm)[,1]
+
+#######################
+# Heat
+#########################
+load('~/tweets/cold_daily_inco.Rdata')
+
+preddf$tmax.hi <- -10:20
+
+pmm <- sparse.model.matrix( ~ 1 + temp.hi + income_percap_q + temp.hi*income_percap_q + fips + dow + doy + year*daynum + year, data=preddf)
+
+preddf$cold.day.res <- predict(mod, pmm)[,1]
+
 ######################
 # Graphs
 ###################
@@ -89,3 +111,17 @@ ggplot(preddf) +
   theme_bw()
 ggsave('~/temp-sentiment/res/Income_Rain.png')
 
+ggplot(preddf) + 
+  geom_line(aes(x=tmax.hi, y=cold.day.res, color=income_percap_q)) + 
+  labs(y='Hedonometer Score', x='Daily High Temperature (C)',
+       color='Income Quintile') + 
+  theme_bw()
+ggsave('~/temp-sentiment/res/Income_Cold_Day.png')
+
+preddf$tmax.hi <- 20:50
+ggplot(preddf) + 
+  geom_line(aes(x=tmax.hi, y=heat.day.res, color=income_percap_q)) + 
+  labs(y='Hedonometer Score', x='Daily High Temperature (C)',
+       color='Income Quintile') + 
+  theme_bw()
+ggsave('~/temp-sentiment/res/Income_Heat_Day.png')
