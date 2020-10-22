@@ -23,7 +23,7 @@ def parse_res(res, val, to_round):
     else:
         return [x['properties'][val] if x['properties']['ppt'] is not None else np.nan for x in res['features'] ]
 
-for f in fs[2801:]:
+for f in fs:
     print(datetime.now(), f)
     #From the docs: The dataset uses a day-ending naming convention, e.g., a day ending at 1200 UTC on 1 January is labeled 1 January. 
     today = datetime.strptime(f[:10], '%Y-%m-%d')
