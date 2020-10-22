@@ -4,7 +4,7 @@ library(lubridate)
 
 setwd('/home/ubuntu/tweets')
 
-setDTthreads(64)
+setDTthreads(32)
 
 #To combine the daily csvs, I ran
 # cat sentiment/*.csv | grep -v tweet_created_at > sentiment_all.csv
@@ -13,9 +13,9 @@ setDTthreads(64)
 sen <- fread('sentiment_all.csv',
              col.names=c('id', 'tweet_created_at', 'weather_term', 
                         # 'afinn', 'textblob', 
-                        'hedono'),
-                        # 'vader', 'swn', 'wkwsci'),
-             drop=c(4, 5, 7, 8, 9))
+                        # 'hedono'),
+                         'vader'), # 'swn', 'wkwsci'),
+             drop=c(4, 5, 6, 8, 9))
 sen <- unique(sen, by=c('id', 'tweet_created_at'))
 
 #Get Climate Data
@@ -59,4 +59,12 @@ all$income_percap_q <- class[as.numeric(Hmisc::cut2(all$income_percap, g=5))]
 fwrite(all, 'all.csv', row.names=F)
 system('~/telegram.sh "Donezo!"')
 
+#Write samples after deleting tweet-specific data
+all[ , id:=NULL]
+all[ , tweet_created_at:=NULL]
+all[ , tweet_created_at_local:=NULL]
+all[ , lat:=NULL]
+all[ , lon:=NULL]
 
+fwrite(all[sample(.N, .N*0.01)], 'all_samp_1pct.csv', row.names=F)
+fwrite(all[sample(.N, .N*0.1)], 'all_samp_10pct.csv', row.names=F)
