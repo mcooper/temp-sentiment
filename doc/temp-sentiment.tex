@@ -1,0 +1,67 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[a4paper, margin=1.25in]{geometry}
+\usepackage{breakcites}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{textgreek}
+\usepackage{authblk}
+\usepackage{rotating}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{pdflscape}
+\usepackage{lineno}
+\usepackage[
+  style=numeric,
+  citestyle=numeric-comp,
+  backend=biber,
+  doi=true,
+  natbib=true,
+  sorting=none
+]{biblatex}
+
+\addbibresource{library.bib}
+
+\begin{document}
+
+\title{Assessing Vulnerability to Mental Health Impacts of Weather}
+
+\author[1, *]{Matthew Cooper}
+
+\affil[1]{T.H. Chan School of Public Health, Harvard University}
+\affil[*]{Corresponding Author: mcooper@hsph.harvard.edu}
+
+\maketitle
+\begin{abstract}
+  This is the Abstract!
+\end{abstract}
+
+\section{Introduction}
+This work builds on existing work by \citep{baylis_weather_2018}
+
+\section{Data}
+
+\section{Methods}
+
+\section{Results}
+
+\section{Discussion}
+
+\section{Conclusion}
+
+\printbibliography
+
+\section*{Supplemental Info}
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\setcounter{section}{0}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thesection}{S\arabic{section}}
+
+
+
+\end{document}

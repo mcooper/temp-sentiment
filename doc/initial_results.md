@@ -1,13 +1,13 @@
 ---
 created: 2020-09-20T16:03:19-0400
-modified: 2020-10-15T21:41:31-0400
+modified: 2020-10-15T22:08:16-0400
 title: Are the Poor Are More Vulnerable to Climate Impacts on Mental Health?
-author: Matthew Cooper
+author: Matthew Cooper & the "Text Mining Climate Shocks" SESYNC Team.
 date: \today
 urlcolor: blue
 ---
 
-We explored the impact of temperature and precipitation on expressed sentiment on twitter.  This is an initial overview.
+We explored the impact of temperature and precipitation on expressed sentiment on twitter.  This is an initial overview.  The code is [here](https://github.com/mcooper/temp-sentiment)
 
 This work is heavily influenced by previous research finding a link between weather and twitter sentiment, especially work by Patrick Baylis (See [here](https://doi.org/10.1371/journal.pone.0195750), [here](https://doi.org/10.1016/j.jpubeco.2020.104161)).  However, this work builds on that work in several ways:
 
@@ -15,8 +15,8 @@ This work is heavily influenced by previous research finding a link between weat
   * We take into account the Heat Index, which is more indicative of temperature stress than raw temperature
   * We infer the hourly temperature, rather than using the daily maximum temperature
   * We get more local temperature, at each PRISM grid cell, rather than at CBSA
-* We run tweet-level models without aggregating the data (although this may get harder as we better account for fixed effects)
-* We examine factors that moderate the effect of weather, to explore heterogeneities in vulnerability.
+* We run tweet-level models without aggregating the data
+* We examine factors that moderate the effect of weather, to explore heterogeneities in vulnerability
 
 All of this work was done in the cloud and this would not have been possible without a generous grant from Microsoft's [AI for Earth](https://www.microsoft.com/en-us/ai/ai-for-earth) Program.
 
@@ -58,7 +58,7 @@ Finally, we use year census data at the census block group scale to estimate inc
 
 # Modeling Methods
 
-We three models for: 
+We fit three models, with the Hedonometer score as the outcome variable, for: 
 
 1. The effect of the Heat Index on sentiment (for all tweets where the heat index is > 20C)
 2. The effect of the cold temperatures on sentiment (for all tweets where the temperature is < 20C)
