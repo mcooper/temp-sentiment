@@ -1,5 +1,5 @@
-#source $HOME/miniconda3/bin/activate
-#conda activate ee
+# Run on separate server!
+# Everything must be SSHed over!
 
 import json
 import ee
@@ -13,10 +13,19 @@ import math
 
 ee.Initialize()
 
-os.chdir('/home/ubuntu/tweets/tweets')
+os.chdir('/home/ubuntu/')
 
-fs = sorted(os.listdir())
-fs = [f for f in fs if 'json' in f]
+#Get list of all files that have not yet been processed
+os.system('ssh ubuntu@sesync-tweets ls ~/tweets/tweets/ | grep json > ~/existing')
+with open('/home/ubuntu/existing') as f:
+    fs = f.read().splitlines()
+
+os.system('ssh ubuntu@sesync-tweets ls ~/tweets/hourly_nldas/  > ~/done')
+with open('/home/ubuntu/done') as f:
+    done = f.read().splitlines()
+
+done = [d[:10] for d in done]
+fs = [f for f in fs if f[:10] not in done]
 
 def parse_res(res, var):
     df = pd.DataFrame([x['properties'] for x in res['features']])
@@ -34,7 +43,6 @@ def sh2rh(sh, temp, press):
     if rh < 0:
         return(0)
     return(rh)
-
 
 def heatindex(t, rh):
     #Translated from R weathermetrics::heat.index.algorithm
@@ -68,14 +76,14 @@ def heatindex(t, rh):
     hi = (hi - 32)*(5/9)
     return(hi)
 
-
-
-for f in fs:
+for f in fs[314:]:  #First 314 files are empty
     print(datetime.now(), f)
     
     #Read in data
-    with open(f, 'r') as c:
+    os.system('scp sesync-tweets:~/tweets/tweets/' + f + ' ~/')
+    with open('/home/ubuntu/' + f, 'r') as c:
         dat = json.loads(c.read())
+    os.system('rm ' + f)
      
     dat = [{'lat': d['geo']['coordinates'][1],
             'lon': d['geo']['coordinates'][0],
@@ -116,19 +124,24 @@ for f in fs:
         res = reduce(lambda x, y: pd.merge(x, y, on=['tweet_created_at', 'id']), 
                 [temp_res, speh_res, pres_res, prcp_res, srad_res])
         daydat = pd.concat([daydat, res])
-    
+        
     daydat['relh'] = daydat.apply(lambda x: sh2rh(x['speh'], x['temp'], x['pres']), axis=1)
     daydat['hi'] = daydat.apply(lambda x: heatindex(x['temp'], x['relh']), axis=1)
     
     #Clean up extrememly long floating point numbers
     daydat['temp'] = round(daydat['temp'], 2)
     daydat['hi'] = round(daydat['hi'], 2)
-
+    
     #Drop unnecessary meteo columns
     daydat = daydat.drop(columns=['speh', 'pres', 'relh'])
-
-
-    daydat.to_csv('/home/ubuntu/tweets/hourly_nldas/' + f[:10] + '.csv', index=False)
+   
+    outf = f[:10] + '.csv'
+    daydat.to_csv(outf, index=False)
+    os.system('scp /home/ubuntu/' + outf + ' sesync-tweets:~/tweets/hourly_nldas/' + outf)
+    os.system('rm /home/ubuntu/' + outf) 
     sleeptime.sleep(10)
+
+
+
 
 
