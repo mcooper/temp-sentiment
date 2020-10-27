@@ -2,6 +2,7 @@
 # Everything must be SSHed over!
 
 import json
+import itertools
 import ee
 import os
 from datetime import datetime, timedelta, time
@@ -15,22 +16,20 @@ ee.Initialize()
 
 os.chdir('/home/ubuntu/')
 
-#Get list of all files that have not yet been processed
-os.system('ssh ubuntu@sesync-tweets ls ~/tweets/tweets/ | grep json > ~/existing')
-with open('/home/ubuntu/existing') as f:
-    fs = f.read().splitlines()
-
-os.system('ssh ubuntu@sesync-tweets ls ~/tweets/hourly_nldas/  > ~/done')
-with open('/home/ubuntu/done') as f:
-    done = f.read().splitlines()
-
-done = [d[:10] for d in done]
-fs = [f for f in fs if f[:10] not in done]
-
-def parse_res(res, var):
-    df = pd.DataFrame([x['properties'] for x in res['features']])
-    df = df.rename(columns={'first': var})
-    return(df)
+def getFiles():
+    #Get list of all files that have not yet been processed
+    os.system('ssh ubuntu@sesync-tweets ls ~/tweets/tweets/ | grep json > ~/existing')
+    with open('/home/ubuntu/existing') as f:
+        fs = f.read().splitlines()
+    
+    os.system('ssh ubuntu@sesync-tweets ls ~/tweets/hourly_nldas/  > ~/done')
+    with open('/home/ubuntu/done') as f:
+        done = f.read().splitlines()
+    
+    done = [d[:10] for d in done]
+    fs = [f for f in fs if f[:10] not in done]
+    
+    return(fs)
 
 def sh2rh(sh, temp, press):
     #Adapted from https://earthscience.stackexchange.com/questions/2360/how-do-i-convert-specific-humidity-to-relative-humidity
@@ -76,8 +75,31 @@ def heatindex(t, rh):
     hi = (hi - 32)*(5/9)
     return(hi)
 
-for f in fs[314:]:  #First 314 files are empty
+def chunker(iter, size):
+    chunks = [];
+    if size < 1:
+        raise ValueError('Chunk size must be greater than 0.')
+    for i in range(0, len(iter), size):
+        chunks.append(iter[i:(i+size)])
+    return chunks
+
+def getData(feats, img, var):
+    #First, break feats into lists of lists, each with len < 4500
+    feats = chunker(feats, 4500)
+    
+    allres = []
+    for feat in feats:
+        res = img.reduceRegions(ee.FeatureCollection(feat), reducer=ee.Reducer.first()).getInfo()
+        allres = allres + res['features']
+    
+    df = pd.DataFrame([x['properties'] for x in allres])
+    df = df.rename(columns={'first': var})
+    return(df)
+
+
+for f in getFiles():  
     print(datetime.now(), f)
+    outf = f[:10] + '.csv'
     
     #Read in data
     os.system('scp sesync-tweets:~/tweets/tweets/' + f + ' ~/')
@@ -90,9 +112,11 @@ for f in fs[314:]:  #First 314 files are empty
             'id': d['id'],
             'tweet_created_at': d['tweet_created_at'],
             'hour': d['tweet_created_at'][:13]} for d in dat]
-    dat = pd.DataFrame(dat)
+    dat = pd.DataFrame(dat).drop_duplicates()
     
     if dat.shape[0] == 0:
+        #Create empty file to avoid attempting that day again
+        os.system('ssh ubuntu@sesync-tweets touch ~/tweets/hourly_nldas/' + outf)
         print("Skipping " + f)
         continue
     
@@ -114,12 +138,11 @@ for f in fs[314:]:  #First 314 files are empty
             feat = ee.Feature(pt, {'tweet_created_at': v['tweet_created_at'], 'id': str(v['id'])})
             feats.append(feat)
          
-        fc = ee.FeatureCollection(feats)
-        temp_res = parse_res(temp.reduceRegions(fc, reducer=ee.Reducer.first()).getInfo(), 'temp')
-        speh_res = parse_res(speh.reduceRegions(fc, reducer=ee.Reducer.first()).getInfo(), 'speh')
-        pres_res = parse_res(pres.reduceRegions(fc, reducer=ee.Reducer.first()).getInfo(), 'pres')
-        prcp_res = parse_res(prcp.reduceRegions(fc, reducer=ee.Reducer.first()).getInfo(), 'prcp')
-        srad_res = parse_res(prcp.reduceRegions(fc, reducer=ee.Reducer.first()).getInfo(), 'srad')
+        temp_res = getData(feats, temp, 'temp')
+        speh_res = getData(feats, speh, 'speh')
+        pres_res = getData(feats, pres, 'pres')
+        prcp_res = getData(feats, prcp, 'prcp')
+        srad_res = getData(feats, srad, 'srad')
         
         res = reduce(lambda x, y: pd.merge(x, y, on=['tweet_created_at', 'id']), 
                 [temp_res, speh_res, pres_res, prcp_res, srad_res])
@@ -135,12 +158,12 @@ for f in fs[314:]:  #First 314 files are empty
     #Drop unnecessary meteo columns
     daydat = daydat.drop(columns=['speh', 'pres', 'relh'])
    
-    outf = f[:10] + '.csv'
     daydat.to_csv(outf, index=False)
     os.system('scp /home/ubuntu/' + outf + ' sesync-tweets:~/tweets/hourly_nldas/' + outf)
     os.system('rm /home/ubuntu/' + outf) 
     sleeptime.sleep(10)
 
+os.system('/home/ubuntu/telegram.sh "NLDAS Failed"')
 
 
 
