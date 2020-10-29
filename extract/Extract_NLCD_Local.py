@@ -6,17 +6,8 @@ from multiprocessing import Process, Pool
 import os
 from datetime import datetime
 import pandas as pd
+import random
 
-READPATH = '/home/ubuntu/tweets/tweets/'
-WRITEPATH = '/home/ubuntu/tweets/landcover/'
-
-read = os.listdir(READPATH)
-done = os.listdir(WRITEPATH)
-
-read = [r for r in read if 'json' in r]
-done = [d[:10] for d in done]
-
-files = [r for r in read if r[:10] not in done]
 
 proj = '+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,-0,-0,-0,0 +units=m +no_defs'
 
@@ -36,7 +27,7 @@ urbn16 = gdal.Open(urbn_16_file)
 lcov11 = gdal.Open(lcov_11_file)
 lcov16 = gdal.Open(lcov_16_file)
 
-def getRasterData(d, year):
+def getRasterData(d, urbn, tree, lcov, gt):
     if 'geo' not in d.keys():
         return({})
     if 'coordinates' not in d['geo'].keys():
@@ -61,8 +52,12 @@ def getRasterData(d, year):
     structval = lcov.ReadRaster(px,py,1,1,buf_type=gdal.GDT_UInt16) #Assumes 16 bit int aka 'short'
     lcovval = struct.unpack('h' , structval) #use the 'short' format code (2 bytes) not int (4 bytes)
    
-    rdict = {'id': d['id'] , 'id_str': d['id_str'], 'tweet_created_at': d['tweet_created_at'],
+    rdict = {'id': d['id'] , 'tweet_created_at': d['tweet_created_at'],
             'tree': treeval[0], 'impervious': urbnval[0], 'landcover': lcovval[0]}
+    
+    if 'id_str' in d.keys():
+        rdict['id_str'] = d['id_str']
+    
     return(rdict)
 
 def processTweetFiles(filename):
@@ -80,33 +75,31 @@ def processTweetFiles(filename):
         tree = tree11
         urbn = urbn11
         lcov = lcov11
-
+    
     gt = tree.GetGeoTransform() #gt is the same for all rasters
     tree = tree.GetRasterBand(1)
     urbn = urbn.GetRasterBand(1)
     lcov = lcov.GetRasterBand(1)
-        
-    # for d in dat:
-    #     getRasterData(d, urbn, tree, lcov, gt)
-    #     print(dat.index(d))
-  
-    dat = [(d, urbn, tree, lcov, gt) for d in dat]
-
-    pool = Pool(processes=20)
-    res = pool.map(getRasterData, dat)
-
-    processes = []
-    for d in dat:
-        proc = Process(target=getRasterData, args=(d, urbn, tree, lcov, gt))
-        processes.append(proc)
-        proc.start()
-
-    for process in processes:
-        process.join()
-
     
-    pd.DataFrame(allres).to_csv(WRITEPATH + filename.replace('json', 'csv'), index=False)
+    res = []
+    for d in dat:
+        res.append(getRasterData(d, urbn, tree, lcov, gt))
+    
+    pd.DataFrame(res).to_csv(WRITEPATH + filename.replace('json', 'csv'), index=False)
 
-
-
-
+while True:
+    READPATH = '/home/ubuntu/tweets/tweets/'
+    WRITEPATH = '/home/ubuntu/tweets/landcover/'
+    
+    read = os.listdir(READPATH)
+    done = os.listdir(WRITEPATH)
+    
+    read = [r for r in read if 'json' in r]
+    done = [d[:10] for d in done]
+    
+    files = [r for r in read if r[:10] not in done]
+    
+    f = random.choice(files)
+    
+    #Get a random file and run extraction for that day
+    processTweetFiles(f)
