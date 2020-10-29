@@ -17,6 +17,11 @@ os.chdir('/home/ubuntu/tweets/tweets')
 fs = sorted(os.listdir())
 fs = [f for f in fs if 'json' in f]
 
+already_done = os.listdir('/home/ubuntu/tweets/landcover')
+already_done = [a[:10] for a in already_done]
+
+fs = [f for f in fs if f[:10] not in already_done]
+
 def parse_res(res, val, to_round):
     if to_round:
         return [round(x['properties'][val], 2) if x['properties']['landcover'] is not None else np.nan for x in res['features']]
@@ -101,5 +106,8 @@ for f in fs:
     
     resdf.to_csv('/home/ubuntu/tweets/landcover/' + f[:10] + '.csv', index=False)
     sleeptime.sleep(10)
+
+os.system('~/telegram.sh "Check EE Scripts"')
+
 
 
