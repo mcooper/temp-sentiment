@@ -1,3 +1,6 @@
+# Run on separate server!
+# Everything must be SSHed over!
+
 import json
 import itertools
 import ee
@@ -15,16 +18,17 @@ os.chdir('/home/ubuntu/')
 
 def getFiles():
     #Get list of all files that have not yet been processed
-    fs = os.listdir('/home/ubuntu/tweets/tweets/')
-    fs = [f for f in fs if 'json' in f]
+    os.system('ssh ubuntu@sesync-tweets ls ~/tweets/tweets/ | grep json > ~/existing')
+    with open('/home/ubuntu/existing') as f:
+        fs = f.read().splitlines()
     
-    done = os.listdir('/home/ubuntu/tweets/hourly_nldas/')
+    os.system('ssh ubuntu@sesync-tweets ls ~/tweets/hourly_nldas/  > ~/done')
+    with open('/home/ubuntu/done') as f:
+        done = f.read().splitlines()
     
     done = [d[:10] for d in done]
     fs = [f for f in fs if f[:10] not in done]
     
-    fs.sort(reverse=True)
-   
     return(fs)
 
 def sh2rh(sh, temp, press):
@@ -98,8 +102,10 @@ for f in getFiles():
     outf = f[:10] + '.csv'
     
     #Read in data
-    with open('/home/ubuntu/tweets/tweets/' + f, 'r') as c:
+    os.system('scp sesync-tweets:~/tweets/tweets/' + f + ' ~/')
+    with open('/home/ubuntu/' + f, 'r') as c:
         dat = json.loads(c.read())
+    os.system('rm ' + f)
      
     dat = [{'lat': d['geo']['coordinates'][1],
             'lon': d['geo']['coordinates'][0],
@@ -110,7 +116,7 @@ for f in getFiles():
     
     if dat.shape[0] == 0:
         #Create empty file to avoid attempting that day again
-        os.system('touch ~/tweets/hourly_nldas/' + outf)
+        os.system('ssh ubuntu@sesync-tweets touch ~/tweets/hourly_nldas/' + outf)
         print("Skipping " + f)
         continue
     
@@ -152,7 +158,9 @@ for f in getFiles():
     #Drop unnecessary meteo columns
     daydat = daydat.drop(columns=['speh', 'pres', 'relh'])
    
-    daydat.to_csv('/home/ubuntu/tweets/hourly_nldas/' + outf, index=False)
+    daydat.to_csv(outf, index=False)
+    os.system('scp /home/ubuntu/' + outf + ' sesync-tweets:~/tweets/hourly_nldas/' + outf)
+    os.system('rm /home/ubuntu/' + outf) 
     sleeptime.sleep(10)
 
 os.system('/home/ubuntu/telegram.sh "NLDAS Failed"')
