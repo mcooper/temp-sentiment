@@ -85,6 +85,10 @@ all$tree <- class[as.numeric(Hmisc::cut2(all$tree, g=3))]
 class <- c("1LessGrey", "2MediumGrey", "3VeryGrey")
 all$impervious <- class[as.numeric(Hmisc::cut2(all$impervious, g=3))]
 
+### FILTER OUT BAD tod Variables!
+### SOMEHOW TOD WAS Time Zones for Certain Observations - 
+### c('CDT', 'CST', 'EDT', 'EST', 'MST', 'MDT', 'PDT', 'PST')
+
 fwrite(all, 'all.csv', row.names=F)
 fwrite(all[sample(.N, .N*0.01)], 'all_samp_1pct.csv', row.names=F)
 
