@@ -1,6 +1,3 @@
-#source $HOME/miniconda3/bin/activate
-#conda activate ee
-
 import json
 import ee
 import os
@@ -107,7 +104,7 @@ for f in fs:
     resdf.to_csv('/home/ubuntu/tweets/landcover/' + f[:10] + '.csv', index=False)
     sleeptime.sleep(10)
 
-os.system('~/telegram.sh "Check EE Scripts"')
+os.system('~/telegram.sh "Check NLCD on sesync-tweets"')
 
 
 

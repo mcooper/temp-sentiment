@@ -55,9 +55,6 @@ def getRasterData(d, urbn, tree, lcov, gt):
     rdict = {'id': d['id'] , 'tweet_created_at': d['tweet_created_at'],
             'tree': treeval[0], 'impervious': urbnval[0], 'landcover': lcovval[0]}
     
-    if 'id_str' in d.keys():
-        rdict['id_str'] = d['id_str']
-    
     return(rdict)
 
 def processTweetFiles(filename):
