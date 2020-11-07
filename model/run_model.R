@@ -20,6 +20,9 @@ runEvalGlmnet <- function(formula, data, cut_qs,
 
   mm <- sparse.model.matrix(formula, data=data)
 
+  print(paste0('Nrows:', nrow(mm)))
+  print(paste0('Ncols:', ncol(mm)))
+
   mod <- glmnet(mm, data$vader, family="gaussian", alpha=0, lambda=0)
 
   #################################
