@@ -3,6 +3,7 @@ runEvalGlmnet <- function(formula, data, cut_qs,
                           control_vars=c('fips', 'dow', 'doy', 'tod', 'year', 'daynum'),
                           interact_var=NULL,
                           outcome_var=c('vader'),
+                          filterWeather=FALSE,
                           save=NULL,
                           plot=TRUE){
   #Function to run a glmnet model, with segements at cut_qs
@@ -14,11 +15,15 @@ runEvalGlmnet <- function(formula, data, cut_qs,
   ##############################
   # Setup data and run model
   ################################
+  if (filterWeather){
+    data <- data[data$weather_term == 0, ]
+  }
+
   for (n in names(cut_qs)){
     data[ , paste0(n, '_q')] <- cut(data[ , n], cut_qs[[n]])
   }
 
-  mm <- sparse.model.matrix(formula, data=data)
+  mm <- sparse.model.matrix(formula, data=data, verbose=T, drop.unused.levels=T)
 
   print(paste0('Nrows:', nrow(mm)))
   print(paste0('Ncols:', ncol(mm)))
