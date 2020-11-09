@@ -18,55 +18,36 @@ all$state <- substr(10000 + all$fips, 2, 3)
 all$year <- as.factor(all$year)
 all$fips <- as.factor(all$fips)
 
+#Convert All to Boolean
+all$temp.hi_q <- cut(all$temp.hi, c(-33, 0, 20, 35, 55))
+all$precip_q <- cut(all$precip, c(-0.1, 0.0001, 1, 75))
+all$srad_q <- cut(all$srad, c(-0.1, 0.0001, 400, 1400))
+
 source('~/temp-sentiment/model/run_model.R')
 
 setwd('~/tweets/mod-res/')
 
-
-#Try once by specifying my own interactions (rather than letting sparse.model.matrix()) specify interactions
-
-#Make temp.hi vars
-all$temp.hi.gt25 <- all$temp.hi * (all$temp.hi > 25)
-all$temp.hi.lte25 <- all$temp.hi * (all$temp.hi <= 25)
-all$temp.hi.gt25.int <- all$temp.hi > 25
-all$temp.hi.lte25.int <- all$temp.hi <= 25
-
-all$precip.gt0 <- all$precip * (all$precip > 0)
-all$precip.gt0.int <- all$precip > 0
-all$precip.eq0 <- all$precip == 0
-
-all$srad.gt0 <- all$srad * (all$srad > 0)
-all$srad.gt0.int <- all$srad > 0
-all$srad.eq0 <- all$srad == 0
-
-all$monthstate <- paste0(all$state, '-', all$month)
-
-mm <- sparse.model.matrix(vader ~ 1 + temp.hi.gt25 + temp.hi.lte25 + temp.hi.intercept + 
-                             srad.gt0 + srad.eq0 + precip.gt0 + precip.eq0 + 
-                             monthstate + 
+mm <- sparse.model.matrix(vader ~ 1 + temp.hi_q +  
+                             srad_q + precip_q + 
+                             month*state + 
                              dow + doy + fips +
-                             tod + year, 
-                           data=all, 
-                           verbose=T, 
-                           drop.unused.levels=T)
-
-# Dies on TOD.  Try again on bigger server, see if it makes it further
+                             tod + year, data=all, verbose=T, drop.unused.levels=T)
 
 mod <- glmnet(mm, data$vader, family="gaussian", alpha=0, lambda=0)
 
-
+#Try once by specifying my own interactions (rather than letting sparse.model.matrix()) specify interactions
 
 # All Together!
-all_res <- runEvalGlmnet(formula=vader ~ 1 + temp.hi.gt25 + temp.hi.lte25 + temp.hi.intercept + 
-                             srad*srad.gt0 + srad.eq0 + precip.gt0 + precip.eq0 + 
-                             monthstate + 
+all_res <- runEvalGlmnet(formula=vader ~ 1 + temp.hi*temp.hi_q +  
+                             srad*srad_q + precip*precip_q + 
+                             month*state + 
                              dow + doy + fips +
                              tod + year,
-              filterWeather=TRUE,
+              filterWeather=FALSE,
               data=all,
               cut_qs=list("srad" = c(-0.1, 0.001, 1500),
                           "precip" = c(-0.1, 0.001, 100),
-                          "temp.hi" = c(-33, 25, 55)),
+                          "temp.hi" = c(-3300, 2500, 5500)),
               control_vars=c('state', 'dow', 'doy', 'tod', 'year', 'month', 'fips'),
               outcome_var='vader',
               save='all.Rdata',
