@@ -2,22 +2,21 @@
 
 import pandas as pd
 import numpy as np
-from scipy.sparse import csr_matrix
-from scipy.sparse import csc_matrix
-from scipy.sparse import hstack
-from scipy.sparse import linalg
-from scipy.sparse import save_npz
+from scipy import sparse
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import OneHotEncoder
 
 #Model run name
-MOD_RUN = 'weather'
+MOD_RUN = 'weather_cont_test2'
 
-#Output directory
-OUT_DIR = '/home/ubuntu/tweets/mod-res/'
+##### Local ######
+OUT_DIR = '/home/mattcoop/tweets/mod-res/'
+data = pd.read_csv('~/tweets/all_samp_1pct.csv')
 
-data = pd.read_csv('~/tweets/all.csv')
-data.to_hdf('/home/ubuntu/tweets/data.h5', 'data')
+##### Cloud #####
+#OUT_DIR = '/home/ubuntu/tweets/mod-res/'
+#data = pd.read_csv('~/tweets/all.csv')
+#data.to_hdf('/home/ubuntu/tweets/data.h5', 'data')
 
 #Remove columns we are not using right now
 data = data.drop(columns= ['temp', 'weather_term', 'income_percap', 
@@ -27,36 +26,40 @@ data = data.drop(columns= ['temp', 'weather_term', 'income_percap',
 y = data[['vader']]
 data = data.drop(columns=['vader'])
 
-#Make predictor matrix of outcome vars
-pred = pd.DataFrame(np.array([(t, p, s) for t in np.linspace(-10, 40, 40) for p in np.linspace(0, 10, 20) for s in np.linspace(0, 1400, 20)]))
-pred.columns = ['temp.hi', 'precip', 'srad']
+#Set knots
+knots = {'temp.hi': [-20, -10, 0, 5, 10, 15, 20, 25, 30, 40],
+         'precip': [0.001, 1, 10, 30],
+         'srad': [0.1, 200, 500, 800]}
 
-#Discretize Continuous (predictor) Vars
-data['temp.hi_q'] = pd.cut(data['temp.hi'], bins=[-36, 0, 20, 35, 56])
-data['precip_q'] = pd.cut(data['precip'], bins=[-0.1, 0.0001, 1, 75])
-data['srad_q'] = pd.cut(data['srad'], bins=[-0.1, 0.0001, 400, 1400])
+#Make predictor matrix with ranges one beyond the knots and with segments of length 10 in the knots
+def make_range(l):
+    l = [l[0] - 1] + l + [l[-1] + 1]
+    r = []
+    for i in range(1, len(l)):
+        r = r + np.linspace(l[i-1], l[i], 10, endpoint=False).tolist()
+    return(r)
 
-pred['temp.hi_q'] = pd.cut(pred['temp.hi'], bins=[-33, 0, 20, 35, 55])
-pred['precip_q'] = pd.cut(pred['precip'], bins=[-0.1, 0.0001, 1, 75])
-pred['srad_q'] = pd.cut(pred['srad'], bins=[-0.1, 0.0001, 400, 1400])
+pred = pd.concat([pd.DataFrame({'temp.hi': make_range(knots['temp.hi'])}),
+           pd.DataFrame({'precip': make_range(knots['precip'])}),
+           pd.DataFrame({'srad': make_range(knots['srad'])})]).fillna(0)
 
-#Make segments for predictor vars
-for c in data['precip_q'].unique()[1:]:
-    data['precip_q' + str(c)] = data['precip']*(data['precip_q'] == c)
-    pred['precip_q' + str(c)] = pred['precip']*(pred['precip_q'] == c)
+#Make continuous segments for predictor vars
+for c in knots['precip']:
+    data['precip_' + str(c)] = np.maximum(0, data['precip'] - c)
+    pred['precip_' + str(c)] = np.maximum(0, pred['precip'] - c)
 
-for c in data['temp.hi_q'].unique()[1:]:
-    data['temp.hi_q' + str(c)] = data['temp.hi']*(data['temp.hi_q'] == c)
-    pred['temp.hi_q' + str(c)] = pred['temp.hi']*(pred['temp.hi_q'] == c)
+for c in knots['temp.hi']:
+    data['temp.hi_' + str(c)] = np.maximum(0, data['temp.hi'] - c)
+    pred['temp.hi_' + str(c)] = np.maximum(0, pred['temp.hi'] - c)
 
-for c in data['srad_q'].unique()[1:]:
-    data['srad_q' + str(c)] = data['srad']*(data['srad_q'] == c)
-    pred['srad_q' + str(c)] = pred['srad']*(pred['srad_q'] == c)
+for c in knots['srad']:
+    data['srad_' + str(c)] = np.maximum(0, data['srad'] - c)
+    pred['srad_' + str(c)] = np.maximum(0, pred['srad'] - c)
 
 #Make Cateogorical Vars, including segments
 data['statemonth'] = data.fips.apply(lambda x: str(100000 + x)[1:3]) + data.doy.apply(lambda x: x[:2]) 
 
-cat_var_names = ['dow', 'doy', 'tod', 'fips', 'year', 'statemonth', 'precip_q', 'temp.hi_q', 'srad_q']
+cat_var_names = ['dow', 'doy', 'tod', 'fips', 'year', 'statemonth']
 
 cat_vars = data[cat_var_names]
 data = data.drop(columns=cat_var_names)
@@ -71,10 +74,10 @@ cnt_names = data.columns
 
 #Add control vars to prediction and combined continuous and dummy vars into 
 predX = np.hstack([pred.values, np.full([pred.shape[0], cat_vars.shape[1]], 0)])
-data = hstack([csr_matrix(data.values), cat_vars])
+data = sparse.hstack([sparse.csr_matrix(data.values), cat_vars])
 
 #Save sparse matrix as scipy.sparse.npz object
-save_npz(OUT_DIR + MOD_RUN + '_data.npz', data)
+sparse.save_npz(OUT_DIR + MOD_RUN + '_data.npz', data)
 
 #Now run regression
 mod = LinearRegression().fit(data, y)
@@ -91,15 +94,14 @@ pred.to_csv(OUT_DIR + MOD_RUN + '_preds.csv', index=False)
 
 # Getting Singularity error
 # Might work with full data - try in the cloud
-
 y_hat = mod.predict(data)
 residuals = y - y_hat
 N = data.shape[0]
 p = data.shape[1] + 1
 residual_sum_of_squares = residuals.T @ residuals
 sigma_squared_hat = residual_sum_of_squares.iloc[0][0] / (N - p)
-X_with_intercept = hstack([csr_matrix(np.ones([data.shape[0], 1])), data])
-var_beta_hat = linalg.inv(csc_matrix(X_with_intercept.T @ X_with_intercept)) * sigma_squared_hat
+X_with_intercept = sparse.hstack([sparse.csr_matrix(np.ones([data.shape[0], 1])), data])
+var_beta_hat = sparse.linalg.inv(sparse.csc_matrix(X_with_intercept.T @ X_with_intercept)) * sigma_squared_hat
 for p_ in range(p):
     standard_error = var_beta_hat[p_, p_] ** 0.5
     coef_res.at[p_, 'standarderror'] = standard_error
