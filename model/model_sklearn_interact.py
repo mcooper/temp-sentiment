@@ -8,26 +8,33 @@ from sklearn.preprocessing import OneHotEncoder
 import getpass
 
 #Model run name
-MOD_RUN = 'weather_cont_test3'
+MOD_RUN = 'weather_income_test3'
+
+INTERACT_VAR = 'income_percap'
 
 ### Local ###
 if getpass.getuser() == 'mattcoop':
     OUT_DIR = '/home/mattcoop/tweets/mod-res/'
     data = pd.read_csv('~/tweets/all_samp_1pct.csv')
+    savedat = False
 
 ##### Cloud #####
 if getpass.getuser() == 'ubuntu':
     OUT_DIR = '/home/ubuntu/tweets/mod-res/'
     data = pd.read_csv('~/tweets/all.csv')
     data.to_hdf('/home/ubuntu/tweets/data.h5', 'data')
+    savedat = True
 
 #Remove columns we are not using right now
-data = data.drop(columns= ['temp', 'weather_term', 'income_percap', 
+data = data.drop(columns= ['temp', 'weather_term',
                             'majority', 'daynum', 'tree', 'impervious'])
 
 #Get outcome var and remove from predictors
 y = data[['vader']]
 data = data.drop(columns=['vader'])
+
+#Get categories of interact var
+cat = np.sort(data[INTERACT_VAR].unique())
 
 #Set knots
 knots = {'temp.hi': [-20, -10, 0, 5, 10, 15, 20, 25, 30, 40],
@@ -46,30 +53,48 @@ pred = pd.concat([pd.DataFrame({'temp.hi': make_range(knots['temp.hi'])}),
            pd.DataFrame({'precip': make_range(knots['precip'])}),
            pd.DataFrame({'srad': make_range(knots['srad'])})]).fillna(0)
 
+pred = pd.concat([pred, pred, pred])
+
+pred[INTERACT_VAR] = np.repeat(data[INTERACT_VAR].unique(), pred.shape[0]/3)
+
+
 #Make continuous segments for predictor vars
-for c in knots['precip']:
-    data['precip_' + str(c)] = np.maximum(0, data['precip'] - c)
-    pred['precip_' + str(c)] = np.maximum(0, pred['precip'] - c)
+for grp in cat[1:]:
+    for c in knots['precip']:
+        data['precip_' + grp + '_' + str(c)] = (np.maximum(0, data['precip'] - c))*(data[INTERACT_VAR] == grp)
+        pred['precip_' + grp + '_' + str(c)] = (np.maximum(0, pred['precip'] - c))*(pred[INTERACT_VAR] == grp)
+    for c in knots['temp.hi']:
+        data['temp.hi_' + grp + '_' + str(c)] = (np.maximum(0, data['temp.hi'] - c))*(data[INTERACT_VAR] == grp)
+        pred['temp.hi_' + grp + '_' + str(c)] = (np.maximum(0, pred['temp.hi'] - c))*(pred[INTERACT_VAR] == grp)
+    for c in knots['srad']:
+        data['srad_' + grp + '_' + str(c)] = (np.maximum(0, data['srad'] - c))*(data[INTERACT_VAR] == grp)
+        pred['srad_' + grp + '_' + str(c)] = (np.maximum(0, pred['srad'] - c))*(pred[INTERACT_VAR] == grp)
 
-for c in knots['temp.hi']:
-    data['temp.hi_' + str(c)] = np.maximum(0, data['temp.hi'] - c)
-    pred['temp.hi_' + str(c)] = np.maximum(0, pred['temp.hi'] - c)
 
-for c in knots['srad']:
-    data['srad_' + str(c)] = np.maximum(0, data['srad'] - c)
-    pred['srad_' + str(c)] = np.maximum(0, pred['srad'] - c)
-
-#Make Cateogorical Vars, including segments
+#Make Cateogorical Vars for Control Variables
 data['statemonth'] = data.fips.apply(lambda x: str(100000 + x)[1:3]) + data.doy.apply(lambda x: x[:2]) 
 
 cat_var_names = ['dow', 'doy', 'tod', 'fips', 'year', 'statemonth']
 
 cat_vars = data[cat_var_names]
 data = data.drop(columns=cat_var_names)
+
 enc = OneHotEncoder(drop='first', sparse=True)
-encfit = enc.fit(cat_vars)
-cat_names = encfit.get_feature_names(cat_var_names)
-cat_vars = encfit.transform(cat_vars)
+enccat = enc.fit(cat_vars)
+cat_names = enccat.get_feature_names(cat_var_names)
+cat_vars = enccat.transform(cat_vars)
+
+#Make Categorical Vars for interactive effect
+enc = OneHotEncoder(drop='first', sparse=False)
+enccnt = enc.fit(pred.loc[: ,[INTERACT_VAR]])
+
+pred = pd.concat([pred, 
+        pd.DataFrame(enccnt.transform(pred.loc[: ,[INTERACT_VAR]]), 
+            columns = cat[1:])], axis=0)
+
+data = pd.concat([data, 
+        pd.DataFrame(enccnt.transform(data.loc[: ,[INTERACT_VAR]]), 
+            columns = cat[1:])], axis=0)
 
 #Make sure pred vars and in the same order as fit vars
 pred = pred[data.columns]
@@ -80,7 +105,8 @@ predX = np.hstack([pred.values, np.full([pred.shape[0], cat_vars.shape[1]], 0)])
 data = sparse.hstack([sparse.csr_matrix(data.values), cat_vars])
 
 #Save sparse matrix as scipy.sparse.npz object
-sparse.save_npz(OUT_DIR + MOD_RUN + '_data.npz', data)
+# if savedat:
+#    sparse.save_npz(OUT_DIR + MOD_RUN + '_data.npz', data)
 
 #Now run regression
 mod = LinearRegression().fit(data, y)
