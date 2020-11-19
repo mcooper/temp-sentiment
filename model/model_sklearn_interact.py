@@ -8,7 +8,7 @@ from sklearn.preprocessing import OneHotEncoder
 import getpass
 
 #Model run name
-MOD_RUN = 'weather_income_test3'
+MOD_RUN = 'weather_income_test4'
 
 INTERACT_VAR = 'income_percap'
 
@@ -59,7 +59,7 @@ pred[INTERACT_VAR] = np.repeat(data[INTERACT_VAR].unique(), pred.shape[0]/3)
 
 
 #Make continuous segments for predictor vars
-for grp in cat[1:]:
+for grp in cat:
     for c in knots['precip']:
         data['precip_' + grp + '_' + str(c)] = (np.maximum(0, data['precip'] - c))*(data[INTERACT_VAR] == grp)
         pred['precip_' + grp + '_' + str(c)] = (np.maximum(0, pred['precip'] - c))*(pred[INTERACT_VAR] == grp)
@@ -88,13 +88,12 @@ cat_vars = enccat.transform(cat_vars)
 enc = OneHotEncoder(drop='first', sparse=False)
 enccnt = enc.fit(pred.loc[: ,[INTERACT_VAR]])
 
-pred = pd.concat([pred, 
+pred = pd.concat([pred.drop(columns=[INTERACT_VAR]).reset_index(drop=True), 
         pd.DataFrame(enccnt.transform(pred.loc[: ,[INTERACT_VAR]]), 
-            columns = cat[1:])], axis=0)
-
-data = pd.concat([data, 
+            columns = cat[1:]).reset_index(drop=True)], axis=1)
+data = pd.concat([data.drop(columns=[INTERACT_VAR]).reset_index(drop=True), 
         pd.DataFrame(enccnt.transform(data.loc[: ,[INTERACT_VAR]]), 
-            columns = cat[1:])], axis=0)
+            columns = cat[1:]).reset_index(drop=True)], axis=1)
 
 #Make sure pred vars and in the same order as fit vars
 pred = pred[data.columns]
@@ -123,21 +122,21 @@ pred.to_csv(OUT_DIR + MOD_RUN + '_preds.csv', index=False)
 
 # Getting Singularity error
 # Might work with full data - try in the cloud
-# y_hat = mod.predict(data)
-# residuals = y - y_hat
-# N = data.shape[0]
-# p = data.shape[1] + 1
-# residual_sum_of_squares = residuals.T @ residuals
-# sigma_squared_hat = residual_sum_of_squares.iloc[0][0] / (N - p)
-# X_with_intercept = sparse.hstack([sparse.csr_matrix(np.ones([data.shape[0], 1])), data])
-# var_beta_hat = sparse.linalg.inv(sparse.csc_matrix(X_with_intercept.T @ X_with_intercept)) * sigma_squared_hat
-# 
-# diag = var_beta_hat.diagonal()
-# 
-# coef_res['standarderror'] = diag ** 0.5
-# 
-# coef_res.to_csv(OUT_DIR + MOD_RUN + '_coefs.csv', index=False)
-# 
+y_hat = mod.predict(data)
+residuals = y - y_hat
+N = data.shape[0]
+p = data.shape[1] + 1
+residual_sum_of_squares = residuals.T @ residuals
+sigma_squared_hat = residual_sum_of_squares.iloc[0][0] / (N - p)
+X_with_intercept = sparse.hstack([sparse.csr_matrix(np.ones([data.shape[0], 1])), data])
+var_beta_hat = sparse.linalg.inv(sparse.csc_matrix(X_with_intercept.T @ X_with_intercept)) * sigma_squared_hat
+
+diag = var_beta_hat.diagonal()
+
+coef_res['standarderror'] = diag ** 0.5
+
+coef_res.to_csv(OUT_DIR + MOD_RUN + '_coefs.csv', index=False)
+
 # import statsmodels.api as sm
 # ols = sm.OLS(y, X_with_intercept.toarray())
 # ols_result = ols.fit()

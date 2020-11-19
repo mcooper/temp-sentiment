@@ -1,20 +1,9 @@
-
-destfile='/nfs/textdataclimateshocks-data/data/processed/patents/sample/all_sample_1pct.csv'
-url='https://restart001.blob.core.windows.net/mortalityblob/sample_tweets/all_samp_1pct.csv'
-download.file(url, destfile,quiet=FALSE)
-
-destfile='/nfs/textdataclimateshocks-data/data/processed/patents/sample/all_sample_10pct.csv'
-url='https://restart001.blob.core.windows.net/mortalityblob/sample_tweets/all_samp_10pct.csv'
-download.file(url, destfile,quiet=FALSE)
-
-
 library(data.table)
 library(glmnet)
 library(Matrix)
 library(ggplot2)
 
-
-all <- fread('/nfs/textdataclimateshocks-data/data/processed/patents/sample/all_sample_1pct.csv')
+all <- fread('~/tweets/all_samp_1pct.csv')
 
 #####################################################################################
 #                       Model Heat Index With National Quintiles
