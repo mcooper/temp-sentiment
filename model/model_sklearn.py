@@ -19,7 +19,7 @@ if getpass.getuser() == 'mattcoop':
 if getpass.getuser() == 'ubuntu':
     OUT_DIR = '/home/ubuntu/tweets/mod-res/'
     data = pd.read_csv('~/tweets/all.csv')
-    data.to_hdf('/home/ubuntu/tweets/data.h5', 'data')
+    #data.to_hdf('/home/ubuntu/tweets/data.h5', 'data')
 
 #Remove columns we are not using right now
 data = data.drop(columns= ['temp', 'weather_term', 'income_percap', 
@@ -80,7 +80,7 @@ predX = np.hstack([pred.values, np.full([pred.shape[0], cat_vars.shape[1]], 0)])
 data = sparse.hstack([sparse.csr_matrix(data.values), cat_vars])
 
 #Save sparse matrix as scipy.sparse.npz object
-sparse.save_npz(OUT_DIR + MOD_RUN + '_data.npz', data)
+# sparse.save_npz(OUT_DIR + MOD_RUN + '_data.npz', data)
 
 #Now run regression
 mod = LinearRegression().fit(data, y)
