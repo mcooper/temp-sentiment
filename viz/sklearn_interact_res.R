@@ -2,34 +2,33 @@ library(tidyverse)
 
 setwd('~/tweets/mod-res/')
 
-MOD_RUN <- 'weather_income_test4'
+MOD_RUN <- 'weather_race_full'
+cat <- 'majority'
 
 #############################
 # Plot Predictions
 ##########################
-pred <- read.csv(paste0(MOD_RUN, '_preds.csv')) %>%
-  mutate(income_percap = case_when(X2Medium == 1 ~ "Medium",
-                                   X3Richest == 1 ~ "Richest",
-                                   TRUE ~ "Poorest")) %>%
-  select(precip, srad, temp.hi, income_percap, predicted)
+pred <- read.csv(paste0(MOD_RUN, '_preds.csv'))
+pred$category <- pred[ , cat]
+
 
 ######### Precip #########
 precip <- pred %>%
   filter(srad == 0, temp.hi == 0)
 ggplot(precip) + 
-  geom_line(aes(x=precip, y=predicted, color=income_percap))
+  geom_line(aes(x=precip, y=predicted, color=category))
 
 ########## Temp.hi #########
 temp.hi <- pred %>%
   filter(srad == 0, precip == 0)
 ggplot(temp.hi) + 
-  geom_line(aes(x=temp.hi, y=predicted, color=income_percap))
+  geom_line(aes(x=temp.hi, y=predicted, color=category))
 
 ########## Srad #########
 srad <- pred %>%
   filter(temp.hi == 0, precip == 0)
 ggplot(srad) + 
-  geom_line(aes(x=srad, y=predicted, color=income_percap))
+  geom_line(aes(x=srad, y=predicted, color=category))
 
 #######################################
 # Plot Coefficients
