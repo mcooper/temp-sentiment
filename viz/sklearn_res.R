@@ -2,10 +2,13 @@ library(tidyverse)
 
 setwd('~/tweets/mod-res/')
 
+MOD_RUN <- 'weather_cont_test3'
+
+
 #############################
 # Plot Predictions
 ##########################
-pred <- read.csv('weather_cont_test2_preds.csv') %>%
+pred <- read.csv(paste0(MOD_RUN, '_preds.csv')) %>%
   select(precip, srad, temp.hi, predicted)
 
 ######### Precip #########
