@@ -5,13 +5,14 @@ import numpy as np
 from scipy import sparse
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import OneHotEncoder
+import math
 import getpass
 import os
 
 #Model run name
-MOD_RUN = 'weather_income_full'
+MOD_RUN = 'weather_race_full'
 
-INTERACT_VAR = 'income_percap'
+INTERACT_VAR = 'tree'
 
 ### Local ###
 if getpass.getuser() == 'mattcoop':
@@ -28,7 +29,7 @@ if getpass.getuser() == 'ubuntu':
 
 #Remove columns we are not using right now
 data = data.drop(columns= ['temp', 'weather_term',
-                            'majority', 'daynum', 'tree', 'impervious'])
+                            'income_percap', 'daynum', 'majority', 'impervious'])
 
 #Get outcome var and remove from predictors
 y = data[['vader']]
@@ -44,11 +45,11 @@ cat = np.sort(data[INTERACT_VAR].unique())
 # Use 20 categories for temp.hi
 # Use 5 for precip (since 85% are 0 anyway)
 # Use 10 for srad (since 50% are 0)
-knots = {'temp.hi': [-36, -4.15, -0.44, 2.14, 3.82, 5.85, 8.34, 10.62, 12.66, 14.5, 16.26, 17.96, 
-                     19.61, 21.24, 22.84, 24.43, 26, 28.25, 30.64, 33.96, 56],
-         'precip': [0, 0.012, 0.0903, 0.305, 1.024, 73],
-         'srad': [0, 71.775, 146.489, 221.597, 229, 376.856, 460.263, 550.696, 660.468, 
-                  792.412, 1364]}
+knots = {'temp.hi': np.linspace(-36, 56, num=15).tolist(),
+        'precip': list(map(lambda x: math.exp(x) - 1, 
+                           np.linspace(math.log(0 + 1), math.log(73 + 1), num=5))),
+        'srad': list(map(lambda x: math.exp(x) - 1,
+                         np.linspace(math.log(0 + 1), math.log(1354 + 1), num=5)))}
 
 #Make predictor matrix with ranges between the knots and with segments of length 10 in the knots
 def make_range(l):
@@ -61,9 +62,9 @@ pred = pd.concat([pd.DataFrame({'temp.hi': make_range(knots['temp.hi'])}),
            pd.DataFrame({'precip': make_range(knots['precip'])}),
            pd.DataFrame({'srad': make_range(knots['srad'])})]).fillna(0)
 
-pred = pd.concat([pred, pred, pred])
+pred = pd.concat([pred]*len(cat))
 
-pred[INTERACT_VAR] = np.repeat(data[INTERACT_VAR].unique(), pred.shape[0]/3)
+pred[INTERACT_VAR] = np.repeat(data[INTERACT_VAR].unique(), pred.shape[0]/len(cat))
 
 ############################################
 # Set up accumulator sparse matrices
@@ -119,10 +120,11 @@ del data # Delete data for memory purposes, not that we have full sparse matrice
 
 enc = OneHotEncoder(drop='first', sparse=True)
 enccat = enc.fit(cat_vars)
+cat_vars = enccat.transform(cat_vars)
 
-labs.append(enccat.get_feature_names(cat_var_names))
-predX = sparse.hstack([predX, sparse.csr_matrix(np.full([pred.shape[0], cat_vars.shape[1]], 0))])
-dataX = sparse.hstack([dataX, enccat.transform(cat_vars)])
+labs = labs + enccat.get_feature_names(cat_var_names).tolist()
+predX = sparse.hstack([predX, sparse.csr_matrix(np.full([pred.shape[0], cat_vars.shape[1] - 6], 0))])
+dataX = sparse.hstack([dataX, cat_vars])
 
 #########################
 #Now run regression
@@ -130,6 +132,8 @@ dataX = sparse.hstack([dataX, enccat.transform(cat_vars)])
 mod = LinearRegression(fit_intercept=False).fit(dataX, y)
 coef_res = pd.DataFrame({'names': labs,
                         'coefs': mod.coef_.tolist()[0]})
+
+p = mod.predict(predX)
 pred['predicted'] = mod.predict(predX)
 
 #Write results
@@ -145,11 +149,12 @@ os.system('/home/ubuntu/telegram.sh "End of Model"')
 # Might work with full data - try in the cloud
 y_hat = mod.predict(dataX)
 residuals = y - y_hat
-N = data.shape[0]
+N, p = dataX.shape
 residual_sum_of_squares = residuals.T @ residuals
 sigma_squared_hat = residual_sum_of_squares.iloc[0][0] / (N - p)
 var_beta_hat = sparse.linalg.inv(sparse.csc_matrix(dataX.T @ dataX)) * sigma_squared_hat
 
+#Getting negatives, cant be right?
 diag = var_beta_hat.diagonal()
 
 coef_res['standarderror'] = diag ** 0.5
