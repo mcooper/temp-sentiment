@@ -90,6 +90,9 @@ pred$ymax <- pred$prediction + pred$std.err*qnorm(0.975)
 # Make Plots
 ###########################
 
+## YOU CANT GET PREDICITON SE FROM COEF SEs!!
+## https://stats.stackexchange.com/questions/64069/can-we-calculate-the-standard-error-of-prediction-just-based-on-simple-linear-re?rq=1
+
 #temp.hi
 ggplot(pred %>% filter(precip == 0, srad == 0)) + 
   geom_line(aes(x=temp.hi, y=prediction, color=category)) + 
