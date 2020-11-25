@@ -10,9 +10,15 @@ import getpass
 import os
 
 #Model run name
-MOD_RUN = 'weather_race_full'
+MOD_RUN = 'inc5_nostatemonth_noweather'
 
-INTERACT_VAR = 'tree'
+INTERACT_VAR = 'income_percap_q'
+
+FIXED_EFFECTS = ['dow', 'doy', 'tod', 'fips', 'year', 'majority']
+
+FILTER_WEATHER_TERM = True
+
+SENTIMENT_VAR = 'vader'
 
 ### Local ###
 if getpass.getuser() == 'mattcoop':
@@ -27,29 +33,38 @@ if getpass.getuser() == 'ubuntu':
     #data.to_hdf('/home/ubuntu/tweets/data.h5', 'data')
     #savedat = True
 
+if FILTER_WEATHER_TERM:
+    data = data[data['weather_term'] != 1] 
+
 #Remove columns we are not using right now
-data = data.drop(columns= ['temp', 'weather_term',
-                            'income_percap', 'daynum', 'majority', 'impervious'])
+cols = data.columns.tolist()
+keepcols = ['precip', 'srad', 'temp.hi'] + FIXED_EFFECTS + [INTERACT_VAR, SENTIMENT_VAR]
+dropcols = [c for c in cols if c not in keepcols]
+
+data = data.drop(columns=dropcols)
 
 #Get outcome var and remove from predictors
-y = data[['vader']]
-data = data.drop(columns=['vader'])
+y = data[[SENTIMENT_VAR]]
+data = data.drop(columns=[SENTIMENT_VAR])
 
 #Get categories of interact var
-cat = np.sort(data[INTERACT_VAR].unique())
+cat = np.sort(data[INTERACT_VAR].unique()).tolist()
 
-#Set knots
-# Can inspect quantiles with
-# cut = pd.qcut(dat['temp.hi'], q=10)
-# cut.cat.categories
-# Use 20 categories for temp.hi
-# Use 5 for precip (since 85% are 0 anyway)
-# Use 10 for srad (since 50% are 0)
-knots = {'temp.hi': np.linspace(-36, 56, num=15).tolist(),
-        'precip': list(map(lambda x: math.exp(x) - 1, 
-                           np.linspace(math.log(0 + 1), math.log(73 + 1), num=5))),
-        'srad': list(map(lambda x: math.exp(x) - 1,
-                         np.linspace(math.log(0 + 1), math.log(1354 + 1), num=5)))}
+# #Set knots
+# # Can inspect quantiles with
+# # cut = pd.qcut(dat['temp.hi'], q=10)
+# # cut.cat.categories
+# # Use 20 categories for temp.hi
+# # Use 5 for precip (since 85% are 0 anyway)
+# # Use 10 for srad (since 50% are 0)
+# knots = {'temp.hi': np.linspace(-36, 56, num=15).tolist(),
+#         'precip': list(map(lambda x: math.exp(x) - 1, 
+#                            np.linspace(math.log(0 + 1), math.log(73 + 1), num=5))),
+#         'srad': list(map(lambda x: math.exp(x) - 1,
+#                          np.linspace(math.log(0 + 1), math.log(1354 + 1), num=5)))}
+knots = {'temp.hi': [data['temp.hi'].min(), 0, 15, 20, 30, data['temp.hi'].max()],
+        'precip': [data['precip'].min(), 0.000001, data['precip'].max()],
+        'srad': [data['srad'].min(), 0.000001, data['srad'].max()]}
 
 #Make predictor matrix with ranges between the knots and with segments of length 10 in the knots
 def make_range(l):
@@ -64,7 +79,7 @@ pred = pd.concat([pd.DataFrame({'temp.hi': make_range(knots['temp.hi'])}),
 
 pred = pd.concat([pred]*len(cat))
 
-pred[INTERACT_VAR] = np.repeat(data[INTERACT_VAR].unique(), pred.shape[0]/len(cat))
+pred[INTERACT_VAR] = np.repeat(cat, pred.shape[0]/len(cat))
 
 ############################################
 # Set up accumulator sparse matrices
@@ -80,17 +95,17 @@ labs = ['intercept', 'temp.hi', 'precip', 'srad']
 ###############################################
 for grp in cat:
     print(grp)
-    for c in knots['precip'][1:-1]:
+    for c in knots['precip'][:-1]:
         print('precip', c)
         labs.append('precip_' + grp + '_' + str(c))
         predX = sparse.hstack([predX, sparse.csr_matrix(pd.DataFrame((np.maximum(0, pred['precip'] - c))*(pred[INTERACT_VAR] == grp)))])
         dataX = sparse.hstack([dataX, sparse.csr_matrix(pd.DataFrame((np.maximum(0, data['precip'] - c))*(data[INTERACT_VAR] == grp)))])
-    for c in knots['temp.hi'][1:-1]:
+    for c in knots['temp.hi'][:-1]:
         print('temp.hi', c)
         labs.append('temp.hi_' + grp + '_' + str(c))
         predX = sparse.hstack([predX, sparse.csr_matrix(pd.DataFrame((np.maximum(0, pred['temp.hi'] - c))*(pred[INTERACT_VAR] == grp)))])
         dataX = sparse.hstack([dataX, sparse.csr_matrix(pd.DataFrame((np.maximum(0, data['temp.hi'] - c))*(data[INTERACT_VAR] == grp)))])
-    for c in knots['srad'][1:-1]:
+    for c in knots['srad'][:-1]:
         print('srad', c)
         labs.append('srad_' + grp + '_' + str(c))
         predX = sparse.hstack([predX, sparse.csr_matrix(pd.DataFrame((np.maximum(0, pred['srad'] - c))*(pred[INTERACT_VAR] == grp)))])
@@ -111,19 +126,15 @@ labs = labs + enccnt.get_feature_names().tolist()
 #Make Cateogorical Vars for Control Variables
 ##############################################
 
-data['statemonth'] = data.fips.apply(lambda x: str(100000 + x)[1:3]) + data.doy.apply(lambda x: x[:2]) 
-
-cat_var_names = ['dow', 'doy', 'tod', 'fips', 'year', 'statemonth']
-
-cat_vars = data[cat_var_names]
+cat_vars = data[FIXED_EFFECTS]
 del data # Delete data for memory purposes, not that we have full sparse matrices
 
 enc = OneHotEncoder(drop='first', sparse=True)
 enccat = enc.fit(cat_vars)
 cat_vars = enccat.transform(cat_vars)
 
-labs = labs + enccat.get_feature_names(cat_var_names).tolist()
-predX = sparse.hstack([predX, sparse.csr_matrix(np.full([pred.shape[0], cat_vars.shape[1] - 6], 0))])
+labs = labs + enccat.get_feature_names(FIXED_EFFECTS).tolist()
+predX = sparse.hstack([predX, sparse.csr_matrix(np.full([pred.shape[0], cat_vars.shape[1]], 0))])
 dataX = sparse.hstack([dataX, cat_vars])
 
 #########################
@@ -142,31 +153,35 @@ pred.to_csv(OUT_DIR + MOD_RUN + '_preds.csv', index=False)
 
 os.system('/home/ubuntu/telegram.sh "End of Model"')
 
-#Get standard errors
+#Get standard errors of coefficients and predictions
 #https://stackoverflow.com/questions/22381497/python-scikit-learn-linear-model-parameter-standard-error
+#https://otexts.com/fpp2/regression-matrices.html
+#https://stats.stackexchange.com/questions/64069/can-we-calculate-the-standard-error-of-prediction-just-based-on-simple-linear-re
 
-# Getting Singularity error
-# Might work with full data - try in the cloud
 y_hat = mod.predict(dataX)
 residuals = y - y_hat
 N, p = dataX.shape
 residual_sum_of_squares = residuals.T @ residuals
 sigma_squared_hat = residual_sum_of_squares.iloc[0][0] / (N - p)
-var_beta_hat = sparse.linalg.inv(sparse.csc_matrix(dataX.T @ dataX)) * sigma_squared_hat
+XpXinv = sparse.linalg.inv(sparse.csc_matrix(dataX.T @ dataX))
+var_beta_hat = XpXsqrt * sigma_squared_hat
 
 #Getting negatives, cant be right?
 diag = var_beta_hat.diagonal()
-
 coef_res['standarderror'] = diag ** 0.5
-
 coef_res.to_csv(OUT_DIR + MOD_RUN + '_coefs.csv', index=False)
+
+predXcsr = predX.tocsr()
+
+for i in range(pred.shape[0]):
+    x_star = predXcsr[i,:]
+    se = sigma_squared_hat*math.sqrt(1 + (x_star @ XpXinv @ x_star.T)[0,0])
+    pred.loc[i, 'se'] = se
+
+pred.to_csv(OUT_DIR + MOD_RUN + '_preds.csv', index=False)
 
 os.system('/home/ubuntu/telegram.sh "End of Script"')
 
-# import statsmodels.api as sm
-# ols = sm.OLS(y, X_with_intercept.toarray())
-# ols_result = ols.fit()
-# ols_result.summary()
 
 
 

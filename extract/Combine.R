@@ -1,10 +1,8 @@
 library(data.table)
-library(countytimezones)
-library(lubridate)
 
 setwd('/home/ubuntu/tweets')
 
-setDTthreads(64)
+setDTthreads(48)
 
 #To combine the daily csvs, I ran
 # cat sentiment/*.csv | grep -a -v tweet_created_at > sentiment_all.csv
@@ -74,22 +72,26 @@ rm(sen, cli, cen, lcv, lti)
 all[ , id:=NULL]
 all[ , tweet_created_at:=NULL]
 
-#Get Income Terciles
-class <- c('1Poorest', '2Medium', '3Richest')
-all$income_percap <- class[as.numeric(Hmisc::cut2(all$income_percap, g=3))]
-
-#Get Landcover Terciles
-class <- c("1LessGreen", "2MediumGreen", "3VeryGreen")
-all$tree <- class[as.numeric(Hmisc::cut2(all$tree, g=3))]
-
-class <- c("1LessGrey", "2MediumGrey", "3VeryGrey")
-all$impervious <- class[as.numeric(Hmisc::cut2(all$impervious, g=3))]
-
 ### FILTER OUT BAD tod Variables!
 ### SOMEHOW TOD WAS Time Zones for Certain Observations - 
-### c('CDT', 'CST', 'EDT', 'EST', 'MST', 'MDT', 'PDT', 'PST')
+all <- all[!all$tod %in% c('CDT', 'CST', 'EDT', 'EST', 'MST', 'MDT', 'PDT', 'PST'), ]
+
+#Get Income Terciles
+class <- c('1Poorest', '2MediumPoor', '3Medium', '4MediumRich', '5Richest')
+all$income_percap_q <- class[as.numeric(Hmisc::cut2(all$income_percap, g=5))]
+
+#Get Landcover
+class <- c("1NoTree", "2Tree")
+all$tree_q <- class[as.numeric(Hmisc::cut2(all$tree, g=3))]
+
+class <- c("1LessGrey", "2MediumGrey", "3VeryGrey")
+all$impervious_q <- class[as.numeric(Hmisc::cut2(all$impervious, g=3))]
+
+#Make Statemonth Fixed Effect
+all$statemonth <- paste0(substr(100000 + all$fips, 2, 3), '-', substr(all$doy, 1, 2))
 
 fwrite(all, 'all.csv', row.names=F)
 fwrite(all[sample(.N, .N*0.01)], 'all_samp_1pct.csv', row.names=F)
 
 system('~/telegram.sh "Donezo!"')
+system('sudo poweroff')
