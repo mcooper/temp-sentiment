@@ -164,7 +164,7 @@ N, p = dataX.shape
 residual_sum_of_squares = residuals.T @ residuals
 sigma_squared_hat = residual_sum_of_squares.iloc[0][0] / (N - p)
 XpXinv = sparse.linalg.inv(sparse.csc_matrix(dataX.T @ dataX))
-var_beta_hat = XpXsqrt * sigma_squared_hat
+var_beta_hat = XpXinv * sigma_squared_hat
 
 #Getting negatives, cant be right?
 diag = var_beta_hat.diagonal()
@@ -173,12 +173,17 @@ coef_res.to_csv(OUT_DIR + MOD_RUN + '_coefs.csv', index=False)
 
 predXcsr = predX.tocsr()
 
+pred = pred.reset_index()
+
 for i in range(pred.shape[0]):
     x_star = predXcsr[i,:]
     se = sigma_squared_hat*math.sqrt(1 + (x_star @ XpXinv @ x_star.T)[0,0])
     pred.loc[i, 'se'] = se
 
 pred.to_csv(OUT_DIR + MOD_RUN + '_preds.csv', index=False)
+
+import pickle
+pickle.dump(mod, open(OUT_DIR + MOD_RUN + '_mod.sav', 'wb'))
 
 os.system('/home/ubuntu/telegram.sh "End of Script"')
 
