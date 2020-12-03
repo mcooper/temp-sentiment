@@ -3,22 +3,26 @@
 import pandas as pd
 import numpy as np
 from scipy import sparse
+from scipy.sparse.linalg import lsqr
 from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import Lasso
 from sklearn.preprocessing import OneHotEncoder
 import math
 import getpass
 import os
 
 #Model run name
-MOD_RUN = 'racecat_moreknots'
+MOD_RUN = 'impervcont_moreknots'
 
-INTERACT_VAR = 'majority'
+INTERACT_VAR = 'impervious'
 
 FIXED_EFFECTS = ['dow', 'doy', 'tod', 'fips', 'year', 'statemonth']
 
 FILTER_WEATHER_TERM = True
 
 SENTIMENT_VAR = 'vader'
+
+LOG_TRANSFORM = False
 
 ### Local ###
 if getpass.getuser() == 'mattcoop':
@@ -36,6 +40,9 @@ if getpass.getuser() == 'ubuntu':
 if FILTER_WEATHER_TERM:
     data = data[data['weather_term'] != 1] 
 
+if LOG_TRANSFORM:
+    data[INTERACT_VAR] = data[INTERACT_VAR].apply(lambda x: math.log(x))
+
 #Remove columns we are not using right now
 cols = data.columns.tolist()
 keepcols = ['precip', 'srad', 'temp.hi'] + FIXED_EFFECTS + [INTERACT_VAR, SENTIMENT_VAR]
@@ -47,21 +54,6 @@ data = data.drop(columns=dropcols)
 y = data[[SENTIMENT_VAR]]
 data = data.drop(columns=[SENTIMENT_VAR])
 
-#Get categories of interact var
-cat = np.sort(data[INTERACT_VAR].unique()).tolist()
-
-# #Set knots
-# # Can inspect quantiles with
-# # cut = pd.qcut(dat['temp.hi'], q=10)
-# # cut.cat.categories
-# # Use 20 categories for temp.hi
-# # Use 5 for precip (since 85% are 0 anyway)
-# # Use 10 for srad (since 50% are 0)
-# knots = {'temp.hi': np.linspace(-36, 56, num=15).tolist(),
-#         'precip': list(map(lambda x: math.exp(x) - 1, 
-#                            np.linspace(math.log(0 + 1), math.log(73 + 1), num=5))),
-#         'srad': list(map(lambda x: math.exp(x) - 1,
-#                          np.linspace(math.log(0 + 1), math.log(1354 + 1), num=5)))}
 knots = {'temp.hi': [data['temp.hi'].min(), -10, 0, 5, 10, 15, 20, 25, 30, 35, data['temp.hi'].max()],
         'precip': [data['precip'].min(), 0.000001, 0.05, 0.5, data['precip'].max()],
         'srad': [data['srad'].min(), 0.000001, 250, 500, 1000, data['srad'].max()]}
@@ -77,50 +69,52 @@ pred = pd.concat([pd.DataFrame({'temp.hi': make_range(knots['temp.hi'])}),
            pd.DataFrame({'precip': make_range(knots['precip'])}),
            pd.DataFrame({'srad': make_range(knots['srad'])})]).fillna(0)
 
-pred = pd.concat([pred]*len(cat))
+q = np.quantile(data[INTERACT_VAR], q=[0.1, 0.3, 0.5, 0.7, 0.9])
 
-pred[INTERACT_VAR] = np.repeat(cat, pred.shape[0]/len(cat))
+pred = pd.concat([pred]*5)
+
+pred[INTERACT_VAR] = np.repeat(q, pred.shape[0]/5)
 
 ############################################
 # Set up accumulator sparse matrices
 ############################################
 predX = sparse.hstack([np.ones([pred.shape[0], 1]), 
-                       sparse.csr_matrix(pred[['temp.hi', 'precip', 'srad']].values)])
+                       sparse.csr_matrix(pred[['temp.hi', 'precip', 'srad', INTERACT_VAR]].values)])
 dataX = sparse.hstack([np.ones([data.shape[0], 1]), 
-                       sparse.csr_matrix(data[['temp.hi', 'precip', 'srad']].values)])
-labs = ['intercept', 'temp.hi', 'precip', 'srad']
+                       sparse.csr_matrix(data[['temp.hi', 'precip', 'srad', INTERACT_VAR]].values)])
+labs = ['intercept', 'temp.hi', 'precip', 'srad', INTERACT_VAR]
 
 ###############################################
 #Make continuous segments for predictor vars
 ###############################################
-for grp in cat:
-    print(grp)
-    for c in knots['precip'][:-1]:
-        print('precip', c)
-        labs.append('precip_' + grp + '_' + str(c))
-        predX = sparse.hstack([predX, sparse.csr_matrix(pd.DataFrame((np.maximum(0, pred['precip'] - c))*(pred[INTERACT_VAR] == grp)))])
-        dataX = sparse.hstack([dataX, sparse.csr_matrix(pd.DataFrame((np.maximum(0, data['precip'] - c))*(data[INTERACT_VAR] == grp)))])
-    for c in knots['temp.hi'][:-1]:
-        print('temp.hi', c)
-        labs.append('temp.hi_' + grp + '_' + str(c))
-        predX = sparse.hstack([predX, sparse.csr_matrix(pd.DataFrame((np.maximum(0, pred['temp.hi'] - c))*(pred[INTERACT_VAR] == grp)))])
-        dataX = sparse.hstack([dataX, sparse.csr_matrix(pd.DataFrame((np.maximum(0, data['temp.hi'] - c))*(data[INTERACT_VAR] == grp)))])
-    for c in knots['srad'][:-1]:
-        print('srad', c)
-        labs.append('srad_' + grp + '_' + str(c))
-        predX = sparse.hstack([predX, sparse.csr_matrix(pd.DataFrame((np.maximum(0, pred['srad'] - c))*(pred[INTERACT_VAR] == grp)))])
-        dataX = sparse.hstack([dataX, sparse.csr_matrix(pd.DataFrame((np.maximum(0, data['srad'] - c))*(data[INTERACT_VAR] == grp)))])
+for c in knots['precip'][:-1]:
+    print('precip', c)
+    #Add raw segmented weather terms
+    labs.append('precip_' + str(c))
+    predX = sparse.hstack([predX, sparse.csr_matrix(pd.DataFrame(np.maximum(0, pred['precip'] - c)))])
+    dataX = sparse.hstack([dataX, sparse.csr_matrix(pd.DataFrame(np.maximum(0, data['precip'] - c)))])
+    #Add interacted segmented weather terms
+    labs.append('precip_' + INTERACT_VAR + '_' + str(c))
+    predX = sparse.hstack([predX, sparse.csr_matrix(pd.DataFrame(np.maximum(0, pred['precip'] - c)*pred[INTERACT_VAR]))])
+    dataX = sparse.hstack([dataX, sparse.csr_matrix(pd.DataFrame(np.maximum(0, data['precip'] - c)*data[INTERACT_VAR]))])
 
-##################################################
-#Make Categorical Vars for interaction categories
-##################################################
-enc = OneHotEncoder(drop='first', sparse=True)
-enccnt = enc.fit(pred.loc[: ,[INTERACT_VAR]])
+for c in knots['temp.hi'][:-1]:
+    print('temp.hi', c)
+    labs.append('temp.hi_' + str(c))
+    predX = sparse.hstack([predX, sparse.csr_matrix(pd.DataFrame(np.maximum(0, pred['temp.hi'] - c)))])
+    dataX = sparse.hstack([dataX, sparse.csr_matrix(pd.DataFrame(np.maximum(0, data['temp.hi'] - c)))])
+    labs.append('temp.hi_' + INTERACT_VAR + '_' + str(c))
+    predX = sparse.hstack([predX, sparse.csr_matrix(pd.DataFrame(np.maximum(0, pred['temp.hi'] - c)*pred[INTERACT_VAR]))])
+    dataX = sparse.hstack([dataX, sparse.csr_matrix(pd.DataFrame(np.maximum(0, data['temp.hi'] - c)*data[INTERACT_VAR]))])
 
-predX = sparse.hstack([predX, enccnt.transform(pred[[INTERACT_VAR]])])
-dataX = sparse.hstack([dataX, enccnt.transform(data[[INTERACT_VAR]])])
-
-labs = labs + enccnt.get_feature_names().tolist()
+for c in knots['srad'][:-1]:
+    print('srad', c)
+    labs.append('srad_' + str(c))
+    predX = sparse.hstack([predX, sparse.csr_matrix(pd.DataFrame(np.maximum(0, pred['srad'] - c)))])
+    dataX = sparse.hstack([dataX, sparse.csr_matrix(pd.DataFrame(np.maximum(0, data['srad'] - c)))])
+    labs.append('srad_' + INTERACT_VAR + '_' + str(c))
+    predX = sparse.hstack([predX, sparse.csr_matrix(pd.DataFrame(np.maximum(0, pred['srad'] - c)*pred[INTERACT_VAR]))])
+    dataX = sparse.hstack([dataX, sparse.csr_matrix(pd.DataFrame(np.maximum(0, data['srad'] - c)*data[INTERACT_VAR]))])
 
 ##############################################
 #Make Cateogorical Vars for Control Variables
@@ -153,6 +147,9 @@ pred.to_csv(OUT_DIR + MOD_RUN + '_preds.csv', index=False)
 
 os.system('/home/ubuntu/telegram.sh "End of Model"')
 
+quit()
+
+
 #Get standard errors of coefficients and predictions
 #https://stackoverflow.com/questions/22381497/python-scikit-learn-linear-model-parameter-standard-error
 #https://otexts.com/fpp2/regression-matrices.html
@@ -176,29 +173,20 @@ predXcsr = predX.tocsr()
 pred = pred.reset_index()
 
 for i in range(pred.shape[0]):
-    x_star = predXcsr[i,:]
-    se = sigma_squared_hat*math.sqrt(1 + (x_star @ XpXinv @ x_star.T)[0,0])
-    pred.loc[i, 'se'] = se
+    try:
+        se = np.nan
+        x_star = predXcsr[i,:]
+        se = math.sqrt(sigma_squared_hat)*math.sqrt(1/N + (x_star @ XpXinv @ x_star.T)[0,0])
+        pred.loc[i, 'se'] = se
+        se = np.nan
+    except:
+        print('NBD')
 
 pred.to_csv(OUT_DIR + MOD_RUN + '_preds.csv', index=False)
 
 import pickle
 pickle.dump(mod, open(OUT_DIR + MOD_RUN + '_mod.sav', 'wb'))
 
-os.system('/home/ubuntu/telegram.sh "End of Script"')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+os.system('/home/ubuntu/telegram.sh "End of Standard Errors"')
 
 
