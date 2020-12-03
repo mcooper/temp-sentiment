@@ -76,6 +76,7 @@ For each model, we fit a separate slope and intercept for income quintile. We al
 
 #  Results
 ## Heat
+Comment from Patrick Baylis. 2nd comment from Patrick
 
 ![Heat Index Temperature and Sentiment](../res/Income_Heat.png)
 
