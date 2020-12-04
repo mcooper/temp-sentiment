@@ -4,12 +4,22 @@ setwd('~/tweets/mod-res/')
 
 options(stringsAsFactors=F)
 
-MOD_RUN <- 'weather_income_full'
-catname <- 'income_percap'
-
-pred <- read.csv(paste0(MOD_RUN, '_preds.csv'))
+MOD_RUN <- 'weather_race_full'
+catname <- 'majority'
 
 coefs <- read.csv(paste0(MOD_RUN, '_coefs.csv'))
+
+pred <- read.csv(paste0(MOD_RUN, '_preds.csv'))
+# #In case pred creation effed up
+pred <- bind_rows(list(data.frame(temp.hi=unique(pred$temp.hi), precip=0, srad=0),
+                           data.frame(precip=unique(pred$precip), srad=0, temp.hi=0),
+                           data.frame(srad=unique(pred$srad), precip=0, temp.hi=0)))
+pred <- bind_rows(pred %>% mutate(majority = 'race_black'),
+                  pred %>% mutate(majority = 'race_white'),
+                  pred %>% mutate(majority = 'race_hisp'),
+                  pred %>% mutate(majority = 'race_other'))
+
+
 
 #####################################
 # Determine model parameters/ set up
@@ -76,15 +86,15 @@ for (ct in cat[2:length(cat)]){
 #Make Predictions
 #############################
 pred$prediction <- NA
-pred$std.err <- NA
+#pred$std.err <- NA
 
 for (i in 1:nrow(pred)){
-  pred$prediction[i] <- sum(predX[i, ]*coefs$coefs[1:nrow(pred)])
-  pred$std.err[i] <- sum(predX[i, ]*coefs$standarderror[1:nrow(pred)])
+  pred$predicted[i] <- sum(predX[i, ]*coefs$coefs[1:nrow(pred)])
+  #pred$std.err[i] <- sum(predX[i, ]*coefs$standarderror[1:nrow(pred)])
 }
 
-pred$ymin <- pred$prediction - pred$std.err*qnorm(0.975)
-pred$ymax <- pred$prediction + pred$std.err*qnorm(0.975)
+#pred$ymin <- pred$prediction - pred$std.err*qnorm(0.975)
+#pred$ymax <- pred$prediction + pred$std.err*qnorm(0.975)
 
 ###########################
 # Make Plots
@@ -93,18 +103,37 @@ pred$ymax <- pred$prediction + pred$std.err*qnorm(0.975)
 ## YOU CANT GET PREDICITON SE FROM COEF SEs!!
 ## https://stats.stackexchange.com/questions/64069/can-we-calculate-the-standard-error-of-prediction-just-based-on-simple-linear-re?rq=1
 
-#temp.hi
-ggplot(pred %>% filter(precip == 0, srad == 0)) + 
-  geom_line(aes(x=temp.hi, y=prediction, color=category)) + 
-  geom_ribbon(aes(x=temp.hi, ymax=ymax, ymin=ymin, fill=category), color=NA, alpha=0.1)
+pred$category <- as.factor(pred$category)
 
-#precip
-ggplot(pred %>% filter(temp.hi == 0, srad == 0)) + 
-  geom_line(aes(x=precip, y=prediction, color=category)) +
-  geom_ribbon(aes(x=precip, ymax=ymax, ymin=ymin, fill=category), color=NA, alpha=0.1)
+levels(pred$category) <- c('Majority Black (Non-Hisp)', 'Majority Hispanic (Any Race)', 'Majority Other', 'Majority White (Non-Hisp)')
 
-#srad
-ggplot(pred %>% filter(precip == 0, temp.hi == 0)) + 
-  geom_line(aes(x=srad, y=prediction, color=category)) +
-  geom_ribbon(aes(x=srad, ymax=ymax, ymin=ymin, fill=category), color=NA, alpha=0.1)
+######### Precip #########
+precip <- pred %>%
+  filter(srad == 0, temp.hi == 0)
+ggplot(precip) + 
+  geom_line(aes(x=log(precip + 1), y=predicted, color=category)) + 
+  scale_x_continuous(label=function(x){round(exp(x) - 1, 2)}) + 
+  labs(x='mm of precip (log scale)',
+       y='sentiment score')
+ggsave(paste0(MOD_RUN, '_precip.png'))
+
+########## Temp.hi #########
+temp.hi <- pred %>%
+  filter(srad == 0, precip == 0)
+ggplot(temp.hi) + 
+  geom_line(aes(x=temp.hi, y=predicted, color=category)) + 
+  labs(x='heat index temperature (C)',
+       y='sentiment score')
+ggsave(paste0(MOD_RUN, '_temp.hi.png'))
+
+########## Srad #########
+srad <- pred %>%
+  filter(temp.hi == 0, precip == 0)
+ggplot(srad) + 
+  geom_line(aes(x=srad, y=predicted, color=category)) + 
+  labs(x='sunlight (shortwave radiation - w/m^2)',
+       y='sentiment score')
+ggsave(paste0(MOD_RUN, '_srad.png'))
+
+
 
