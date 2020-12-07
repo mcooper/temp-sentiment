@@ -1,4 +1,4 @@
-##Use E32
+##Use E64
 
 library(data.table)
 library(fixest)
@@ -11,9 +11,8 @@ options(scipen=100)
 setwd('~/tweets/')
 
 data <- fread('all.csv')
-data$income_percap <- log(data$income_percap)
-
-qs <- quantile(data$income_percap, seq(0, 1, by=0.05))
+data$income_percap_q <- factor(data$income_percap_q)
+qs <- levels(data$income_percap_q)
 weekdaymeans <- data[ , .(Mean=mean(vader)), .(dow)]
 
 #Tempknots
@@ -24,19 +23,26 @@ knots = list("temp"= c(min(data$temp), -10, 0, 5, 10, 15, 20, 25, 30, 35,
              "srad"= c(min(data$srad), 0.000001, 250, 500, 1000, max(data$srad)))
 
 #Define Segmenting Function
-piece.formula <- function(var.name, knots, interact_var='') {
+piece.formula <- function(var.name, knots, interact_var='', interact_type=c('factor', 'continuous')) {
   knots <- knots[c(-1, -length(knots))]
   formula.sign <- rep(" - ", length(knots))
   formula.sign[knots < 0] <- " + "
-  paste(interact_var, '*', var.name, "+",
-        paste("I(", interact_var, "*pmax(", var.name, formula.sign, abs(knots), ", 0))",
-              collapse = " + ", sep=""))
+  if (interact_type == 'continuous'){
+    formula <- paste(interact_var, '*', var.name, "+",
+          paste("I(", interact_var, "*pmax(", var.name, formula.sign, abs(knots), ", 0))",
+                collapse = " + ", sep=""))
+  } else{
+    formula <- paste(interact_var, '*', var.name, "+",
+          paste(interact_var, "*I(pmax(", var.name, formula.sign, abs(knots), ", 0))",
+                collapse = " + ", sep=""))
+  }
+  formula
 }
 
 formula <- paste0("vader ~ ", 
-                     piece.formula("temp", knots[['temp']], "income_percap"), ' + ',
-                     piece.formula("precip", knots[['precip']], "income_percap"), ' + ',
-                     piece.formula("srad", knots[['srad']], "income_percap"),
+                     piece.formula("temp", knots[['temp']], "income_percap_q", 'factor'), ' + ',
+                     piece.formula("precip", knots[['precip']], "income_percap_q", 'factor'), ' + ',
+                     piece.formula("srad", knots[['srad']], "income_percap_q", 'factor'),
                      " | dow + doy + tod + fips + year + statemonth")
 
 mod <- feols(as.formula(formula), data)
@@ -110,7 +116,7 @@ hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'temp']) +
   labs(y="Tweet Count", x="Temperature")
 
 plot_grid(curve, hist, align='v', axis='rl', ncol=1, rel_heights=c(0.8, 0.2))
-ggsave('~/temp-sentiment/res/temp-income.png', width=6, height=7)
+ggsave('~/temp-sentiment/res/temp-income_q.png', width=6, height=7)
 
 ########################################
 #precip
@@ -162,7 +168,7 @@ hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'precip']) +
   labs(y="Tweet Count", x="Precipitation (mm)")
 
 plot_grid(curve, hist, align='v', axis='rl', ncol=1, rel_heights=c(0.8, 0.2))
-ggsave('~/temp-sentiment/res/precip-income.png', width=6, height=7)
+ggsave('~/temp-sentiment/res/precip-income_q.png', width=6, height=7)
 
 
 
@@ -215,6 +221,6 @@ hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'srad']) +
   labs(y="Tweet Count", x="Sunlight (Shortwave Radiation - w/m^2)")
 
 plot_grid(curve, hist, align='v', axis='rl', ncol=1, rel_heights=c(0.8, 0.2))
-ggsave('~/temp-sentiment/res/srad-income.png', width=6, height=7)
+ggsave('~/temp-sentiment/res/srad-income_q.png', width=6, height=7)
 
 
