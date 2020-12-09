@@ -18,28 +18,39 @@ weekdaymeans <- data[ , .(Mean=mean(vader)), .(dow)]
 
 #Tempknots
 #Tempknots
-knots = list("temp.hi"= c(min(data$temp.hi), -10, 0, 5, 10, 15, 20, 25, 30, 35, 
-                          max(data$temp.hi)),
+knots = list("temp"= c(min(data$temp), -10, 0, 5, 10, 15, 20, 25, 30, 35, 
+                          max(data$temp)),
              "precip"= c(min(data$precip), 0.000001, 0.05, 0.5, max(data$precip)),
-             "srad"= c(min(data$srad), 0.000001, 250, 500, 1000, max(data$srad)))
+             "srad"= c(min(data$srad), 0.000001, 250, 500, max(data$srad)))
 
 #Define Segmenting Function
 piece.formula <- function(var.name, knots, interact_var='') {
-  knots <- knots[c(-1, -length(knots))]
+  knots <- knots[ -length(knots)]
   formula.sign <- rep(" - ", length(knots))
   formula.sign[knots < 0] <- " + "
-  paste(interact_var, '*', var.name, "+",
+  if (interact_var == ''){
+    paste(var.name, "+",
+        paste("I(pmax(", var.name, formula.sign, abs(knots), ", 0))",
+              collapse = " + ", sep=""))
+  } else{
+    paste(interact_var, '*', var.name, "+",
         paste("I(", interact_var, "*pmax(", var.name, formula.sign, abs(knots), ", 0))",
               collapse = " + ", sep=""))
+  }
 }
 
 formula <- paste0("vader ~ ", 
-                     piece.formula("temp.hi", knots[['temp.hi']], "income_percap"), ' + ',
+                     piece.formula("temp", knots[['temp']], "income_percap"), ' + ',
                      piece.formula("precip", knots[['precip']], "income_percap"), ' + ',
-                     piece.formula("srad", knots[['srad']], "income_percap"),
-                     " | dow + doy + tod + fips + year + statemonth + majority")
+                     piece.formula("srad", knots[['srad']], "income_percap"), ' + ',
+                     piece.formula("temp", knots[['temp']], ""), ' + ',
+                     piece.formula("precip", knots[['precip']], ""), ' + ',
+                     piece.formula("srad", knots[['srad']], ""), 
+                     " | dow + doy + tod + fips + year + statemonth")
 
+start <- Sys.time()
 mod <- feols(as.formula(formula), data)
+end <- Sys.time()
 
 fill_knots <- function(x, filln=10){
   vals <- NULL
@@ -61,15 +72,16 @@ make_groups <- function(df, label, values){
 }
 
 ######################################
-#temp.hi
+#temp
 
-preddf <- data.frame(temp.hi=fill_knots(knots$temp.hi))
+preddf <- data.frame(temp=fill_knots(knots$temp))
 preddf <- make_groups(preddf, 'income_percap', qs[c(2, 11, 20)])
 
 preddf$vader <- 1
 
 mm <- model.matrix(as.formula(paste0("vader ~ ",
-                   piece.formula("temp.hi", knots[['temp.hi']], "income_percap"))),
+                   piece.formula("temp", knots[['temp']], ""), ' + ',
+                   piece.formula("temp", knots[['temp']], "income_percap"))),
                    data=preddf)
 
 mm <- mm[ , colnames(mm) %in% names(coef(mod))]
@@ -95,22 +107,22 @@ levels(preddf$income_percap) <- paste0(levels(preddf$income_percap), ' (',
                                        names(qs[c(2, 11, 20)]), ')')
 
 curve <- ggplot(preddf) + 
-  geom_line(aes(x=temp.hi, y=contrast, color=income_percap)) + 
-  geom_ribbon(aes(x=temp.hi, ymin=ymin, ymax=ymax, fill=income_percap), alpha=0.5) + 
+  geom_line(aes(x=temp, y=contrast, color=income_percap)) + 
+  geom_ribbon(aes(x=temp, ymin=ymin, ymax=ymax, fill=income_percap), alpha=0.5) + 
   scale_x_continuous(expand=c(0, 0), limits=c(-21.4, 43.1)) + 
   labs(x='', y='Predicted Mood of Tweet',
        fill = 'Census Block\nIncome Per-Capita\n(Percentile)',
        color = 'Census Block\nIncome Per-Capita\n(Percentile)' ) +
   theme(legend.position=c(0.2, 0.2))
 
-hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'temp.hi']) +
-  geom_histogram(aes(x=temp.hi), binwidth=1) + 
+hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'temp']) +
+  geom_histogram(aes(x=temp), binwidth=1) + 
   scale_x_continuous(expand=c(0, 0), limits=c(-21.38222, 43.02777)) + 
   scale_y_continuous(labels=function(x){format(x*100, big.mark=',')}) + 
   labs(y="Tweet Count", x="Temperature")
 
 plot_grid(curve, hist, align='v', axis='rl', ncol=1, rel_heights=c(0.8, 0.2))
-ggsave('~/temp-sentiment/res/temp.hi-income.png', width=6, height=7)
+ggsave('~/temp-sentiment/res/temp-income.png', width=6, height=7)
 
 ########################################
 #precip
@@ -121,6 +133,7 @@ preddf <- make_groups(preddf, 'income_percap', qs[c(2, 11, 20)])
 preddf$vader <- 1
 
 mm <- model.matrix(as.formula(paste0("vader ~ ",
+                   piece.formula("precip", knots[['precip']], ""), ' + ',
                    piece.formula("precip", knots[['precip']], "income_percap"))),
                    data=preddf)
 
@@ -175,7 +188,8 @@ preddf <- make_groups(preddf, 'income_percap', qs[c(2, 11, 20)])
 preddf$vader <- 1
 
 mm <- model.matrix(as.formula(paste0("vader ~ ",
-                   piece.formula("srad", knots[['srad']], "income_percap"))),
+                   piece.formula("srad", knots[['srad']], "income_percap"), ' + ',
+                   piece.formula("srad", knots[['srad']], ""))), 
                    data=preddf)
 
 mm <- mm[ , colnames(mm) %in% names(coef(mod))]
