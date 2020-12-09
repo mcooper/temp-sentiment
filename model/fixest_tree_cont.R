@@ -1,4 +1,4 @@
-##Use E32
+##Use E48
 
 library(data.table)
 library(fixest)
@@ -11,9 +11,7 @@ options(scipen=100)
 setwd('~/tweets/')
 
 data <- fread('all.csv')
-data$income_percap <- log(data$income_percap)
-
-qs <- quantile(data$income_percap, seq(0, 1, by=0.05))
+qs <- quantile(data$tree, seq(0, 1, by=0.05))
 weekdaymeans <- data[ , .(Mean=mean(vader)), .(dow)]
 
 #Tempknots
@@ -34,10 +32,10 @@ piece.formula <- function(var.name, knots, interact_var='') {
 }
 
 formula <- paste0("vader ~ ", 
-                     piece.formula("temp.hi", knots[['temp.hi']], "income_percap"), ' + ',
-                     piece.formula("precip", knots[['precip']], "income_percap"), ' + ',
-                     piece.formula("srad", knots[['srad']], "income_percap"),
-                     " | dow + doy + tod + fips + year + statemonth + majority")
+                     piece.formula("temp.hi", knots[['temp.hi']], "tree"), ' + ',
+                     piece.formula("precip", knots[['precip']], "tree"), ' + ',
+                     piece.formula("srad", knots[['srad']], "tree"),
+                     " | dow + doy + tod + fips + year + statemonth")
 
 mod <- feols(as.formula(formula), data)
 
@@ -64,12 +62,12 @@ make_groups <- function(df, label, values){
 #temp.hi
 
 preddf <- data.frame(temp.hi=fill_knots(knots$temp.hi))
-preddf <- make_groups(preddf, 'income_percap', qs[c(2, 11, 20)])
+preddf <- make_groups(preddf, 'tree', qs[c(2, 20)])
 
 preddf$vader <- 1
 
 mm <- model.matrix(as.formula(paste0("vader ~ ",
-                   piece.formula("temp.hi", knots[['temp.hi']], "income_percap"))),
+                   piece.formula("temp.hi", knots[['temp.hi']], "tree"))),
                    data=preddf)
 
 mm <- mm[ , colnames(mm) %in% names(coef(mod))]
@@ -82,25 +80,15 @@ preddf <- cbind(preddf, as.data.frame(res))
 preddf$ymin <- preddf$contrast - 1.96*preddf$SE
 preddf$ymax <- preddf$contrast + 1.96*preddf$SE
 
-preddf$income_percap <- factor(preddf$income_percap)
-levels(preddf$income_percap) <- preddf$income_percap %>%
-                                   levels %>%
-                                   as.numeric %>%
-                                   exp %>%
-                                   round(0) %>%
-                                   format(big.mark = ',') %>%
-                                   paste0('$', .)
-
-levels(preddf$income_percap) <- paste0(levels(preddf$income_percap), ' (', 
-                                       names(qs[c(2, 11, 20)]), ')')
+preddf$tree <- factor(preddf$tree)
 
 curve <- ggplot(preddf) + 
-  geom_line(aes(x=temp.hi, y=contrast, color=income_percap)) + 
-  geom_ribbon(aes(x=temp.hi, ymin=ymin, ymax=ymax, fill=income_percap), alpha=0.5) + 
+  geom_line(aes(x=temp.hi, y=contrast, color=tree)) + 
+  geom_ribbon(aes(x=temp.hi, ymin=ymin, ymax=ymax, fill=tree), alpha=0.5) + 
   scale_x_continuous(expand=c(0, 0), limits=c(-21.4, 43.1)) + 
   labs(x='', y='Predicted Mood of Tweet',
-       fill = 'Census Block\nIncome Per-Capita\n(Percentile)',
-       color = 'Census Block\nIncome Per-Capita\n(Percentile)' ) +
+       fill = 'Census Block\nTree Cover\n(Percentile)',
+       color = 'Census Block\nTree Cover\n(Percentile)' ) +
   theme(legend.position=c(0.2, 0.2))
 
 hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'temp.hi']) +
@@ -110,18 +98,18 @@ hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'temp.hi']) +
   labs(y="Tweet Count", x="Temperature")
 
 plot_grid(curve, hist, align='v', axis='rl', ncol=1, rel_heights=c(0.8, 0.2))
-ggsave('~/temp-sentiment/res/temp.hi-income.png', width=6, height=7)
+ggsave('~/temp-sentiment/res/temp.hi-tree.png', width=6, height=7)
 
 ########################################
 #precip
 
 preddf <- data.frame(precip=fill_knots(knots$precip))
-preddf <- make_groups(preddf, 'income_percap', qs[c(2, 11, 20)])
+preddf <- make_groups(preddf, 'tree', qs[c(2, 20)])
 
 preddf$vader <- 1
 
 mm <- model.matrix(as.formula(paste0("vader ~ ",
-                   piece.formula("precip", knots[['precip']], "income_percap"))),
+                   piece.formula("precip", knots[['precip']], "tree"))),
                    data=preddf)
 
 mm <- mm[ , colnames(mm) %in% names(coef(mod))]
@@ -134,25 +122,15 @@ preddf <- cbind(preddf, as.data.frame(res))
 preddf$ymin <- preddf$contrast - 1.96*preddf$SE
 preddf$ymax <- preddf$contrast + 1.96*preddf$SE
 
-preddf$income_percap <- factor(preddf$income_percap)
-levels(preddf$income_percap) <- preddf$income_percap %>%
-                                   levels %>%
-                                   as.numeric %>%
-                                   exp %>%
-                                   round(0) %>%
-                                   format(big.mark = ',') %>%
-                                   paste0('$', .)
-
-levels(preddf$income_percap) <- paste0(levels(preddf$income_percap), ' (', 
-                                       names(qs[c(2, 11, 20)]), ')')
+preddf$tree <- factor(preddf$tree)
 
 curve <- ggplot(preddf) + 
-  geom_line(aes(x=log(precip + 1), y=contrast, color=income_percap)) + 
-  geom_ribbon(aes(x=log(precip + 1), ymin=ymin, ymax=ymax, fill=income_percap), alpha=0.5) + 
+  geom_line(aes(x=log(precip + 1), y=contrast, color=tree)) + 
+  geom_ribbon(aes(x=log(precip + 1), ymin=ymin, ymax=ymax, fill=tree), alpha=0.5) + 
   scale_x_continuous(labels=function(x){round(exp(x) - 1, 2)}) + 
   labs(x='', y='Predicted Mood of Tweet',
-       fill = 'Census Block\nIncome Per-Capita\n(Percentile)',
-       color = 'Census Block\nIncome Per-Capita\n(Percentile)' ) +
+       fill = 'Census Block\nTree Cover\n(Percentile)',
+       color = 'Census Block\nTree Cover\n(Percentile)' ) +
   theme(legend.position=c(0.2, 0.8))
 
 hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'precip']) +
@@ -162,7 +140,7 @@ hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'precip']) +
   labs(y="Tweet Count", x="Precipitation (mm)")
 
 plot_grid(curve, hist, align='v', axis='rl', ncol=1, rel_heights=c(0.8, 0.2))
-ggsave('~/temp-sentiment/res/precip-income.png', width=6, height=7)
+ggsave('~/temp-sentiment/res/precip-tree.png', width=6, height=7)
 
 
 
@@ -170,12 +148,12 @@ ggsave('~/temp-sentiment/res/precip-income.png', width=6, height=7)
 #srad
 
 preddf <- data.frame(srad=fill_knots(knots$srad))
-preddf <- make_groups(preddf, 'income_percap', qs[c(2, 11, 20)])
+preddf <- make_groups(preddf, 'tree', qs[c(2, 20)])
 
 preddf$vader <- 1
 
 mm <- model.matrix(as.formula(paste0("vader ~ ",
-                   piece.formula("srad", knots[['srad']], "income_percap"))),
+                   piece.formula("srad", knots[['srad']], "tree"))),
                    data=preddf)
 
 mm <- mm[ , colnames(mm) %in% names(coef(mod))]
@@ -188,24 +166,14 @@ preddf <- cbind(preddf, as.data.frame(res))
 preddf$ymin <- preddf$contrast - 1.96*preddf$SE
 preddf$ymax <- preddf$contrast + 1.96*preddf$SE
 
-preddf$income_percap <- factor(preddf$income_percap)
-levels(preddf$income_percap) <- preddf$income_percap %>%
-                                   levels %>%
-                                   as.numeric %>%
-                                   exp %>%
-                                   round(0) %>%
-                                   format(big.mark = ',') %>%
-                                   paste0('$', .)
-
-levels(preddf$income_percap) <- paste0(levels(preddf$income_percap), ' (', 
-                                       names(qs[c(2, 11, 20)]), ')')
+preddf$tree <- factor(preddf$tree)
 
 curve <- ggplot(preddf) + 
-  geom_line(aes(x=srad, y=contrast, color=income_percap)) + 
-  geom_ribbon(aes(x=srad, ymin=ymin, ymax=ymax, fill=income_percap), alpha=0.5) + 
+  geom_line(aes(x=srad, y=contrast, color=tree)) + 
+  geom_ribbon(aes(x=srad, ymin=ymin, ymax=ymax, fill=tree), alpha=0.5) + 
   labs(x='', y='Predicted Mood of Tweet',
-       fill = 'Census Block\nIncome Per-Capita\n(Percentile)',
-       color = 'Census Block\nIncome Per-Capita\n(Percentile)' ) +
+       fill = 'Census Block\nTree Cover\n(Percentile)',
+       color = 'Census Block\nTree Cover\n(Percentile)' ) +
   theme(legend.position=c(0.2, 0.15))
 
 hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'srad']) +
@@ -215,6 +183,6 @@ hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'srad']) +
   labs(y="Tweet Count", x="Sunlight (Shortwave Radiation - w/m^2)")
 
 plot_grid(curve, hist, align='v', axis='rl', ncol=1, rel_heights=c(0.8, 0.2))
-ggsave('~/temp-sentiment/res/srad-income.png', width=6, height=7)
+ggsave('~/temp-sentiment/res/srad-tree.png', width=6, height=7)
 
 
