@@ -1,6 +1,6 @@
 ---
 created: 2020-09-20T16:03:19-0400
-modified: 2020-10-15T22:08:16-0400
+modified: 2020-12-09T11:52:48-0500
 title: Are the Poor Are More Vulnerable to Climate Impacts on Mental Health?
 author: Matthew Cooper & the "Text Mining Climate Shocks" SESYNC Team.
 date: \today
