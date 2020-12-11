@@ -1,4 +1,4 @@
-##Use E32
+#Use E32
 
 library(data.table)
 library(fixest)
@@ -115,7 +115,7 @@ levels(preddf$income_percap) <- paste0(levels(preddf$income_percap), ' (',
 
 curve <- ggplot(preddf) + 
   geom_line(aes(x=temp.hi, y=contrast, color=income_percap)) + 
-  #geom_ribbon(aes(x=temp.hi, ymin=ymin, ymax=ymax, fill=income_percap), alpha=0.5) + 
+  geom_ribbon(aes(x=temp.hi, ymin=ymin, ymax=ymax, fill=income_percap), alpha=0.5) + 
   scale_x_continuous(expand=c(0, 0), limits=c(-21.4, 43.1)) + 
   labs(x='', y='Predicted Mood of Tweet',
        fill = 'Census Block\nIncome Per-Capita\n(Percentile)',
