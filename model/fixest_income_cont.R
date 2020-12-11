@@ -13,6 +13,8 @@ setwd('~/tweets/')
 data <- fread('all.csv')
 data$income_percap <- log(data$income_percap)
 
+data <- data[weather_term == 0, ]
+
 qs <- quantile(data$income_percap, seq(0, 1, by=0.05))
 weekdaymeans <- data[ , .(Mean=mean(vader)), .(dow)]
 max(weekdaymeans$Mean) - min(weekdaymeans$Mean)
@@ -44,9 +46,9 @@ formula <- paste0("vader ~ ",
                      piece.formula("temp.hi", knots[['temp.hi']], "income_percap"), ' + ',
                      piece.formula("precip", knots[['precip']], "income_percap"), ' + ',
                      piece.formula("srad", knots[['srad']], "income_percap"),
-                     # ' + ', piece.formula("temp.hi", knots[['temp.hi']], ""), ' + ',
-                     #piece.formula("precip", knots[['precip']], ""), ' + ',
-                     #piece.formula("srad", knots[['srad']], ""), 
+                      ' + ', piece.formula("temp.hi", knots[['temp.hi']], ""), ' + ',
+                     piece.formula("precip", knots[['precip']], ""), ' + ',
+                     piece.formula("srad", knots[['srad']], ""), 
                      " | dow + doy + tod + fips + year + statemonth")
 
 start <- Sys.time()
@@ -72,6 +74,10 @@ make_groups <- function(df, label, values){
   final
 }
 
+###################################
+# Check SSR
+##################################
+
 ######################################
 #temp.hi
 
@@ -81,7 +87,7 @@ preddf <- make_groups(preddf, 'income_percap', qs[c(2, 11, 20)])
 preddf$vader <- 1
 
 mm <- model.matrix(as.formula(paste0("vader ~ ",
-                   #piece.formula("temp.hi", knots[['temp.hi']], ""), ' + ',
+                   piece.formula("temp.hi", knots[['temp.hi']], ""), ' + ',
                    piece.formula("temp.hi", knots[['temp.hi']], "income_percap"))),
                    data=preddf)
 
@@ -109,12 +115,12 @@ levels(preddf$income_percap) <- paste0(levels(preddf$income_percap), ' (',
 
 curve <- ggplot(preddf) + 
   geom_line(aes(x=temp.hi, y=contrast, color=income_percap)) + 
-  geom_ribbon(aes(x=temp.hi, ymin=ymin, ymax=ymax, fill=income_percap), alpha=0.5) + 
+  #geom_ribbon(aes(x=temp.hi, ymin=ymin, ymax=ymax, fill=income_percap), alpha=0.5) + 
   scale_x_continuous(expand=c(0, 0), limits=c(-21.4, 43.1)) + 
   labs(x='', y='Predicted Mood of Tweet',
        fill = 'Census Block\nIncome Per-Capita\n(Percentile)',
        color = 'Census Block\nIncome Per-Capita\n(Percentile)',
-       subtitle = paste0("AIC: ", AIC(mod))) +
+       subtitle = paste0("AIC: ", AIC(mod), '\nSSR: ', mod$ssr)) +
   theme(legend.position=c(0.2, 0.2))
 
 hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'temp.hi']) +
@@ -124,7 +130,7 @@ hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'temp.hi']) +
   labs(y="Tweet Count", x="Temperature")
 
 plot_grid(curve, hist, align='v', axis='rl', ncol=1, rel_heights=c(0.8, 0.2))
-ggsave('~/temp-sentiment/res/temp.hi-income-no-ref-segments-SE.png', width=6, height=7)
+ggsave('~/temp-sentiment/res/temp.hi-income-ref-segments-SE_Noweather.png', width=6, height=7)
 
 ########################################
 #precip
