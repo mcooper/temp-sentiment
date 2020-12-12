@@ -18,7 +18,7 @@ def getFiles():
     fs = os.listdir('/home/ubuntu/tweets/tweets/')
     fs = [f for f in fs if 'json' in f]
     
-    done = os.listdir('/home/ubuntu/tweets/hourly_nldas/')
+    done = os.listdir('/home/ubuntu/tweets/hourly_nldas2/')
     
     done = [d[:10] for d in done]
     fs = [f for f in fs if f[:10] not in done]
@@ -27,49 +27,14 @@ def getFiles():
    
     return(fs)
 
-def sh2rh(sh, temp, press):
-    #Adapted from https://earthscience.stackexchange.com/questions/2360/how-do-i-convert-specific-humidity-to-relative-humidity
-    press = press * 0.01 #convert milibars to pascals
-    es = 6.112 * math.exp((17.67*temp)/(temp + 243.5))
-    e = sh*press / (0.378 * sh + 0.622)
-    rh = e/es
-    if rh > 1:
-        return(1)
-    if rh < 0:
-        return(0)
-    return(rh)
-
-def heatindex(t, rh):
-    #Translated from R weathermetrics::heat.index.algorithm
-    #For more info: https://doi.org/10.1016/j.envres.2018.09.032
-    
-    #Convert to fahrenheit
-    t = t*(9/5) + 32
-    
-    #Convert rh to percent
-    rh = rh*100
-    
-    if t <= 40:
-        hi = t
-    else:
-        alpha = 61 + ((t - 68) * 1.2) + (rh * 0.094)
-        hi = 0.5 * (alpha + t)
-        if hi > 79:
-            hi = -42.379 + 2.04901523 * t + 10.14333127 * rh - 0.22475541 * t * rh - 6.83783 * 10**-3 * t**2 - 5.481717 * 10**-2 * rh**2 + 1.22874 * 10**-3 * t**2 * rh + 8.5282 * 10**-4 * t * rh**2 - 1.99 * 10**-6 * t**2 * rh**2
-            if (rh <= 13) & (t >= 80) & (t <= 112):
-                adjustment1 = (13 - rh)/4
-                adjustment2 = math.sqrt((17 - abs(t - 95))/17)
-                totaladjustment = adjustment1 * adjustment2
-                hi = hi - totaladjustment
-            elif (rh > 85) & (t >= 80) & (t <= 87):
-                adjustment1 = (rh - 85)/10
-                adjustment2 = (87 - t)/5
-                totaladjustment = adjustment1 * adjustment2
-                hi = hi + totaladjustment
-    
-    #Convert back to Celsius
-    hi = (hi - 32)*(5/9)
-    return(hi)
+#Need
+# specific humidity
+# temperature
+# pressure
+# shorwave radiation
+# longwave radiation
+# wind u component
+# wind v component
 
 def chunker(iter, size):
     chunks = [];
@@ -110,7 +75,7 @@ for f in getFiles():
     
     if dat.shape[0] == 0:
         #Create empty file to avoid attempting that day again
-        os.system('touch ~/tweets/hourly_nldas/' + outf)
+        os.system('touch ~/tweets/hourly_nldas2/' + outf)
         print("Skipping " + f)
         continue
     
@@ -123,6 +88,9 @@ for f in getFiles():
         pres = img.select('pressure')
         prcp = img.select('total_precipitation')
         srad = img.select('shortwave_radiation')
+        lrad = img.select('longwave_radiation')
+        wndu = img.select('wind_u')
+        wndv = img.select('wind_v')
          
         feats = []
         for i,v in sel.iterrows():
@@ -137,22 +105,15 @@ for f in getFiles():
         pres_res = getData(feats, pres, 'pres')
         prcp_res = getData(feats, prcp, 'prcp')
         srad_res = getData(feats, srad, 'srad')
+        lrad_res = getData(feats, lrad, 'lrad')
+        wndu_res = getData(feats, wndu, 'wndu')
+        wndv_res = getData(feats, wndv, 'wndv')
         
         res = reduce(lambda x, y: pd.merge(x, y, on=['tweet_created_at', 'id']), 
-                [temp_res, speh_res, pres_res, prcp_res, srad_res])
+                [temp_res, speh_res, pres_res, prcp_res, srad_res, lrad_res, wndu_res, wndv_res])
         daydat = pd.concat([daydat, res])
         
-    daydat['relh'] = daydat.apply(lambda x: sh2rh(x['speh'], x['temp'], x['pres']), axis=1)
-    daydat['hi'] = daydat.apply(lambda x: heatindex(x['temp'], x['relh']), axis=1)
-    
-    #Clean up extrememly long floating point numbers
-    daydat['temp'] = round(daydat['temp'], 2)
-    daydat['hi'] = round(daydat['hi'], 2)
-    
-    #Drop unnecessary meteo columns
-    daydat = daydat.drop(columns=['speh', 'pres', 'relh'])
-   
-    daydat.to_csv('/home/ubuntu/tweets/hourly_nldas/' + outf, index=False)
+    daydat.to_csv('/home/ubuntu/tweets/hourly_nldas2/' + outf, index=False)
     sleeptime.sleep(10)
 
 os.system('/home/ubuntu/telegram.sh "NLDAS Failed"')
