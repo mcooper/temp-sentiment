@@ -11,6 +11,7 @@ import numpy as np
 import time as sleeptime #otherwise interferes with datetime.time
 from functools import reduce
 import math
+import socket
 
 ee.Initialize()
 
@@ -28,6 +29,16 @@ def getFiles():
     
     done = [d[:10] for d in done]
     fs = [f for f in fs if f[:10] not in done]
+    
+    #run from middle if news-scraper
+    if socket.gethostname() == 'news-scraper':
+        list1 = fs[:int(len(fs)/2)]
+        list1.reverse()
+        list2 = [f for f in fs if f not in list1]
+        result = [None]*(len(list1) + len(list2))
+        result[1::2] = list1
+        result[::2] = list2
+        fs = result
     
     return(fs)
 
@@ -116,7 +127,7 @@ for f in getFiles():
     os.system('rm /home/ubuntu/' + outf) 
     sleeptime.sleep(10)
 
-os.system('/home/ubuntu/telegram.sh "NLDAS Failed"')
+os.system('/home/ubuntu/telegram.sh "NLDAS Failed on ' + socket.gethostname() + '"')
 
 
 
