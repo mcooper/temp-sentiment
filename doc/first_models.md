@@ -1,6 +1,6 @@
 ---
 created: 2020-12-09T11:53:01-0500
-modified: 2020-12-11T19:44:19-0500
+modified: 2020-12-11T20:04:24-0500
 title: Initial Results from Twitter Weather Vulnerability Project
 date: \today
 ---
