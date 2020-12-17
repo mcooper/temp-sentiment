@@ -46,9 +46,9 @@ formula <- paste0("vader ~ ",
                      piece.formula("temp.hi", knots[['temp.hi']], "income_percap"), ' + ',
                      piece.formula("precip", knots[['precip']], "income_percap"), ' + ',
                      piece.formula("srad", knots[['srad']], "income_percap"),
-                      ' + ', piece.formula("temp.hi", knots[['temp.hi']], ""), ' + ',
-                     piece.formula("precip", knots[['precip']], ""), ' + ',
-                     piece.formula("srad", knots[['srad']], ""), 
+                     # ' + ', piece.formula("temp.hi", knots[['temp.hi']], ""), ' + ',
+                     #piece.formula("precip", knots[['precip']], ""), ' + ',
+                     #piece.formula("srad", knots[['srad']], ""), 
                      " | dow + doy + tod + fips + year + statemonth")
 
 start <- Sys.time()
@@ -87,11 +87,14 @@ preddf <- make_groups(preddf, 'income_percap', qs[c(2, 11, 20)])
 preddf$vader <- 1
 
 mm <- model.matrix(as.formula(paste0("vader ~ ",
-                   piece.formula("temp.hi", knots[['temp.hi']], ""), ' + ',
+                   #piece.formula("temp.hi", knots[['temp.hi']], ""), ' + ',
                    piece.formula("temp.hi", knots[['temp.hi']], "income_percap"))),
                    data=preddf)
 
 mm <- mm[ , colnames(mm) %in% names(coef(mod))]
+
+mm <- mm[ , grepl('temp.hi', colnames(mm)) & grepl('income_percap', colnames(mm))]
+mm <- mm[ , colnames(mm) != 'income_percap']
 
 mmp <- lapply(seq_len(nrow(mm)), function(i) mm[i,])
 
