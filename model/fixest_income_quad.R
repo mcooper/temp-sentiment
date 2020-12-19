@@ -38,7 +38,7 @@ make_groups <- function(df, label, values){
 ######################################
 #temp
 
-preddf <- data.frame(temp=seq(min(data$temp), max(data$temp), length.out=250))
+preddf <- data.frame(temp.bin=c('cold', 'mild', 'hot'))
 preddf <- make_groups(preddf, 'income_percap', qs[c(2, 11, 20)])
 
 preddf$vader <- 1
