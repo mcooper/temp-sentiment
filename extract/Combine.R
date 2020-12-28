@@ -3,6 +3,7 @@ library(data.table)
 setwd('/home/ubuntu/tweets')
 
 setDTthreads(48)
+options(scipen=100)
 
 #To combine the daily csvs, I ran
 # cat sentiment/*.csv | grep -a -v tweet_created_at > sentiment_all.csv
