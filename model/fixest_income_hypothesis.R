@@ -13,10 +13,11 @@ setwd('~/tweets/')
 data <- fread('all.csv')
 data <- data[weather_term == 0, ]
 
+knots = list("temp"= c(min(data$temp), -10, 0, 5, 10, 15, 20, 25, 30, 35, 
 data$income_percap <- log(data$income_percap)
 qs <- quantile(data$income_percap, seq(0, 1, by=0.05))
 
-data$temp.bin <- cut(data$temp, breaks=c(-100, 5, 25, 100), labels=c("cold", "mild", "hot"))
+data$temp.bin <- cut(data$temp, breaks=c(-10, 0, 5, 10, 15, 20, 25, 30, 35, 100))
 data$precip.bin <- cut(data$precip, breaks=c(-100, 0.000001, 1000), labels=c("norain", "rain"))
 data$srad.bin <- cut(data$srad, breaks=c(-100, 0.000001, 750, 1500), labels=c("dark", "cloudy", "sunny"))
 
@@ -40,7 +41,7 @@ make_groups <- function(df, label, values){
 ######################################
 #temp
 
-preddf <- data.frame(temp.bin=c('cold', 'mild', 'hot'))
+preddf <- data.frame(temp.bin=unique(data$temp.bin))
 preddf <- make_groups(preddf, 'income_percap', qs[c(2, 11, 20)])
 
 preddf$vader <- 1

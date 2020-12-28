@@ -3,6 +3,7 @@ library(data.table)
 setwd('/home/ubuntu/tweets')
 
 setDTthreads(48)
+options(scipen=100)
 
 #To combine the daily csvs, I ran
 # cat sentiment/*.csv | grep -a -v tweet_created_at > sentiment_all.csv
@@ -10,15 +11,18 @@ setDTthreads(48)
 #Get Sentiment Data
 sen <- fread('sentiment_all.csv',
              col.names=c('id', 'tweet_created_at', 'weather_term', 
-                        # 'afinn', 'textblob', 
-                        # 'hedono'),
-                         'vader'), # 'swn', 'wkwsci'),
-             drop=c(4, 5, 6, 8, 9))
+                         'afinn', # 'textblob', 
+                         'hedono', 'vader'), # 'swn', 'wkwsci'),
+             drop=c(5, 8, 9))
 sen <- unique(sen, by=c('id', 'tweet_created_at'))
 
 #Get Climate Data
-cli <- fread('hourly_nldas_all.csv', 
-             col.names=c('temp', 'id', 'tweet_created_at', 'precip', 'srad', 'temp.hi'))
+cli <- fread('hourly_nldas2_all.csv', 
+             col.names=c('temp', 'id', 'tweet_created_at', # 'speh', 'pres', 
+                         'prcp', 'srad', 
+                         # 'lrad', 'wndu', 'wndv', 'ws', 'rh', 
+                         'wbgt', 'temp.hi'),
+             drop=c(4, 5, 8, 9, 10, 11, 12))
 cli <- unique(cli, by=c('id', 'tweet_created_at'))
 
 #Get Census Data
@@ -26,11 +30,11 @@ cen <- fread('census_all.csv',
              col.names=c('id', 'tweet_created_at', 'income_percap', 
                          # 'lat', 'lon', # 'state',
                          # 'county', 
-                         'race_white' , 'race_black', 
+                         'race_white', 'race_black', 
                          'race_other', 'race_hisp'),
              drop=c(4, 5, 6, 7))
-cen[ , majority := names(.SD)[max.col(.SD)], .SDcols= 4:7]
-cen[ , race_white:=NULL]
+cen[ , race_majority := names(.SD)[max.col(.SD)], .SDcols= 4:7]
+#cen[ , race_white:=NULL]
 cen[ , race_black:=NULL]
 cen[ , race_other:=NULL]
 cen[ , race_hisp:=NULL]
@@ -75,17 +79,6 @@ all[ , tweet_created_at:=NULL]
 ### FILTER OUT BAD tod Variables!
 ### SOMEHOW TOD WAS Time Zones for Certain Observations - 
 all <- all[!all$tod %in% c('CDT', 'CST', 'EDT', 'EST', 'MST', 'MDT', 'PDT', 'PST'), ]
-
-#Get Income Terciles
-class <- c('1Poorest', '2MediumPoor', '3Medium', '4MediumRich', '5Richest')
-all$income_percap_q <- class[as.numeric(Hmisc::cut2(all$income_percap, g=5))]
-
-#Get Landcover
-class <- c("1NoTree", "2Tree")
-all$tree_q <- class[as.numeric(Hmisc::cut2(all$tree, g=3))]
-
-class <- c("1LessGrey", "2MediumGrey", "3VeryGrey")
-all$impervious_q <- class[as.numeric(Hmisc::cut2(all$impervious, g=3))]
 
 #Make Statemonth Fixed Effect
 all$statemonth <- paste0(substr(100000 + all$fips, 2, 3), '-', substr(all$doy, 1, 2))
