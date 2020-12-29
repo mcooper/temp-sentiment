@@ -20,10 +20,11 @@ qs <- quantile(data$income_percap, seq(0, 1, by=0.05))
 #max(weekdaymeans$Mean) - min(weekdaymeans$Mean)
 
 #Tempknots
-knots = list("wbgt"= c(min(data$wbgt), -10, 0, 5, 10, 15, 20, 25,  
-                          max(data$wbgt)))
+knots = list("wbgt"= c(min(data$wbgt), -10, 0, 5, 10, 15, 20, 25, 
+                          max(data$wbgt)),
+             "prcp"= c(min(data$prcp), 0.000001, 0.05, 0.5, max(data$prcp)),
+             "srad"= c(min(data$srad), 0.000001, 250, 500, 1000, max(data$srad)))
 
-data$prcp <- data$prcp > 0
 
 #Define Segmenting Function
 piece.formula <- function(var.name, knots, interact_var='') {
@@ -43,8 +44,11 @@ piece.formula <- function(var.name, knots, interact_var='') {
 
 formula <- paste0("vader ~ ", 
                      piece.formula("wbgt", knots[['wbgt']], "income_percap"), ' + ',
-                     "prcp",
-                     ' + ', piece.formula("wbgt", knots[['wbgt']], ""), 
+                     piece.formula("prcp", knots[['prcp']], "income_percap"), ' + ',
+                     piece.formula("srad", knots[['srad']], "income_percap"), ' + ',
+                     piece.formula("wbgt", knots[['wbgt']], ""), ' + ',
+                     piece.formula("prcp", knots[['prcp']], ""), ' + ',
+                     piece.formula("srad", knots[['srad']], ""), 
                      " | dow + doy + tod + fips + year + statemonth")
 
 start <- Sys.time()
@@ -83,14 +87,14 @@ preddf <- make_groups(preddf, 'income_percap', qs[c(2, 11, 20)])
 preddf$vader <- 1
 
 mm <- model.matrix(as.formula(paste0("vader ~ ",
-                   #piece.formula("wbgt", knots[['wbgt']], ""), ' + ',
+                   piece.formula("wbgt", knots[['wbgt']], ""), ' + ',
                    piece.formula("wbgt", knots[['wbgt']], "income_percap"))),
                    data=preddf)
 
 mm <- mm[ , colnames(mm) %in% names(coef(mod))]
 
-mm <- mm[ , grepl('wbgt', colnames(mm)) & grepl('income_percap', colnames(mm))]
-mm <- mm[ , colnames(mm) != 'income_percap']
+#mm <- mm[ , grepl('wbgt', colnames(mm))]
+#mm <- mm[ , colnames(mm) != 'income_percap']
 
 mmp <- lapply(seq_len(nrow(mm)), function(i) mm[i,])
 
@@ -114,7 +118,7 @@ levels(preddf$income_percap) <- paste0(levels(preddf$income_percap), ' (',
 
 curve <- ggplot(preddf) + 
   geom_line(aes(x=wbgt, y=contrast, color=income_percap)) + 
-  geom_ribbon(aes(x=wbgt, ymin=ymin, ymax=ymax, fill=income_percap), alpha=0.5) + 
+  #geom_ribbon(aes(x=wbgt, ymin=ymin, ymax=ymax, fill=income_percap), alpha=0.5) + 
   scale_x_continuous(expand=c(0, 0), limits=c(min(knots$wbgt), max(knots$wbgt))) + 
   labs(x='', y='Predicted Mood of Tweet',
        fill = 'Census Block\nIncome Per-Capita\n(Percentile)',
@@ -124,9 +128,9 @@ curve <- ggplot(preddf) +
 
 hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'wbgt']) +
   geom_histogram(aes(x=wbgt), binwidth=1) + 
-  scale_x_continuous(expand=c(0, 0), limits=c(-21.38222, 43.02777)) + 
+  scale_x_continuous(expand=c(0, 0), limits=c(min(knots$wbgt), max(knots$wbgt))) + 
   scale_y_continuous(labels=function(x){format(x*100, big.mark=',')}) + 
   labs(y="Tweet Count", x="Temperature")
 
 plot_grid(curve, hist, align='v', axis='rl', ncol=1, rel_heights=c(0.8, 0.2))
-ggsave('~/temp-sentiment/res/wbgt-income-ref-segments-SE_Noweather.png', width=6, height=7)
+ggsave('~/temp-sentiment/res/wbgt-income-ref-segments-noSE_Noweather.png', width=6, height=7)
