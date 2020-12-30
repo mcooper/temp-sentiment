@@ -1,6 +1,5 @@
 library(data.table)
 library(fixest)
-library(survey)
 library(tidyverse)
 
 setwd('~/tweets/')
@@ -44,7 +43,7 @@ formula <- paste0("vader ~ ",
                      piece.formula("srad", knots[['srad']], ""), 
                      " | dow + doy + tod + fips + year + statemonth")
 
-for (i in 1:99){
+for (i in 20:100){
   mod <- feols(as.formula(formula), data[sample(1:nrow(data), nrow(data), replace=T), ])
   cf <- coef(mod)
   vc <- vcov(mod)
@@ -53,5 +52,9 @@ for (i in 1:99){
   saveRDS(myobj, file=paste0('bootstrap/run1/', Sys.time()))
   system(paste0('~/telegram.sh "Did a business ', i, '"'))
   rm(list=c('mod', 'cf', 'vc', 'myobj'))
+  gc()
 }
+
+system('sudo poweroff')
+
 
