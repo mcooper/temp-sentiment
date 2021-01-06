@@ -90,7 +90,7 @@ mm <- model.matrix(as.formula(paste0("vader ~ ",
 
 colnames(mm)[colnames(mm) == 'wbgt:income_percap'] <- 'income_percap:wbgt'
 mm <- mm[ , colnames(mm) != '(Intercept)']
-#mm <- mm[ , colnames(mm) != 'income_percap']
+mm <- mm[ , colnames(mm) != 'income_percap']
 
 mmp <- lapply(seq_len(nrow(mm)), function(i) mm[i,])
 
