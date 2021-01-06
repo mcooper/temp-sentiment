@@ -21,7 +21,8 @@ knots = list("wbgt"= c(min(data$wbgt), -10, 0, 5, 10, 15, 20, 25,
              "srad"= c(min(data$srad), 0.000001, 250, 500, 1000, max(data$srad)))
 
 ######################################
-#wbgt
+# Define Functions
+#####################################
 piece.formula <- function(var.name, knots, interact_var='') {
   knots <- knots[c(-1, -length(knots))]
   formula.sign <- rep(" - ", length(knots))
@@ -174,7 +175,7 @@ ggsave('~/temp-sentiment/res/wbgt-income.png', width=6, height=5)
 ########################################
 # Precipitation
 #########################################
-preddf <- data.frame(prcp=seq(0, 0.1, 0.001))
+preddf <- data.frame(prcp=seq(0, 3.2, 0.01))
 preddf <- make_groups(preddf, 'income_percap', qs[c(2, 11, 20)])
 
 preddf$vader <- 1
@@ -187,6 +188,7 @@ mm <- model.matrix(as.formula(paste0("vader ~ ",
 mm <- mm[ , colnames(mm) != '(Intercept)']
 mm <- mm[ , colnames(mm) != 'income_percap']
 
+mods <- list.files()
 #Iterate over models
 for (modf in mods){
 
@@ -216,6 +218,7 @@ levels(preddf$income_percap) <- preddf$income_percap %>%
 levels(preddf$income_percap) <- paste0(levels(preddf$income_percap), ' (', 
                                        names(qs[c(2, 11, 20)]), ')')
 
+
 preddf <- preddf %>%
   gather(key, value, -prcp, -income_percap, -vader) %>%
   #Normalize so that graph shows difference from prcp = X
@@ -227,53 +230,48 @@ preddf <- preddf %>%
             ymax = quantile(value, probs=0.975),
             pred = quantile(value, probs=0.5))
 
-curve <- ggplot(preddf) + 
+preddf$prcp <- log(1 + preddf$prcp*1000)
+data$prcp_l <- log(1 + data$prcp*1000)
+preddf$ymin[preddf$ymin < -0.41] <- -0.41
+
+(curve <- ggplot(preddf) + 
   geom_line(aes(x=prcp, y=pred, color=income_percap)) + 
-  geom_ribbon(aes(x=prcp, ymin=ymin, ymax=ymax, fill=income_percap), alpha=0.5) + 
-  #scale_x_continuous(expand=c(0, 0), limits=c(-22, 33)) + 
-  #scale_y_continuous(breaks=seq(0, -0.02, -0.005)) + 
+  geom_ribbon(aes(x=prcp, ymin=ymin, ymax=ymax, fill=income_percap), alpha=0.1) + 
+  scale_x_continuous(expand=c(0, 0), labels=function(x){round((exp(x) - 1)/1000, 2)}) + 
+  scale_y_continuous(expand=expansion(mult = c(0, 0.05), add=c(0, 0))) + 
   labs(x='', y='Change in Mood of Tweet',
        fill = 'Census Block\nIncome Per-Capita\n(Percentile)',
        color = 'Census Block\nIncome Per-Capita\n(Percentile)') +
-  theme_classic()
-
+  theme_classic() + 
   theme(legend.position=c(0.3, 0.4),
         axis.text.x = element_blank(),
         axis.ticks.x = element_blank(),
         plot.margin = unit(c(0.025, 0.025, -1, 0.025), "cm"),
         panel.grid.major = element_line(color = "lightgrey", size=0.5),
-        panel.grid.minor = element_line(color = "lightgrey", size=0.25))
+        panel.grid.minor = element_line(color = "lightgrey", size=0.25)))
 
-hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'prcp']) +
-  geom_histogram(aes(x=prcp), binwidth=1) + 
-  scale_x_continuous(expand=c(0, 0), limits=c(-22, 33)) + 
-  scale_y_continuous(labels=function(x){format(x*100, big.mark=',')}, expand=c(0,0),
-                     breaks=c(75000)) + 
-  labs(y="Tweet\nCount", x="Wet Bulb Globe Temperature (C)") + 
+(hist <- ggplot(data[sample(which(data$prcp_l < preddf$prcp), 
+                            nrow(data)*0.01), 'prcp_l']) +
+  geom_histogram(aes(x=prcp_l), bins=100) + 
+  scale_x_continuous(expand=c(0, 0), labels=function(x){round((exp(x) - 1)/1000, 2)}) + 
+  scale_y_continuous(labels=function(x){format(x*100, big.mark=',')},
+                     expand=c(0,0)) + 
+  labs(y="Tweet\nCount", x="Precipitation (mm)") + 
   theme_classic() + 
-  theme(panel.grid.major = element_line(color = "lightgrey", size=0.5),
+  theme(panel.grid.major.x = element_line(color = "lightgrey", size=0.5),
+        panel.grid.minor.x = element_line(color = "lightgrey", size=0.25),
         axis.text.y = element_blank(),
-        axis.ticks.y = element_blank(),
-        panel.grid.minor = element_line(color = "lightgrey", size=0.25))
+        axis.ticks.y = element_blank()))
 
-
-x2 <- ggplot() +
-  scale_x_continuous(expand=c(0, 0), limits=c(-22, 33), labels=ref_temps) + 
-  labs(x="Median Dry Bulb (Normal) Temperature (C)") + 
-  theme_classic()
-
-x <- get_x_axis(x2)
-xl <- get_plot_component(x2, "xlab-b")
-
-plot_grid(curve, hist, ggdraw(x), ggdraw(xl), align='v', axis='rl', ncol=1, 
-          rel_heights=c(0.8, 0.2, 0.04, 0.04))
+plot_grid(curve, hist, align='v', axis='rl', ncol=1, 
+          rel_heights=c(0.8, 0.2))
 ggsave('~/temp-sentiment/res/prcp-income.png', width=6, height=5)
 
 
 ########################################
-# Sunshing
+# Sunshine
 #########################################
-preddf <- data.frame(srad=fill_knots(knots$srad))
+preddf <- data.frame(srad=seq(0, 1300, 1))
 preddf <- make_groups(preddf, 'income_percap', qs[c(2, 11, 20)])
 
 preddf$vader <- 1
@@ -326,46 +324,41 @@ preddf <- preddf %>%
             ymax = quantile(value, probs=0.975),
             pred = quantile(value, probs=0.5))
 
-curve <- ggplot(preddf) + 
+preddf$srad <- log(1 + preddf$srad)
+data$srad_l <- log(1 + data$srad)
+preddf$ymax[preddf$ymax > 0.5] <- 0.5
+preddf$ymin[preddf$ymin < -0.5] <- -0.5
+
+(curve <- ggplot(preddf) + 
   geom_line(aes(x=srad, y=pred, color=income_percap)) + 
-  #geom_ribbon(aes(x=srad, ymin=ymin, ymax=ymax, fill=income_percap), alpha=0.5) + 
-  #scale_x_continuous(expand=c(0, 0), limits=c(-22, 33)) + 
-  #scale_y_continuous(breaks=seq(0, -0.02, -0.005)) + 
+  geom_ribbon(aes(x=srad, ymin=ymin, ymax=ymax, fill=income_percap), alpha=0.1) + 
+  scale_x_continuous(expand=c(0, 0), labels=function(x){round((exp(x) - 1), 2)}) + 
+  scale_y_continuous(expand=expansion(mult = c(0, 0.05), add=c(0, 0))) + 
   labs(x='', y='Change in Mood of Tweet',
        fill = 'Census Block\nIncome Per-Capita\n(Percentile)',
        color = 'Census Block\nIncome Per-Capita\n(Percentile)') +
-  theme_classic()
-
-  theme(legend.position=c(0.3, 0.4),
+  theme_classic() + 
+  theme(legend.position=c(0.15, 0.25),
         axis.text.x = element_blank(),
         axis.ticks.x = element_blank(),
         plot.margin = unit(c(0.025, 0.025, -1, 0.025), "cm"),
         panel.grid.major = element_line(color = "lightgrey", size=0.5),
-        panel.grid.minor = element_line(color = "lightgrey", size=0.25))
+        panel.grid.minor = element_line(color = "lightgrey", size=0.25)))
 
-hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'srad']) +
-  geom_histogram(aes(x=srad), binwidth=1) + 
-  scale_x_continuous(expand=c(0, 0), limits=c(-22, 33)) + 
-  scale_y_continuous(labels=function(x){format(x*100, big.mark=',')}, expand=c(0,0),
-                     breaks=c(75000)) + 
-  labs(y="Tweet\nCount", x="Wet Bulb Globe Temperature (C)") + 
+(hist <- ggplot(data[sample(which(data$srad_l < max(preddf$srad)), 
+                            nrow(data)*0.01), 'srad_l']) +
+  geom_histogram(aes(x=srad_l), bins=100) + 
+  scale_x_continuous(expand=c(0, 0), labels=function(x){round((exp(x) - 1), 2)}) + 
+  scale_y_continuous(labels=function(x){format(x*100, big.mark=',')},
+                     expand=c(0,0)) + 
+  labs(y="Tweet\nCount", x="Sunshine (W/m^2)") + 
   theme_classic() + 
-  theme(panel.grid.major = element_line(color = "lightgrey", size=0.5),
+  theme(panel.grid.major.x = element_line(color = "lightgrey", size=0.5),
+        panel.grid.minor.x = element_line(color = "lightgrey", size=0.25),
         axis.text.y = element_blank(),
-        axis.ticks.y = element_blank(),
-        panel.grid.minor = element_line(color = "lightgrey", size=0.25))
+        axis.ticks.y = element_blank()))
 
-
-x2 <- ggplot() +
-  scale_x_continuous(expand=c(0, 0), limits=c(-22, 33), labels=ref_temps) + 
-  labs(x="Median Dry Bulb (Normal) Temperature (C)") + 
-  theme_classic()
-
-x <- get_x_axis(x2)
-xl <- get_plot_component(x2, "xlab-b")
-
-plot_grid(curve, hist, ggdraw(x), ggdraw(xl), align='v', axis='rl', ncol=1, 
-          rel_heights=c(0.8, 0.2, 0.04, 0.04))
+plot_grid(curve, hist, align='v', axis='rl', ncol=1, 
+          rel_heights=c(0.8, 0.2))
 ggsave('~/temp-sentiment/res/srad-income.png', width=6, height=5)
-
 
