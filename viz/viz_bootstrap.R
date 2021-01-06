@@ -170,3 +170,202 @@ xl <- get_plot_component(x2, "xlab-b")
 plot_grid(curve, hist, ggdraw(x), ggdraw(xl), align='v', axis='rl', ncol=1, 
           rel_heights=c(0.8, 0.2, 0.04, 0.04))
 ggsave('~/temp-sentiment/res/wbgt-income.png', width=6, height=5)
+
+########################################
+# Precipitation
+#########################################
+preddf <- data.frame(prcp=seq(0, 0.1, 0.001))
+preddf <- make_groups(preddf, 'income_percap', qs[c(2, 11, 20)])
+
+preddf$vader <- 1
+
+mm <- model.matrix(as.formula(paste0("vader ~ ",
+                   piece.formula("prcp", knots[['prcp']], ""), ' + ',
+                   piece.formula("prcp", knots[['prcp']], "income_percap"))),
+                   data=preddf)
+
+mm <- mm[ , colnames(mm) != '(Intercept)']
+mm <- mm[ , colnames(mm) != 'income_percap']
+
+#Iterate over models
+for (modf in mods){
+
+  mod <- readRDS(modf)
+
+  #It looks like some precip columns were dropped bc of collinearity
+  #AND the columns that were dropped varied depending on the bootstrap iteration
+  #So, we must subset the columns differently for each model
+  mms <- mm[ , colnames(mm) %in% names(coef(mod))]
+  mmp <- lapply(seq_len(nrow(mms)), function(i) mms[i,])
+
+  res <- as.data.frame(svycontrast(mod, mmp))[ , 'contrast', drop=F]
+  names(res) <- modf
+  
+  preddf <- cbind(preddf, res)
+}
+
+preddf$income_percap <- factor(preddf$income_percap)
+levels(preddf$income_percap) <- preddf$income_percap %>%
+                                   levels %>%
+                                   as.numeric %>%
+                                   exp %>%
+                                   round(0) %>%
+                                   format(big.mark = ',') %>%
+                                   paste0('$', .)
+
+levels(preddf$income_percap) <- paste0(levels(preddf$income_percap), ' (', 
+                                       names(qs[c(2, 11, 20)]), ')')
+
+preddf <- preddf %>%
+  gather(key, value, -prcp, -income_percap, -vader) %>%
+  #Normalize so that graph shows difference from prcp = X
+  group_by(income_percap, key) %>%
+  mutate(value = value - value[prcp == 0]) %>%
+  #Get ymin, ymax, and mean
+  group_by(prcp, income_percap) %>%
+  summarize(ymin = quantile(value, probs=0.025),
+            ymax = quantile(value, probs=0.975),
+            pred = quantile(value, probs=0.5))
+
+curve <- ggplot(preddf) + 
+  geom_line(aes(x=prcp, y=pred, color=income_percap)) + 
+  geom_ribbon(aes(x=prcp, ymin=ymin, ymax=ymax, fill=income_percap), alpha=0.5) + 
+  #scale_x_continuous(expand=c(0, 0), limits=c(-22, 33)) + 
+  #scale_y_continuous(breaks=seq(0, -0.02, -0.005)) + 
+  labs(x='', y='Change in Mood of Tweet',
+       fill = 'Census Block\nIncome Per-Capita\n(Percentile)',
+       color = 'Census Block\nIncome Per-Capita\n(Percentile)') +
+  theme_classic()
+
+  theme(legend.position=c(0.3, 0.4),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        plot.margin = unit(c(0.025, 0.025, -1, 0.025), "cm"),
+        panel.grid.major = element_line(color = "lightgrey", size=0.5),
+        panel.grid.minor = element_line(color = "lightgrey", size=0.25))
+
+hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'prcp']) +
+  geom_histogram(aes(x=prcp), binwidth=1) + 
+  scale_x_continuous(expand=c(0, 0), limits=c(-22, 33)) + 
+  scale_y_continuous(labels=function(x){format(x*100, big.mark=',')}, expand=c(0,0),
+                     breaks=c(75000)) + 
+  labs(y="Tweet\nCount", x="Wet Bulb Globe Temperature (C)") + 
+  theme_classic() + 
+  theme(panel.grid.major = element_line(color = "lightgrey", size=0.5),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        panel.grid.minor = element_line(color = "lightgrey", size=0.25))
+
+
+x2 <- ggplot() +
+  scale_x_continuous(expand=c(0, 0), limits=c(-22, 33), labels=ref_temps) + 
+  labs(x="Median Dry Bulb (Normal) Temperature (C)") + 
+  theme_classic()
+
+x <- get_x_axis(x2)
+xl <- get_plot_component(x2, "xlab-b")
+
+plot_grid(curve, hist, ggdraw(x), ggdraw(xl), align='v', axis='rl', ncol=1, 
+          rel_heights=c(0.8, 0.2, 0.04, 0.04))
+ggsave('~/temp-sentiment/res/prcp-income.png', width=6, height=5)
+
+
+########################################
+# Sunshing
+#########################################
+preddf <- data.frame(srad=fill_knots(knots$srad))
+preddf <- make_groups(preddf, 'income_percap', qs[c(2, 11, 20)])
+
+preddf$vader <- 1
+
+mm <- model.matrix(as.formula(paste0("vader ~ ",
+                   piece.formula("srad", knots[['srad']], ""), ' + ',
+                   piece.formula("srad", knots[['srad']], "income_percap"))),
+                   data=preddf)
+
+mm <- mm[ , colnames(mm) != '(Intercept)']
+mm <- mm[ , colnames(mm) != 'income_percap']
+
+#Iterate over models
+for (modf in mods){
+
+  mod <- readRDS(modf)
+
+  #It looks like some precip columns were dropped bc of collinearity
+  #AND the columns that were dropped varied depending on the bootstrap iteration
+  #So, we must subset the columns differently for each model
+  mms <- mm[ , colnames(mm) %in% names(coef(mod))]
+  mmp <- lapply(seq_len(nrow(mms)), function(i) mms[i,])
+
+  res <- as.data.frame(svycontrast(mod, mmp))[ , 'contrast', drop=F]
+  names(res) <- modf
+  
+  preddf <- cbind(preddf, res)
+}
+
+preddf$income_percap <- factor(preddf$income_percap)
+levels(preddf$income_percap) <- preddf$income_percap %>%
+                                   levels %>%
+                                   as.numeric %>%
+                                   exp %>%
+                                   round(0) %>%
+                                   format(big.mark = ',') %>%
+                                   paste0('$', .)
+
+levels(preddf$income_percap) <- paste0(levels(preddf$income_percap), ' (', 
+                                       names(qs[c(2, 11, 20)]), ')')
+
+preddf <- preddf %>%
+  gather(key, value, -srad, -income_percap, -vader) %>%
+  #Normalize so that graph shows difference from srad = X
+  group_by(income_percap, key) %>%
+  mutate(value = value - value[srad == 0]) %>%
+  #Get ymin, ymax, and mean
+  group_by(srad, income_percap) %>%
+  summarize(ymin = quantile(value, probs=0.025),
+            ymax = quantile(value, probs=0.975),
+            pred = quantile(value, probs=0.5))
+
+curve <- ggplot(preddf) + 
+  geom_line(aes(x=srad, y=pred, color=income_percap)) + 
+  #geom_ribbon(aes(x=srad, ymin=ymin, ymax=ymax, fill=income_percap), alpha=0.5) + 
+  #scale_x_continuous(expand=c(0, 0), limits=c(-22, 33)) + 
+  #scale_y_continuous(breaks=seq(0, -0.02, -0.005)) + 
+  labs(x='', y='Change in Mood of Tweet',
+       fill = 'Census Block\nIncome Per-Capita\n(Percentile)',
+       color = 'Census Block\nIncome Per-Capita\n(Percentile)') +
+  theme_classic()
+
+  theme(legend.position=c(0.3, 0.4),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        plot.margin = unit(c(0.025, 0.025, -1, 0.025), "cm"),
+        panel.grid.major = element_line(color = "lightgrey", size=0.5),
+        panel.grid.minor = element_line(color = "lightgrey", size=0.25))
+
+hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'srad']) +
+  geom_histogram(aes(x=srad), binwidth=1) + 
+  scale_x_continuous(expand=c(0, 0), limits=c(-22, 33)) + 
+  scale_y_continuous(labels=function(x){format(x*100, big.mark=',')}, expand=c(0,0),
+                     breaks=c(75000)) + 
+  labs(y="Tweet\nCount", x="Wet Bulb Globe Temperature (C)") + 
+  theme_classic() + 
+  theme(panel.grid.major = element_line(color = "lightgrey", size=0.5),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        panel.grid.minor = element_line(color = "lightgrey", size=0.25))
+
+
+x2 <- ggplot() +
+  scale_x_continuous(expand=c(0, 0), limits=c(-22, 33), labels=ref_temps) + 
+  labs(x="Median Dry Bulb (Normal) Temperature (C)") + 
+  theme_classic()
+
+x <- get_x_axis(x2)
+xl <- get_plot_component(x2, "xlab-b")
+
+plot_grid(curve, hist, ggdraw(x), ggdraw(xl), align='v', axis='rl', ncol=1, 
+          rel_heights=c(0.8, 0.2, 0.04, 0.04))
+ggsave('~/temp-sentiment/res/srad-income.png', width=6, height=5)
+
+
