@@ -62,4 +62,38 @@ AIC(mod2.2)
 
 #Given that it depends on the data-generating process, its best is to run both, and then check with AIC
 
+######################################
+# Check out SEs
+######################################
+
+pred <- expand.grid(list(x=seq(-2, 2, by=0.1), i=seq(0, 1, by=0.5)))
+
+pred$mod1.1.p <- predict(mod1.1, pred)
+pred$mod1.1.e <- predict(mod1.1, pred, se.fit=T)$se.fit
+pred$mod2.1.p <- predict(mod2.1, pred)
+pred$mod2.1.e <- predict(mod2.1, pred, se.fit=T)$se.fit
+pred$mod1.2.p <- predict(mod1.2, pred)
+pred$mod1.2.e <- predict(mod1.2, pred, se.fit=T)$se.fit
+pred$mod2.2.p <- predict(mod2.2, pred)
+pred$mod2.2.e <- predict(mod2.2, pred, se.fit=T)$se.fit
+
+pred <- pred %>% 
+  gather(key, value, -x, -i) %>%
+  mutate(mod = substr(key, 1, 6),
+         par = substr(key, 8, 8)) %>%
+  select(-key) %>%
+  spread(par, value) %>%
+  mutate(ymin = p - 1.96*e,
+         ymax = p + 1.96*e)
+
+pred$i <- as.factor(pred$i)
+
+ggplot(pred %>% filter(mod == 'mod2.1')) +
+  geom_line(aes(x=x, y=p, color=i)) + 
+  geom_ribbon(aes(x=x, ymax=ymax, ymin=ymin, fill=i), alpha=0.5)
+
+
+ggplot(pred %>% filter(mod == 'mod2.2')) +
+  geom_line(aes(x=x, y=p, color=i)) + 
+  geom_ribbon(aes(x=x, ymax=ymax, ymin=ymin, fill=i), alpha=0.5)
 
