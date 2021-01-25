@@ -2,6 +2,8 @@ library(data.table)
 library(fixest)
 library(tidyverse)
 
+MOD_RUN <- 'income_percap'
+
 setwd('~/tweets/')
 
 data <- fread('all.csv')
@@ -9,13 +11,11 @@ data$income_percap <- log(data$income_percap)
 
 data <- data[weather_term == 0, ]
 
-qs <- quantile(data$income_percap, seq(0, 1, by=0.05))
+data$raining <- data$prcp > 0
 
 #Tempknots
 knots = list("wbgt"= c(min(data$wbgt), -10, 0, 5, 10, 15, 20, 25, 
-                          max(data$wbgt)),
-             "prcp"= c(min(data$prcp), 0.000001, 0.05, 0.5, max(data$prcp)),
-             "srad"= c(min(data$srad), 0.000001, 250, 500, 1000, max(data$srad)))
+                          max(data$wbgt)))
 
 
 #Define Segmenting Function
@@ -36,21 +36,21 @@ piece.formula <- function(var.name, knots, interact_var='') {
 
 formula <- paste0("vader ~ ", 
                      piece.formula("wbgt", knots[['wbgt']], "income_percap"), ' + ',
-                     piece.formula("prcp", knots[['prcp']], "income_percap"), ' + ',
-                     piece.formula("srad", knots[['srad']], "income_percap"), ' + ',
                      piece.formula("wbgt", knots[['wbgt']], ""), ' + ',
-                     piece.formula("prcp", knots[['prcp']], ""), ' + ',
-                     piece.formula("srad", knots[['srad']], ""), 
+                     'income_percap*raining + income_percap*srad',
                      " | dow + doy + tod + fips + year + statemonth")
 
-for (i in 20:100){
+for (i in 2:80){
   mod <- feols(as.formula(formula), data[sample(1:nrow(data), nrow(data), replace=T), ])
   cf <- coef(mod)
   vc <- vcov(mod)
   myobj <- list(vcov=vc, coef=cf)
   class(myobj) <- 'bootmod'
-  saveRDS(myobj, file=paste0('bootstrap/run1/', Sys.time()))
-  system(paste0('~/telegram.sh "Did a business ', i, '"'))
+  saveRDS(myobj, file=paste0('bootstrap/', MOD_RUN, '/', Sys.time()))
+  if (i %% 10 == 0){
+    system(paste0('~/telegram.sh "Did a business ', i, '"'))
+  }
+  print(i)
   rm(list=c('mod', 'cf', 'vc', 'myobj'))
   gc()
 }
