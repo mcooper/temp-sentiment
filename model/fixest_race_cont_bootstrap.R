@@ -2,18 +2,17 @@ library(data.table)
 library(fixest)
 library(tidyverse)
 
-MOD_RUN <- 'income_percap'
+MOD_RUN <- 'race_cont'
 
 setwd('~/tweets/')
 
 data <- fread('all.csv')
-data$income_percap <- log(data$income_percap)
 
 data <- data[weather_term == 0, ]
 
 data$raining <- data$prcp > 0
 
-qs <- quantile(data$income_percap, seq(0, 1, by=0.05))
+qs <- quantile(data$race_white, seq(0, 1, by=0.05))
 
 #Tempknots
 knots = list("wbgt"= c(min(data$wbgt), -10, 0, 5, 10, 15, 20, 25, 
@@ -37,9 +36,9 @@ piece.formula <- function(var.name, knots, interact_var='') {
 }
 
 formula <- paste0("vader ~ ", 
-                     piece.formula("wbgt", knots[['wbgt']], "income_percap"), ' + ',
+                     piece.formula("wbgt", knots[['wbgt']], "race_white"), ' + ',
                      piece.formula("wbgt", knots[['wbgt']], ""), ' + ',
-                     'income_percap*raining + income_percap*srad',
+                     'race_white*raining + race_white*srad',
                      " | dow + doy + tod + fips + year + statemonth")
 
 for (i in 2:80){
