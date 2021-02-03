@@ -1,8 +1,14 @@
+#Use E32
+
 library(data.table)
 library(fixest)
+library(survey)
 library(tidyverse)
+library(cowplot)
 
-MOD_RUN <- 'income_percap'
+options(scipen=100)
+
+MOD_RUN <- 'race_income'
 
 setwd('~/tweets/')
 
@@ -11,12 +17,11 @@ data$income_percap <- log(data$income_percap)
 
 data <- data[weather_term == 0, ]
 
-data$raining <- data$prcp > 0
-
 #Tempknots
 knots = list("wbgt"= c(min(data$wbgt), -10, 0, 5, 10, 15, 20, 25, 
                           max(data$wbgt)))
 
+data$raining <- data$prcp > 0
 
 #Define Segmenting Function
 piece.formula <- function(var.name, knots, interact_var='') {
@@ -37,10 +42,13 @@ piece.formula <- function(var.name, knots, interact_var='') {
 formula <- paste0("vader ~ ", 
                      piece.formula("wbgt", knots[['wbgt']], "income_percap"), ' + ',
                      piece.formula("wbgt", knots[['wbgt']], ""), ' + ',
-                     'income_percap*raining + income_percap*srad',
+                     piece.formula("wbgt", knots[['wbgt']], "race_white"), ' + ',
+                     piece.formula("wbgt", knots[['wbgt']], ""), ' + ',
+                     'race_white*income_percap*raining + race_white*srad*income_percap',
                      " | dow + doy + tod + fips + year + statemonth")
 
-for (i in 2:80){
+
+for (i in 1:80){
   mod <- feols(as.formula(formula), data[sample(1:nrow(data), nrow(data), replace=T), ])
   cf <- coef(mod)
   vc <- vcov(mod)
@@ -54,8 +62,4 @@ for (i in 2:80){
   rm(list=c('mod', 'cf', 'vc', 'myobj'))
   gc()
 }
-
-
-system('sudo poweroff')
-
 
