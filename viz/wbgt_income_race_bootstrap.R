@@ -1,48 +1,43 @@
+library(data.table)
+library(fixest)
+library(survey)
 library(tidyverse)
 library(cowplot)
-library(survey)
-library(data.table)
-
-MOD_RUN <- 'race_q'
 
 options(scipen=100)
+
+MOD_RUN <- 'race_income'
 
 setwd(paste0('~/tweets/bootstrap/', MOD_RUN, '/'))
 
 data <- fread('~/tweets/all.csv')
+data$income_percap <- log(data$income_percap)
 
 data <- data[weather_term == 0, ]
 
-data$raining <- data$prcp > 0
+inc_qs <- quantile(data$income_percap, seq(0, 1, by=0.05))
+race_qs <- quantile(data$race_white, seq(0, 1, by=0.05))
 
 #Tempknots
 knots = list("wbgt"= c(min(data$wbgt), -10, 0, 5, 10, 15, 20, 25, 
                           max(data$wbgt)))
 
-######################################
-# Define Functions
-#####################################
-# DIFFERENT FOR GROUPING VARS
-piece.formula <- function(var.name, knots, interact_var='', interact_type=c('factor', 'continuous', 'none')) {
+data$raining <- data$prcp > 0
+
+#Define Segmenting Function
+piece.formula <- function(var.name, knots, interact_var='') {
   knots <- knots[c(-1, -length(knots))]
   formula.sign <- rep(" - ", length(knots))
   formula.sign[knots < 0] <- " + "
-  if (interact_type == 'none'){
-    formula <- paste(var.name, "+",
+  if (interact_var == ''){
+    paste(var.name, "+",
         paste("I(pmax(", var.name, formula.sign, abs(knots), ", 0))",
               collapse = " + ", sep=""))
+  } else{
+    paste(interact_var, '*', var.name, "+",
+        paste("I(", interact_var, "*pmax(", var.name, formula.sign, abs(knots), ", 0))",
+              collapse = " + ", sep=""))
   }
-  if (interact_type == 'continuous'){
-    formula <- paste(interact_var, '*', var.name, "+",
-          paste("I(", interact_var, "*pmax(", var.name, formula.sign, abs(knots), ", 0))",
-                collapse = " + ", sep=""))
-  } 
-  if (interact_type == 'factor'){
-    formula <- paste(interact_var, '*', var.name, "+",
-          paste(interact_var, "*I(pmax(", var.name, formula.sign, abs(knots), ", 0))",
-                collapse = " + ", sep=""))
-  }
-  formula
 }
 
 vcov.bootmod <- function(object){
@@ -51,7 +46,6 @@ vcov.bootmod <- function(object){
 coef.bootmod <- function(object){
   return(object$coef)
 }
-
 
 fill_knots <- function(x, filln=10){
   vals <- NULL
@@ -82,24 +76,25 @@ for (t in seq(-20, 30, by=10)){
 }
 ref_temps <- round(ref_temps)
 
-
 ########################################
 # WBGT
 #########################################
 preddf <- data.frame(wbgt=seq(-22, 33))
-preddf <- make_groups(preddf, 'race_majority', unique(data$race_majority))
+preddf <- make_groups(preddf, 'income_percap', inc_qs[c(2, 11, 20)])
+preddf <- make_groups(preddf, 'race_white', race_qs[c(2, 11, 20)])
 
 preddf$vader <- 1
 
 mm <- model.matrix(as.formula(paste0("vader ~ ", 
-                     piece.formula("wbgt", knots[['wbgt']], "race_majority", 'factor'), ' + ',
-                     piece.formula("wbgt", knots[['wbgt']], "", 'none'))),
+                     piece.formula("wbgt", knots[['wbgt']], "income_percap"), ' + ',
+                     piece.formula("wbgt", knots[['wbgt']], ""), ' + ',
+                     piece.formula("wbgt", knots[['wbgt']], "race_white"), ' + ',
+                     piece.formula("wbgt", knots[['wbgt']], ""))),
                    data=preddf)
 
 mm <- mm[ , colnames(mm) != '(Intercept)']
-mm <- mm[ , colnames(mm) != 'race_majorityrace_other']
-mm <- mm[ , colnames(mm) != 'race_majorityrace_hisp']
-mm <- mm[ , colnames(mm) != 'race_majorityrace_white']
+mm <- mm[ , colnames(mm) != 'income_percap']
+mm <- mm[ , colnames(mm) != 'race_white']
 
 mmp <- lapply(seq_len(nrow(mm)), function(i) mm[i,])
 
@@ -115,35 +110,61 @@ for (modf in mods){
   preddf <- cbind(preddf, res)
 }
 
-preddf$race_majority <- factor(preddf$race_majority)
-levels(preddf$race_majority) <- c("Black", "Hispanic", "Other", "White")
+preddf$income_percap <- factor(preddf$income_percap)
+preddf$race_white <- factor(preddf$race_white)
+
+levels(preddf$income_percap) <- preddf$income_percap %>%
+                                   levels %>%
+                                   as.numeric %>%
+                                   exp %>%
+                                   round(0) %>%
+                                   format(big.mark = ',') %>%
+                                   paste0('$', .)
+
+levels(preddf$income_percap) <- paste0(levels(preddf$income_percap), ' (', 
+                                       names(inc_qs[c(2, 11, 20)]), ')')
+
+
+conv <- function(x){
+  #Convert % white to % minority
+  100*(1 - x)
+}
+
+levels(preddf$race_white) <- preddf$race_white %>%
+                                   levels %>%
+                                   as.numeric %>%
+                                   conv %>%
+                                   round(1) %>%
+                                   paste0(., '%')
+
 
 preddf <- preddf %>%
-  gather(key, value, -wbgt, -race_majority, -vader) %>%
+  gather(key, value, -wbgt, -income_percap, -race_white, -vader) %>%
   #Normalize so that graph shows difference from wbgt = X
-  group_by(race_majority, key) %>%
+  group_by(race_white, income_percap, key) %>%
   mutate(value = value - value[wbgt == 5]) %>%
   #Get ymin, ymax, and mean
-  group_by(wbgt, race_majority) %>%
+  group_by(wbgt, income_percap, race_white) %>%
   summarize(ymin = quantile(value, probs=0.025),
             ymax = quantile(value, probs=0.975),
             pred = quantile(value, probs=0.5))
 
-curve <- ggplot(preddf) + 
-  geom_line(aes(x=wbgt, y=pred, color=race_majority)) + 
-  geom_ribbon(aes(x=wbgt, ymin=ymin, ymax=ymax, fill=race_majority), alpha=0.5) + 
+(curve <- ggplot(preddf) + 
+  geom_line(aes(x=wbgt, y=pred, color=income_percap, linetype=race_white)) + 
+  geom_ribbon(aes(x=wbgt, ymin=ymin, ymax=ymax, fill=income_percap, grou=race_white), alpha=0.2) + 
   scale_x_continuous(expand=c(0, 0), limits=c(-22, 33)) + 
   #scale_y_continuous(breaks=seq(0, -0.02, -0.005)) + 
   labs(x='', y='Change in Mood of Tweet',
-       fill = 'Census Block\nMajority Race',
-       color = 'Census Block\nMajority Race') +
+       fill = 'Census Block\nIncome Per-Capita\n(Percentile)',
+       color = 'Census Block\nIncome Per-Capita\n(Percentile)',
+       linetype = 'Census Block\nPercent Minority') +
   theme_classic() + 
   theme(legend.position=c(0.3, 0.4),
         axis.text.x = element_blank(),
         axis.ticks.x = element_blank(),
         plot.margin = unit(c(0.025, 0.025, -1, 0.025), "cm"),
         panel.grid.major = element_line(color = "lightgrey", size=0.5),
-        panel.grid.minor = element_line(color = "lightgrey", size=0.25))
+        panel.grid.minor = element_line(color = "lightgrey", size=0.25)))
 
 hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'wbgt']) +
   geom_histogram(aes(x=wbgt), binwidth=1) + 
@@ -168,4 +189,4 @@ xl <- get_plot_component(x2, "xlab-b")
 
 plot_grid(curve, hist, ggdraw(x), ggdraw(xl), align='v', axis='rl', ncol=1, 
           rel_heights=c(0.8, 0.2, 0.04, 0.04))
-ggsave('~/temp-sentiment/res/wbgt-race_q.png', width=6, height=5)
+ggsave('~/temp-sentiment/res/wbgt-income-race.png', width=6, height=5)

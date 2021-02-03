@@ -12,6 +12,8 @@ setwd(paste0('~/tweets/bootstrap/', MOD_RUN, '/'))
 data <- fread('~/tweets/all.csv')
 data$income_percap <- log(data$income_percap)
 
+qs <- quantile(data$income_percap, seq(0, 1, by=0.05))
+
 data <- data[weather_term == 0, ]
 
 data$raining <- data$prcp > 0
