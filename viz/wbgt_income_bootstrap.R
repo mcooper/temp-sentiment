@@ -126,7 +126,7 @@ preddf <- preddf %>%
   gather(key, value, -wbgt, -income_percap, -vader) %>%
   #Normalize so that graph shows difference from wbgt = X
   group_by(income_percap, key) %>%
-  mutate(value = value - value[wbgt == 0]) %>%
+  mutate(value = value - value[wbgt == 5]) %>%
   #Get ymin, ymax, and mean
   group_by(wbgt, income_percap) %>%
   summarize(ymin = quantile(value, probs=0.025),

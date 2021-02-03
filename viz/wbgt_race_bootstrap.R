@@ -125,7 +125,7 @@ preddf <- preddf %>%
   gather(key, value, -wbgt, -race_white, -vader) %>%
   #Normalize so that graph shows difference from wbgt = X
   group_by(race_white, key) %>%
-  mutate(value = value - value[wbgt == 0]) %>%
+  mutate(value = value - value[wbgt == 5]) %>%
   #Get ymin, ymax, and mean
   group_by(wbgt, race_white) %>%
   summarize(ymin = quantile(value, probs=0.025),
@@ -172,3 +172,4 @@ xl <- get_plot_component(x2, "xlab-b")
 plot_grid(curve, hist, ggdraw(x), ggdraw(xl), align='v', axis='rl', ncol=1, 
           rel_heights=c(0.8, 0.2, 0.04, 0.04))
 ggsave('~/temp-sentiment/res/wbgt-race.png', width=6, height=5)
+
