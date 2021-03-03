@@ -41,14 +41,16 @@ formula <- paste0("hedono ~ ",
                      'raining + srad',
                      " | dow + doy + tod + fips + year + statemonth")
 
-for (i in 1:80){
+for (i in 3:80){
   mod <- feols(as.formula(formula), data[sample(1:nrow(data), nrow(data), replace=T), ])
   cf <- coef(mod)
   vc <- vcov(mod)
   myobj <- list(vcov=vc, coef=cf)
   class(myobj) <- 'bootmod'
   saveRDS(myobj, file=paste0('bootstrap/', RUN, '/', Sys.time()))
-  system(paste0('~/telegram.sh "Did a business ', i, '"'))
+  if (i %% 10 == 0){
+    system(paste0('~/telegram.sh "Did a business ', i, '"'))
+  }
   rm(list=c('mod', 'cf', 'vc', 'myobj'))
   gc()
 }
