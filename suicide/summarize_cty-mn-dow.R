@@ -1,5 +1,5 @@
 library(data.table)
-library(lubridate)
+library(tidyverse)
 
 ##################################
 # read sentiment data from twitter
