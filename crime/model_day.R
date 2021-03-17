@@ -63,7 +63,7 @@ gd <- expand.grid(list(out=c('violent', 'assault', 'homicides'),
                        ind=c('vader', 'afinn', 'hedono')))
 for (i in 1:nrow(gd)){
   form <- as.formula(paste0(gd$out[i], ' ~ ', gd$ind[i], ' + Population | dow + doy + year + statemonth'))
-  mod <- feglm(form, data=comb, family='poisson')
+  mod <- feglm(form, data=comb, family=poisson(link=log))
   td <- tidy(mod)
   gd$statistic2[i] <- td[td$term == gd$ind[i], 'statistic', drop=T]
 }
