@@ -129,5 +129,23 @@ comb <- merge(comb, agencies, all.x=T, by='agency_id')
 comb <- merge(comb, loc_type, all.x=T, by='location_id')
 comb <- merge(comb, off_type, all.x=T, by='offense_type_id')
 
+#get range of all agencies
+agency_range <- comb[ , .(max=max(date), min=min(date)), .(fips, agency_id)]
+fips_range <- comb[ , .(max=max(date), min=min(date)), .(fips)]
+
 fwrite(comb, 'all_crime_data.csv', row.names=F)
+
+violent <- c('Homicide Offenses', 'Animal Cruelty', 'Arson', 'Assault Offenses',
+             'Burglary/Breaking & Entering', 'Destruction/Damage/Vandalism of Property',
+             'Kidnapping/Abduction',  'Robbery')
+
+comb <- comb[ , .(homicides=sum(offense_category_name == 'Homicide Offenses'), 
+                assault=sum(offense_category_name == 'Assault Offenses'),
+                violent=sum(offense_category_name %in% violent)),
+            .(fips, date)]
+
+comb$date <- as.character(comb$date)
+comb <- comb[!is.na(comb$fips), ]
+
+fwrite(comb, 'crime_data.csv', row.names=F)
 

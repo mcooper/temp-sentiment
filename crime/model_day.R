@@ -62,24 +62,33 @@ comb$doy <- substr(comb$date, 6, 10)
 gd <- expand.grid(list(out=c('violent', 'assault', 'homicides'),
                        ind=c('vader', 'afinn', 'hedono')))
 for (i in 1:nrow(gd)){
-  form <- as.formula(paste0(gd$out[i], ' ~ ', gd$ind[i], ' + Population | dow + doy + year + statemonth'))
-  mod <- feglm(form, data=comb, family=poisson(link=log))
+  form <- as.formula(paste0(gd$out[i], ' ~ ', gd$ind[i], ' + log(Population) | dow + doy + year + statemonth'))
+  mod <- feglm(form, data=comb, family=poisson(link=log), weight=comb$n)
   td <- tidy(mod)
-  gd$statistic2[i] <- td[td$term == gd$ind[i], 'statistic', drop=T]
+  gd$statistic[i] <- td[td$term == gd$ind[i], 'statistic', drop=T]
 }
 
 #Super strong effects!!
-[ins] 20:23:58 $> gd
+        out    ind statistic
+1   violent  vader -23.06569
+2   assault  vader -28.63416
+3 homicides  vader -10.55849
+4   violent  afinn -38.77270
+5   assault  afinn -31.05096
+6 homicides  afinn -18.60137
+7   violent hedono -26.54292
+8   assault hedono -29.01932
+9 homicides hedono -14.39753
+
+# Although, not when we account for fips fixed effects :-(
         out    ind statistic2
-1   violent  vader  -23.46551
-2   assault  vader  -24.49976
-3 homicides  vader  -11.60528
-4   violent  afinn  -25.46395
-5   assault  afinn  -25.88245
-6 homicides  afinn  -11.63791
-7   violent hedono  -39.83189
-8   assault hedono  -39.22778
-9 homicides hedono  -16.86443
-
-
+1   violent  vader  0.1505547
+2   assault  vader  0.3673532
+3 homicides  vader -0.8659280
+4   violent  afinn -0.3308100
+5   assault  afinn -0.5347304
+6 homicides  afinn -2.1425806
+7   violent hedono -1.3216241
+8   assault hedono -1.3683346
+9 homicides hedono -0.9929105
 
