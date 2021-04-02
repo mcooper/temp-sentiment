@@ -1,32 +1,38 @@
 library(tidyverse)
+library(lubridate)
+library(sf)
+library(tigris)
 
 setwd('~/tweets/crime/CrimeOpenDatabase')
 
-d1 <- read.csv('crime_open_database_core_2009.csv')
-d2 <- read.csv('crime_open_database_extended_2009.csv')
+d1 <- bind_rows(lapply(list.files(pattern='core'), read.csv)
 
+###########################
+# Get FIPS of crime
+##########################
 
-cols <- c("offense_type_id", "location_id", "agency_id", "incident_id",
-  "offense_id", "date", "hour", "report_date_flag", "fips", "location_name",
-  "offense_name", "offense_category_name", "month")
+#Get counties, subset to those pertainable to cities where we have data
+cty <- counties() %>%
+  mutate(FIPS = paste0(STATEFP, COUNTYFP)) %>%
+  filter(FIPS %in% c("04019", "06075", "17031", "21111", "26163", "29037", "29047",
+                     "29095", "29165", "29510", "36005", "36047", "36061", "36081",
+                     "36085", "48121", "48367", "48439", "48453", "48491", "53033"))
 
-oldnames <- tolower(c("Aggravated Assault", "All Other Larceny", "Animal Cruelty",
-  "Arson", "Assisting or Promoting Prostitution", "Betting/Wagering",
-  "Bribery", "Burglary/Breaking & Entering", "Counterfeiting/Forgery",
-  "Credit Card/Automated Teller Machine Fraud", "Destruction/Damage/Vandalism of Property",
-  "Drug Equipment Violations", "Drug/Narcotic Violations", "Embezzlement",
-  "Extortion/Blackmail", "False Pretenses/Swindle/Confidence Game",
-  "Fondling", "Gambling Equipment Violation", "Hacking/Computer Invasion",
-  "Human Trafficking, Commercial Sex Acts", "Human Trafficking, Involuntary Servitude",
-  "Identity Theft", "Impersonation", "Incest", "Intimidation",
-  "Justifiable Homicide", "Kidnapping/Abduction", "Motor Vehicle Theft",
-  "Murder and Nonnegligent Manslaughter", "Negligent Manslaughter",
-  "Operating/Promoting/Assisting Gambling", "Pocket-picking", "Pornography/Obscene Material",
-  "Prostitution", "Purchasing Prostitution", "Purse-snatching",
-  "Rape", "Robbery", "Sexual Assault With An Object", "Shoplifting",
-  "Simple Assault", "Sodomy", "Sports Tampering", "Statutory Rape",
-  "Stolen Property Offenses", "Theft From Building", "Theft From Coin-Operated Machine or Device",
-  "Theft From Motor Vehicle", "Theft of Motor Vehicle Parts or Accessories",
-  "Weapon Law Violations", "Welfare Fraud", "Wire Fraud"))
+ds <- st_as_sf(d1, coords = c('longitude', 'latitude'), crs=st_crs(cty))
 
-newnames <- unique(d1$offense_group)
+start <- Sys.time()
+int <- st_join(ds[1:100000, ], cty, join=st_within)
+end <- Sys.time()
+end - start
+
+d1$fips <- paste0(int$STATEFP, int$COUNTYFP)
+
+d2 <- d1 %>%
+  mutate(year = substr(date_single, 1, 4))
+  group_by(city_name) %>%
+
+write.csv(d1, '../CrimeOpenDatabase.csv', row.names=F)
+
+violent <- c("arson", "assault offenses", "burglary/breaking & entering", 
+             "destruction/damage/vandalism of property", "kidnapping/abduction",
+             "robbery", "homicide offenses")
