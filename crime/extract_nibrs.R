@@ -129,9 +129,12 @@ comb <- merge(comb, agencies, all.x=T, by='agency_id')
 comb <- merge(comb, loc_type, all.x=T, by='location_id')
 comb <- merge(comb, off_type, all.x=T, by='offense_type_id')
 
-#get range of all agencies
-agency_range <- comb[ , .(max=max(date), min=min(date)), .(fips, agency_id)]
-fips_range <- comb[ , .(max=max(date), min=min(date)), .(fips)]
+#Filter to only agencies that have monthly reporting from the beginning to the end of the dataset
+comb$month <- paste0(substr(comb$date, 1, 7), '-01')
+allmonths <- as.character(seq(ymd('2009-01-01'), ymd('2019-12-01'), 'month'))
+comb <- comb %>%
+  group_by(agency_id) %>%
+  filter(all(allmonths %in% month))
 
 fwrite(comb, 'all_crime_data.csv', row.names=F)
 
