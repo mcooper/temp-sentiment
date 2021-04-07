@@ -232,6 +232,7 @@ ggplot(preddf %>% filter(raining)) +
   geom_errorbar(aes(x=income_percap, ymax=ymax, ymin=ymin, y=pred)) + 
   scale_fill_manual(values=c("#e31a1c", "#ff7f00", "#33a02c")) + 
   scale_color_manual(values=c("#e31a1c", "#ff7f00", "#33a02c")) + 
+  scale_y_continuous(expand=expand_scale(mult=c(0.05, 0))) + 
   guides(fill=FALSE) + 
   theme_classic() + 
   labs(x="Census Block Income Per-Capita (Percentile)", 
