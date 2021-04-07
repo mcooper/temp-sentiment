@@ -13,6 +13,7 @@
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{pdflscape}
+\usepackage{subcaption}
 \usepackage{lineno}
 \usepackage[
   style=numeric,
@@ -51,7 +52,7 @@ Keywords: Text Data, Environmental Shocks, Social Media Mining, Sentiment Analys
 
     
 %Cite this new paper: https://doi.org/10.1016/S2542-5196(20)30251-5
-
+% And: https://eos.org/articles/long-term-drought-harms-mental-health-in-rural-communities
 \section{Introduction}
 
 % Organize as follows:
@@ -73,6 +74,9 @@ Human moods and mental states are important aspects of overall well-being and ca
 \section{Background}
 \subsection{Temperature and Mental Health}
 % Heatwaves are known to worsen mental health
+
+
+
 https://doi.org/10.1016/j.puhe.2018.06.008 (review study - will have more to cite)
 https://www.nature.com/articles/s41558-018-0222-x
 https://ehp.niehs.nih.gov/doi/full/10.1289/ehp.11339
@@ -85,6 +89,24 @@ https://www.psychologytoday.com/us/blog/greening-the-media/201809/global-warming
 
 \subsection{Mental Health and Income}
 % AND mental health is strongly associated with income
+% 1）Childhood 2）adulthood 3）gender
+% Perceived income level
+
+The relationship between income, socioeconomic status (SES), well-being and mental health is one of the strongest established patterns in psycho-social literature (cite: Easterlin 1973, Holzer et al. 1986, Perry 1996, Ng et al. 2014). Much of the research into these patterns focuses on the inequalities and distribution of the effects on individual well-being. Subsequent work on mental health outcomes, one measure of well-being, have established strong associations between SES, income and mental health with the most and least privileged most commonly associated with the best and worse mental health experiences and outcomes, respectively (cites: Stevenson and Wolfers 2008, Ng et al. 2014). 
+
+For example, results from a cross-sectional comparative study of socioeconomic factors and use of mental health services by people living in Ontario, Canada and the United States, indicate clear disparities in use of mental health services between those with the highest income levels and lowest mental health morbidity and those with the lowest income levels and highest mental health morbidity - those with higher incomes tended to have lower mental health morbidity issues while utilizing mental health services more than those with lower incomes and higher mental health issues (cite Katz et al. 1997). 
+
+Results from a systematic review of the literature on associations between social inequalities and mental health disorders indicate a clear and prevailing link between  one or more indicators of less social privilege and higher prevalence of mental health disorders (cite Fryers et al. 2003), with low income one of the most consistent markers of and associations with increases in common mental health disorders. Collectively, results from the income and mental health literature indicate that socially disadvantaged populations experience significantly more frequent common mental health disorders. Scholars use mental health disparities to indicate the disproportionate amount of mental health disorders among persons of low SES\citep{RN1292}
+
+The established association between poverty and mental health revealed that that income distribution may have a significant influence upon mental health over and above the effect of poverty \citep{HANANDITA201459}.Poverty has been identified as one of the major risk factors in mental health. For instance, some systematic reviews have shown that socioeconomically disadvantaged children and adolescents were 2-3 times more likely to have mental health problems than others\citep{REISS201324}, while the household increases in financial resources are generally associated with an overall reduction of mental health problems\citep{2015Does}. Others have argued that increases in SES can serve as a buffer against the negative impacts of difficult life experiences on mental health, particularly for individuals already under substantive mental stress (cite Kawachi and Berkman 2001). Thus, SES and income are associated with mental health improvements in SES and income can serve to decrease menta the 
+
+ 
+ Several reason could explain why poverty may effect mental health. 1) the “social causation hypothesis” which suggests that stress or deprivation or decreasing the likelihood of people getting treatment may lead to poor mental health\citep{mills2015}, while social capital could reduce the likelihood of living in poverty and reduces the risk of mental disorders such as depressive symptoms and suicidal tendencies\citep{RN1291}. 2) negative life events in a person’s life such as job loss are also associated with the risks of poverty\citep{RN1293} and mental health\citep{TAMPUBOLON201420}, and the causal inferences on the effect of poverty and mental health had also been made in several studies. For example, Tampubolon and Hanandita\citep{TAMPUBOLON201420} find that individual social capital is positively associated with mental health while adverse events were negatively associated; Chang.et.al \citep{RN1291} find that subjective and objective poverty is significantly associated with a higher risk of adverse life events, less social support and mental distress. Negative life events and social support in serial mediate the relationship between subjective poverty and mental health.
+
+For children, poverty and poor maternal mental health often co-exist and are two of the risk factors for child development\citep{LUND20111502}, and maternal mental health is significantly associated with child general psychopathology\citep{ RN1289}. Researchers also find that transition into poverty increased children’s socioemotional behavior problems and maternal psychological distress \citep{WICKHAM2017e141}.
+
+In general, the relationship between mental health and income level is well established. In the study, we explore whether income level would influence the link between weather and the sentiment in Twitter-posed text.
+
 https://jamanetwork.com/journals/jamapsychiatry/fullarticle/211213
 https://doi.org/10.1002/9781118410868.wbehibs570
 https://www.sciencedirect.com/science/article/abs/pii/S027795362030527X
@@ -93,6 +115,7 @@ https://doi.org/10.1016/S2468-2667(17)30011-7
 https://link.springer.com/article/10.1007/s00127-017-1370-4
 Maybe this: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0116820
 https://www.sciencedirect.com/science/article/abs/pii/S0143622814002537
+also this: https://www.sciencedirect.com/science/article/abs/pii/S0140673614614604
 
 \subsection{Income and Temperature}
 % AND wealthier better able to cope with heatwaves 
@@ -122,9 +145,78 @@ Although climate change is an international phenomenon experienced in every coun
 
 Public debates on the current consequences of climate change are discussed in both scientific and non-scientific mediums. People can express their emotional states and feelings - sentiment - through physical, vocal and written expressions on mediums including newspapers, scientific articles, blogs and other online social media platforms. Twitter is one of the more popular social media platforms where people express their sentiments about any number of topics. Public posts on Twitter - called tweets - are widely available for public consumption and research, and offer a glimpse into collective social state. For example, text posted to these platforms can be used to gauge the public mood, assess opinions, measure brand affinity and for emergency planning and disaster response (cites). Sentiment is frequently employed as a correlate of emotional state or mood (cites). Weather events focus public attention in different ways of expression (cites). These data offer a unique opportunity to analyze how people express and respond to events in people's daily lives, including their exposure to ambient environmental conditions.
 
+
+
 Here, we report on associations between meteorological conditions and expressed sentiment of public posts on Twitter from the United States of America (USA) between 2009 and 2019. This work builds on research from Baylis and others \cite{baylis_weather_2018} on weather impacts on expressed sentiment. In particular, we extend this work by including the temperature effects on sentiment in multiple regions across the USA while drawing in various climatic variables and socio-demographic data. In this research, we explore two primary questions. First, to what extent are amibent environmental conditions correlated with changes in expressed sentiment? Second, is this effect moderated by wealth? and local land cover conditions?
 
 Building on previous findings from Baylis and others, we hypothesize that local ambient environmental conditions have a strong connection how people are feeling as expressed in the sentiment of text messages posted on Twitter [H1]. Second, we hypothesize that the weather-sentiment link will be stronger in low-income areas. That is to say, people in lower income areas will be have lower sentiment scores than those in wealthier areas. [H2].
+
+\section{Results}
+We examined the relationship between the sentiment expressed in tweets and the prevailing Wet Bulb Globe Temperature (WBGT), an indicator of heat stress that accounts for temperature, humidity, wind speed, and solar radiation.  We then explored how the racial and income characteristics of neighborhoods moderate the relationship between WBGT and sentiment.  Finally, we show how twitter sentiment is an important overall indicator of mental health by assessing the relationship between daily sentiment at the county level and the prevalence of crime and suicide. 
+
+and sentiment, first examining the overall relationship, and then exploring heterogeneities based on neighborhood income per capita and race.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\linewidth]{../res/wbgt.png}
+  \caption{Relationship between Wet Bulb Globe Temperature (WBGT) and sentiment in tweets.  As temperatures increase, sentiment declines.}
+  \label{fig:wbgt-income}
+\end{figure}
+
+Sentiment is highest at a WBGT of 5 degrees celsius (a dry bulb temperature typically around 12C/54F).  The greatest declines in sentiment are observed between 20-25 degrees WBGT (dry bulb 29-36C/84-97F).  Sentiment also declines with colder temperatures, but only slightly.   
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{../res/wbgt-income.png}
+  %\caption{WBGT-sentiment relationship as moderated by neighborhood income.}
+  \label{fig:sub1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{../res/wbgt-race_q.png}
+  %\caption{WBGT-sentiment relationship as moderated by neighborhood majority race.}
+  \label{fig:sub2}
+\end{subfigure}
+\caption{How the relationship between WBGT and sentiment is moderated }
+\label{fig:test}
+\end{figure}
+
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{../res/wbgt-income.png}
+  \caption{Change in sentiment across census block income groups as the Wet Bulb Globe Temperature increases.  For census blocks at the 5th percentile for income, even mild temperatures are associated with decreases in mood, while at higher temperatures, sentiment continues to decline.  For high-income census blocks at the 95th percentile, on the other hand, temperature must be quite high before a decrease in sentiment is observed.}
+  \label{fig:wbgt-income}
+\end{figure}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{../res/wbgt-race.png}
+  \caption{Change in sentiment across census block income groups as the Wet Bulb Globe Temperature increases.  For census blocks at the 5th percentile for income, even mild temperatures are associated with decreases in mood, while at higher temperatures, sentiment continues to decline.  For high-income census blocks at the 95th percentile, on the other hand, temperature must be quite high before a decrease in sentiment is observed.}
+  \label{fig:wbgt-income}
+\end{figure}
+
+
+
+Figure of heatmap of tweet density across USA (pick a year? entire dataset of georeferenced tweets?)
+
+(sub-section) TEMPERATURE and HUMIDITY
+Figure of distribution of max and min temperatures
+Comment from Patrick Baylis on our "preliminary results". 2nd comment from Patrick
+
+(sub-section) INCOME
+
+(sub-section?) SENTIMENT
+Figure of distribution of observed sentiment scores (by Hedonometer, Vader, etc.)
+
+Comment from Patrick Baylis on our "preliminary results" doc
+
+
+\section{Discussion}
 
 \section{Data}
 A proposed list of tables and figures:
@@ -156,10 +248,17 @@ Because metrics of apparent temperature that take into account humidity and othe
 Using temperature, specific humidity, and pressure, we derived relative humidity using methods described by  \cite{bolton_computation_1980}.  We then calculated the WBGT using the formula described by \cite{heo2019comparison}.
 
 \subsection{Socio-Econoimc Data}
-We used data from the US Census at the Census Block level to estimate the 
+We used data from the American Communit   Survey administered by the US Census to income levels and the racial composition of neighborhoods where tweets were located.  Data was at the level of the census block group, the smallest unit for which the census releases public data.
+
+ACS data is released to cover five-year periods.  We therefore matched each tweet with census block group data from the year at the middle year of each survey's five-year range.  For example, tweets from 2014 were matched to data from the 2012-2016 ACS.  Because the most recent available data was from 2014-2018, all tweets from year years greater than 2016 were matched to this dataset.  Data was downloaded from the IPUMS NHGIS service provided by the University of Minnesota.
+
+Mean annual income per capita is provided by the ACS, and we standardized this variable so that the values for each year were in 2019 dollars.  For racial categories, we combined the various categories provided by the ACS into four racial groups: non-Hispanic white, non-Hispanic black, Hispanic of any race, and an "other" category for non-Hispanic people who were neither black nor white, such as Asian, Native American, or mixed-race people.
 
 
 \subsection{Sentiment}
+
+WE EXCLUDED WEATHER TERMS
+
 We assessed the sentiment expressed in text using several of the most commonly used measures of sentiment. Each of the measures uses validated dictionaries of words that have been assigned positive and negative scores and compares these words with words in the text corpora of interest. For measures of sentiment, we used the Hedonometer \href{https://hedonometer.org/timeseries/en_all/}{(link)}, Afinn \href{http://corpustext.com/reference/sentiment_afinn.html}{(link)}, Textblob \href{https://textblob.readthedocs.io/en/dev/}{(link)}, Vader , SentiwordNet and LIWC tools. These tools assign positive and negative scores to words, then average the scores for each text string. Our text data was multilingual, which can present challenges with analyzing text (cite). Given our interest only in the collection of words used (in aggregate) and not the sequence or nuance of the phrases, we translated all languages into English using Google Translate API and the Microsoft Azure API cognitive services (translator text API) before conducting the sentiment analyses.
 
 Some papers we might cite in this section (only for multilingual work): Vilares et al. 2017 , Lo et al. 2017, Dashtipour et al. 2016.
@@ -194,38 +293,13 @@ Our model takes the following form:
 Where $y$ is the sentiment of a tweet, $t$ is the wet bulb globe temperature at the hour of the tweet, $p$ is a binary variable indicating whether it rained at the hour of the tweet, $s$ is the income shortwave radiation, or sunshine, in $W/m^2$, at the hour of the tweet, and $m$ is the log-transformed average income in the census block where the tweet originated.  We estimate the 
 
 
+STANDARD ERRORS
+
+
 \subsection{Data Processing}
 We analyzed meteorological data using the R statistics open-source program version 3.6.2  (R Core Team 2019) using R Studio version 1.2.1335 (RStudio Team, 2019) and the raster \href{https://www.rdocumentation.org/packages/raster/versions/3.3-13}{(link)}, sp \href{https://cran.r-project.org/web/packages/sp/index.html}{(link)}, sf \href{https://cran.r-project.org/web/packages/sf/index.html}{(link)}, and stars \href{https://cran.r-project.org/web/packages/stars/index.html}{(link)} processing and geospatial packages installed. We analyized sentiment data using python version x.x.x with pandas \href{https://pandas.pydata.org/}{(link)} and numpy \href{https://numpy.org/}{(link)} packages installed. We extracted meteorological data using the geolocated coordinates from the Twitter posts (latitude and longitude). We calculated mean climatological scores (z-scores)using baseline meteorological data from 1990 to present, calculated at a quarter degree resolution, and based on the long-term averages and standard deviation. We calculated z-scores for each day and the overall annual average z-score. For text data cleaning we used the python package tweet-preprocessor \href{https://pypi.org/project/tweet-preprocessor/}{(link)} to remove all text and characters not part of the main text phrase (e.g., URLs, mentions, GIFs, etc.). We converted all dates and times to UTC format.
 
 [NEED SOME TEXT ABOUT GOOGLE EARTH ENGINE AND MICROSOFT AI FOR EARTH] We conducted all data analyses on Microsoft AI for Earth's online cloud-computing environment using a combination of existing data analysis packages and scripts we developed. We used GitHub as a repository for all scripts we used in this project (link to the Git repo). To run ABC analysis, we used Microsoft's CBA package. To run XYZ analysis, we used Microsoft's ZYX package. 
-
-\section{Results}
-(sub-section) DESCRIPTIVE STATISTICS
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\linewidth]{../res/wbgt-income.png}
-  \caption{Change in sentiment across census block income groups as the Wet Bulb Globe Temperature increases.  For census blocks at the 5th percentile for income, even mild temperatures are associated with decreases in mood, while at higher temperatures, sentiment continues to decline.  For high-income census blocks at the 95th percentile, on the other hand, temperature must be quite high before a decrease in sentiment is observed.}
-  \label{fig:wbgt-income}
-\end{figure}
-
-
-
-Figure of heatmap of tweet density across USA (pick a year? entire dataset of georeferenced tweets?)
-
-(sub-section) TEMPERATURE and HUMIDITY
-Figure of distribution of max and min temperatures
-Comment from Patrick Baylis on our "preliminary results". 2nd comment from Patrick
-
-(sub-section) INCOME
-
-(sub-section?) SENTIMENT
-Figure of distribution of observed sentiment scores (by Hedonometer, Vader, etc.)
-
-Comment from Patrick Baylis on our "preliminary results" doc
-
-
-\section{Discussion}
 
 %%KEY POINTS TO DISCUSS
 
@@ -252,6 +326,29 @@ This work was supported by the National Socio-Environmental Synthesis Center (SE
 \renewcommand{\thetable}{S\arabic{table}}
 \renewcommand{\thefigure}{S\arabic{figure}}
 \renewcommand{\thesection}{S\arabic{section}}
+
+\subsection{Other Sentiment Metrics}
+
+\subsection{Precipitation}
+
+
+%Supplement will have:
+
+%Equations used for RH and WBGT
+
+
+% Robustness checks:
+
+    % Other sentiment metrics
+    
+    % 
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Paste Bin
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Land Cover}
 To estimate land cover categories and the percentage of tree cover and impervious surfaces, we used data from the National Land Cover Database (NLCD) from the USGS' 2011  \cite{homer_completion_2015} and 2016 \cite{yang_new_2018} landcover datasets. These datasets are national land cover dataset prepared by the Multi-Resolution Land Characteristics (MRLC) Consortium.  These data are at the thirty meter resolution, and provide estimates of the fraction of tree cover and impervious surfaces.  We then associated each tweet with the land cover fraction for the nearest available year and pixel using the geolocation associated with each tweet, extracting landcover values from whichever land cover dataset year was closest in time to the date timestamp of each tweet. We used tree cover as a proxy for amount of potential shade and heat relief in a particular area and can be broadly indicative of generalized wealth. We use impervious surface cover as a proxy for relative proximity to potential natural shade and heat relief, and because individuals in urban environments may be exposed to the urban heat island effect. [NEED SOME CITATIONS HERE] 
