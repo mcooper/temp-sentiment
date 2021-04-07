@@ -137,7 +137,8 @@ curve <- ggplot(preddf) +
   geom_line(aes(x=wbgt, y=pred, color=income_percap)) + 
   geom_ribbon(aes(x=wbgt, ymin=ymin, ymax=ymax, fill=income_percap), alpha=0.5) + 
   scale_x_continuous(expand=c(0, 0), limits=c(-22, 33)) + 
-  #scale_y_continuous(breaks=seq(0, -0.02, -0.005)) + 
+  scale_fill_manual(values=c("#e31a1c", "#ff7f00", "#33a02c")) + 
+  scale_color_manual(values=c("#e31a1c", "#ff7f00", "#33a02c")) + 
   labs(x='', y='Change in Mood of Tweet',
        fill = 'Census Block\nIncome Per-Capita\n(Percentile)',
        color = 'Census Block\nIncome Per-Capita\n(Percentile)') +
@@ -173,3 +174,153 @@ xl <- get_plot_component(x2, "xlab-b")
 plot_grid(curve, hist, ggdraw(x), ggdraw(xl), align='v', axis='rl', ncol=1, 
           rel_heights=c(0.8, 0.2, 0.04, 0.04))
 ggsave('~/temp-sentiment/res/wbgt-income.png', width=6, height=5)
+
+########################################
+# Precip
+#########################################
+preddf <- data.frame(raining=c(TRUE, FALSE))
+preddf <- make_groups(preddf, 'income_percap', qs[c(2, 11, 20)])
+
+preddf$vader <- 1
+
+mm <- model.matrix(vader ~ income_percap*raining,
+                   data=preddf)
+
+colnames(mm)[colnames(mm) == 'wbgt:income_percap'] <- 'income_percap:wbgt'
+mm <- mm[ , colnames(mm) != '(Intercept)']
+mm <- mm[ , colnames(mm) != 'income_percap']
+
+mmp <- lapply(seq_len(nrow(mm)), function(i) mm[i,])
+
+#Iterate over models
+mods <- list.files()
+for (modf in mods){
+
+  mod <- readRDS(modf)
+
+  res <- as.data.frame(svycontrast(mod, mmp))[ , 'contrast', drop=F]
+  names(res) <- modf
+  
+  preddf <- cbind(preddf, res)
+}
+
+preddf$income_percap <- factor(preddf$income_percap)
+levels(preddf$income_percap) <- preddf$income_percap %>%
+                                   levels %>%
+                                   as.numeric %>%
+                                   exp %>%
+                                   round(0) %>%
+                                   format(big.mark = ',') %>%
+                                   paste0('$', .)
+
+levels(preddf$income_percap) <- paste0(levels(preddf$income_percap), ' (', 
+                                       names(qs[c(2, 11, 20)]), ')')
+
+preddf <- preddf %>%
+  gather(key, value, -raining, -income_percap, -vader) %>%
+  #Normalize so that graph shows difference from wbgt = X
+  group_by(income_percap, key) %>%
+  mutate(value = value - value[raining == 0]) %>%
+  #Get ymin, ymax, and mean
+  group_by(raining, income_percap) %>%
+  summarize(ymin = quantile(value, probs=0.025),
+            ymax = quantile(value, probs=0.975),
+            pred = quantile(value, probs=0.5))
+
+ggplot(preddf %>% filter(raining)) + 
+  geom_bar(aes(x=income_percap, y=pred, fill=income_percap), stat='identity') + 
+  geom_errorbar(aes(x=income_percap, ymax=ymax, ymin=ymin, y=pred)) + 
+  scale_fill_manual(values=c("#e31a1c", "#ff7f00", "#33a02c")) + 
+  scale_color_manual(values=c("#e31a1c", "#ff7f00", "#33a02c")) + 
+  guides(fill=FALSE) + 
+  theme_classic() + 
+  labs(x="Census Block Income Per-Capita (Percentile)", 
+       y="Change in Mood of Tweet When Raining") + 
+  theme(axis.ticks.x = element_blank(),
+        panel.grid.major = element_line(color = "lightgrey", size=0.5),
+        panel.grid.minor = element_line(color = "lightgrey", size=0.25))
+ggsave('~/temp-sentiment/res/raining-income.png', width=6, height=5)
+
+########################################
+# srad
+#######################################
+preddf <- data.frame(srad=seq(0, 1300, by=100))
+preddf <- make_groups(preddf, 'income_percap', qs[c(2, 11, 20)])
+
+preddf$vader <- 1
+
+mm <- model.matrix(vader ~ income_percap*srad,
+                   data=preddf)
+
+mm <- mm[ , colnames(mm) != '(Intercept)']
+mm <- mm[ , colnames(mm) != 'income_percap']
+
+mmp <- lapply(seq_len(nrow(mm)), function(i) mm[i,])
+
+#Iterate over models
+mods <- list.files()
+for (modf in mods){
+
+  mod <- readRDS(modf)
+
+  res <- as.data.frame(svycontrast(mod, mmp))[ , 'contrast', drop=F]
+  names(res) <- modf
+  
+  preddf <- cbind(preddf, res)
+}
+
+preddf$income_percap <- factor(preddf$income_percap)
+levels(preddf$income_percap) <- preddf$income_percap %>%
+                                   levels %>%
+                                   as.numeric %>%
+                                   exp %>%
+                                   round(0) %>%
+                                   format(big.mark = ',') %>%
+                                   paste0('$', .)
+
+levels(preddf$income_percap) <- paste0(levels(preddf$income_percap), ' (', 
+                                       names(qs[c(2, 11, 20)]), ')')
+
+preddf <- preddf %>%
+  gather(key, value, -srad, -income_percap, -vader) %>%
+  #Normalize so that graph shows difference from wbgt = X
+  group_by(income_percap, key) %>%
+  mutate(value = value - value[srad == 0]) %>%
+  #Get ymin, ymax, and mean
+  group_by(srad, income_percap) %>%
+  summarize(ymin = quantile(value, probs=0.025),
+            ymax = quantile(value, probs=0.975),
+            pred = quantile(value, probs=0.5))
+
+curve <- ggplot(preddf) + 
+  geom_line(aes(x=srad, y=pred, color=income_percap)) + 
+  geom_ribbon(aes(x=srad, ymin=ymin, ymax=ymax, fill=income_percap), alpha=0.5) + 
+  scale_x_continuous(expand=c(0, 0), limits=c(-50, 1300)) + 
+  scale_fill_manual(values=c("#e31a1c", "#ff7f00", "#33a02c")) + 
+  scale_color_manual(values=c("#e31a1c", "#ff7f00", "#33a02c")) + 
+  labs(x='', y='Change in Mood of Tweet',
+       fill = 'Census Block\nIncome Per-Capita\n(Percentile)',
+       color = 'Census Block\nIncome Per-Capita\n(Percentile)') +
+  theme_classic() + 
+  theme(legend.position=c(0.8, 0.2),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        plot.margin = unit(c(0.025, 0.025, -1, 0.025), "cm"),
+        panel.grid.major = element_line(color = "lightgrey", size=0.5),
+        panel.grid.minor = element_line(color = "lightgrey", size=0.25))
+
+hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'srad']) +
+  geom_histogram(aes(x=srad), binwidth=100) + 
+  scale_x_continuous(expand=c(0, 0), limits=c(-50, 1300)) + 
+  scale_y_continuous(labels=function(x){format(x*100, big.mark=',')}, expand=c(0,0),
+                     breaks=c(1000000)) + 
+  labs(y="Tweet\nCount", x="Surface downward shortwave radiation (W/m^2)") + 
+  theme_classic() + 
+  theme(panel.grid.major = element_line(color = "lightgrey", size=0.5),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        panel.grid.minor = element_line(color = "lightgrey", size=0.25))
+
+plot_grid(curve, hist, align='v', axis='rl', ncol=1, 
+          rel_heights=c(0.8, 0.2))
+ggsave('~/temp-sentiment/res/srad-income.png', width=6, height=5)
