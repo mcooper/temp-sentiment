@@ -27,24 +27,32 @@
 \addbibresource{TextDataClimateShocks.bib}
 
 \begin{document}
-https://www.overleaf.com/project/5f918edd1afc380001feca0d
-\title{Fine-scale Twitter Data Reveals Neighborhood Inequalities in Heat Wave Vulnerability}
+%https://www.overleaf.com/project/5f918edd1afc380001feca0d
+\title{Fine-scale Twitter Big Data Reveals Neighborhood Inequalities in Mental Health Effects of High Temperatures}
 
-%\author[1, *]{Matthew Cooper}
-%\author[]{Jeremiah Osborne-Gowey}
-%\author[]{Zheng Liu}
-%\author[]{Jie Liu}
-%\author[]{Portia Adade Williams}
-%\author[]{Aaron Schwartz}
-%\author[]{Patrick Baylis}
+\author[1, *]{Matthew Cooper}
+\author[2]{Jeremiah Osborne-Gowey}
+\author[3]{Zheng Liu}
+\author[4]{Jie Liu}
+\author[5]{Portia Adade Williams}
+\author[6]{Aaron Schwartz}
+\author[7]{Patrick Baylis}
 
-%\affil[1]{T.H. Chan School of Public Health, Harvard University}
-%\affil[*]{Corresponding Author: mcooper@hsph.harvard.edu}
+\affil[1]{T.H. Chan School of Public Health, Harvard University}
+\affil[2]{University of Colorado Boulder}
+\affil[3]{Department of Geographical Sciences, University of Maryland College Park}
+\affil[4]{East China University of Science and Technology}
+\affil[5]{University of Cape Town}
+\affil[6]{University of Colorado Boulder}
+\affil[7]{University of British Columbia}
+\affil[*]{Corresponding Author: mcooper@hsph.harvard.edu}
 
 \maketitle
 
 \begin{abstract}
-Weather can affect people’s mood and well-being. Traditional studies exploring the effects of weather on mental health require significant resource investment (e.g., time, funding, execution).  Continuous in situ data streams from social media, newspapers, and other big data sources offer an opportunity to examine how people perceive and respond to environmental conditions. Recent work demonstrates that prevailing weather conditions can affect people’s sentiment as expressed on Twitter and other social media.  Studies to date however, have modeled the weather as having the same effect on sentiment across all locations and individuals (i.e., in aggregate).  In this study, we explore how weather affects individual expressed sentiment (via Twitter) across different weather gradients and locations. We analyzed the sentiment from a quarter of a billion geolocated Tweets from 2009 to 2019, using multiple measures of sentiment, overlaid with data about prevailing weather conditions, as well as local land cover, income levels, and demographic characteristics in the vicinity of Twitter users.  We find that weather affects people differently across a range of incomes, with people in higher income brackets generally happier with increasing temperature, while people in lower income brackets are less happy with increasing temperature.  This project extends existing research about the relationship between temperature and mood (sentiment) by examining how varying climatic conditions across different geographies and socio-economic groups are correlated with expressed sentiment. This project brings new insights into how humans perceive and respond to environmental shocks, with important implications for economics, policy and adaptation and resilience planning.
+%Limit 150 words: https://www.nature.com/nclimate/about/content
+%Actually there are lots of examples of articles with > 150 words, but I think we should keep it concise
+Higher temperatures associated with climate change are expected to have major impacts on human mental health.  Indeed, traditional analyses of heat and mental health outcomes using data collected by public agencies have found associations between elevated temperatures and increases in outcomes such as suicides and mental-health related hospitalizations.  However, these studies, which typically use data reported at the city or county level, have found no difference in vulnerability based on income.  We overturn this finding and show that there are stark differences in vulnerability using a novel data source: expressed sentiment in 250 million geolocated tweets, matched with prevailing weather and neighborhood socioeconomic conditions.  We find that increased temperatures worsen expressed sentiment in all areas, but that this effects is much stronger in poor and black neighborhoods.
 
 \end{abstract}
 
@@ -66,6 +74,7 @@ Keywords: Text Data, Environmental Shocks, Social Media Mining, Sentiment Analys
 This work builds on existing work by \citep{baylis_weather_2018}. 
 
 %Intro Paragraph
+% I think this should be more about climate change and mental health broadly, as well as a bit about how income has been theorized to affect vulnerability, but there is no evidence yet.  This can be shorter as well, as we have a lot of detail in the Background section -Matt
 Research has shown strong linkages between ambient environmental conditions and mental health, with extreme temperatures  frequently associated with poorer overall mental health. Individual's mental health is strongly associated with income with people in lower income levels frequently experiencing higher stress levels and less able to find help for coping with these stresses. Other research on how people cope with environmental temperature extremes indicate that wealthier are better able to cope with heatwaves, whether from traveling to cooler climes, accessing air conditioning, or other temperature ameliorating strategies that may require access to financial capital. Yet we know relatively little about the interaction between temperature, mental health and income. Furthermore, previous studies that did attempt to examine relationships between environmental extremes and health sometimes aggregated data at scales too coarse to examine whether income may be an ameliorating factor. This study examines the interactions between these three using relatively fine-scale, publicly available data. Our research expands on existing studies of temperature and sentiment - one measure of mental health - by examining finer-scale data and incorporating income data to examine correlations between temperature extremes and sentiment.
 
 Human moods and mental states are important aspects of overall well-being and can be influenced by ambient, persistent and fluctuating environmental conditions. Climate change is accelerating the rate and variability around meteorological norms like the timing, magnitude, intensity and duration of precipitation events and air temperature minima and maxima \href{https://www.ipcc.ch/site/assets/uploads/2018/03/SREX-Chap3_FINAL-1.pdf}{(link)}. Previous work \citep{baylis_weather_2018} indicate important linkages between human mood and meterological conditions. Previous analyses of the effects of weather on mood (as expressed in sentiment of text-based message), however, were constructed at the aggregated city/day level and did not account for differences in socio-economic status which may affect access to resources (e.g., air conditioning) that can offset the effects of exposure to temperature extremes. Here, we build on these previous studies by examining the hourly effects of weather on human sentiment, an expression of mood, exploring geographic and economic heterogeneity at a finer-scale resolution than previous studies.  
@@ -170,13 +179,13 @@ Sentiment is highest at a WBGT of 5 degrees celsius (a dry bulb temperature typi
 \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width=\linewidth]{../res/wbgt-income.png}
-  %\caption{WBGT-sentiment relationship as moderated by neighborhood income.}
+  \caption{Effect of changes in wet-bulb globe temperature on expressed sentiment relationship as moderated by neighborhood income.}
   \label{fig:sub1}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width=\linewidth]{../res/wbgt-race_q.png}
-  %\caption{WBGT-sentiment relationship as moderated by neighborhood majority race.}
+  \caption{WBGT-sentiment relationship as moderated by neighborhood majority race.}
   \label{fig:sub2}
 \end{subfigure}
 \caption{How the relationship between WBGT and sentiment is moderated }
@@ -318,73 +327,5 @@ For funding, advising, SESYNC grant number?, etc.
 This work was supported by the National Socio-Environmental Synthesis Center (SESYNC) under funding received from the National Science Foundation DBI-1639145.
 
 \printbibliography
-
-\section*{Supplemental Info}
-\setcounter{table}{0}
-\setcounter{figure}{0}
-\setcounter{section}{0}
-\renewcommand{\thetable}{S\arabic{table}}
-\renewcommand{\thefigure}{S\arabic{figure}}
-\renewcommand{\thesection}{S\arabic{section}}
-
-\subsection{Other Sentiment Metrics}
-
-\subsection{Precipitation}
-
-
-%Supplement will have:
-
-%Equations used for RH and WBGT
-
-
-% Robustness checks:
-
-    % Other sentiment metrics
-    
-    % 
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Paste Bin
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Land Cover}
-To estimate land cover categories and the percentage of tree cover and impervious surfaces, we used data from the National Land Cover Database (NLCD) from the USGS' 2011  \cite{homer_completion_2015} and 2016 \cite{yang_new_2018} landcover datasets. These datasets are national land cover dataset prepared by the Multi-Resolution Land Characteristics (MRLC) Consortium.  These data are at the thirty meter resolution, and provide estimates of the fraction of tree cover and impervious surfaces.  We then associated each tweet with the land cover fraction for the nearest available year and pixel using the geolocation associated with each tweet, extracting landcover values from whichever land cover dataset year was closest in time to the date timestamp of each tweet. We used tree cover as a proxy for amount of potential shade and heat relief in a particular area and can be broadly indicative of generalized wealth. We use impervious surface cover as a proxy for relative proximity to potential natural shade and heat relief, and because individuals in urban environments may be exposed to the urban heat island effect. [NEED SOME CITATIONS HERE] 
-
-\section*{Text Snippets Not Used Here but We Might Want to Keep}
-Gaps on above we intend to fill in:
-Our research aim and objectives
-Its contribution
-
-From Intro/Background
-Changes in climate result in fluctuations in the frequency, intensity, spatial extent, duration, and timing of weather resulting in unprecedented climate extremes . Changing climate is putting pressures on environmental and social system health and necessitating changes in how we respond to environmental conditions and anticipate (and plan for) future conditions. (cite IPCC report on health and environment, also cite the Lancet report on climate and health). 
-
-[from our Jan/Feb 2020 draft working manuscript in Google Docs]
-Climate change is a universal issue as it affects every country in the world. Changes in climate result in fluctuations in the frequency, intensity, spatial extent, duration, and timing of weather resulting in unprecedented climate extremes \href{https://www.ipcc.ch/site/assets/uploads/2018/03/SREX-Chap3_FINAL-1.pdf}{(link)}. Changing climate is putting pressures on environmental and social system health and necessitating changes in how we respond to environmental conditions and anticipate (and plan for) future conditions. (cite IPCC report on health and environment, also cite the Lancet report on climate and health).
-
-Dehghan et al. 2012  The evaluation of heat stress through monitoring environmental factors and physiological responses in melting and casting industries workers. High prevalence of industrial workers experiencing heat stress. Relatively low humidity conditions made it necessary to alter their work/rest cycles. \href{http://www.ijehe.org/article.asp?issn=2277-9183;year=2012;volume=1;issue=1;spage=21;epage=21;aulast=Dehghan}{link}
-
-?. (from intro) Increased variability around environmental norms (e.g., lower/higher temperatures, changes in timing, magnitude, duration of precipitation or dry spells, etc.) can amplify the effects on systems. Increased uncertainty in planning for these events and ability to respond to them (adaptive capacity). - draw in cultural risk and social practice theories, here?
-
-NOTES: Scaling back out → we are exploring temperature and sentiment (in Tweets) across languages. This is a clear innovation that builds on the existing work from the Baylis et al. team (in their plosONE paper) and in fact is something they recommended be done - recommended to us as a team, too.
-
-We know that temps affect sentiment, but (1) Is this effect observable across languages? (2) Is this effect moderated by factors like wealth?
-
-We could ask similar questions substituting in the patent filings, too (sub-project 3 in our previous work-plan). These questions - and likely the methods used to answer these questions - are quite portable and compelling and may take the form for the patent work like this: Given we know that temperature affects worker productivity (increased temp increases productivity up to 13C, sharp negative decline thereafter), can we observe this pattern in patent filings? Across various geographies? Are there lags in filings after unusually cold or hot temperature events?
-
-For the Twitter data, using text translated into a base language is fully appropriate and a frequently used method if looking for latent text structures in topic modeling (see Proksch et al. 2018 for an alternative). For sentiment analysis on multilingual datasets, we'll need to decide on an approach (see Ling Lo et al. 2016 review) but there are several that are good. If we wanted to use another open-source option, we could follow that laid out by Lucas and others (2015).
-
-Proskch et al. 2018 paper --> \href{https://onlinelibrary.wiley.com/doi/full/10.1111/lsq.12218}{link} 
-
-Ling Lo et al. 2016 paper --> \href{https://link.springer.com/article/10.1007/s10462-016-9508-4}{link} 
-
-Lucas et al. 2015 paper --> \href{https://www.cambridge.org/core/journals/political-analysis/article/computerassisted-text-analysis-for-comparative-politics/CC8B2CF63A8CC36FE00A13F9839F92BB}{link}
- 
-
-
-
-
 
 \end{document}

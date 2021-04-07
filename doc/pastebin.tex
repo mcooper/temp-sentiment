@@ -1,0 +1,42 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Paste Bin
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Land Cover}
+To estimate land cover categories and the percentage of tree cover and impervious surfaces, we used data from the National Land Cover Database (NLCD) from the USGS' 2011  \cite{homer_completion_2015} and 2016 \cite{yang_new_2018} landcover datasets. These datasets are national land cover dataset prepared by the Multi-Resolution Land Characteristics (MRLC) Consortium.  These data are at the thirty meter resolution, and provide estimates of the fraction of tree cover and impervious surfaces.  We then associated each tweet with the land cover fraction for the nearest available year and pixel using the geolocation associated with each tweet, extracting landcover values from whichever land cover dataset year was closest in time to the date timestamp of each tweet. We used tree cover as a proxy for amount of potential shade and heat relief in a particular area and can be broadly indicative of generalized wealth. We use impervious surface cover as a proxy for relative proximity to potential natural shade and heat relief, and because individuals in urban environments may be exposed to the urban heat island effect. [NEED SOME CITATIONS HERE] 
+
+\section*{Text Snippets Not Used Here but We Might Want to Keep}
+Gaps on above we intend to fill in:
+Our research aim and objectives
+Its contribution
+
+From Intro/Background
+Changes in climate result in fluctuations in the frequency, intensity, spatial extent, duration, and timing of weather resulting in unprecedented climate extremes . Changing climate is putting pressures on environmental and social system health and necessitating changes in how we respond to environmental conditions and anticipate (and plan for) future conditions. (cite IPCC report on health and environment, also cite the Lancet report on climate and health). 
+
+[from our Jan/Feb 2020 draft working manuscript in Google Docs]
+Climate change is a universal issue as it affects every country in the world. Changes in climate result in fluctuations in the frequency, intensity, spatial extent, duration, and timing of weather resulting in unprecedented climate extremes \href{https://www.ipcc.ch/site/assets/uploads/2018/03/SREX-Chap3_FINAL-1.pdf}{(link)}. Changing climate is putting pressures on environmental and social system health and necessitating changes in how we respond to environmental conditions and anticipate (and plan for) future conditions. (cite IPCC report on health and environment, also cite the Lancet report on climate and health).
+
+Dehghan et al. 2012  The evaluation of heat stress through monitoring environmental factors and physiological responses in melting and casting industries workers. High prevalence of industrial workers experiencing heat stress. Relatively low humidity conditions made it necessary to alter their work/rest cycles. \href{http://www.ijehe.org/article.asp?issn=2277-9183;year=2012;volume=1;issue=1;spage=21;epage=21;aulast=Dehghan}{link}
+
+?. (from intro) Increased variability around environmental norms (e.g., lower/higher temperatures, changes in timing, magnitude, duration of precipitation or dry spells, etc.) can amplify the effects on systems. Increased uncertainty in planning for these events and ability to respond to them (adaptive capacity). - draw in cultural risk and social practice theories, here?
+
+NOTES: Scaling back out → we are exploring temperature and sentiment (in Tweets) across languages. This is a clear innovation that builds on the existing work from the Baylis et al. team (in their plosONE paper) and in fact is something they recommended be done - recommended to us as a team, too.
+
+We know that temps affect sentiment, but (1) Is this effect observable across languages? (2) Is this effect moderated by factors like wealth?
+
+We could ask similar questions substituting in the patent filings, too (sub-project 3 in our previous work-plan). These questions - and likely the methods used to answer these questions - are quite portable and compelling and may take the form for the patent work like this: Given we know that temperature affects worker productivity (increased temp increases productivity up to 13C, sharp negative decline thereafter), can we observe this pattern in patent filings? Across various geographies? Are there lags in filings after unusually cold or hot temperature events?
+
+For the Twitter data, using text translated into a base language is fully appropriate and a frequently used method if looking for latent text structures in topic modeling (see Proksch et al. 2018 for an alternative). For sentiment analysis on multilingual datasets, we'll need to decide on an approach (see Ling Lo et al. 2016 review) but there are several that are good. If we wanted to use another open-source option, we could follow that laid out by Lucas and others (2015).
+
+Proskch et al. 2018 paper --> \href{https://onlinelibrary.wiley.com/doi/full/10.1111/lsq.12218}{link} 
+
+Ling Lo et al. 2016 paper --> \href{https://link.springer.com/article/10.1007/s10462-016-9508-4}{link} 
+
+Lucas et al. 2015 paper --> \href{https://www.cambridge.org/core/journals/political-analysis/article/computerassisted-text-analysis-for-comparative-politics/CC8B2CF63A8CC36FE00A13F9839F92BB}{link}
+ 
+
+
+
+
+
