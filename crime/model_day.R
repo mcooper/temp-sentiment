@@ -42,6 +42,7 @@ comb$doy <- substr(comb$date, 6, 10)
 gd <- expand.grid(list(out=c('violent', 'assault', 'homicides'),
                        src=c('nibrs', 'cod'),
                        ind=c('vader', 'afinn', 'hedono')))
+
 for (i in 1:nrow(gd)){
   form <- as.formula(paste0(gd$out[i], '_', gd$src[i], ' ~ ', gd$ind[i], ' + log(population) | dow + doy + year + statemonth'))
   mod <- feglm(form, data=comb, family=poisson(link=log), weight=comb$n)

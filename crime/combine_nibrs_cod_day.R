@@ -1,5 +1,7 @@
 library(data.table)
 
+# Definition of violent crimes: https://www.law.cornell.edu/uscode/text/18/16
+
 ###############################
 # read nibrs data
 ###############################
