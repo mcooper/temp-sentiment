@@ -2,7 +2,7 @@ library(data.table)
 
 setwd('/home/ubuntu/tweets')
 
-setDTthreads(48)
+setDTthreads(36)
 options(scipen=100)
 
 #To combine the daily csvs, I ran
@@ -35,7 +35,7 @@ cen <- fread('census_all.csv',
              drop=c(4, 5, 6, 7))
 cen[ , race_majority := names(.SD)[max.col(.SD)], .SDcols= 4:7]
 #cen[ , race_white:=NULL]
-cen[ , race_black:=NULL]
+#cen[ , race_black:=NULL]
 cen[ , race_other:=NULL]
 cen[ , race_hisp:=NULL]
 cen <- unique(cen, by=c('id', 'tweet_created_at'))
@@ -86,5 +86,5 @@ all$statemonth <- paste0(substr(100000 + all$fips, 2, 3), '-', substr(all$doy, 1
 fwrite(all, 'all.csv', row.names=F)
 fwrite(all[sample(.N, .N*0.01)], 'all_samp_1pct.csv', row.names=F)
 
-system('~/telegram.sh "Donezo!"')
+system('telegram "Donezo!"')
 system('sudo poweroff')
