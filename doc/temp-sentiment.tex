@@ -13,7 +13,6 @@
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{pdflscape}
-\usepackage{subcaption}
 \usepackage{lineno}
 \usepackage[
   style=numeric,
@@ -71,7 +70,14 @@ Keywords: Text Data, Environmental Shocks, Social Media Mining, Sentiment Analys
 % BUT we know little about the interaction between heatwaves, mental health and income
 % THEREFORE: we did this really novel study.
 
+% Jeremiah Osborne-Gowey: Randy Olsen (of "Don't be such a scientist" fame) and his ABT - And But Therefor framework for communicating - https://www.huffpost.com/entry/and-but-therefore-randy-o_b_8813330
+% Jeremiah Osborne-Gowey: https://blogs.scientificamerican.com/observations/how-the-word-but-could-save-the-world/
+
+
 This work builds on existing work by \citep{baylis_weather_2018}. 
+
+
+
 
 %Intro Paragraph
 % I think this should be more about climate change and mental health broadly, as well as a bit about how income has been theorized to affect vulnerability, but there is no evidence yet.  This can be shorter as well, as we have a lot of detail in the Background section 
@@ -86,6 +92,9 @@ Human moods and mental states are important aspects of overall well-being and ca
 
 \section{Background}
 \subsection{Temperature and Mental Health}
+%Jeremiah Osborne-Gowey: We report on physiological and mental health in text here. Maybe just a heading of "health"?
+%I think physical health is beyond the scope of this paper -Matt
+
 %https://www.pnas.org/content/115/43/10953
 Higher temperatures are associated with many indicators of worsened mental health.  Multiple studies have found strong evidence that higher temperatures are associated with increases in suicides in the United States \citep{Burke2018Aug, Mullins2019Dec, Dixon2007May}, and many others have demonstrated the same relationship around the world \citep{Qi2014Dec, Page2006Aug, Likhvar2011Jan}.  In addition to suicide, other research has found effects temperature on hospitalization events related to mental health disorders such as bipolar disorder and schizophrenia \citep{Mullins2019Dec, Lee2007Jan, Shapira2004Feb, Sung2013Feb, Gupta1992Jun, Hansen2008Oct}.
 
@@ -131,6 +140,7 @@ The established association between poverty and mental health revealed that that
  
 Several reasons could explain why poverty may effect mental health. 1) the “social causation hypothesis” which suggests that stress or deprivation or decreasing the likelihood of people getting treatment may lead to poor mental health\citep{mills2015}, while social capital could reduce the likelihood of living in poverty and reduces the risk of mental disorders such as depressive symptoms and suicidal tendencies\citep{RN1291}. 2) negative life events in a person’s life such as job loss are also associated with the risks of poverty\citep{RN1293} and mental health\citep{TAMPUBOLON201420}, and the causal inferences on the effect of poverty and mental health had also been made in several studies. For example, Tampubolon and Hanandita\citep{TAMPUBOLON201420} find that individual social capital is positively associated with mental health while adverse events were negatively associated; Chang.et.al \citep{RN1291} find that subjective and objective poverty is significantly associated with a higher risk of adverse life events, less social support and mental distress. Negative life events and social support in serial mediate the relationship between subjective poverty and mental health.
 
+% jieliu.cnah: Could delete
 For children, poverty and poor maternal mental health often co-exist and are two of the risk factors for child development\citep{LUND20111502}, and maternal mental health is significantly associated with child general psychopathology\citep{ RN1289}. Researchers also find that transition into poverty increased children’s socioemotional behavior problems and maternal psychological distress \citep{WICKHAM2017e141}.
 
 In general, the relationship between mental health and income level is well established. In the study, we explore whether income level would influence the link between weather and the sentiment in Twitter-posed text.
@@ -141,7 +151,7 @@ https://www.sciencedirect.com/science/article/abs/pii/S027795362030527X
 https://www.sciencedirect.com/science/article/pii/S2468266717300117
 https://doi.org/10.1016/S2468-2667(17)30011-7
 https://link.springer.com/article/10.1007/s00127-017-1370-4
-Maybe this: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0116820
+ % Jeremiah Osborne-Gowey: Not as relevant. Saved the citation but didn't find enough relevant text to include reference to here in our manuscript. Maybe this: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0116820
 https://www.sciencedirect.com/science/article/abs/pii/S0143622814002537
 also this: https://www.sciencedirect.com/science/article/abs/pii/S0140673614614604
 
@@ -169,9 +179,19 @@ Current estimates place annual workplace productivity losses due to heat exposur
 
 The level of changes in weather influences people’s mental health and patterns of emotions expressed. A study by Sun et al. 2018 \href{file:///Users/portia/Downloads/ijerph-16-00086-v2 20(1).pdf.}{(Portia has this PDF?)} demonstrates varied relationships between haze and negative emotions of the public under different seasons of the year. Being sad or happy influences one's style and value of reasoning. Time of day, season, location, and climate allow aggregate prediction of sentiments \cite{hannak_tweetin_2012} \href{https://www.ccs.neu.edu/~amislove/publications/Weather-ICWSM.pdf}{(link to PDF)} while positive affect from an evaluative statement enhances potential responses \cite{clore_how_2007} \href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2483304/pdf/nihms40349.pdf}{(link to PDF)}. For instance, changes in temperature affects people’s response about weather. Depending on a reference temperature for an  area and time of year, people are more likely to comment on unusual weather for a particular place and time than on the same weather considered typical in another place \cite{moore_rapidly_2019}.
 
-Although climate change is an international phenomenon experienced in every country, its discussions vary from country to country. According to Vu and others \cite{vu_nationalizing_2019}, a country’s climate severity, economic status and governance determine variations in its media discussions. For example, Park and others \cite{park_mood_2013} \href{https://pdfs.semanticscholar.org/b282/feb759e57530b115dcc4bb080f96598a5246.pdf}{(link)} demonstrated that many people living in a state with higher mean temperature express more positive emotions on Twitter than those living in colder states in the US. Schmidt and others \cite{schmidt_media_2013} posit that climate severity and environmental factors related to carbon dependency influences the amount of coverage climate change receives in the media in countries like USA, Australia and Germany. Studies comparing how different countries portray climate change have been widely conducted in USA, UK, France and the Netherlands \cite{vu_nationalizing_2019}. Such comparisons are mainly between developed countries with developing countries outside the focus.  Schafer and O’Neil \cite{schafer_what_2013} advance the need for academic scholars to investigate transnational contexts within climate communication. Wealthier countries with comparatively higher GDP are likely to frame climate change as a political issue as financial resources exist for exploring research on climate change. Conversely, coverage of climate change news from poorer developing countries focus mainly on international relations. Thus, the effects of national macro economic variables that affects a country’s sociopolitical and economic development such as GDP reflects a country’s governance system in media coverage \cite{vu_what_2018}. Cultural theorists assert that, understanding such differential variations depicts how different entities interpret danger and respond to risk \cite{tansey_cultural_1999}. Inclusion of developing countries in scientific research provides an avenue for international support to such countries in responding to the effects of climate change.Yet studies attempting to explain cross-national variation in climate change public opinion is limited \cite{knight_public_2016}.
+% Jeremiah Osborne-Gowey: Remove parts of this paragraph that relate to call for international research on these linkages as we now are only focusing on USA for Tweets.
+Although climate change is an international phenomenon experienced in every country, its discussions vary from country to country. According to Vu and others \cite{vu_nationalizing_2019}, a country’s climate severity, economic status and governance determine variations in its media discussions. 
+% Jeremiah Osborne-Gowey: I think we can remove this entire paragraph now as it's outside the focus of this paper. Might be relevant for our 2nd paper!
+When removing the paragraph, cut from here and copy to the end of the doc where we have extra text saved. [DO NOT DELETE, just move from here]
 
-Public debates on the current consequences of climate change are discussed in both scientific and non-scientific mediums. People can express their emotional states and feelings - sentiment - through physical, vocal and written expressions on mediums including newspapers, scientific articles, blogs and other online social media platforms. Twitter is one of the more popular social media platforms where people express their sentiments about any number of topics. Public posts on Twitter - called tweets - are widely available for public consumption and research, and offer a glimpse into collective social state. For example, text posted to these platforms can be used to gauge the public mood, assess opinions, measure brand affinity and for emergency planning and disaster response (cites). Sentiment is frequently employed as a correlate of emotional state or mood (cites). Weather events focus public attention in different ways of expression (cites). These data offer a unique opportunity to analyze how people express and respond to events in people's daily lives, including their exposure to ambient environmental conditions.
+% Jeremiah Osborne-Gowey: This is perhaps the only piece of this paragraph still relevant for this paper...
+For example, Park and others \cite{park_mood_2013} \href{https://pdfs.semanticscholar.org/b282/feb759e57530b115dcc4bb080f96598a5246.pdf}{(link)} demonstrated that many people living in a state with higher mean temperature express more positive emotions on Twitter than those living in colder states in the US. Schmidt and others \cite{schmidt_media_2013} posit that climate severity and environmental factors related to carbon dependency influences the amount of coverage climate change receives in the media in countries like USA, Australia and Germany. Studies comparing how different countries portray climate change have been widely conducted in USA, UK, France and the Netherlands \cite{vu_nationalizing_2019}. Such comparisons are mainly between developed countries with developing countries outside the focus.  Schafer and O’Neil \cite{schafer_what_2013} advance the need for academic scholars to investigate transnational contexts within climate communication. Wealthier countries with comparatively higher GDP are likely to frame climate change as a political issue as financial resources exist for exploring research on climate change. Conversely, coverage of climate change news from poorer developing countries focus mainly on international relations. Thus, the effects of national macro economic variables that affects a country’s sociopolitical and economic development such as GDP reflects a country’s governance system in media coverage \cite{vu_what_2018}. Cultural theorists assert that, understanding such differential variations depicts how different entities interpret danger and respond to risk \cite{tansey_cultural_1999}. Inclusion of developing countries in scientific research provides an avenue for international support to such countries in responding to the effects of climate change.Yet studies attempting to explain cross-national variation in climate change public opinion is limited \cite{knight_public_2016}.
+
+Public debates on the current consequences of climate change are discussed in both scientific and non-scientific mediums. 
+% Jeremiah Osborne-Gowey: Need a better transition here between meteorological conditions and effect on mood (expressed as sentiment). Feels like we're missing a discussion (new paragraph?) just above here that discusses this. This might be where we plug in the text PAW is working on?
+People can express their emotional states and feelings - sentiment - through physical, vocal and written expressions on mediums including newspapers, scientific articles, blogs and other online social media platforms. Twitter is one of the more popular social media platforms where people express their sentiments about any number of topics. Public posts on Twitter - called tweets - are widely available for public consumption and research, and offer a glimpse into collective social state. For example, text posted to these platforms can be used to gauge the public mood, assess opinions, measure brand affinity and for emergency planning and disaster response (cites). 
+% Jeremiah Osborne-Gowey: Good to cite the top-cited public opinion papers, the Twitter flood study from CU, others from data science field including another Baylis paper
+Sentiment is frequently employed as a correlate of emotional state or mood (cites). Weather events focus public attention in different ways of expression (cites). These data offer a unique opportunity to analyze how people express and respond to events in people's daily lives, including their exposure to ambient environmental conditions.
 
 
 
@@ -182,60 +202,62 @@ Building on previous findings from Baylis and others, we hypothesize that local 
 \section{Results}
 
 \subsection{Overall Effect}
-We examined the relationship between the sentiment expressed in tweets and the prevailing Wet Bulb Globe Temperature (WBGT), an indicator of heat stress that accounts for temperature, humidity, wind speed, and solar radiation.  We then explored how the racial and income characteristics of neighborhoods moderate the relationship between WBGT and sentiment.  Finally, we show how twitter sentiment is an important overall indicator of mental health by assessing the relationship between daily sentiment at the county level and the prevalence of crime and suicide. 
-
-and sentiment, first examining the overall relationship, and then exploring heterogeneities based on neighborhood income per capita and race.
+We examined the relationship between the sentiment expressed in tweets and the prevailing Wet Bulb Globe Temperature (WBGT), an indicator of heat stress that accounts for temperature, humidity, wind speed, and solar radiation.  Controlling for a variety of fixed effects, we found that, across all tweets, higher temperatures are associated with lower sentiment (See Fig. \ref{fig:wbgt}).  Sentiment is highest at a WBGT of 5 degrees Celsius (a dry bulb temperature typically around 12C/54F).  The greatest declines in sentiment are observed between 20-25 degrees WBGT (dry bulb 29-36C/84-97F).  Sentiment also declines with colder temperatures, but only slightly.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.5\linewidth]{../res/wbgt.png}
   \caption{Relationship between Wet Bulb Globe Temperature (WBGT) and sentiment in tweets.  As temperatures increase, sentiment declines.}
-  \label{fig:wbgt-income}
+  \label{fig:wbgt}
 \end{figure}
 
-Sentiment is highest at a WBGT of 5 degrees celsius (a dry bulb temperature typically around 12C/54F).  The greatest declines in sentiment are observed between 20-25 degrees WBGT (dry bulb 29-36C/84-97F).  Sentiment also declines with colder temperatures, but only slightly.   
+We then explored how the racial and income characteristics of neighborhoods moderate the relationship between WBGT and sentiment (See Fig \ref{fig:sub1}).  We found that neighborhood income strongly moderates the relationship between temperature and sentiment.  As temperatures increase to moderate heat of 20 WBGT (29C/84F), sentiment decreases for most neighborhoods, but increases in neighborhoods in the 95th income percentile.  These rich do not see decreases in sentiment until temperatures are above 20 WBGT (29C/84F), at which point sentiment decreases evenly across income ranges, still leaving a large gap in expressed sentiment from low to high-income neighborhoods.
+
+We examined patterns of temperature and sentiment for neighborhoods that had a majority population of four broad racial categories - non-hispanic black, non-hispanic white, hispanic of any race, and other, which includes native american, multi-racial, and asian-american and pacific islander.  While people in neighborhoods of all racial compositions were affected by heat, people in majority black neighborhoods were much more affected than others  (See Fig \ref{fig:sub2}).  Relative to an optimum temperature of 5 WBGT (12C/54F), as temperatures increase to 30 WBGT (42C/108F), the sentiment of tweets in majority black neighborhoods decreases four-times as much as people in other neighborhoods.  Additionally, at levels of moderate heat from 10 WBGT (19C/66F) to 25 WBGT (36C/97F), people in majority hispanic neighborhoods have slightly lower sentiment than people in majority white or other neighborhoods, although this gap closes with high temperatures.
 
 \begin{figure}[H]
 \centering
 \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width=\linewidth]{../res/wbgt-income.png}
-  \caption{Effect of changes in wet-bulb globe temperature on expressed sentiment relationship as moderated by neighborhood income.}
+  \caption{}
   \label{fig:sub1}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width=\linewidth]{../res/wbgt-race_q.png}
-  \caption{Effect of changes in wet-bulb globe temperature on expressed sentiment relationship as moderated by neighborhood majority race.}
+  \caption{}
   \label{fig:sub2}
 \end{subfigure}
-\caption{How the relationship between WBGT and sentiment is moderated }
+\caption{Effect of changes in wet-bulb globe temperature on expressed sentiment relationship as moderated by neighborhood income (a) and race (b).}
+\label{fig:test}
+\end{figure}
+
+\subsection{Effects by Combined Statistical Area}
+
+To examine whether local factors may determine the relationship between 
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.6\textwidth}
+  \includegraphics[width=\linewidth]{../res/map_wbgt.png}
+  \caption{}
+  \label{fig:map1}
+\end{subfigure}
+\begin{subfigure}{.6\textwidth}
+  \includegraphics[width=\linewidth]{../res/map_wbgt_income.png}
+  \caption{}
+  \label{fig:map2}
+\end{subfigure}
+\caption{Effects of rising temperatures on sentiment by Combined Statistical Areas (CSAs) with over 1 million people.  The value shown is the predicted change in the size of the gap in vader score across between the 5th and 95 percentile for income (a) and the 95th and 5th percentile for percent black (b) as temperatures increase from 5 WBGT to 30 WBGT.  CSAs with a statistically significant effect ($p < 0.05$) are outlined in black.}
 \label{fig:test}
 \end{figure}
 
 
-\subsection{Effects by Combined Statistical Area}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.75\linewidth]{../res/map_wbgt.png}
-  \caption{Effects of rising temperatures on sentiment by Combined Statistical Areas (CSAs) with over 1 million people.  The value shown is the predicted change in vader score for a 25-degree increase in temperatures.  CSAs with a statistically significant effect ($p < 0.1$) are outlined in black.}
-  \label{fig:map-wbgt}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.75\linewidth]{../res/map_wbgt_income.png}
-  \caption{Expected gap in sentiment scores between poor and rich neighborhoods, by Combined Statistical Areas (CSAs) with over 1 million people.  The value shown is the predicted gap in vader scores for a 25-degree increase in temperatures between neighborhoods at the 5th percentile and the 90th percentile for income.  CSAs with a statistically significant effect ($p < 0.1$) are outlined in black.}
-  \label{fig:map-wbgt-income}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.75\linewidth]{../res/map_wbgt_race.png}
-  \caption{Expected gap in sentiment scores between largely minority and largely white neighborhoods, by Combined Statistical Areas (CSAs) with over 1 million people.  The value shown is the predicted gap in vader scores for a 25-degree increase in temperatures between neighborhoods at the 5th percentile and the 95th percentile for whiteness.  CSAs with a statistically significant effect ($p < 0.1$) are outlined in black.}
-  \label{fig:map-wbgt-race}
-\end{figure}
+Expected gap in sentiment scores between poor and rich neighborhoods, by Combined Statistical Areas (CSAs) with over 1 million people.  The value shown is the predicted gap in vader scores for a 25-degree increase in temperatures between neighborhoods at the 5th percentile and the 90th percentile for income.  CSAs with a statistically significant effect ($p < 0.1$) are outlined in black.
+E
+xpected gap in sentiment scores between largely minority and largely white neighborhoods, by Combined Statistical Areas (CSAs) with over 1 million people.  The value shown is the predicted gap in vader scores for a 25-degree increase in temperatures between neighborhoods at the 5th percentile and the 95th percentile for whiteness.  CSAs with a statistically significant effect ($p < 0.1$) are outlined in black.
 
 
 \subsection{Effects by Time of Day}
@@ -278,6 +300,10 @@ Comment from Patrick Baylis on our "preliminary results" doc
 
 \section{Discussion}
 
+% This could honestly be its own appendix section
+  The change from optimum temperature of 5WBGT (12C/54F) to a heatwave of 25WBGT (36C/97F) is associated with an overall decrease in the vader sentiment score of 0.01.  This is similar to the degree of change in sentiment over the course of a week from a Monday nadir (0.1268) to a Saturday peak (0.1372).  Additionally, over the study period from 2009-2019, suicides followed a very similar weekly pattern, peaking on Mondays and declining over the course of the week until Saturday.  From Saturday to Monday, suicides increase 23\%.  Thus, while research on linkages between sentiment and other mental health outcomes like suicides and hospitalizations is still nascent, there are clear similarities in patters of sentiment at some time scales.  Moreover, both suicides and sentiment are affected by higher temperatures.  Thus, while twitter sentiments are the only mental health indicator available at fine enough spatial and temporal scales to examine neighborhood and hourly effects, these changes in sentiment are representative of real human suffering, and are also very likely indicative of medical outcomes like suicides and hospitalizations.
+
+
 \section{Data}
 A proposed list of tables and figures:
 Figures for location of USA Tweets (to show aggregation and coverage).
@@ -286,6 +312,8 @@ Table 1. Variable descriptions for what's included in our models.
 Table 2. Descriptive statistics for datasets/variables we include.
 Table 3. Model results with variables included in the models coefficients, SEs, p-values, sample size.
 Appendix table. Sentiment scores across all types we considered.
+
+Weird effect of southwest - WBGT means this is more likely to be cultural than due to different heat effects.
 
 
 \section{Methods}
