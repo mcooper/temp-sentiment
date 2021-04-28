@@ -151,6 +151,8 @@ ggsave('~/temp-sentiment/res/map_wbgt_race.png', width=12, height=8)
 ###########################
 m <- merge(csa_sf, allres %>% filter(term == 'wbgt:race_black'))
 m$estimate <- 25*(m$estimate/(qs_white[20] - qs_white[2]))
+m <- m %>%
+  filter(id %in% csadat$id[csadat$black > 0.05])
 ggplot() + 
   geom_sf(data = states) + 
   geom_sf(data = m, aes(fill=estimate)) + 

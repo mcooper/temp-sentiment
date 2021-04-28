@@ -1,40 +1,80 @@
 library(data.table)
+library(tidyverse)
 
 setwd('~/tweets/')
 
 data <- fread('all.csv')
+data$month <- substr(data$statemonth, 4, 5)
+data$state <- substr(100000 + data$fips, 2, 3)
 
-# Day of Week, Time of Day
-dow_tod <- data[ , .(vader = mean(vader)), .(dow, tod)]
+# Export from https://wonder.cdc.gov/ucd-icd10.html
+# 1. Group Results by Month and Weekday
+# 2. Lower 48 states at all categories of urbanization
+# 3. All ages, genders, origins, races
+# 4. Years 2009-2019
+# 5. All weekdays, all values, all places
+# 6. Injry Intent and Mechanism: Injury Intent: Suicide, Mechanism: All Causes of Death
+sui <- read.delim('suicide/Suicides by Day of Week-Month.txt', nrows=1056) %>%
+  filter(Weekday != 'Unknown') %>%
+  mutate(month = substr(Month, 1, 3),
+         year = as.numeric(substr(Month.Code, 1, 4)),
+         suicides = as.numeric(Deaths)) %>%
+  select(month, year, dow=Weekday, suicides)
 
-dow_tod[dow_tod$vader %in% c(max(dow_tod$vader), min(dow_tod$vader)), ]
+rescale <- function(x){
+  x <- x - min(x)
+  x <- x/max(x)
+  x
+}
 
-        dow  tod      vader
-1: Thursday 04:0 0.07818882
-2:   Sunday 08:0 0.21021752
-
-# Day of week
+# Day of Week
 dow_df <- data[ , .(vader = mean(vader)), .(dow)]
 
-dow_df[dow_df$vader %in% c(max(dow_df$vader), min(dow_df$vader)), ]
+m <- merge(dow_df, sui %>%
+                     group_by(dow) %>%
+                     summarize(suicides=sum(suicides))) %>%
+  mutate(suicides = rescale(suicides),
+         vader = rescale(vader),
+         vader = 1 - vader) %>%
+  gather(key, val, -dow)
+m$dow <- factor(m$dow, levels=c('Sunday', 'Monday', 'Tuesday', 'Wednesday',
+                                'Thursday', 'Friday', 'Saturday'))
 
-         dow     vader
-1:    Sunday 0.1366292
-2:  Saturday 0.1371815
-3:    Friday 0.1338290
-4:  Thursday 0.1305909
-5: Wednesday 0.1294679
-6:   Tuesday 0.1267888
-7:    Monday 0.1269388
+ggplot(m) + 
+  geom_line(aes(x=dow, y=val, color=key, group=key))
 
-# Day of Year
-doy_df <- data[ , .(vader = mean(vader)), .(doy)]
-doy_df <- doy_df[doy_df$doy != '02-29', ]
+# Month of Year
+moy_df <- data[ , .(vader = mean(vader)), .(month)]
+moy_df$month <- month.abb[as.numeric(moy_df$month)]
 
-doy_df[doy_df$vader %in% c(max(doy_df$vader), min(doy_df$vader)), ]
+m <- merge(moy_df, sui %>%
+                     group_by(month) %>%
+                     summarize(suicides=sum(suicides))) %>%
+  mutate(suicides = rescale(suicides),
+         vader = rescale(vader),
+         vader = 1 - vader) %>%
+  gather(key, val, -month)
 
-     doy     vader
-1: 12-25 0.2080047
-2: 12-14 0.1201150
+m$month <- factor(m$month, levels=month.abb)
+
+ggplot(m) + 
+  geom_line(aes(x=month, y=val, color=key, group=key))
+
+# State
+sui <- read.delim('suicide/Suicides by State.txt', nrows=49) %>%
+  mutate(suicides = as.numeric(Crude.Rate),
+         state = as.numeric(State.Code)) %>%
+  select(state, suicides)
+
+state_df <- data[ , .(vader = mean(vader)), .(state)]
+state_df$state <- as.numeric(state_df$state)
+
+m <- merge(state_df, sui)
+plot(m$vader, m$suicides)
+summary(lm(suicides ~ vader, data=m))
+
+
+
+
 
 
