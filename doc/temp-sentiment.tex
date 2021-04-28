@@ -86,14 +86,15 @@ Human moods and mental states are important aspects of overall well-being and ca
 
 \section{Background}
 \subsection{Temperature and Mental Health}
+%https://www.pnas.org/content/115/43/10953
 Higher temperatures are associated with many indicators of worsened mental health.  Multiple studies have found strong evidence that higher temperatures are associated with increases in suicides in the United States \citep{Burke2018Aug, Mullins2019Dec, Dixon2007May}, and many others have demonstrated the same relationship around the world \citep{Qi2014Dec, Page2006Aug, Likhvar2011Jan}.  In addition to suicide, other research has found effects temperature on hospitalization events related to mental health disorders such as bipolar disorder and schizophrenia \citep{Mullins2019Dec, Lee2007Jan, Shapira2004Feb, Sung2013Feb, Gupta1992Jun, Hansen2008Oct}.
 
 Temperature has been hypothesized to impact mental health through a number of pathways.  Work on biological mechanisms emphasize that there may be mental health effects from maintaining stable body temperature in high heat \cite{Lohmus2018Jul}.  Additionally, recent studies have found that nighttime temperatures affects sleep quality \citep{Obradovich2017May, Mullins2019Dec}
 
 % The pathways
-Higher temperature associated with climate change could influence mental health directly by exposing people to trauma. It could also indirectly influence mental health by affecting (1) physical health and (2)community wellbeing\citep{RN1314}. For the direct influence pathway, extreme heat events or increasing temperatures have been associated with the increase in aggression,higher suicide rates and other hospital admissions(Anderson and Anderson 1998,Cheatwood 1995; Cohn et al. 2004,Bouchama et al.2007.). Heat exposures in working environments could also reduce people's capacity to deal with physical and mental task, and increase the risk of accidents, because of the excessive core body temperature and dehydration((Bridger 2003; Kerslake 1972; Kjellstrom et al.2009d,Leithead and Lind 1964,Schrier et al. 1970). The loss of work capacity would in turn result in loss of income, which could also cause mental health problems(Kjellstrom 2009b).
+Higher temperature associated with climate change could influence mental health directly by exposing people to trauma. It could also indirectly influence mental health by affecting (1) physical health and (2)community wellbeing\citep{RN1314}. For the direct influence pathway, extreme heat events or increasing temperatures have been associated with the increase in aggression,higher suicide rates and other hospital admissions(Anderson and Anderson 1998,Cheatwood 1995; Cohn et al. 2004,Bouchama et al.2007.). Heat exposures in working environments could also reduce people's capacity to deal with physical and mental task, and increase the risk of accidents, because of the excessive core body temperature and dehydration((Bridger 2003; Kerslake 1972; Kjellstrom et al.2009d,Leithead and Lind 1964,Schrier et al. 1970). The loss of work capacity would in turn result in loss of income, which could also cause mental health problems(Kjellstrom 2009b).%% more physiological terms 
 
-As for the indirect pathway, first, because of the reciprocal causation relationship between physical health problems and mental health problems(Miller et al. 2009; Prince et al. 2007), heat exposures associated with climate change along with other climate events and indirect health risks threatening physical health will directly influence mental health((Berry 2007,World Health Organization 2008b). 
+As for the indirect pathway, first, because of the reciprocal causation relationship between physical health problems and mental health problems(Miller et al. 2009; Prince et al. 2007), heat exposures associated with climate change along with other climate events and indirect health risks threatening physical health will directly influence mental health((Berry 2007,World Health Organization 2008b). Second，disordered temperature associated with climate change may destroy the economic in agricultural-production-dependent communities. For example, extreme heat reduces the work capacity of laborers in farm fields(Kjellstrom et al. 2009d), which further destroys agricultural-supported industries in local area(Berry et al. 2008). The following economic pressures would undermine social capital and then lead to mental health problems.
 
 % Heatwaves are known to worsen mental health
 
@@ -117,6 +118,7 @@ https://www.psychologytoday.com/us/blog/greening-the-media/201809/global-warming
 % Perceived income level
 
 % Talk more about race
+% This is interesting: https://www.pnas.org/content/118/17/e2019624118.abstract?etoc
 
 The relationship between income, socioeconomic status (SES), well-being and mental health is one of the strongest established patterns in psycho-social literature \citep{Easterlin1974Jan, holzer1986increased, Perry1996Sep} (I cant find Ng et al. 2014). Much of the research into these patterns focuses on the inequalities and distribution of the effects on individual well-being. Subsequent work on mental health outcomes, one measure of well-being, have established strong associations between SES, income and mental health with the most and least privileged most commonly associated with the best and worse mental health experiences and outcomes, respectively \citep{Sevenson2008Aug}(cites: Ng et al. 2014). 
 
@@ -178,6 +180,8 @@ Here, we report on associations between meteorological conditions and expressed 
 Building on previous findings from Baylis and others, we hypothesize that local ambient environmental conditions have a strong connection how people are feeling as expressed in the sentiment of text messages posted on Twitter [H1]. Second, we hypothesize that the weather-sentiment link will be stronger in low-income areas. That is to say, people in lower income areas will be have lower sentiment scores than those in wealthier areas. [H2].
 
 \section{Results}
+
+\subsection{Overall Effect}
 We examined the relationship between the sentiment expressed in tweets and the prevailing Wet Bulb Globe Temperature (WBGT), an indicator of heat stress that accounts for temperature, humidity, wind speed, and solar radiation.  We then explored how the racial and income characteristics of neighborhoods moderate the relationship between WBGT and sentiment.  Finally, we show how twitter sentiment is an important overall indicator of mental health by assessing the relationship between daily sentiment at the county level and the prevalence of crime and suicide. 
 
 and sentiment, first examining the overall relationship, and then exploring heterogeneities based on neighborhood income per capita and race.
@@ -202,7 +206,7 @@ Sentiment is highest at a WBGT of 5 degrees celsius (a dry bulb temperature typi
 \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width=\linewidth]{../res/wbgt-race_q.png}
-  \caption{Effect of changes in wet-bulb globe temperature on expressed entiment relationship as moderated by neighborhood majority race.}
+  \caption{Effect of changes in wet-bulb globe temperature on expressed sentiment relationship as moderated by neighborhood majority race.}
   \label{fig:sub2}
 \end{subfigure}
 \caption{How the relationship between WBGT and sentiment is moderated }
@@ -210,6 +214,52 @@ Sentiment is highest at a WBGT of 5 degrees celsius (a dry bulb temperature typi
 \end{figure}
 
 
+\subsection{Effects by Combined Statistical Area}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\linewidth]{../res/map_wbgt.png}
+  \caption{Effects of rising temperatures on sentiment by Combined Statistical Areas (CSAs) with over 1 million people.  The value shown is the predicted change in vader score for a 25-degree increase in temperatures.  CSAs with a statistically significant effect ($p < 0.1$) are outlined in black.}
+  \label{fig:map-wbgt}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\linewidth]{../res/map_wbgt_income.png}
+  \caption{Expected gap in sentiment scores between poor and rich neighborhoods, by Combined Statistical Areas (CSAs) with over 1 million people.  The value shown is the predicted gap in vader scores for a 25-degree increase in temperatures between neighborhoods at the 5th percentile and the 90th percentile for income.  CSAs with a statistically significant effect ($p < 0.1$) are outlined in black.}
+  \label{fig:map-wbgt-income}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\linewidth]{../res/map_wbgt_race.png}
+  \caption{Expected gap in sentiment scores between largely minority and largely white neighborhoods, by Combined Statistical Areas (CSAs) with over 1 million people.  The value shown is the predicted gap in vader scores for a 25-degree increase in temperatures between neighborhoods at the 5th percentile and the 95th percentile for whiteness.  CSAs with a statistically significant effect ($p < 0.1$) are outlined in black.}
+  \label{fig:map-wbgt-race}
+\end{figure}
+
+
+\subsection{Effects by Time of Day}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\linewidth]{../res/ts.png}
+  \caption{Effects of rising temperatures on sentiment by hour of the day, with a 95\% confidence interval.  The value shown is the predicted change in vader score for a 25-degree increase in temperatures.}
+  \label{fig:map-wbgt}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\linewidth]{../res/ts_income.png}
+  \caption{Expected gap in sentiment scores between largely minority and largely white neighborhoods, by hour of the day, with a 95\% confidence interval.  The value shown is the predicted gap in vader scores for a 25-degree increase in temperatures between neighborhoods at the 5th percentile and the 95th percentile for income.}
+  \label{fig:map-wbgt-income}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\linewidth]{../res/ts_race.png}
+  \caption{Expected gap in sentiment scores between largely minority and largely white neighborhoods, by hour of the day, with a 95\% confidence interval.  The value shown is the predicted gap in vader scores for a 25-degree increase in temperatures between neighborhoods at the 5th percentile and the 95th percentile for whiteness.}
+  \label{fig:map-wbgt-race}
+\end{figure}
 
 
 Figure of heatmap of tweet density across USA (pick a year? entire dataset of georeferenced tweets?)
@@ -236,12 +286,7 @@ Table 1. Variable descriptions for what's included in our models.
 Table 2. Descriptive statistics for datasets/variables we include.
 Table 3. Model results with variables included in the models coefficients, SEs, p-values, sample size.
 Appendix table. Sentiment scores across all types we considered.
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\linewidth]{../res/Boston_Map.png}
-  \caption{Here is a map of all tweets in boston, overlaid with income by census block}
-  \label{fig:timeseries}
-\end{figure}
+
 
 \section{Methods}
 \subsection{Tweets}
