@@ -5,7 +5,7 @@ library(USAboundaries)
 fips <- read_sf('~/tweets/csa/', 'USA_Counties') %>%
   filter(!STATE_NAME %in% c('Alaska', 'Hawaii', 'Puerto Rico')) %>%
   st_centroid %>%
-  select(FIPS, POPULATION)
+  select(FIPS, POPULATION, BLACK)
 
 msa <- read_sf('~/tweets/csa', 'fb19722c-442d-4b5e-8649-268605c4817b2020313-1-17yu7nk.hr3gl') %>%
   filter(CBSA_TYPE == 'Metropolitan') %>%
@@ -20,22 +20,28 @@ j <- st_join(fips, csa, join=st_within) %>%
 j2 <- j %>%
   filter(!(is.na(CSA_ID) & is.na(MSA_ID))) %>%
   group_by(CSA_ID) %>%
-  mutate(CSA_POP = sum(POPULATION)) %>%
+  mutate(CSA_POP = sum(POPULATION),
+         CSA_BLACK = sum(BLACK)) %>%
   group_by(MSA_ID) %>%
-  mutate(MSA_POP = sum(POPULATION)) %>%
+  mutate(MSA_POP = sum(POPULATION),
+         MSA_BLACK = sum(BLACK)) %>%
   st_drop_geometry %>%
   arrange(CSA_POP, MSA_POP)
 j2$MSA_POP[is.na(j2$MSA_ID)] <- NA
 j2$CSA_POP[is.na(j2$CSA_ID)] <- NA
+j2$MSA_BLACK[is.na(j2$MSA_ID)] <- NA
+j2$CSA_BLACK[is.na(j2$CSA_ID)] <- NA
 
 #filter to CSA_POP > 1 mill OR MSA_POP > 1 mill
 j2 <- j2 %>%
   filter(CSA_POP > 1000000 |  MSA_POP > 1000000) %>%
   select(-matches('NAME')) %>%
   mutate(id = ifelse(is.na(CSA_ID), MSA_ID, CSA_ID),
-         pop = ifelse(is.na(CSA_POP), MSA_POP, CSA_POP)) %>%
+         pop = ifelse(is.na(CSA_POP), MSA_POP, CSA_POP),
+         black = ifelse(is.na(CSA_BLACK), MSA_BLACK, CSA_BLACK),
+         black = black/pop) %>%
   ungroup %>%
-  select(fips=FIPS, id, pop)
+  select(fips=FIPS, id, pop, black)
 
 #Make combined shapefile of CSAs > 1 mill and MSAs > 1 mill
 shp <- bind_rows(msa %>%
