@@ -10,8 +10,9 @@ library(broom)
 dat <- fread('~/tweets/all.csv')
 
 dat$date <- paste0(dat$year, '-', dat$doy)
+dat$state <- substr(dat$fips + 100000, 2, 3)
 
-dat_day <- dat[ , .(afinn=mean(afinn), hedono=mean(hedono), vader=mean(vader), n=length(vader)), .(fips, date)]
+dat_day <- dat[ , .(afinn=mean(afinn), hedono=mean(hedono), vader=mean(vader), n=length(vader)), .(state, date)]
 
 ###############################
 # read crime data
@@ -19,6 +20,33 @@ dat_day <- dat[ , .(afinn=mean(afinn), hedono=mean(hedono), vader=mean(vader), n
 
 crim <- fread('~/tweets/crime/crime_cod_nibrs.csv')
 crim$date <- as.character(crim$date)
+crim$dow <- lubridate::wday(ymd(crim$date), label=TRUE)
+crim$state <- substr(crim$fips + 100000, 2, 3)
+
+crim$homicides <- rowSums(crim[ , c('homicides_nibrs', 'homicides_cod')], na.rm=T)
+crim$violent <- rowSums(crim[ , c('violent_nibrs', 'violent_cod')], na.rm=T)
+crim$assault <- rowSums(crim[ , c('assault_nibrs', 'assault_cod')], na.rm=T)
+
+crim2 <- crim[ , .(homicides_nibrs=sum(homicides_nibrs, na.rm=T),
+                   violent_nibrs=sum(violent_nibrs, na.rm=T),
+                   assault_nibrs=sum(assault_nibrs, na.rm=T),
+                   homicides_cod=sum(homicides_cod, na.rm=T),
+                   violent_cod=sum(violent_cod, na.rm=T),
+                   assault_cod=sum(assault_cod, na.rm=T)),
+             .(dow)]
+
+rescale <- function(x){
+  x <- x - min(x)
+  x <- x/max(x)
+  x
+}
+
+crim3 <- crim2 %>%
+  mutate_if(is.numeric, rescale) %>%
+  gather(key, value, -dow)
+
+ggplot(crim3) + 
+  geom_line(aes(x=dow, y=value, color=key, group=key))
 
 ######################################
 # Combine
@@ -26,12 +54,12 @@ crim$date <- as.character(crim$date)
 
 comb <- merge(crim, dat_day, all.x=T)
 comb$year <- as.numeric(substr(comb$date, 1, 4))
-comb$state <- as.factor(floor(comb$fips/1000))
+#comb$state <- as.factor(floor(comb$fips/1000))
 comb$month <- as.factor(substr(comb$date, 6, 7))
 
-comb$countymonth <- paste0(comb$fips, '-', comb$month)
-comb$stateyear <- paste0(comb$state, '-', comb$year)
-comb$statemonth <- paste0(comb$state, '-', comb$month)
+#comb$countymonth <- paste0(comb$fips, '-', comb$month)
+#comb$stateyear <- paste0(comb$state, '-', comb$year)
+#comb$statemonth <- paste0(comb$state, '-', comb$month)
 comb$dow <- as.factor(wday(ymd(comb$date)))
 comb$doy <- substr(comb$date, 6, 10)
 
@@ -39,22 +67,24 @@ comb$doy <- substr(comb$date, 6, 10)
 # Model
 #################################3
 
+#gd <- expand.grid(list(out=c('violent', 'assault', 'homicides'),
+#                       src=c('nibrs', 'cod'),
+#                       ind=c('vader', 'afinn', 'hedono')))
 gd <- expand.grid(list(out=c('violent', 'assault', 'homicides'),
-                       src=c('nibrs', 'cod'),
                        ind=c('vader', 'afinn', 'hedono')))
 
 for (i in 1:nrow(gd)){
-  form <- as.formula(paste0(gd$out[i], '_', gd$src[i], ' ~ ', gd$ind[i], ' + log(population) | dow + doy + year + statemonth'))
-  mod <- feglm(form, data=comb, family=poisson(link=log), weight=comb$n)
+  form <- as.formula(paste0(gd$out[i], ' ~ ', gd$ind[i], ' + log(population) | dow + doy + year + month + state'))
+  mod <- feglm(form, data=comb[comb$n > 1000], family=poisson(link=log), weight=comb$n[which(comb$n > 1000)])
   td <- tidy(mod)
   gd$statistic[i] <- td[td$term == gd$ind[i], 'statistic', drop=T]
   gd$aic[i] <- AIC(mod)
 
-  form <- as.formula(paste0(gd$out[i], '_', gd$src[i], ' ~ ', gd$ind[i], ' + log(population) | dow + doy + year + statemonth + fips'))
-  mod <- feglm(form, data=comb, family=poisson(link=log), weight=comb$n)
-  td <- tidy(mod)
-  gd$statistic2[i] <- td[td$term == gd$ind[i], 'statistic', drop=T]
-  gd$aic2[i] <- AIC(mod)
+  # form <- as.formula(paste0(gd$out[i], '_', gd$src[i], ' ~ ', gd$ind[i], ' + log(population) | dow + doy + year + month + state'))
+  # mod <- feglm(form, data=comb, family=poisson(link=log), weight=comb$n)
+  # td <- tidy(mod)
+  # gd$statistic2[i] <- td[td$term == gd$ind[i], 'statistic', drop=T]
+  # gd$aic2[i] <- AIC(mod)
 }
 
 # Strong effects, until we control for FIPS

@@ -121,32 +121,6 @@ ggplot() +
 ggsave('~/temp-sentiment/res/map_wbgt_income.png', width=12, height=8)
 
 #############################
-# Nonwhite results
-###########################
-m <- merge(csa_sf, allres %>% filter(term == 'wbgt:race_white'))
-m$estimate <- 25*(m$estimate/(qs_white[2] - qs_white[20]))
-ggplot() + 
-  geom_sf(data = states) + 
-  geom_sf(data = m, aes(fill=est_change)) + 
-  geom_sf(data = states, fill=NA) + 
-  geom_sf(data = m, fill=NA, aes(color=p.value < 0.05, size=p.value < 0.05)) + 
-  scale_fill_gradient2(low='#d01c8b', mid='#f7f7f7', high='#4dac26', midpoint=0) + 
-  scale_color_manual(values=c('TRUE'='#000000', 'FALSE'=NA)) +
-  scale_size_manual(values=c(1, 1.1)) +
-  guides(color=FALSE, size=FALSE,
-         fill = guide_colourbar(title.position="top", title.hjust = 0.5)) + 
-  theme_void() + 
-  theme(legend.position=c(0.2, 0.1),
-        legend.direction='horizontal',
-        legend.key.width=unit(2, 'cm'),
-        legend.key.height=unit(1, 'cm'),
-        legend.text=element_text(size=rel(2)),
-        legend.title=element_text(size=rel(2))) + 
-  coord_sf(crs='epsg:2163') + 
-  labs(fill='Gap in Sentiment')
-ggsave('~/temp-sentiment/res/map_wbgt_race.png', width=12, height=8)
-
-#############################
 # Black results
 ###########################
 m <- merge(csa_sf, allres %>% filter(term == 'wbgt:race_black'))
