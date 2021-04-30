@@ -233,31 +233,31 @@ We examined patterns of temperature and sentiment for neighborhoods that had a m
 \label{fig:test}
 \end{figure}
 
+We ran models using multiple sentiment indicators, and found similar results no matter which sentiment metric was used (See Appendix).
+
 \subsection{Effects by Combined Statistical Area}
 
-To examine whether local factors may determine the relationship between 
+To further explore our findings, we examined inequalities in the impacts of higher temperatures on sentiment by Combined Statistical Areas (CSAs) and Metropolitan Statistical Areas (MSAs) with over 1 million people (hereafter: cities).  We examined the change in size of the gap in sentiment scores between both poor and rich neighborhoods, as well as black and non-black neighborhoods, as temperatures change from optimum temperatures of 5 WBGT (12C/54F) to 30 WBGT (42C/108F).
+
+We found increasing inequalities in sentiment across income groups for 68.8\% of cities, with 35.6\% of these having a statistically significant effect (15 cities).  Cities with a significantly unequal effect were found in the south, midwest, northeast, northwest, and southwest, although they were most common in the mid-atlantic region.  Additionally, many cities in the southwest had an inverted effect, where higher temperatures actually narrowed the gap in sentiment between rich and poor neighborhoods, including Denver and Oklahoma City, which had a statistically significant inverted effect.
+
+Because we found a much stronger effect for the effects of temperature on sentiment in majority black neighborhoods, we also examined increases in sentiment gaps between black and non-black neighborhoods in cities with a black population greater than 5\% of the total population.  We found increasing inequalities in sentiment for more black neighrborhoods in 64.7\% of cities, with a significant effect in 21.2\% of those (7 cities).  Additionally, three sunbelt cities had a significant inverted effect.  The patterns of inequalities in the impacts of heat on sentiment by race were similar to inequalities by income: cities with large and significant inequalities were found the mid-atlantic and midwest, as well as central florida.
 
 \begin{figure}[H]
 \centering
-\begin{subfigure}{.6\textwidth}
-  \includegraphics[width=\linewidth]{../res/map_wbgt.png}
+\begin{subfigure}{0.75\textwidth}
+  \includegraphics[width=\linewidth]{../res/map_wbgt_income.png}
   \caption{}
   \label{fig:map1}
 \end{subfigure}
-\begin{subfigure}{.6\textwidth}
-  \includegraphics[width=\linewidth]{../res/map_wbgt_income.png}
+\begin{subfigure}{0.75\textwidth}
+  \includegraphics[width=\linewidth]{../res/map_wbgt_black.png}
   \caption{}
   \label{fig:map2}
 \end{subfigure}
-\caption{Effects of rising temperatures on sentiment by Combined Statistical Areas (CSAs) with over 1 million people.  The value shown is the predicted change in the size of the gap in vader score across between the 5th and 95 percentile for income (a) and the 95th and 5th percentile for percent black (b) as temperatures increase from 5 WBGT to 30 WBGT.  CSAs with a statistically significant effect ($p < 0.05$) are outlined in black.}
+\caption{Inequalities in impacts of temperature on sentiment by CSAs and MSAs with over 1 million people.  The value shown is the predicted change in the size of the gap in vader score as temperatures increase from 5 WBGT to 30 WBGT between the 5th and 95 percentile for income (a) and the 95th and 5th percentile for percent black (b).  CSAs with a statistically significant effect ($p < 0.05$) are outlined in black.  For racial inequalities (b), only MSAs and CSAs where black people make up >5\% of the population are included.}
 \label{fig:test}
 \end{figure}
-
-
-
-Expected gap in sentiment scores between poor and rich neighborhoods, by Combined Statistical Areas (CSAs) with over 1 million people.  The value shown is the predicted gap in vader scores for a 25-degree increase in temperatures between neighborhoods at the 5th percentile and the 90th percentile for income.  CSAs with a statistically significant effect ($p < 0.1$) are outlined in black.
-E
-xpected gap in sentiment scores between largely minority and largely white neighborhoods, by Combined Statistical Areas (CSAs) with over 1 million people.  The value shown is the predicted gap in vader scores for a 25-degree increase in temperatures between neighborhoods at the 5th percentile and the 95th percentile for whiteness.  CSAs with a statistically significant effect ($p < 0.1$) are outlined in black.
 
 
 \subsection{Effects by Time of Day}
@@ -282,6 +282,20 @@ xpected gap in sentiment scores between largely minority and largely white neigh
   \caption{Expected gap in sentiment scores between largely minority and largely white neighborhoods, by hour of the day, with a 95\% confidence interval.  The value shown is the predicted gap in vader scores for a 25-degree increase in temperatures between neighborhoods at the 5th percentile and the 95th percentile for whiteness.}
   \label{fig:map-wbgt-race}
 \end{figure}
+
+\subsection{Relationship between fluctuations in sentiment and other indicators of heat stress and mental health}
+
+% Monday - Saturday
+% Depressed States - Happy States
+% Natural Disasters
+% Mass shootings
+% Celebrity suicides
+
+
+
+% four years after floods by 13.8 percent, from 12.1 to 13.8 per 100,000 (P<0.001);  
+% two years after hurricanes by 31.0 percent, from 12.0 to 15.7 per 100,000 (P<0.001)
+% first year after earthquakes by 62.9 percent, from 19.2 to 31.3 per 100,000 (P<0.001).
 
 
 Figure of heatmap of tweet density across USA (pick a year? entire dataset of georeferenced tweets?)
