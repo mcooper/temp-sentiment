@@ -2,6 +2,7 @@ library(data.table)
 library(tidyverse)
 library(lubridate)
 library(grid)
+library(png)
 
 setwd('~/tweets/')
 
@@ -164,9 +165,9 @@ black_change <- 0.019
 
 
 plt <- data.frame(lab=c(# 'Celebrity\nSuicide', 
-                        'Houston\nDuring\nHurricane\nHarvey',
-                        'New York City\nDuring\nHurricane\nSandy',
-                    'Weekly Change\nFrom Saturday \nto Monday', 'Rich\n(95th %ile)',
+                        'Hurricane\nHarvey',
+                        'Hurricane\nSandy',
+                    'Saturday\nto Monday', 'Rich\n(95th %ile)',
                     'Poor\n(5th %ile)', 'Majority\nWhite',
                     'Majority\nBlack'),
                   val=-c(#robin_change,
@@ -174,29 +175,43 @@ plt <- data.frame(lab=c(# 'Celebrity\nSuicide',
                         rich_change, poor_change, white_change, black_change))
 
 write.csv(plt, 'compare_plot_dat.csv', row.names=F)
+plt <- read.csv('~/tweets/compare_plot_dat.csv')
 
-plt$lab <- factor(plt$lab, levels=c('Houston\nDuring\nHurricane\nHarvey', 'New York City\nDuring\nHurricane\nSandy', 'Weekly Change\nFrom Saturday \nto Monday', 'Majority\nWhite', 'Majority\nBlack', 'Rich\n(95th %ile)', 'Poor\n(5th %ile)'))
+plt$lab <- factor(plt$lab, levels=c('Hurricane\nHarvey', 'Hurricane\nSandy', 'Saturday\nto Monday', 'Majority\nWhite', 'Majority\nBlack', 'Rich\n(95th %ile)', 'Poor\n(5th %ile)'))
 
-annot <- data.frame(x='Majority White', y=0.1, label='}')
+img <- readPNG('~/temp-sentiment/viz/braceleft.png')
+g <- rasterGrob(img, height=0.1, width=1)
 
+annot <- data.frame(color=c(rep('Majority\nBlack', 2), 
+                        rep('Hurricane\nHarvey', 1)),
+                    x=c(5.5, 5.5, 2),
+                    y=c(0.006, 0.0025, 0.0025) + 0.00875,
+                    label=c('Heat Wave By', 'Neighborhood Characteristics',
+                            'Comparison Events'))
 ggplot() + 
   geom_bar(data=plt, aes(x=lab, y=val, fill=lab), stat='identity') + 
-  #geom_text(data=annot, aes(x=x, y=y, label=label)) + 
+  geom_text(data=annot, aes(x=x, y=y, label=label, color=color), size=4) + 
   scale_fill_manual(values=c('Poor\n(5th %ile)'="#e66101", 
                               'Majority\nBlack'="#ca0020", 
                               'Majority\nWhite'="#f4a582", 
                               'Rich\n(95th %ile)'="#fdb863",
-                              'Houston\nDuring\nHurricane\nHarvey'="#636363", 
-                              'New York City\nDuring\nHurricane\nSandy'="#636363", 
-                              'Weekly Change\nFrom Saturday \nto Monday'="#636363")) + 
+                              'Hurricane\nHarvey'="#636363", 
+                              'Hurricane\nSandy'="#636363", 
+                              'Saturday\nto Monday'="#636363")) + 
+  scale_color_manual(values=c('Majority\nBlack'='black',
+                              'Hurricane\nHarvey'='grey30')) + 
   scale_y_continuous(expand=expand_scale(mult=c(0.05, 0))) + 
   scale_x_discrete(position='top') + 
   labs(x='', y='Decrease in Sentiment') + 
-  guides(fill=FALSE) + 
+  guides(fill=FALSE, color=FALSE) + 
   theme_classic() + 
-  coord_cartesian(xlim=clip='off')
-
-
-
-
+  coord_cartesian(ylim=c(-0.04125, 0), clip='off') + 
+  annotate("segment", x = 3.75, xend = 7.25, y = 0.008, yend = 0.008,
+    colour = "black", size=0.25) +
+  annotate("segment", x = 0.75, xend = 3.25, y = 0.008, yend = 0.008,
+    colour = "grey30", size=0.25) +
+  theme(axis.text.x = element_text(colour = c(rep('grey30',3), rep('black', 4))),
+        #top, right, bottom, left
+        plot.margin = unit(c(1, 0.025, 0.25, 0.025), "cm"))
+ggsave('~/temp-sentiment/res/comparison_plot.png', width=6, height=3)
 
