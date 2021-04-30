@@ -14,6 +14,7 @@
 \usepackage{longtable}
 \usepackage{pdflscape}
 \usepackage{lineno}
+\usepackage{xcolor}
 \usepackage[
   style=numeric,
   citestyle=numeric-comp,
@@ -203,6 +204,7 @@ Building on previous findings from Baylis and others, we hypothesize that local 
 
 \subsection{Overall Effect}
 We examined the relationship between the sentiment expressed in tweets and the prevailing Wet Bulb Globe Temperature (WBGT), an indicator of heat stress that accounts for temperature, humidity, wind speed, and solar radiation.  Controlling for a variety of fixed effects, we found that, across all tweets, higher temperatures are associated with lower sentiment (See Fig. \ref{fig:wbgt}).  Sentiment is highest at a WBGT of 5 degrees Celsius (a dry bulb temperature typically around 12C/54F).  The greatest declines in sentiment are observed between 20-25 degrees WBGT (dry bulb 29-36C/84-97F).  Sentiment also declines with colder temperatures, but only slightly.
+We ran models using multiple sentiment indicators, and found similar results no matter which sentiment metric was used (See Appendix).
 
 \begin{figure}[H]
   \centering
@@ -233,7 +235,21 @@ We examined patterns of temperature and sentiment for neighborhoods that had a m
 \label{fig:test}
 \end{figure}
 
-We ran models using multiple sentiment indicators, and found similar results no matter which sentiment metric was used (See Appendix).
+
+\subsection{Comparison With Other Events}
+
+Expressed sentiment is a widely used metric to assess mental health and well-being on social media.  While, a variety of related metrics can be used to quantify sentiment, we chose to use the VADER metric that was specifically designed for microblogs like twitter \cite{hutto2014vader}.  To give context to this metric, we compare the impacts of heat waves, defined as a change from 5 WBGT (12C/54F) to 25 WBGT (36C/97F), to the change in average sentiment from Saturday to Monday as well as the impacts on of the two most expensive hurricanes in the last decade in the United States (See Fig. \ref{fig:compare}.  Saturday and Monday are the highest and lowest days for both twitter sentiment and suicides, and over the course of our study period, Mondays had 23\% more suicides than Saturdays.  For the hurricanes, we compared the mean sentiment of counties affected by Hurricanes Harvey and Sandy on the day of landfall to the mean sentiment a week before.  These hurricanes are associated with mental health effects including Post-Traumatic Stress Disorder (PTSD) \cite{Schwartz2017Aug, Schwartz2018May}, and similar disasters have been associated with subsequent increases in suicides \cite{Krug1998Feb}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{../res/comparison_plot.png}
+  \caption{Decline in sentiment during a heat wave across several different neighborhoods, compared with other impacts on sentiment, such as major hurricanes, as well as the weekly variation in sentiment from the peak on Saturday to the low on Monday.}
+  \label{fig:compare}
+\end{figure}
+
+We found that the impacts of heatwaves on sentiment in rich and majority white neighborhoods were less than the average weekly change in sentiment from Saturday to Monday, but the effects of heat waves on majority black or poor neighborhoods were much greater than the average weekly change in sentiment.  Additionally, the impacts of heat waves more vulnerable neighborhoods were near to the impacts of Hurricane Sandy.
+
+{\color{red} What other disasters/comparison events should we look at?}
 
 \subsection{Effects by Combined Statistical Area}
 
@@ -259,65 +275,29 @@ Because we found a much stronger effect for the effects of temperature on sentim
 \label{fig:test}
 \end{figure}
 
-
 \subsection{Effects by Time of Day}
+
+In addition to providing data with high spatial resolution, twitter data also comes with very high temporal resolution as each tweet is time-stamped.  Thus, we were able to examine the impact of heat on sentiment for each hour of the day (See Fig. \ref{fig:ts-wbgt}).  We found that heat decreased expressed sentiment at nearly all hours of the day, and that heat had the largest effect on sentiment early in the morning, between 4am and 6am.  Heat had the weakest effects on sentiment at midday, and at 3am.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.75\linewidth]{../res/ts.png}
   \caption{Effects of rising temperatures on sentiment by hour of the day, with a 95\% confidence interval.  The value shown is the predicted change in vader score for a 25-degree increase in temperatures.}
-  \label{fig:map-wbgt}
+  \label{fig:ts-wbgt}
 \end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.75\linewidth]{../res/ts_income.png}
-  \caption{Expected gap in sentiment scores between largely minority and largely white neighborhoods, by hour of the day, with a 95\% confidence interval.  The value shown is the predicted gap in vader scores for a 25-degree increase in temperatures between neighborhoods at the 5th percentile and the 95th percentile for income.}
-  \label{fig:map-wbgt-income}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.75\linewidth]{../res/ts_race.png}
-  \caption{Expected gap in sentiment scores between largely minority and largely white neighborhoods, by hour of the day, with a 95\% confidence interval.  The value shown is the predicted gap in vader scores for a 25-degree increase in temperatures between neighborhoods at the 5th percentile and the 95th percentile for whiteness.}
-  \label{fig:map-wbgt-race}
-\end{figure}
-
-\subsection{Relationship between fluctuations in sentiment and other indicators of heat stress and mental health}
-
-% Monday - Saturday
-% Depressed States - Happy States
-% Natural Disasters
-% Mass shootings
-% Celebrity suicides
-
-
-
-% four years after floods by 13.8 percent, from 12.1 to 13.8 per 100,000 (P<0.001);  
-% two years after hurricanes by 31.0 percent, from 12.0 to 15.7 per 100,000 (P<0.001)
-% first year after earthquakes by 62.9 percent, from 19.2 to 31.3 per 100,000 (P<0.001).
-
-
-Figure of heatmap of tweet density across USA (pick a year? entire dataset of georeferenced tweets?)
-
-(sub-section) TEMPERATURE and HUMIDITY
-Figure of distribution of max and min temperatures
-Comment from Patrick Baylis on our "preliminary results". 2nd comment from Patrick
-
-(sub-section) INCOME
-
-(sub-section?) SENTIMENT
-Figure of distribution of observed sentiment scores (by Hedonometer, Vader, etc.)
-
-Comment from Patrick Baylis on our "preliminary results" doc
-
 
 \section{Discussion}
+We found that twitter data offers significant advantages for observing environmental effects on human well-being due to its very fine spatio-temporal resolution.  We were able to pair each tweet with the local temperature at the time of the tweet, and found a clear association between heat and worsened sentiment.   Moreover, we were able to show clear heterogeneities in vulnerability by neighborhood characteristics, overturning previous findings that found no heterogeneities at the county level \cite{Burke2018Aug, Mullins2019Dec}.
+
+However, one limitation of data from twitter is that a tweet is not a precise measurement of a mental health outcome, but rather only a rough indicator a user's mental state based on the vocabulary in the tweet.  Moreover, while sentiment analysis algorithms have gotten increasingly sophisticated at estimating the mood in a body of text, accounting for negations (``\textit{not} good"), punctuation (``Good!!!"), emoticons and emojis (":-) or d grin
+
+
+
 
 % This could honestly be its own appendix section
   The change from optimum temperature of 5WBGT (12C/54F) to a heatwave of 25WBGT (36C/97F) is associated with an overall decrease in the vader sentiment score of 0.01.  This is similar to the degree of change in sentiment over the course of a week from a Monday nadir (0.1268) to a Saturday peak (0.1372).  Additionally, over the study period from 2009-2019, suicides followed a very similar weekly pattern, peaking on Mondays and declining over the course of the week until Saturday.  From Saturday to Monday, suicides increase 23\%.  Thus, while research on linkages between sentiment and other mental health outcomes like suicides and hospitalizations is still nascent, there are clear similarities in patters of sentiment at some time scales.  Moreover, both suicides and sentiment are affected by higher temperatures.  Thus, while twitter sentiments are the only mental health indicator available at fine enough spatial and temporal scales to examine neighborhood and hourly effects, these changes in sentiment are representative of real human suffering, and are also very likely indicative of medical outcomes like suicides and hospitalizations.
 
-
+Recent research has suggested that the impacts of heat on sleep quality may play a large role in the observed mental health effects of heat, 
 \section{Data}
 A proposed list of tables and figures:
 Figures for location of USA Tweets (to show aggregation and coverage).
