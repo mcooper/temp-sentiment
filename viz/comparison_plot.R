@@ -35,7 +35,9 @@ dow_df <- data[ , .(vader = mean(vader), afinn=mean(afinn), hedono=mean(hedono))
 
 m <- merge(dow_df, sui %>%
                      group_by(dow) %>%
-                     summarize(suicides=sum(suicides))) %>%
+                     summarize(suicides=sum(suicides))ptop ➜  temp-sentiment                                                  INSERT
+
+                   ) %>%
   mutate(suicides = rescale(suicides),
          vader = rescale(vader),
          afinn = rescale(afinn),
