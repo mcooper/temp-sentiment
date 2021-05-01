@@ -85,4 +85,15 @@
 \end{figure}
 
 
+
+\subsubsection{Hedonometer}
+The Hedonometer \cite{dodds_temporal_2011} is a corpus-based technique to get sentiment score from multi-lingual texts. The core steps are (1) building human evaluations of the happiness of a set of individual words, and (2)using a naive algorithm for scaling up from individual words to texts. For the English corpus, Dodds and others \cite{dodds_temporal_2011} collect 10,222 unique words and used crowd-sourcing platform Amazon Mechanical Turk to get human evaluation of happiness degree for each word in an integer scale from 1 to 9, representing a sad to happy spectrum. Score 5 represents neutral words. Each word will be calculated average score and then the word and happiness score are compiled into a dataset (labMT 1.0). Some illustrative example of words are: 
+
+\[h_{avg} (\text{laughter}) = 8.50 \]
+\[h_{avg} (\text{the}) = 4.98\]
+\[h_{avg} (\text{hate}) = 2.34\]
+
+The sentiment score for single text will be the mean happiness score for all words in the text.
+
+
 \end{document}
