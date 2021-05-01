@@ -98,14 +98,14 @@ Research has shown strong linkages between ambient environmental conditions and 
 
 Human moods and mental states are important aspects of overall well-being and can be influenced by ambient, persistent and fluctuating environmental conditions. Climate change is accelerating the rate and variability around meteorological norms like the timing, magnitude, intensity and duration of precipitation events and air temperature minima and maxima \href{https://www.ipcc.ch/site/assets/uploads/2018/03/SREX-Chap3_FINAL-1.pdf}{(link)}. Previous work \citep{baylis_weather_2018} indicate important linkages between human mood and meterological conditions. Previous analyses of the effects of weather on mood (as expressed in sentiment of text-based message), however, were constructed at the aggregated city/day level and did not account for differences in socio-economic status which may affect access to resources (e.g., air conditioning) that can offset the effects of exposure to temperature extremes. Here, we build on these previous studies by examining the hourly effects of weather on human sentiment, an expression of mood, exploring geographic and economic heterogeneity at a finer-scale resolution than previous studies.  
 
-
+% https://medinform.jmir.org/2020/1/e16023/?utm_source=TrendMD&utm_medium=cpc&utm_campaign=JMIR_TrendMD_0
 \section{Background}
 \subsection{Temperature and Mental Health}
 %Jeremiah Osborne-Gowey: We report on physiological and mental health in text here. Maybe just a heading of "health"?
 %I think physical health is beyond the scope of this paper -Matt
 
 %https://www.pnas.org/content/115/43/10953
-Higher temperatures are associated with many indicators of worsened mental health.  Multiple studies have found strong evidence that higher temperatures are associated with increases in suicides in the United States \citep{Burke2018Aug, Mullins2019Dec, Dixon2007May}, and many others have demonstrated the same relationship around the world \citep{Qi2014Dec, Page2006Aug, Likhvar2011Jan}.  In addition to suicide, other research has found effects temperature on hospitalization events related to mental health disorders such as bipolar disorder and schizophrenia \citep{Mullins2019Dec, Lee2007Jan, Shapira2004Feb, Sung2013Feb, Gupta1992Jun, Hansen2008Oct}.
+Higher temperatures are associated with many indicators of worsened mental health.  Multiple studies have found strong evidence that higher temperatures are associated with increases in suicides in the United States \citep{Burke2018Aug, Mullins2019Dec, Dixon2007May}, and many others have demonstrated the same relationship around the world \citep{Qi2014Dec, Page2007Aug, Likhvar2011Jan}.  In addition to suicide, other research has found effects temperature on hospitalization events related to mental health disorders such as bipolar disorder and schizophrenia \citep{Mullins2019Dec, Lee2007Jan, Shapira2004Feb, Sung2013Feb, Gupta1992Jun, Hansen2008Oct}.
 
 Temperature has been hypothesized to impact mental health through a number of pathways.  Work on biological mechanisms emphasize that there may be mental health effects from maintaining stable body temperature in high heat \cite{Lohmus2018Jul}.  Additionally, recent studies have found that nighttime temperatures affects sleep quality \citep{Obradovich2017May, Mullins2019Dec}
 
@@ -224,6 +224,8 @@ We then explored how the racial and income characteristics of neighborhoods mode
 
 We examined patterns of temperature and sentiment for neighborhoods that had a majority population of four broad racial categories - non-hispanic black, non-hispanic white, hispanic of any race, and other, which includes native american, multi-racial, and asian-american and pacific islander.  While people in neighborhoods of all racial compositions were affected by heat, people in majority black neighborhoods were much more affected than others  (See Fig \ref{fig:sub2}).  Relative to an optimum temperature of 5\textdegree C WBGT (12\textdegree C/54\textdegree F), as temperatures increase to 30\textdegree C WBGT (42\textdegree C/108\textdegree F), the sentiment of tweets in majority black neighborhoods decreases four-times as much as people in other neighborhoods.  Additionally, at levels of moderate heat from 10\textdegree C WBGT (19\textdegree C/66\textdegree F) to 25\textdegree C WBGT (36\textdegree C/97\textdegree F), people in majority hispanic neighborhoods have slightly lower sentiment than people in majority white or other neighborhoods, although this gap closes with high temperatures.
 
+Finally, we modeled the combined effects of race and income in moderating the impacts of heat on mental health, and we found separate effects for these two variables (See Appendix).  In other words, neither race or income alone account for all the heterogeneity in vulnerability, and neighborhoods that are poor and black are more affected by than than neighborhoods that are just poor or just black.
+
 \begin{figure}[H]
 \centering
 \begin{subfigure}{.5\textwidth}
@@ -294,44 +296,63 @@ In addition to providing data with high spatial resolution, twitter data also co
 \end{figure}
 
 \section{Discussion}
+% Benefits of twitter data/overview of findings
 We found that twitter data offers significant advantages for observing environmental effects on human well-being due to its very fine spatio-temporal resolution.  We were able to pair each tweet with the local temperature at the time of the tweet, and found a clear association between heat and worsened sentiment.   Moreover, we were able to show clear heterogeneities in vulnerability by neighborhood characteristics, overturning previous findings that found no heterogeneities at the county level \cite{Burke2018Aug, Mullins2019Dec}.
 
-However, one limitation of data from twitter is that a tweet is not a precise measurement of a discrete mental health outcome and only provides a rough indicator a user's mental state based on the vocabulary in the tweet.  Moreover, while sentiment analysis algorithms have gotten increasingly sophisticated at estimating the mood in a body of text, accounting for negations (``\textit{not} good"), punctuation (``Good!!!"), emoticons and emojis (``:-)" or ``\emojismile"), and degree modifiers (``very excellent" or ``kind of crappy") \cite{hutto2014vader}, the observed sentiment in a tweet is highly variable and is mostly affected by factors like current events and the user's personal life, with local weather conditions having only a small impact.  We overcome this limitation by using an extremely large dataset of nearly 250 million tweets, allowing us to measure population-level changes in sentiment.
+% Sentiment is a fuzzy indicator but we have BIG DATA
+However, one limitation of data from twitter is that a tweet is not a precise measurement of a discrete mental health outcome and only provides a rough indicator a user's mental state based on the vocabulary in the tweet.  Moreover, while sentiment analysis algorithms have gotten increasingly sophisticated at estimating the mood in a body of text, a users expressed sentiment in a tweet is highly variable and is mostly affected by factors like current events and the user's personal life, with local weather conditions having only a small impact.  We overcome this limitation by using an extremely large dataset of nearly 250 million tweets, allowing us to control for a wide variety of spatial and temporal effects to estimate population-level changes in sentiment in relation to the weather.
 
+% Compare weekly changes in sentiment to weekly changes in suicides
 We found that the change from optimum temperature of 5\textdegree C WBGT (12\textdegree C/54\textdegree F) to a heatwave of 25\textdegree C WBGT (36\textdegree C/97\textdegree F) is associated with an overall decrease in the vader sentiment score of 0.01.  This is similar to the degree of change in sentiment over the course of a week from a Monday nadir (0.1268) to a Saturday peak (0.1372), a change in sentiment associated with a suicides increase of 23\% over the course of the study period \cite{CDC2021}.  Thus, while research on linkages between sentiment and other mental health outcomes like suicides and hospitalizations is still nascent, there are clear similarities in patters of sentiment and suicides at some time scales.  Moreover, both suicides and sentiment are affected by higher temperatures \cite{baylis_weather_2018, Burke2018Aug}.  Thus, while twitter sentiment is the only mental health indicator available at fine enough spatial and temporal scales to examine neighborhood and hourly effects, these changes in sentiment are representative of real human suffering, and are also very likely indicative of medical outcomes like suicides and hospitalizations, although this analysis cannot speak to those outcomes specifically.
 
+% Comment on interpretation of results
 We examined our results relative to an optimal baseline temperature of 5\textdegree C WBGT (12\textdegree C/54\textdegree F), as this was the temperature at which the highest sentiment scores were observed in the aggregated analysis (See Fig. \ref{fig:wbgt}).  However, after examining heterogeneities by neighborhood race and income, we find different optima for different racial groups and income levels.  For example, the optimum temperature for poor neighborhoods is 0\textdegree C WBGT (6\textdegree C/43\textdegree F) while the optimum temperature for rich neighborhoods is 20\textdegree C WBGT (29\textdegree C/84\textdegree F).  These different varying optima show that even mild heat can affect human well-being, and the only reason that sentiment peaks as high as 20\textdegree C WBGT (29\textdegree C/84\textdegree F) in rich neighborhoods is because the rich are more likely to have air conditioning in their homes, transportation, and work spaces, as well as much greater choice in when they are outside and in the activities they perform outside.
 
-We found that majority black neighborhoods are much more affected by heat than neighborhoods with a majority of any other race.  This is surprising, given that Hispanics can be marginalized in both income and housing.  This finding may be because the racial category of Hispanic is more broad and encompasses many more groups with more diverse histories and income levels than black Americans.  Additionally, there are many other marginalized groups in America, particularly indigenous people, that we did not have sufficient data to examine specifically with respect to heat and mental health.  Finally, in modeling the combined effects of race and income in moderating the impacts of heat on mental health, we find separate effect for these two variables (See Appendix).  Neither race or income alone account for all the heterogeneity in vulnerability, and neighborhoods that are poor and black are more affected by than than neighborhoods that are just poor or just black.
+% Comment on Race, why no effect on hispanics?
+We found that majority black neighborhoods are much more affected by heat than neighborhoods with a majority of any other race.  This is surprising, given that Hispanics can be marginalized in both income and housing.  This finding may be because the racial category of Hispanic is more broad and encompasses many more groups with more diverse histories and income levels than black Americans.  Additionally, there are many other marginalized groups in America, particularly indigenous people, that we did not have sufficient data to examine with respect to heat and mental health.  
 
+% Interpret Spatial Analysis
 In our spatial analysis, we found that most cities exhibited both racial and income inequalities in the vulnerability of mental health to heat, with noticeable regional patterns in the strength of the effect.  Generally, the mid-west and mid-atlantic had the strongest inequalities, and the south-west had the weakest inequalities and an occasional inverted effect.  Because we used Wet Bulb Globe Temperature, our metric accounts for how differences in humidity and wind speed affect the human body's ability to cool itself through perspiration.  Thus, this regional differences in vulnerability are likely more due to cultural or infrastructural differences than to different environmental conditions.
 
+% Interpret Time Series Analysis
 Recent research has suggested that the impacts of heat on sleep quality may play a large role in the observed mental health effects of heat \cite{Obradovich2017May, Mullins2019Dec}, and our temporal analysis was able to examine this hypothesis.  While our estimates were more uncertain at night due to a lower volume of tweets, we found much stronger effects of heat on expressed sentiment in the early morning, adding weight to the sleep quality pathway linking heat and mental health that other authors have found.  This suggests that efforts to improve mental health during heat waves may have the largest impact by focusing on providing electricity and air conditioning at night.
 
-While these findings are robust to different model specifications and sentiment metrics, there are some caveats.  For one, we were only able to locate the tweets within the census block where the tweet was sent - we did not to infer where the person sending the tweets typically lived or where they had been.  Many low-income and black people commute during the day to work in the service sector in higher-income areas, so these results may in fact under-estimate the impacts of higher temperatures on mental health.  Moreover, census block income levels can give inaccurate estimates of the well-being of the people who are typically found in census blocks.  For example, some public spaces are estimated to have very low income levels even though people from a variety of income levels may inhabit those spaces throughout the day.  Additionally, neighborhoods of young college students are also typically estimated to have low income levels, even through college students are wealthier than the average American.  Again, these issues mean we are likely under-estimating the true effect of heat on mental health.
+% Caveats
+While these findings are robust to different model specifications and sentiment metrics, there are some caveats.  For one, we were only able to locate the tweets within the census block where the tweet was sent - we did not to infer where the person sending the tweets typically lived or where they had been.  Many low-income and black people commute during the day to work in the service sector in higher-income areas, so these results may in fact under-estimate the impacts of higher temperatures on mental health for poor and minority individuals.  Moreover, the income level of a census block may be only weakly correlated with the wealth of the people who are typically found that census block.  For example, some public spaces are estimated to have very low income levels even though people from a variety of income levels may occupy those spaces throughout the day.  Additionally, neighborhoods of young college students are also typically estimated to have low income levels, even through college students are wealthier than the average American.  Again, these issues mean we are likely under-estimating the true effect of heat on mental health.  A final issue with using twitter data is that, while twitter is used by more than one in five Americans, twitter users may not be representative of the general population, as they are typically younger, wealthier, and more educated \cite{Pew2020Sep}.  Nevertheless, we found a large volume of tweets across all neighborhood types.
 
+% NCC doesnt have a "conclusion" section, but this is intended as an overall summary paragraph
 While climate change will have widespread and severe impacts on human well-being, these impacts are will be highly unevenly distributed.  People with more money, access to aid and infrastructure, and who belong to ethnic groups in power are less affected by climate shocks and natural disasters \cite{bullard2012wrong}.  While the physical health impacts of these shocks are more visible and easy to measure, there is no reason to believe that the mental health impacts of climate change will not also be highly unevenly distributed.  Thus, there are strong theoretical priors behind the hypothesis that low-income and marginalized people are more vulnerable to the mental health impacts of higher temperatures, even though previous work at coarse spatial scales has not found such an effect.  By using fine-scale twitter data, we showed that there are indeed stark difference in the mental health impacts of heat among neighborhoods in America.
 
-\section{Data}
-A proposed list of tables and figures:
-Figures for location of USA Tweets (to show aggregation and coverage).
-Figures of income blocks and temperature extremes.
-Table 1. Variable descriptions for what's included in our models.
-Table 2. Descriptive statistics for datasets/variables we include.
-Table 3. Model results with variables included in the models coefficients, SEs, p-values, sample size.
-Appendix table. Sentiment scores across all types we considered.
-
-Weird effect of southwest - WBGT means this is more likely to be cultural than due to different heat effects.
-
-
 \section{Methods}
-\subsection{Tweets}
-We used data from 243 million geolocated tweets from the lower 48 states from the years 2009 to 2019.  
 
-Text data used for this project come from Twitter via the University of Vermont’s (UVM) agreement with Twitter to access its streaming API - colloquially referred to as the Decahose. The "decahose" provides public access to a random 10\% of all public messages on Twitter. The UVM special agreement with Twitter allows for access to this data for research and analysis purposes and we have complied with all the terms of service for Twitter and UVM. 
-The Twitter data consists of publicly posted messages, or Tweets, that are short status messages users post to the platform. We used all geolocated Tweets from the Decahose for the period 2009-2019. We only considered users’ original content, thus did not include retweets in our analysis.
+% A proposed list of tables and figures:
+% Figures of income blocks and temperature extremes.
+% Table 1. Variable descriptions for what's included in our models.
+% Table 2. Descriptive statistics for datasets/variables we include.
+% Table 3. Model results with variables included in the models coefficients, SEs, p-values, sample size.
 
-We excluded all tweets that contained weather-related terms.
+\subsection{Tweets \& Sentiment}
+We used data from 243 million geo-located English-language tweets from the lower 48 states from the years 2009 to 2019.  The Twitter data consists of publicly posted messages, or Tweets, that are short status messages users post to the platform.  We only considered users’ original content, thus did not include retweets in our analysis.  Additionally, we excluded all tweets that contained weather-related terms, to ensure that the sentiment expressed in the tweets was reflective of a user's mental state, and not a commentary on the weather.
+
+We assessed the sentiment expressed in the tweets using the VADER (Valence Aware Dictionary for sEntiment Reasoning) sentiment corpus \cite{gilbert_vader_2014}. VADER is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media because of several features, as:
+
+\begin{itemize}
+  \item Incorporating lexical features common to informal media, such as slang (``sux"), and acronyms (``lol").
+  \item Negations (``\textit{not} good", ``\textit{wasn't} bad")
+  \item Punctuation (``Good!!!")
+  \item Word shape, such as capitalization (``The move was AMAZING")
+  \item Emoticons and emojis (``:-)", ``\emojismile")
+  \item Degree modifiers (``very excellent" or ``kind of crappy")
+\end{itemize} 
+
+The VADER method yields a value for the mood of a tweet, with a score of 0 for neurtral tweets, a score $> 0$ for positive-mood tweets and a score $< 0$ for negative-mood tweets.  In addition to the vader method used in the body of this paper, we also conduct our analysis using the Hedonometer and AFINN sentiment analysis methods, with similar results (See Appendix).
+
+Some papers we might cite in this section (only for multilingual work): Vilares et al. 2017 , Lo et al. 2017, Dashtipour et al. 2016.
+
+Discuss issues with text data (gtp) - that it doesn’t capture emoticons, code switching (e.g., [good job! \#fail]), etc.
+
+Issues with what people say on social media being attenuated or mismatched from actual emotional state
+
 
 \subsection{Weather}
 We used data on local weather conditions from the North American Land Data Assimilation System (NLDAS), a gridded product developed by several collaborative institutions, including NOAA, NASA, Princeton University, and the University of Washington.  This dataset is available at an hourly temporal resolution, and at 1/8th decimal degree spatial resolution, and integrates a large quantity of observation-based and modeled data  \cite{xia_continental-scale_2012}.  For the exact hour and location of each tweet, we extracted temperature, specific humidity, air pressure, total precipitation, shortwave radiation, and wind speed.  
@@ -348,33 +369,6 @@ ACS data is released to cover five-year periods.  We therefore matched each twee
 Mean annual income per capita is provided by the ACS, and we standardized this variable so that the values for each year were in 2019 dollars.  For racial categories, we combined the various categories provided by the ACS into four racial groups: non-Hispanic white, non-Hispanic black, Hispanic of any race, and an "other" category for non-Hispanic people who were neither black nor white, such as Asian, Native American, or mixed-race people.
 
 
-\subsection{Sentiment}
-
-WE EXCLUDED WEATHER TERMS
-
-We assessed the sentiment expressed in text using several of the most commonly used measures of sentiment. Each of the measures uses validated dictionaries of words that have been assigned positive and negative scores and compares these words with words in the text corpora of interest. For measures of sentiment, we used the Hedonometer \href{https://hedonometer.org/timeseries/en_all/}{(link)}, Afinn \href{http://corpustext.com/reference/sentiment_afinn.html}{(link)}, Textblob \href{https://textblob.readthedocs.io/en/dev/}{(link)}, Vader , SentiwordNet and LIWC tools. These tools assign positive and negative scores to words, then average the scores for each text string. Our text data was multilingual, which can present challenges with analyzing text (cite). Given our interest only in the collection of words used (in aggregate) and not the sequence or nuance of the phrases, we translated all languages into English using Google Translate API and the Microsoft Azure API cognitive services (translator text API) before conducting the sentiment analyses.
-
-Some papers we might cite in this section (only for multilingual work): Vilares et al. 2017 , Lo et al. 2017, Dashtipour et al. 2016.
-
-Discuss issues with text data (gtp) - that it doesn’t capture emoticons, code switching (e.g., [good job! \#fail]), etc.
-
-Issues with sample population (non-representative)
-
-Issues with what people say on social media being attenuated or mismatched from actual emotional state
-
-\subsubsection{Hedonometer}
-The Hedonometer \cite{dodds_temporal_2011} is a corpus-based technique to get sentiment score from multi-lingual texts. The core steps are (1) building human evaluations of the happiness of a set of individual words, and (2)using a naive algorithm for scaling up from individual words to texts. For the English corpus, Dodds and others \cite{dodds_temporal_2011} collect 10,222 unique words and used crowd-sourcing platform Amazon Mechanical Turk to get human evaluation of happiness degree for each word in an integer scale from 1 to 9, representing a sad to happy spectrum. Score 5 represents neutral words. Each word will be calculated average score and then the word and happiness score are compiled into a dataset (labMT 1.0). Some illustrative example of words are: 
-
-\[h_{avg} (\text{laughter}) = 8.50 \]
-\[h_{avg} (\text{the}) = 4.98\]
-\[h_{avg} (\text{hate}) = 2.34\]
-
-The sentiment score for single text will be the mean happiness score for all words in the text.
-
-
-\subsubsection{VADER}
-The VADER sentiment corpus was proposed by Gilbert and Hutto \cite{gilbert_vader_2014} and stands for 'Valence Aware Dictionary for sentiment Reasoning'. It is is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media by incorporating lexical features common to sentiment expression in microblogs
-
 \subsection{Modeling}
 We assessed how expressed sentiment is affect by three weather variables: wet bulb globe temperature, precipitation, and sunshine.  Moreover, we modeled how neighborhood income affects the relationship between these weather variables and sentiment.
 
@@ -389,15 +383,10 @@ Where $y$ is the sentiment of a tweet, $t$ is the wet bulb globe temperature at 
 STANDARD ERRORS
 
 
-\subsection{Data Processing}
-We analyzed meteorological data using the R statistics open-source program version 3.6.2  (R Core Team 2019) using R Studio version 1.2.1335 (RStudio Team, 2019) and the raster \href{https://www.rdocumentation.org/packages/raster/versions/3.3-13}{(link)}, sp \href{https://cran.r-project.org/web/packages/sp/index.html}{(link)}, sf \href{https://cran.r-project.org/web/packages/sf/index.html}{(link)}, and stars \href{https://cran.r-project.org/web/packages/stars/index.html}{(link)} processing and geospatial packages installed. We analyized sentiment data using python version x.x.x with pandas \href{https://pandas.pydata.org/}{(link)} and numpy \href{https://numpy.org/}{(link)} packages installed. We extracted meteorological data using the geolocated coordinates from the Twitter posts (latitude and longitude). We calculated mean climatological scores (z-scores)using baseline meteorological data from 1990 to present, calculated at a quarter degree resolution, and based on the long-term averages and standard deviation. We calculated z-scores for each day and the overall annual average z-score. For text data cleaning we used the python package tweet-preprocessor \href{https://pypi.org/project/tweet-preprocessor/}{(link)} to remove all text and characters not part of the main text phrase (e.g., URLs, mentions, GIFs, etc.). We converted all dates and times to UTC format.
-
-[NEED SOME TEXT ABOUT GOOGLE EARTH ENGINE AND MICROSOFT AI FOR EARTH] We conducted all data analyses on Microsoft AI for Earth's online cloud-computing environment using a combination of existing data analysis packages and scripts we developed. We used GitHub as a repository for all scripts we used in this project (link to the Git repo). To run ABC analysis, we used Microsoft's CBA package. To run XYZ analysis, we used Microsoft's ZYX package. 
-\section{Conclusion}
-
 \section{Acknowledgements}
 This work was supported by the National Socio-Environmental Synthesis Center (SESYNC) under funding received from the National Science Foundation DBI-1639145.  Additionally, cloud resources for this project were provided for the Microsoft Azure cloud by Microsoft's AI for Earth program, grant number .
 
+This data came from Twitter via the University of Vermont’s (UVM) agreement with Twitter to access its streaming API - colloquially referred to as the Decahose.  The UVM special agreement with Twitter allows for access to this data for research and analysis purposes and we have complied with all the terms of service for Twitter and UVM. 
 \printbibliography
 
 \end{document}
