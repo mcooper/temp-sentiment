@@ -12,6 +12,10 @@ data <- data[weather_term == 0, ]
 # Day of Week
 dow_df <- data[ , .(vader = mean(vader), afinn=mean(afinn), hedono=mean(hedono)), .(dow)]
 
+doy_df$doy[doy_df$vader == max(doy_df$vader)]
+doy_df$doy[doy_df$vader == min(doy_df$vader[doy_df$doy != '02-29'])]
+max(doy_df$vader) - min(doy_df$vader[doy_df$doy != '02-29'])
+
 data$date <- mdy(paste0(data$doy, '-', data$year))
 
 data$month <- month(data$date)
