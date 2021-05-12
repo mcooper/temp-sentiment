@@ -1,7 +1,8 @@
-\documentclass{article}
+\documentclass[fleqn,10pt]{wlscirep}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{graphicx}
 \usepackage{hyperref}
-\usepackage[a4paper, margin=1.25in]{geometry}
 \usepackage{breakcites}
 \usepackage{subcaption}
 \usepackage{float}
@@ -15,17 +16,16 @@
 \usepackage{pdflscape}
 \usepackage{lineno}
 \usepackage{xcolor}
-\usepackage[
-  style=numeric,
-  citestyle=numeric-comp,
-  backend=biber,
-  doi=true,
-  natbib=true,
-  sorting=none
-]{biblatex}
+% \usepackage[
+%   style=numeric,
+%   citestyle=numeric-comp,
+%   backend=biber,
+%   doi=true,
+%   natbib=true,
+%   sorting=none
+% ]{biblatex}
 \usepackage{scalerel,xparse}
 
-\addbibresource{TextDataClimateShocks.bib}
 
 % To be able to use emojis
 \NewDocumentCommand\emojismile{}{
@@ -34,7 +34,6 @@
     }{X}
 }
 
-\begin{document}
 %https://www.overleaf.com/project/5f918edd1afc380001feca0d
 \title{Fine-scale Twitter Big Data Reveals Neighborhood Inequalities in Mental Health Effects of High Temperatures}
 
@@ -55,29 +54,32 @@
 \affil[7]{University of British Columbia}
 \affil[*]{Corresponding Author: mcooper@hsph.harvard.edu}
 
-\maketitle
 
 \begin{abstract}
 %Limit 150 words: https://www.nature.com/nclimate/about/content
 %Actually there are lots of examples of articles with > 150 words, but I think we should keep it concise
 Higher temperatures associated with climate change are expected to have major impacts on human mental health.  Indeed, traditional analyses of heat and mental health outcomes using data collected by public agencies have found strong associations between elevated temperatures and outcomes such as suicides and mental-health related hospitalizations.  However, these studies, which typically use data reported at the city or county level, have found no difference in vulnerability based on income or race.  We overturn this finding and show that there are stark differences in vulnerability using a novel data source: expressed sentiment in 250 million geolocated tweets, matched with prevailing weather as well as neighborhood economic and demographic conditions.  We find that increased temperatures worsen expressed sentiment in all areas, but that this effects is much stronger in poor and black neighborhoods.
-
 \end{abstract}
+\begin{document}
 
-\section{Main}
+\flushbottom
+\maketitle
+\thispagestyle{empty}
+
+\section*{Main}
 %Overview
-Climate change is impacting many aspects of human well-being with these impacts projected to worsen in the coming years \cite{pachauri2014climate}.  A large body of research has assessed the ongoing impacts on climate change on outcomes like agriculture, economic growth, and physical health (NEED CITATIONS). Academic and medical researchers have highlighted the relative paucity of empirical studies into climate impacts on mental health at multiple scales and recently called for more \cite{Berry2018Apr, hayes_climate_2018}.  Researchers have begun to answer these calls, finding associations between deteriorating environmental conditions and a sense of "ecological grief" from their experienced loss \cite{Cunsolo2018Apr}, disasters and post-traumatic stress \cite{Waite2017Dec, Raker2019Dec}, as well as a variety of mental health impacts associated with warmer temperatures \cite{baylis_weather_2018, Mullins2019Dec} (PALINKAS and WONG 2020).  MAYBE A SENTENCE HERE HIGHLIGHTING THE GAP IN KNOWLEDGE ABOUT DISPARITIES IN MENTAL HEALTH IMPACTS, VULNERABLE POPULATIONS, issues of scale for signal to noise, etc.
+Climate change is impacting many aspects of human well-being with the impacts projected to worsen in the coming years \cite{pachauri2014climate}.  A large body of research has assessed the ongoing impacts on climate change on outcomes like agriculture, economic growth, and physical health (NEED CITATIONS). Academic and medical researchers have highlighted the relative paucity of empirical studies into climate impacts on mental health at multiple scales and recently called for more \cite{Berry2018Apr, hayes_climate_2018}.  Researchers have begun to answer these calls, finding associations between deteriorating environmental conditions and a sense of "ecological grief" from their experienced loss \cite{Cunsolo2018Apr}, disasters and post-traumatic stress \cite{Waite2017Dec, Raker2019Dec}, as well as a variety of mental health impacts associated with warmer temperatures \cite{baylis_weather_2018, Mullins2019Dec} (PALINKAS and WONG 2020).  MAYBE A SENTENCE HERE HIGHLIGHTING THE GAP IN KNOWLEDGE ABOUT DISPARITIES IN MENTAL HEALTH IMPACTS, VULNERABLE POPULATIONS, issues of scale for signal to noise, etc.
 
 %Heat and mental health
 %https://www.pnas.org/content/115/43/10953
-Higher temperatures are associated with many indicators of worsened mental health.  Multiple studies have found strong evidence that higher temperatures are associated with increases in suicides in the United States \citep{Burke2018Aug, Mullins2019Dec, Dixon2007May} with others demonstrating similar relationships in other locations around the world \citep{Qi2014Dec, Page2007Aug, Likhvar2011Jan}.  Higher temperatures have also been correlated with increases in hospitalization events related to both general mental health issues \cite{Obradovich2018Oct, Mullins2019Dec} and specific conditions like bipolar disorder and schizophrenia \citep{Lee2007Jan, Shapira2004Feb, Sung2013Feb, Gupta1992Jun, Hansen2008Oct}.
+Higher temperatures are associated with many indicators of worsened mental health.  Multiple studies have found strong evidence that higher temperatures are associated with increases in suicides in the United States \cite{Burke2018Aug, Mullins2019Dec, Dixon2007May} with other work demonstrating similar relationships in other locations around the world \cite{Qi2014Dec, Page2007Aug, Likhvar2011Jan}.  Higher temperatures have also been correlated with increases in hospitalization events related to both general mental health issues \cite{Obradovich2018Oct, Mullins2019Dec} specific conditions like bipolar disorder and schizophrenia \cite{Lee2007Jan, Sung2013Feb, Gupta1992Jun} as well as increased mortality among people with mental health disorders \cite{Hansen2008Oct}.
 
 Temperature has been hypothesized to impact mental health through a number of pathways.  Work on biological mechanisms emphasize that there may be mental health effects from maintaining stable body temperature in high heat \cite{Lohmus2018Jul}. 
 
-Additionally, recent studies have found that nighttime temperatures affects sleep quality \citep{Obradovich2017May, Mullins2019Dec}.
+Additionally, recent studies have found that nighttime temperatures affects sleep quality \cite{Obradovich2017May, Mullins2019Dec}.
 
 % The pathways
-Higher temperature associated with climate change could influence mental health directly by exposing people to trauma. It could also indirectly influence mental health by affecting (1) physical health and (2)community well-being \citep{RN1314}. For the direct influence pathway, extreme heat events or increasing temperatures have been associated with the increase in aggression,higher suicide rates and other hospital admissions \citep{RN1314,RN1316,RN1317,RN1318}. Heat exposures in working environments could also reduce people's capacity to deal with physical and mental task, and increase the risk of accidents, because of the excessive core body temperature and dehydration \citep{RN1319,RN1320,RN1321,RN1322}. The loss of work capacity would in turn result in loss of income, while the low income could also cause mental health problems \citep{Katz1997}.  As for the indirect pathway, first, because of the reciprocal causation relationship between physical health problems and mental health problems \citep{RN1323,RN1324} heat exposures associated with climate change along with other climate events and indirect health risks threatening physical health will directly influence mental health \citep{RN1325,RN1326}. Second, disordered temperature associated with climate change may destroy the economic in agricultural-production-dependent communities. For example, extreme heat reduces the work capacity of laborers in farm fields \citep{RN1320}, which further destroys agricultural-supported industries in local area\citep{RN1327}. The following economic pressures would undermine social capital and then lead to mental health problems.
+Higher temperature associated with climate change could influence mental health both directly and indirectly by exposing people to trauma (direct) (CITATIONS) or by affecting (1) physical health and (2)community well-being (indirect) \cite{BerryETAL2010}. Direct pathways can include extreme heat events or increasing temperatures associated with loss of workplace productivity from decreases in occupational health or increases in workplace injury \cite{kjellstrom_heat_2016, KjellstromETAL2009, kjellstrom_impact_2016} which can result in loss of income, all of which can exacerbate deteriorating mental health and lead to increased aggression, hospital admissions and suicide rates \cite{BerryETAL2010,CheatwoodDerral1995,CohnETAL2004,BouchamaETAL2007}. Heat exposures in working environments could also reduce people's capacity to deal with physical and mental task, and increase the risk of accidents, because of the excessive core body temperature and dehydration \cite{KjellstromETAL2009}. The loss of work capacity would in turn result in loss of income, while the low income could also cause mental health problems \cite{Katz1997}.  As for the indirect pathway, first, because of the reciprocal causation relationship between physical health problems and mental health problems \cite{MillerETAL2009,PrinceETAL2007} heat exposures associated with climate change along with other climate events and indirect health risks threatening physical health will directly influence mental health \cite{Berry2007,WHO2007}. Second, disordered temperature associated with climate change may destroy the economic in agricultural-production-dependent communities. For example, extreme heat reduces the work capacity of laborers in farm fields \cite{KjellstromETAL2009}, which further destroys agricultural-supported industries in local area\cite{BerryETAL2008}. The following economic pressures would undermine social capital and then lead to mental health problems.
 
 Recent research conducted on the effects of higher temperatures on mental health conducted at large, multi-city scales has found surprisingly uniform vulnerability.  For example, focusing on suicides, Burke et al. found ``no significant difference in suicide response to temperature between rich and poor municipalities or counties" \cite{Burke2018Aug}.  Similarly, Mullins et al. find no effect of income as modifier of the effect of temperature on suicides, emergency department visits, or self-reported mental health status \cite{Mullins2019Dec}.  One major challenge for these studies is that they rely on data from public health agencies that is aggregated to the municipality or city level.  Thus, they must rely on between-county metrics of vulnerability and cannot take neighborhood effects into account.
 
@@ -86,9 +88,9 @@ The poor and disadvantaged are much more exposed to undesirable temperatures.  T
 
 While public health data on mental health outcomes is not available at the neighborhood scale, data from twitter can provide an important indicator of mental health at extremely precise spatial and temporal scales.  Many studies have used the mood expressed in tweets as an indicator of mental health \cite{Edo-Osagie2020Jul, Sinnenberg2016Dec}.  Such studies have used twitter data to identify the onset of Post Traumatic Stress Disorder in individuals, even before their formal diagnosis \cite{Reece2017Oct}, while similar methods with facebook data have been used to predict the onset of depression \cite{Eichstaedt2018Oct}.  Additionally, in London, day-to-day changes in mental health indicators derived from tweets have been associated with changes in mental health crisis episodes \cite{Kolliakou2020Feb}, while across the US more positive tweets are associated with a variety of metrics of human well being \cite{Mitchell2013May}.  Finally, the mood expressed in tweets has been strongly associated with local weather \cite{baylis_weather_2018}, and has been used as evidence to support the temperature-suicide relationship \cite{Burke2018Aug}.  Thus, we used a common sentiment metric to determine if neighborhood characteristics affect the vulnerability of mental health to higher temperatures.
 
-\section{Results}
+\section*{Results}
 
-\subsection{Overall Effect}
+\subsection*{Overall Effect}
 We examined the relationship between the sentiment expressed in tweets and the prevailing Wet Bulb Globe Temperature (WBGT), an indicator of heat stress that accounts for temperature, humidity, wind speed, and solar radiation.  Controlling for a variety of fixed effects, we found that, across all tweets, higher temperatures are associated with lower sentiment (See Fig. \ref{fig:wbgt}).  Sentiment is highest at a WBGT of 5\textdegree Celsius (a dry bulb temperature typically around 12\textdegree C/54\textdegree F).  The greatest declines in sentiment are observed between 20\textdegree -25\textdegree C WBGT (dry bulb 29\textdegree-36\textdegree C/84\textdegree-97\textdegree F).  Sentiment also declines with colder temperatures, but only slightly.  We ran models using multiple sentiment indicators, and found similar results no matter which sentiment metric was used (See Supplement).
 
 \begin{figure}[H]
@@ -123,13 +125,13 @@ Finally, we modeled the combined effects of race and income in moderating the im
 \end{figure}
 
 
-\subsection{Comparison With Other Events}
+\subsection*{Comparison With Other Events}
 
 Expressed sentiment is a widely used metric to assess mental health and well-being on social media.  While a variety of related metrics can be used to quantify sentiment, we chose to use the VADER metric that was specifically designed for microblogs like twitter \cite{hutto2014vader}.  To give context to this novel metric, we compare the impacts of heat waves, defined as a change from 5\textdegree C WBGT (12\textdegree C/54\textdegree F) to 25\textdegree C WBGT (36\textdegree C/97\textdegree F), to other events that have large impacts on sentiment (See Fig. \ref{fig:compare}).  Firstly, we examine the change in average sentiment from Saturday to Monday, the highest and lowest days for twitter sentiment as well as other mental health metrics, such as suicides.  We also examine the decrease in sentiment associated with the two most expensive hurricanes in the last decade in the United States.  For the hurricanes, we compared the mean sentiment of counties affected by Hurricanes Harvey and Sandy on the day of landfall to the mean sentiment a week before.  These hurricanes are associated with mental health effects including Post-Traumatic Stress Disorder (PTSD) \cite{Schwartz2017Aug, Schwartz2018May}, and similar disasters have been associated with subsequent increases in suicides \cite{Krug1998Feb}.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{../res/comparison_plot.png}
+  \includegraphics[width=0.66\linewidth]{../res/comparison_plot.png}
   \caption{Decline in sentiment during a heat wave across several different neighborhoods, compared with other impacts on sentiment, such as major hurricanes, as well as the weekly variation in sentiment from the peak on Saturday to the low on Monday.}
   \label{fig:compare}
 \end{figure}
@@ -138,7 +140,7 @@ We found that the impacts of heatwaves on sentiment in rich and majority white n
 
 {\color{red} What other disasters/comparison events should we look at?}
 
-\subsection{Effects by Combined Statistical Area}
+\subsection*{Effects by Combined Statistical Area}
 
 To further explore our findings, we examined inequalities in the impacts of higher temperatures on sentiment by Combined Statistical Areas (CSAs) and Metropolitan Statistical Areas (MSAs) with over 1 million people (hereafter: cities).  We examined the change in size of the gap in sentiment scores between both poor and rich neighborhoods, as well as black and non-black neighborhoods, as temperatures change from optimum temperatures of 5\textdegree C WBGT (12\textdegree C/54\textdegree F) to 30\textdegree C WBGT (42\textdegree C/108\textdegree F).
 
@@ -162,7 +164,7 @@ Because we found a much stronger effect for the effects of temperature on sentim
 \label{fig:test}
 \end{figure}
 
-\section{Discussion}
+\section*{Discussion}
 % Benefits of twitter data/overview of findings
 We found that twitter data offers significant advantages for observing environmental effects on human well-being due to its very fine spatio-temporal resolution.  We were able to pair each tweet with the local temperature at the time of the tweet, and found a clear association between heat and worsened sentiment.   Moreover, we were able to show clear heterogeneities in vulnerability by neighborhood characteristics, overturning previous findings that found no heterogeneities at the county level \cite{Burke2018Aug, Mullins2019Dec}.
 
@@ -191,14 +193,14 @@ Recent research has suggested that the impacts of heat on sleep quality may play
 % Caveats
 While these findings are robust to different model specifications and sentiment metrics, there are some caveats.  For one, we were only able to locate the tweets within the census block where the tweet was sent - we did not to infer where the person sending the tweets typically lived or where they had been.  Many low-income and black people commute during the day to work in the service sector in higher-income areas, so these results may in fact under-estimate the impacts of higher temperatures on mental health for poor and minority individuals.  Moreover, the income level of a census block may be only weakly correlated with the wealth of the people who are typically found that census block.  For example, some public spaces are estimated to have very low income levels even though people from a variety of income levels may occupy those spaces throughout the day.  Additionally, neighborhoods of young college students are also typically estimated to have low income levels, even through college students are wealthier than the average American.  Again, these issues mean we are likely under-estimating the true effect of heat on mental health.  A final issue with using twitter data is that, while twitter is used by more than one in five Americans, twitter users may not be representative of the general population, as they are typically younger, wealthier, and more educated \cite{Pew2020Sep}.  Nevertheless, we found a large volume of tweets across all neighborhood types.
 
-% NCC doesnt have a "conclusion" section, but this is intended as an overall summary paragraph
+% NCC doesnt have a "conclusion" section*, but this is intended as an overall summary paragraph
 While climate change will have widespread and severe impacts on human well-being, it cannot be overemphasized just how highly unevenly these impacts will be distributed.  People with more money, access to aid and infrastructure, and who belong to ethnic groups in power are less affected by climate shocks and natural disasters and more able to adapt \cite{bullard2012wrong}.  While the physical health impacts of these shocks are more visible and easy to measure, the mental health impacts of climate change are also causing severe human suffering and there is no reason to believe they are not also highly unevenly distributed.  Thus, there are strong theoretical priors behind the hypothesis that low-income and marginalized people are more vulnerable to the mental health impacts of higher temperatures, even though previous work at coarse spatial scales has not found such an effect.  By using fine-scale twitter data, we showed that there are indeed stark difference in the mental health impacts of heat among neighborhoods in the United States.  These findings have significant implications for urban planning, climate and environmental justice, and mental health.
 
-\section{Methods}
-\subsection{Tweets \& Sentiment}
+\section*{Methods}
+\subsection*{Tweets \& Sentiment}
 We used data from 243 million geo-located English-language tweets from the lower 48 states from the years 2009 to 2019.  The Twitter data consists of publicly posted messages, or Tweets, that are short status messages users post to the platform.  We only considered users’ original content, thus did not include retweets in our analysis.  Additionally, we excluded all tweets that contained weather-related terms, to ensure that the sentiment expressed in the tweets was reflective of a user's mental state, and not a commentary on the weather.
 
-We assessed the sentiment expressed in the tweets using the VADER (Valence Aware Dictionary for sEntiment Reasoning) sentiment corpus \cite{gilbert_vader_2014}. VADER is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media because of several features, as:
+We assessed the sentiment expressed in the tweets using the VADER (Valence Aware Dictionary for sentiment Reasoning) sentiment corpus \cite{gilbert_vader_2014}. VADER is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media because of several features, as:
 
 \begin{itemize}
   \item Incorporating lexical features common to informal media, such as slang (``sux"), and acronyms (``lol").
@@ -211,21 +213,21 @@ We assessed the sentiment expressed in the tweets using the VADER (Valence Aware
 
 The VADER method yields a value for the mood of a tweet, with a score of 0 for neurtral tweets, a score $> 0$ for positive-mood tweets and a score $< 0$ for negative-mood tweets.  In addition to the VADER method used in the body of this paper, we also conduct our analysis using the Hedonometer and AFINN sentiment analysis methods, with similar results (See Supplement).
 
-\subsection{Weather}
+\subsection*{Weather}
 We used data on local weather conditions from the North American Land Data Assimilation System (NLDAS), a gridded product developed by several collaborative institutions, including NOAA, NASA, Princeton University, and the University of Washington.  This dataset is available at an hourly temporal resolution, and at 1/8th decimal degree spatial resolution, and integrates a large quantity of observation-based and modeled data  \cite{xia_continental-scale_2012}.  For the exact hour and location of each tweet, we extracted temperature, specific humidity, air pressure, total precipitation, shortwave radiation, and wind speed.  
 
 Because metrics of apparent temperature that take into account humidity and other factors can better account for the impacts of heat stress on human health and wellbeing, we calculate the Wet Bulb Globe Temperature (WBGT) at the time and location of each tweet.  WBGT is the temperature that a wet globe thermometer would read in direct sunlight, and gives a reading lower than a dry bulb temperature would show due to evaporative cooling, and can be estimated given normal temperature, relative humidity, solar radiation, and wind speed.  Because evaporative cooling is how humans cool themselves through perspiration, this temperature better indicates the heat stress that people are experiencing.  Metrics like WBGT that account for the effects of humidity and other factors on heat stress have been associated with diminished economic output \cite{rao2020projections}, increased crime \cite{hu2017impact}, increased mortality \cite{chien2016spatiotemporal, armstrong2019role}, and worsened mental health outcomes \cite{vida2012relationship, ding2016importance}.
 
 Using temperature, specific humidity, and pressure, we derived relative humidity using methods described by  \cite{bolton_computation_1980}.  We then calculated the WBGT using the formula described by \cite{heo2019comparison}.
 
-\subsection{Socio-Econoimc Data}
+\subsection*{Socio-Econoimc Data}
 We used data from the American Community Survey (ACS) administered by the US Census to estimate income levels and the racial composition of neighborhoods where tweets were located.  Data was at the level of the census block group, the smallest unit for which the census releases public data.
 
 ACS data is released to cover five-year periods.  We therefore matched each tweet with census block group data from the year at the middle year of each survey's five-year range.  For example, tweets from 2014 were matched to data from the 2012-2016 ACS.  Because the most recent available ACS was from 2014-2018, all tweets from year years greater than 2016 were matched to this dataset.  Data was downloaded from the IPUMS NHGIS service provided by the University of Minnesota.
 
 Mean annual income per capita is provided by the ACS, and we standardized this variable so that the values for each year were in 2019 dollars.  For racial categories, we combined the various categories provided by the ACS into four racial groups: non-Hispanic white, non-Hispanic black, Hispanic of any race, and an "other" category for non-Hispanic people who were neither black nor white, such as Asian, Native American, or mixed-race people.
 
-\subsection{Modeling}
+\subsection*{Modeling}
 We assessed how expressed sentiment is affected by wet bulb globe temperature using segmented regressions, controlling for precipitation, and shortwave solar radiation (sunshine), as well as the following spatio-temporal fixed effects: the day of the week, the time of day, the day of the year, the year, the month, and the county.  
 
 Our initial model (for Fig. \ref{fig:wbgt} takes the following form:
@@ -247,16 +249,18 @@ Where $m$ is either the log-transformed average income in the census block where
 For our analyses by CSA, we subset the data in the model and run the model with the same fixed effects, although we fit a linear effect for $f_t()$.
 
 
-\section{Acknowledgements}
+\section*{Acknowledgements}
 %Official SESYNC wording
 This work was supported by the National Socio-Environmental Synthesis Center (SESYNC) under funding received from the National Science Foundation DBI-1639145.  Additionally, cloud resources for this project were provided for the Microsoft Azure cloud by Microsoft's AI for Earth program, grant number .
 
 This data came from Twitter via the University of Vermont’s (UVM) agreement with Twitter to access its streaming API - colloquially referred to as the Decahose.  The UVM special agreement with Twitter allows for access to this data for research and analysis purposes and we have complied with all the terms of service for Twitter and UVM. 
-\printbibliography
 
-\section{Author Contributions}
-Author contributions: M.W.C. and P.B. designed research and modeling strategy; A.S. provided data; M.W.C and Z.L. prepared data; M.W.C. and J.O.G analyzed data; and M.W.C., J.O.G., J.L., and P.A.W. wrote the paper.
+%\printbibliography
+\bibliography{TextDataClimateShocks}
 
-This project was co-lead by M.W.C. and J.O.G.
+\section*{Author Contributions}
+Author contributions: M.W.C., J.O.G. and P.B. designed the research and modeling strategy; A.S. provided data; M.W.C and Z.L. prepared data; M.W.C. and J.O.G analyzed data; and M.W.C., J.O.G., J.L., and P.A.W. wrote the paper.
+
+\noindent This project was co-lead by M.W.C. and J.O.G.
 
 \end{document}
