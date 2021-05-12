@@ -8,16 +8,16 @@ library(USAboundaries)
 data <- fread('~/tweets/all.csv')
 csadat <- fread('~/tweets/csa/fips-csa.csv')
 
-qs_inc <- quantile(data$income_percap, seq(0, 1, by=0.05))
-qs_white <- quantile(data$race_white, seq(0, 1, by=0.05))
-qs_black <- quantile(data$race_black, seq(0, 1, by=0.05))
-
 data <- merge(data, csadat, on='fips', all=F)
 
 data$month <- substr(data$statemonth, 4, 5)
 data$income_percap <- log(data$income_percap)
 data <- data[weather_term == 0, ]
 data$raining <- data$prcp > 0
+
+qs_inc <- quantile(data$income_percap, seq(0, 1, by=0.05))
+qs_white <- quantile(data$race_white, seq(0, 1, by=0.05))
+qs_black <- quantile(data$race_black, seq(0, 1, by=0.05))
 
 csas <- tab(data$id)
 csas <- as.numeric(names(csas))[order(csas, decreasing=T)]
@@ -56,6 +56,7 @@ for (csasel in csas){
 }
 
 write.csv(allres, '~/tweets/csa/model_res_geo.csv', row.names=F)
+allres <- read.csv('~/tweets/csa/model_res_geo.csv')
 
 #########################
 # Visualize
@@ -101,7 +102,7 @@ m <- merge(csa_sf, allres %>% filter(term == 'wbgt:income_percap'))
 m$estimate <- 25*(m$estimate/(qs_inc[2] - qs_inc[20]))
 ggplot() + 
   geom_sf(data = states) + 
-  geom_sf(data = m, aes(fill=est_change)) + 
+  geom_sf(data = m, aes(fill=estimate)) + 
   geom_sf(data = states, fill=NA) + 
   geom_sf(data = m, fill=NA, aes(color=p.value < 0.05, size=p.value < 0.05)) + 
   scale_fill_gradient2(low='#e66101', mid='#f7f7f7', high='#5e3c99', midpoint=0) + 
@@ -124,7 +125,7 @@ ggsave('~/temp-sentiment/res/map_wbgt_income.png', width=12, height=8)
 # Black results
 ###########################
 m <- merge(csa_sf, allres %>% filter(term == 'wbgt:race_black'))
-m$estimate <- 25*(m$estimate/(qs_white[20] - qs_white[2]))
+m$estimate <- 25*(m$estimate/(qs_black[20] - qs_black[2]))
 m <- m %>%
   filter(id %in% csadat$id[csadat$black > 0.05])
 ggplot() + 
