@@ -12,36 +12,74 @@ data <- data[weather_term == 0, ]
 # Day of Week
 dow_df <- data[ , .(vader = mean(vader), afinn=mean(afinn), hedono=mean(hedono)), .(dow)]
 
-#####################
-# Look at Hurricanes
-#####################
+doy_df$doy[doy_df$vader == max(doy_df$vader)]
+doy_df$doy[doy_df$vader == min(doy_df$vader[doy_df$doy != '02-29'])]
+max(doy_df$vader) - min(doy_df$vader[doy_df$doy != '02-29'])
 
 data$date <- mdy(paste0(data$doy, '-', data$year))
 
+data$month <- month(data$date)
+
+mon_df <- data[ , .(vader = mean(vader), afinn=mean(afinn), hedono=mean(hedono)), .(month)]
+
+make_dif <- function(counties, event_date){
+  sel <- data %>%
+    filter(fips %in% counties, date == ymd(event_date) | date == ymd(event_date) - days(7)) %>%
+    mutate(bef_aft=ifelse(date >= ymd(event_date), 'after', 'before')) %>%
+    group_by(bef_aft) %>%
+    summarize(vader=mean(vader))
+  
+  change <- sel$vader[sel$bef_aft == 'before'] - sel$vader[sel$bef_aft == 'after']
+  
+  change
+}
+
+
+#####################
+# 
+#####################
+
+#Harvey
 harvey_counties <- c(48007, 48025, 48039, 48057, 48071, 48157, 48167,
   48175, 48199, 48201, 48239, 48245, 48255, 48273, 48291,
   48321, 48339, 48391, 48407, 48409, 48469, 48473, 48481)
+harvey_date <- '2017/08/26'
 
-harvey_date <- ymd('2017/08/26')
+harvey_change <- make_dif(harvey_counties, harvey_date)
 
+#Sandy
 sandy_counties <- c(9001, 34001, 34004, 34009, 34013, 34017, 34023, 34029, 34039, 36005, 36047, 36059, 36061, 36081, 36085, 36204)
+sandy_date <- '2012/10/29'
 
-sandy_date <- ymd('2012/10/29')
+sandy_change <- make_dif(sandy_counties, sandy_date)
 
-harvey <- data %>%
-  filter(fips %in% harvey_counties, date == harvey_date | date == harvey_date - days(7))
-sandy <- data %>%
-  filter(fips %in% sandy_counties, date == sandy_date | date == sandy_date - days(7))
+#Oklahoma Tornadoes
+okl_counties <- c(40017, 40051, 40027, 40087, 40109, 40083, 40081, 40125)
+okl_date <- '2013-05-20'
 
-harvey_sum <- harvey %>%
-  mutate(bef_aft=ifelse(date >= harvey_date, 'after', 'before')) %>%
-  group_by(bef_aft) %>%
-  summarize(vader=mean(vader), afinn=mean(afinn), hedono=mean(hedono))
+okl_change <- make_dif(okl_counties, okl_date)
 
-sandy_sum <- sandy %>%
-  mutate(bef_aft=ifelse(date >= sandy_date, 'after', 'before')) %>%
-  group_by(bef_aft) %>%
-  summarize(vader=mean(vader), afinn=mean(afinn), hedono=mean(hedono))
+#Orlando Nightclub Shooting
+orl_counties <- c(12117, 12095, 12097)
+orl_date <- "2016-06-12"
+
+orl_change <- make_dif(orl_counties, orl_date)
+
+#Las Vegas Shooting
+lvn_counties <- c(32003)
+lvn_date <- "2017-10-02"
+
+lvn_change <- make_dif(lvn_counties, lvn_date)
+
+# Bay Area earthquake
+bay_counties <- c(6041, 06081, 06075, 06055, 06095, 06013, 06097, 06001)
+bay_date <- "2014-08-24"
+
+bay_change <- make_dif(bay_counties, bay_date)
+
+#Change Over Time
+weekly_change <- dow_df$vader[dow_df$dow == 'Saturday'] - dow_df$vader[dow_df$dow == 'Monday']
+
 
 ###########################################
 # Death of: Robin williams, Anthony Bourdain
@@ -75,12 +113,10 @@ sandy_sum <- sandy %>%
 # Change due to heat in rich neighborhoods
 # Change due to poor neighbor
 
-# robin_change <- robin_sum$vader[robin_sum$bef_aft == 'before'] - robin_sum$vader[robin_sum$bef_aft == 'after']
-sandy_change <- sandy_sum$vader[sandy_sum$bef_aft == 'before'] - sandy_sum$vader[sandy_sum$bef_aft == 'after']
-harvey_change <- harvey_sum$vader[harvey_sum$bef_aft == 'before'] - harvey_sum$vader[harvey_sum$bef_aft == 'after']
-sandy_change <- sandy_sum$vader[sandy_sum$bef_aft == 'before'] - sandy_sum$vader[sandy_sum$bef_aft == 'after']
-
-weekly_change <- dow_df$vader[dow_df$dow == 'Saturday'] - dow_df$vader[dow_df$dow == 'Monday']
+okl_change
+orl_change
+lvn_change
+bay_change
 
 rich_change <- 0.00125
 poor_change <- 0.016
