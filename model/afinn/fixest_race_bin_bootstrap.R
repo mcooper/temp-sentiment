@@ -3,7 +3,7 @@ library(fixest)
 library(tidyverse)
 library(Hmisc)
 
-MOD_RUN <- 'race_q'
+MOD_RUN <- 'afinn_race_q'
 
 setwd('~/tweets/')
 
@@ -56,7 +56,7 @@ for (i in 1:80){
   class(myobj) <- 'bootmod'
   saveRDS(myobj, file=paste0('bootstrap/', MOD_RUN, '/', Sys.time()))
   if (i %% 10 == 0){
-    system(paste0('~/telegram.sh "Did a business ', i, '"'))
+    system(paste0('telegram "Did a business ', i, '"'))
   }
   print(i)
   rm(list=c('mod', 'cf', 'vc', 'myobj'))

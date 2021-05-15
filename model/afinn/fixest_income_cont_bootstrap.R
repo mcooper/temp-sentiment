@@ -2,7 +2,7 @@ library(data.table)
 library(fixest)
 library(tidyverse)
 
-MOD_RUN <- 'income_percap'
+MOD_RUN <- 'afinn_income_percap'
 
 setwd('~/tweets/')
 
@@ -40,7 +40,7 @@ formula <- paste0("afinn ~ ",
                      'income_percap*raining + income_percap*srad',
                      " | dow + doy + tod + fips + year + statemonth")
 
-for (i in 2:80){
+for (i in 1:80){
   mod <- feols(as.formula(formula), data[sample(1:nrow(data), nrow(data), replace=T), ])
   cf <- coef(mod)
   vc <- vcov(mod)
