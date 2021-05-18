@@ -107,8 +107,7 @@ annot <- data.frame(color=c(rep('Majority\nBlack', 2),
                         rep('Hurricane\nSandy', 2)),
                     x=c(4.5, 4.5, 
                         1.5, 1.5),
-                    y=c(0.0003, 0.000015, 
-                        0.0003, 0.000015),
+                    y=c(0.0031, 0.00015, 0.0031, 0.00015) + 0.008,
                     label=c('Heat Wave Impact By', 'Neighborhood Characteristics',
                             'Impact of', 'Comparison Events'))
 
@@ -124,20 +123,19 @@ ggplot() +
                               'Hurricane\nSandy'="#636363", 
                               'Saturday\nto Monday'="#636363")) + 
   scale_color_manual(values=c('Majority\nBlack'='black',
-                              'Hurricane\nHarvey'='grey30')) + 
+                              'Hurricane\nSandy'='grey30')) + 
   scale_y_continuous(expand=expand_scale(mult=c(0.05, 0))) + 
   scale_x_discrete(position='top') + 
   labs(x='', y='Decrease in Sentiment') + 
   guides(fill=FALSE, color=FALSE) + 
   theme_classic() + 
   coord_cartesian(ylim=c(min(plt$min)*1.05, 0), clip='off') + 
-  annotate("segment", x = 2.75, xend = 6.25, y = 0.0006, yend = 0.0006,
+  annotate("segment", x = 2.75, xend = 6.25, y = 0.006, yend = 0.006,
     colour = "black", size=0.25) +
-  annotate("segment", x = 0.75, xend = 2.25, y = 0.0006, yend = 0.0006,
+  annotate("segment", x = 0.75, xend = 2.25, y = 0.006, yend = 0.006,
     colour = "grey30", size=0.25) +
   theme(axis.text.x = element_text(colour = c(rep('grey30',3), rep('black', 4))),
         #top, right, bottom, left
-        plot.margin = unit(c(5, 0.025, 0.25, 0.025), "cm"))
-
+        plot.margin = unit(c(0.65, 0.025, 0.25, 0.025), "cm"))
 ggsave('~/temp-sentiment/res/comparison_plot.png', width=5, height=2.5)
 
