@@ -152,6 +152,6 @@ x <- get_x_axis(x2)
 xl <- get_plot_component(x2, "xlab-b")
 
 plot_grid(curve, hist, ggdraw(x), ggdraw(xl), align='v', axis='rl', ncol=1, 
-          rel_heights=c(0.8, 0.2, 0.04, 0.04))
+          rel_heights=c(0.8, 0.2, 0.04, 0.08))
 ggsave('~/temp-sentiment/res/wbgt.png', width=4.5, height=4)
 
