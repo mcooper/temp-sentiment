@@ -134,7 +134,7 @@ ggplot() +
     colour = "black", size=0.25) +
   annotate("segment", x = 0.75, xend = 2.25, y = 0.006, yend = 0.006,
     colour = "grey30", size=0.25) +
-  theme(axis.text.x = element_text(colour = c(rep('grey30',3), rep('black', 4))),
+  theme(axis.text.x = element_text(colour = c(rep('grey30', 2), rep('black', 4))),
         #top, right, bottom, left
         plot.margin = unit(c(0.65, 0.025, 0.25, 0.025), "cm"))
 ggsave('~/temp-sentiment/res/comparison_plot.png', width=5, height=2.5)
