@@ -159,7 +159,7 @@ preddf <- preddf %>%
        color = 'Census Block\nIncome Per-Capita\n(Percentile)',
        linetype = 'Census Block\nPercent Minority') +
   theme_classic() + 
-  theme(legend.position=c(0.3, 0.4),
+  theme(#legend.position=c(0.3, 0.4),
         axis.text.x = element_blank(),
         axis.ticks.x = element_blank(),
         plot.margin = unit(c(0.025, 0.025, -1, 0.025), "cm"),
@@ -189,4 +189,4 @@ xl <- get_plot_component(x2, "xlab-b")
 
 plot_grid(curve, hist, ggdraw(x), ggdraw(xl), align='v', axis='rl', ncol=1, 
           rel_heights=c(0.8, 0.2, 0.04, 0.04))
-ggsave('~/temp-sentiment/res/wbgt-income-race.png', width=6, height=5)
+ggsave('~/temp-sentiment/res/wbgt-income-race.png', width=5.5, height=4)

@@ -168,4 +168,4 @@ xl <- get_plot_component(x2, "xlab-b")
 
 plot_grid(curve, hist, ggdraw(x), ggdraw(xl), align='v', axis='rl', ncol=1, 
           rel_heights=c(0.8, 0.2, 0.04, 0.04))
-ggsave('~/temp-sentiment/res/hedono-wbgt-race_q.png', width=6, height=5)
+ggsave('~/temp-sentiment/res/hedono-wbgt-race_q.png', width=4.5, height=4)

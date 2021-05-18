@@ -116,6 +116,7 @@ preddf <- preddf %>%
   summarize(ymin = quantile(value, probs=0.025),
             ymax = quantile(value, probs=0.975),
             pred = quantile(value, probs=0.5))
+write.csv(preddf, '~/tweets/viz_cache/vader/wbgt.csv', row.names=F)
 
 curve <- ggplot(preddf) + 
   geom_line(aes(x=wbgt, y=pred)) + 
@@ -152,5 +153,5 @@ xl <- get_plot_component(x2, "xlab-b")
 
 plot_grid(curve, hist, ggdraw(x), ggdraw(xl), align='v', axis='rl', ncol=1, 
           rel_heights=c(0.8, 0.2, 0.04, 0.04))
-ggsave('~/temp-sentiment/res/wbgt.png', width=6, height=5)
+ggsave('~/temp-sentiment/res/wbgt.png', width=4.5, height=4)
 

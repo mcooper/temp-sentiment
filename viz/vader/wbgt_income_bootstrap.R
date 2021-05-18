@@ -132,6 +132,7 @@ preddf <- preddf %>%
   summarize(ymin = quantile(value, probs=0.025),
             ymax = quantile(value, probs=0.975),
             pred = quantile(value, probs=0.5))
+write.csv(preddf, '~/tweets/viz_cache/vader/wbgt-income.csv', row.names=F)
 
 curve <- ggplot(preddf) + 
   geom_line(aes(x=wbgt, y=pred, color=income_percap)) + 
@@ -173,7 +174,7 @@ xl <- get_plot_component(x2, "xlab-b")
 
 plot_grid(curve, hist, ggdraw(x), ggdraw(xl), align='v', axis='rl', ncol=1, 
           rel_heights=c(0.8, 0.2, 0.04, 0.04))
-ggsave('~/temp-sentiment/res/wbgt-income.png', width=6, height=5)
+ggsave('~/temp-sentiment/res/wbgt-income.png', width=4.5, height=4)
 
 ########################################
 # Precip
@@ -226,6 +227,7 @@ preddf <- preddf %>%
   summarize(ymin = quantile(value, probs=0.025),
             ymax = quantile(value, probs=0.975),
             pred = quantile(value, probs=0.5))
+write.csv(preddf, '~/tweets/viz_cache/vader/precip-income.csv', row.names=F)
 
 ggplot(preddf %>% filter(raining)) + 
   geom_bar(aes(x=income_percap, y=pred, fill=income_percap), stat='identity') + 
@@ -240,7 +242,7 @@ ggplot(preddf %>% filter(raining)) +
   theme(axis.ticks.x = element_blank(),
         panel.grid.major = element_line(color = "lightgrey", size=0.5),
         panel.grid.minor = element_line(color = "lightgrey", size=0.25))
-ggsave('~/temp-sentiment/res/raining-income.png', width=6, height=5)
+ggsave('~/temp-sentiment/res/raining-income.png', width=4.5, height=4)
 
 ########################################
 # srad
@@ -292,6 +294,7 @@ preddf <- preddf %>%
   summarize(ymin = quantile(value, probs=0.025),
             ymax = quantile(value, probs=0.975),
             pred = quantile(value, probs=0.5))
+write.csv(preddf, '~/tweets/viz_cache/vader/srad-income.csv', row.names=F)
 
 curve <- ggplot(preddf) + 
   geom_line(aes(x=srad, y=pred, color=income_percap)) + 
@@ -324,4 +327,4 @@ hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'srad']) +
 
 plot_grid(curve, hist, align='v', axis='rl', ncol=1, 
           rel_heights=c(0.8, 0.2))
-ggsave('~/temp-sentiment/res/srad-income.png', width=6, height=5)
+ggsave('~/temp-sentiment/res/srad-income.png', width=4.5, height=4)
