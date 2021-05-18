@@ -49,7 +49,9 @@
 \renewcommand{\thefigure}{S\arabic{figure}}
 \renewcommand{\thesection}{S\arabic{section}}
 
-\section{Alternative Sentiment Algorithm}
+\section{Alternative Sentiment Algorithms}
+
+\subsection{Hedonometer}
 
 In addition to the Valence Aware Dictionary for sentiment Reasoning (VADER) sentiment analysis method \cite{gilbert_vader_2014}, we also used the hedonometer method \cite{Dodds2011Dec}.  This sentiment metric yielded very similar findings to those presented in the main paper with the VADER method.
 
@@ -78,6 +80,8 @@ The sentiment score for single text will be the mean happiness score for all wor
   \includegraphics[width=0.6\linewidth]{../res/hedono-wbgt-race_q.png}
   \caption{Effects of temperature on sentiment and moderated by race, measured with the hedonometer method.}
 \end{figure}
+
+\subsection{AFINN}
 
 \section{Alternative Interaction Variables}
 For our main analysis, we treated income as a continuous (log-transformed) variable and race as a categorical variable.  We ran similar analyses with income as a categorical variable and race as a continuous variable (the percent of a census block's population that was non-white/minority).
