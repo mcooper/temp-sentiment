@@ -2,14 +2,15 @@ import pandas as pd
 from tqdm import tqdm
 import nltk
 from nltk import word_tokenize
-from multiprocessing import Process
+from multiprocessing import Pool
 import glob
+import os
 
 ###############################
 # Metadata
 ###############################
 
-N_CORES = 4
+N_CORES = 64
 
 SAVE_PATH = '/home/ubuntu/tweets/depressive/'
 READ_PATH = '/home/ubuntu/tweets/tweets/'
@@ -36,7 +37,7 @@ def process_all_by_file(f):
     fn = f.split('/')[-1]
     filename = SAVE_PATH + fn
     try:
-        df = pd.read_csv(f)
+        df = pd.read_csv(f, lineterminator='\n')
     #Some have no text data, so drop
     except pd.errors.EmptyDataError:
         pd.DataFrame({}).to_csv(filename, index=False)
@@ -58,20 +59,14 @@ def process_all_by_file(f):
 #Get all not-yet-processed tweet data
 tweetfiles = glob.glob(READ_PATH + '*.csv')
 donefiles = glob.glob(SAVE_PATH + '*.csv')
-tweetfiles = [tweet for tweet in tweetfiles if tweet not in donefiles]
+donefiles = [tweet.split('/')[-1] for tweet in donefiles]
+tweetfiles = [tweet for tweet in tweetfiles if tweet.split('/')[-1] not in donefiles]
 
-tweetfiles.sort()
+pool = Pool(processes=N_CORES)
+for f in tweetfiles:
+    pool.apply_async(process_all_by_file, args=(f, ))
 
-# Convert to chunks of size N_CORES
-tweetchunks = x = [tweetfiles[i:i + N_CORES] for i in range(0, len(tweetfiles), N_CORES)] 
+os.system('/home/ubuntu/telegram "Done with Depressive Language"')
+os.system('sudo poweroff')
 
-for chunk in tweetchunks:
-    processes = []
-    for f in chunk:
-        proc = Process(target=process_all_by_file, args=(f, ))
-        processes.append(proc)
-        proc.start()
-    for process in processes:
-        process.join()
 
-os.system('/home/ubuntu/telegram.sh "Done with Sentiment"')
