@@ -2,7 +2,7 @@ library(data.table)
 
 setwd('/home/ubuntu/tweets')
 
-setDTthreads(36)
+setDTthreads(48)
 options(scipen=100)
 
 #To combine the daily csvs, I ran
@@ -86,5 +86,5 @@ all$statemonth <- paste0(substr(100000 + all$fips, 2, 3), '-', substr(all$doy, 1
 fwrite(all, 'all.csv', row.names=F)
 fwrite(all[sample(.N, .N*0.01)], 'all_samp_1pct.csv', row.names=F)
 
-system('telegram "Donezo!"')
+system('~/telegram.sh "Donezo!"')
 system('sudo poweroff')
