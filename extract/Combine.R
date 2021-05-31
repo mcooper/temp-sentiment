@@ -11,9 +11,9 @@ options(scipen=100)
 #Get Sentiment Data
 sen <- fread('sentiment_all.csv',
              col.names=c('id', 'tweet_created_at', 'weather_term', 
-                         'afinn', # 'textblob', 
+                         'afinn', 'textblob', 
                          'hedono', 'vader'), # 'swn', 'wkwsci'),
-             drop=c(5, 8, 9))
+             drop=c(8, 9))
 sen <- unique(sen, by=c('id', 'tweet_created_at'))
 
 #Get Climate Data
@@ -40,15 +40,6 @@ cen[ , race_other:=NULL]
 cen[ , race_hisp:=NULL]
 cen <- unique(cen, by=c('id', 'tweet_created_at'))
 
-#Get Landcover Data
-lcv <- fread('landcover_all.csv',
-             col.names=c('id', 'tweet_created_at', 'tree', 'impervious'),
-                         # 'landcover', 'id_str')
-             drop=c(5),
-             blank.lines.skip=TRUE)
-lcv <- unique(lcv, by=c('id', 'tweet_created_at'))
-
-
 #Get Local Time Data
 lti <- fread('localtime_all.csv',
              col.names=c('fips', 'id', 'tweet_created_at', 
@@ -58,20 +49,25 @@ lti <- fread('localtime_all.csv',
              drop=c(4))
 lti <- unique(lti, by=c('id', 'tweet_created_at'))
 
+#Depressive Language Data
+dep <- fread('depressive_all.csv', col.names=c('id', 'tweet_created_at', 'depress_term'),
+             blank.lines.skip=T)
+
 setkeyv(sen, cols=c('id', 'tweet_created_at'))
 setkeyv(cli, cols=c('id', 'tweet_created_at'))
 setkeyv(cen, cols=c('id', 'tweet_created_at'))
-setkeyv(lcv, cols=c('id', 'tweet_created_at'))
 setkeyv(lti, cols=c('id', 'tweet_created_at'))
+setkeyv(dep, cols=c('id', 'tweet_created_at'))
 
 all <- merge(cli, sen, all.x=T, all.y=F)
 all <- merge(all, cen, all.x=T, all.y=F)
 all <- merge(all, lti, all.x=T, all.y=F)
 all <- merge(all, lcv, all.x=T, all.y=F)
+all <- merge(all, dep, all.x=T, all.y=F)
 
 all <- na.omit(all)
 
-rm(sen, cli, cen, lcv, lti)
+rm(sen, cli, cen, lti, dep)
 
 all[ , id:=NULL]
 all[ , tweet_created_at:=NULL]
@@ -81,10 +77,13 @@ all[ , tweet_created_at:=NULL]
 all <- all[!all$tod %in% c('CDT', 'CST', 'EDT', 'EST', 'MST', 'MDT', 'PDT', 'PST'), ]
 
 #Make Statemonth Fixed Effect
-all$statemonth <- paste0(substr(100000 + all$fips, 2, 3), '-', substr(all$doy, 1, 2))
+all$statemonth <- paste0(substr(100000 + as.numeric(all$fips), 2, 3), '-', substr(all$doy, 1, 2))
 
 fwrite(all, 'all.csv', row.names=F)
 fwrite(all[sample(.N, .N*0.01)], 'all_samp_1pct.csv', row.names=F)
 
 system('~/telegram.sh "Donezo!"')
 system('sudo poweroff')
+
+
+
