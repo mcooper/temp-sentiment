@@ -6,7 +6,7 @@ library(cowplot)
 
 options(scipen=100)
 
-MOD_RUN <- 'race_income'
+MOD_RUN <- 'race_income2'
 
 setwd(paste0('~/tweets/bootstrap/', MOD_RUN, '/'))
 
@@ -16,7 +16,7 @@ data$income_percap <- log(data$income_percap)
 data <- data[weather_term == 0, ]
 
 inc_qs <- quantile(data$income_percap, seq(0, 1, by=0.05))
-race_qs <- quantile(data$race_white, seq(0, 1, by=0.05))
+race_qs <- quantile(data$race_black, seq(0, 1, by=0.05))
 
 #Tempknots
 knots = list("wbgt"= c(min(data$wbgt), -10, 0, 5, 10, 15, 20, 25, 
@@ -81,25 +81,25 @@ ref_temps <- round(ref_temps)
 #########################################
 preddf <- data.frame(wbgt=seq(-22, 33))
 preddf <- make_groups(preddf, 'income_percap', inc_qs[c(2, 11, 20)])
-preddf <- make_groups(preddf, 'race_white', race_qs[c(2, 11, 20)])
+preddf <- make_groups(preddf, 'race_black', race_qs[c(2, 11, 20)])
 
 preddf$vader <- 1
 
 mm <- model.matrix(as.formula(paste0("vader ~ ", 
                      piece.formula("wbgt", knots[['wbgt']], "income_percap"), ' + ',
                      piece.formula("wbgt", knots[['wbgt']], ""), ' + ',
-                     piece.formula("wbgt", knots[['wbgt']], "race_white"), ' + ',
+                     piece.formula("wbgt", knots[['wbgt']], "race_black"), ' + ',
                      piece.formula("wbgt", knots[['wbgt']], ""))),
                    data=preddf)
 
 mm <- mm[ , colnames(mm) != '(Intercept)']
 mm <- mm[ , colnames(mm) != 'income_percap']
-mm <- mm[ , colnames(mm) != 'race_white']
+mm <- mm[ , colnames(mm) != 'race_black']
 
 mmp <- lapply(seq_len(nrow(mm)), function(i) mm[i,])
 
 #Iterate over models
-mods <- list.files()
+mods <- list.files(pattern='06-04')
 for (modf in mods){
 
   mod <- readRDS(modf)
@@ -111,7 +111,7 @@ for (modf in mods){
 }
 
 preddf$income_percap <- factor(preddf$income_percap)
-preddf$race_white <- factor(preddf$race_white)
+preddf$race_black <- factor(preddf$race_black)
 
 levels(preddf$income_percap) <- preddf$income_percap %>%
                                    levels %>%
@@ -126,11 +126,11 @@ levels(preddf$income_percap) <- paste0(levels(preddf$income_percap), ' (',
 
 
 conv <- function(x){
-  #Convert % white to % minority
+  #Convert % black to % minority
   100*(1 - x)
 }
 
-levels(preddf$race_white) <- preddf$race_white %>%
+levels(preddf$race_black) <- preddf$race_black %>%
                                    levels %>%
                                    as.numeric %>%
                                    conv %>%
@@ -139,19 +139,19 @@ levels(preddf$race_white) <- preddf$race_white %>%
 
 
 preddf <- preddf %>%
-  gather(key, value, -wbgt, -income_percap, -race_white, -vader) %>%
+  gather(key, value, -wbgt, -income_percap, -race_black, -vader) %>%
   #Normalize so that graph shows difference from wbgt = X
-  group_by(race_white, income_percap, key) %>%
+  group_by(race_black, income_percap, key) %>%
   mutate(value = value - value[wbgt == 5]) %>%
   #Get ymin, ymax, and mean
-  group_by(wbgt, income_percap, race_white) %>%
+  group_by(wbgt, income_percap, race_black) %>%
   summarize(ymin = quantile(value, probs=0.025),
             ymax = quantile(value, probs=0.975),
             pred = quantile(value, probs=0.5))
 
 (curve <- ggplot(preddf) + 
-  geom_line(aes(x=wbgt, y=pred, color=income_percap, linetype=race_white)) + 
-  geom_ribbon(aes(x=wbgt, ymin=ymin, ymax=ymax, fill=income_percap, grou=race_white), alpha=0.2) + 
+  geom_line(aes(x=wbgt, y=pred, color=income_percap, linetype=race_black)) + 
+  geom_ribbon(aes(x=wbgt, ymin=ymin, ymax=ymax, fill=income_percap, grou=race_black), alpha=0.2) + 
   scale_x_continuous(expand=c(0, 0), limits=c(-22, 33)) + 
   #scale_y_continuous(breaks=seq(0, -0.02, -0.005)) + 
   labs(x='', y='Change in Mood of Tweet',

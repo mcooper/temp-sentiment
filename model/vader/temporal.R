@@ -1,31 +1,21 @@
-#Use E48
-
 library(data.table)
 library(fixest)
-library(survey)
 library(tidyverse)
-library(cowplot)
 
-options(scipen=100)
-
-MOD_RUN <- 'race_income2'
+RUN <- 'temporal'
 
 setwd('~/tweets/')
 
 data <- fread('all.csv')
-data$income_percap <- log(data$income_percap)
 
 data <- data[weather_term == 0, ]
 
-#Tempknots
-knots = list("wbgt"= c(min(data$wbgt), -10, 0, 5, 10, 15, 20, 25, 
-                          max(data$wbgt)))
-
 data$raining <- data$prcp > 0
+
+data$tod_cont <- as.numeric(substr(data$tod, 1, 2)) + as.numeric(substr(data$tod, 4, 4))/6
 
 #Define Segmenting Function
 piece.formula <- function(var.name, knots, interact_var='') {
-  knots <- knots[c(-1, -length(knots))]
   formula.sign <- rep(" - ", length(knots))
   formula.sign[knots < 0] <- " + "
   if (interact_var == ''){
@@ -40,12 +30,20 @@ piece.formula <- function(var.name, knots, interact_var='') {
 }
 
 formula <- paste0("vader ~ ", 
-                     piece.formula("wbgt", knots[['wbgt']], "income_percap"), ' + ',
-                     piece.formula("wbgt", knots[['wbgt']], ""), ' + ',
-                     piece.formula("wbgt", knots[['wbgt']], "race_black"), ' + ',
-                     piece.formula("wbgt", knots[['wbgt']], ""), ' + ',
-                     'race_black*income_percap*raining + race_black*srad*income_percap',
+                     piece.formula("tod_cont", seq(0, 24, 2), "wbgt"), ' + ',
+                     'raining + srad',
                      " | dow + doy + tod + fips + year + statemonth")
+
+mod <- feols(as.formula(formula), data)
+
+cf <- coef(mod)
+vc <- vcov(mod)
+myobj <- list(vcov=vc, coef=cf)
+class(myobj) <- 'bootmod'
+saveRDS(myobj, file=paste0('bootstrap/', RUN, '/', Sys.time()))
+system('telegram "Did a business "')
+
+
 
 
 for (i in 1:80){
@@ -54,16 +52,13 @@ for (i in 1:80){
   vc <- vcov(mod)
   myobj <- list(vcov=vc, coef=cf)
   class(myobj) <- 'bootmod'
-  saveRDS(myobj, file=paste0('bootstrap/', MOD_RUN, '/', Sys.time()))
-  if (i %% 10 == 0){
-    system(paste0('~/telegram "Did a business ', i, '"'))
-  }
-  print(i)
+  saveRDS(myobj, file=paste0('bootstrap/', RUN, '/', Sys.time()))
+  system(paste0('~/telegram.sh "Did a business ', i, '"'))
   rm(list=c('mod', 'cf', 'vc', 'myobj'))
   gc()
 }
 
-system('sudo poweroff')
 
+system('sudo poweroff')
 
 
