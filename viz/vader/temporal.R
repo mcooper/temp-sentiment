@@ -86,15 +86,6 @@ preddf <- data.frame(wbgt=1)
 preddf <- make_groups(preddf, 'tod_cont', seq(0, 24, 0.1))
 preddf$vader <- 1
 
-make_cyclic_splines <- function(knots, x){
-  df <- data.frame(splineDesign(knots, x, ord=2, outer.ok=TRUE))
-  names(df) <- paste0('s', 1:ncol(df))
-  df$s0 <- ifelse(x < knots[2], 1 - df$s1,
-                  ifelse(x > knots[length(knots) - 1], 1 - df[ , ncol(df)],
-                         0))
-  return(df)
-}
-
 preddf <- cbind(preddf, make_cyclic_splines(knots, preddf$tod_cont))
 
 formula <- paste0('vader ~ ', 
@@ -108,7 +99,7 @@ mm <- mm[ , colnames(mm) != '(Intercept)']
 mmp <- lapply(seq_len(nrow(mm)), function(i) mm[i,])
 
 #Iterate over models
-mods <- list.files()[81:160]
+mods <- list.files()
 for (modf in mods){
 
   mod <- readRDS(modf)
@@ -134,13 +125,18 @@ preddf2$tod <- ymd('2021-01-01') +
 data$tod2 <- ymd_hms(paste0('2021-01-01 ', data$tod, '0:00'))
 
 curve <- ggplot(preddf2) + 
-  geom_ribbon(aes(x=tod, ymin=ymin, ymax=ymax), fill='#FF0000', alpha=0.5) + 
-  geom_line(aes(x=tod, y=pred)) + 
+  geom_ribbon(aes(x=tod, ymin=ymin*10, ymax=ymax*10), fill='#FF0000', alpha=0.5) + 
+  geom_line(aes(x=tod, y=pred*10)) + 
   geom_hline(aes(yintercept=0), linetype=2) + 
-  scale_x_datetime(expand=c(0, 0), limits=c(ymd_hms('2021-01-01 00:00:00'),
-                                            ymd_hms('2021-01-02 00:00:00'))) + 
+  scale_x_datetime(expand=c(0, 0), 
+                   limits=c(ymd_hms('2021-01-01 00:00:00'),
+                            ymd_hms('2021-01-02 00:00:00')),
+                   label=function(x){paste0(hour(x), ':00')},
+                   breaks=seq(ymd_hms('2021-01-01 00:00:00'),
+                              ymd_hms('2021-01-01 21:00:00'),
+                              by='3 hours')) + 
   labs(x='Time of Day', 
-       y=expression('Change in Mood of Tweet With 1'*degree*C*' WBGT Increase')) + 
+       y=expression('Effect of Heat on Mood of Tweet')) + 
   theme_classic()  + 
   theme(axis.text.x = element_blank(),
         axis.ticks.x = element_blank(),
@@ -149,12 +145,16 @@ curve <- ggplot(preddf2) +
         panel.grid.minor = element_line(color = "lightgrey", size=0.25))
 
 hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'tod2']) +
-  geom_histogram(aes(x=tod2), bins=24*6) + 
-  scale_x_datetime(expand=c(0, 0), limits=c(ymd_hms('2021-01-01 00:00:00'),
-                                            ymd_hms('2021-01-02 00:00:00')),
-                   label=function(x){paste0(hour(x), ':00')}) + 
+  geom_histogram(aes(x=tod2), bins=145) + 
+  scale_x_datetime(expand=c(0, 0), 
+                   limits=c(ymd_hms('2021-01-01 00:00:00'),
+                            ymd_hms('2021-01-02 00:00:00')),
+                   label=function(x){paste0(hour(x), ':00')},
+                   breaks=seq(ymd_hms('2021-01-01 00:00:00'),
+                              ymd_hms('2021-01-01 21:00:00'),
+                              by='3 hours')) + 
   scale_y_continuous(labels=function(x){format(x*100, big.mark=',')}, expand=c(0,0),
-                     breaks=c(1000000)) + 
+                     breaks=c(10000)) + 
   labs(y="Tweet\nCount", x="Time of Day") + 
   theme_classic() + 
   theme(panel.grid.major = element_line(color = "lightgrey", size=0.5),

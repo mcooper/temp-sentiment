@@ -81,7 +81,7 @@ ref_temps <- round(ref_temps)
 #########################################
 preddf <- data.frame(wbgt=seq(-22, 33))
 preddf <- make_groups(preddf, 'income_percap', inc_qs[c(2, 11, 20)])
-preddf <- make_groups(preddf, 'race_black', race_qs[c(2, 11, 20)])
+preddf <- make_groups(preddf, 'race_black', c(0, .25, 1))
 
 preddf$vader <- 1
 
@@ -99,7 +99,7 @@ mm <- mm[ , colnames(mm) != 'race_black']
 mmp <- lapply(seq_len(nrow(mm)), function(i) mm[i,])
 
 #Iterate over models
-mods <- list.files(pattern='06-04')
+mods <- list.files()[81:160]
 for (modf in mods){
 
   mod <- readRDS(modf)
@@ -124,16 +124,11 @@ levels(preddf$income_percap) <- preddf$income_percap %>%
 levels(preddf$income_percap) <- paste0(levels(preddf$income_percap), ' (', 
                                        names(inc_qs[c(2, 11, 20)]), ')')
 
-
-conv <- function(x){
-  #Convert % black to % minority
-  100*(1 - x)
-}
-
+m100 <- function(x){x*100}
 levels(preddf$race_black) <- preddf$race_black %>%
                                    levels %>%
                                    as.numeric %>%
-                                   conv %>%
+                                   m100 %>%
                                    round(1) %>%
                                    paste0(., '%')
 
@@ -151,13 +146,15 @@ preddf <- preddf %>%
 
 (curve <- ggplot(preddf) + 
   geom_line(aes(x=wbgt, y=pred, color=income_percap, linetype=race_black)) + 
+  scale_linetype_manual(values=c('0%'=3, '25%'=2, '100%'=1)) + 
   geom_ribbon(aes(x=wbgt, ymin=ymin, ymax=ymax, fill=income_percap, grou=race_black), alpha=0.2) + 
   scale_x_continuous(expand=c(0, 0), limits=c(-22, 33)) + 
-  #scale_y_continuous(breaks=seq(0, -0.02, -0.005)) + 
+  scale_fill_manual(values=c("#e31a1c", "#ff7f00", "#33a02c")) + 
+  scale_color_manual(values=c("#e31a1c", "#ff7f00", "#33a02c")) + 
   labs(x='', y='Change in Mood of Tweet',
        fill = 'Census Block\nIncome Per-Capita\n(Percentile)',
        color = 'Census Block\nIncome Per-Capita\n(Percentile)',
-       linetype = 'Census Block\nPercent Minority') +
+       linetype = 'Census Block\nPercent Black') +
   theme_classic() + 
   theme(#legend.position=c(0.3, 0.4),
         axis.text.x = element_blank(),
@@ -188,5 +185,5 @@ x <- get_x_axis(x2)
 xl <- get_plot_component(x2, "xlab-b")
 
 plot_grid(curve, hist, ggdraw(x), ggdraw(xl), align='v', axis='rl', ncol=1, 
-          rel_heights=c(0.8, 0.2, 0.04, 0.04))
+          rel_heights=c(0.8, 0.2, 0.04, 0.08))
 ggsave('~/temp-sentiment/res/wbgt-income-race.png', width=5.5, height=4)
