@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: temp-sentiment.aux
+The style file: naturemag-doi.bst
+Database file #1: TextDataClimateShocks.bib
+You've used 68 entries,
+            2380 wiz_defined-function locations,
+            1517 strings with 29137 characters,
+and the built_in function-call counts, 26627 in all, are:
+= -- 1837
+> -- 709
+< -- 3
++ -- 355
+- -- 177
+* -- 3505
+:= -- 2918
+add.period$ -- 201
+call.type$ -- 68
+change.case$ -- 76
+chr.to.int$ -- 0
+cite$ -- 68
+duplicate$ -- 2353
+empty$ -- 2420
+format.name$ -- 237
+if$ -- 5244
+int.to.chr$ -- 0
+int.to.str$ -- 68
+missing$ -- 578
+newline$ -- 347
+num.names$ -- 67
+pop$ -- 397
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 413
+stack$ -- 0
+substring$ -- 1189
+swap$ -- 2375
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 158
+width$ -- 70
+write$ -- 790

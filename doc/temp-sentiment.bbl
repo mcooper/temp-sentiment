@@ -1,0 +1,603 @@
+\begin{thebibliography}{10}
+\urlstyle{rm}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname doiprefix\endcsname\relax\def\doiprefix{DOI: }\fi
+\providecommand{\bibinfo}[2]{#2}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem{pachauri2014climate}
+\bibinfo{author}{Pachauri, R.~K.} \emph{et~al.}
+\newblock \emph{\bibinfo{title}{Climate change 2014: synthesis report.
+  Contribution of Working Groups I, II and III to the fifth assessment report
+  of the Intergovernmental Panel on Climate Change}}
+  (\bibinfo{publisher}{Ipcc}, \bibinfo{year}{2014}).
+
+\bibitem{Berry2018Apr}
+\bibinfo{author}{Berry, H.~L.}, \bibinfo{author}{Waite, T.~D.},
+  \bibinfo{author}{Dear, K. B.~G.}, \bibinfo{author}{Capon, A.~G.} \&
+  \bibinfo{author}{Murray, V.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{The case for systems thinking
+  about climate change and mental health}}}.
+\newblock {\emph{\JournalTitle{Nat. Clim. Change}}}
+  \textbf{\bibinfo{volume}{8}}, \bibinfo{pages}{282--290},
+  \doiprefix\url{10.1038/s41558-018-0102-4} (\bibinfo{year}{2018}).
+
+\bibitem{hayes_climate_2018}
+\bibinfo{author}{Hayes, K.}, \bibinfo{author}{Blashki, G.},
+  \bibinfo{author}{Wiseman, J.}, \bibinfo{author}{Burke, S.} \&
+  \bibinfo{author}{Reifels, L.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Climate change and mental health:
+  risks, impacts and priority actions}}.
+\newblock {\emph{\JournalTitle{International Journal of Mental Health
+  Systems}}} \textbf{\bibinfo{volume}{12}}, \bibinfo{pages}{28},
+  \doiprefix\url{10.1186/s13033-018-0210-6} (\bibinfo{year}{2018}).
+
+\bibitem{Collins2011Jul}
+\bibinfo{author}{Collins, P.~Y.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Grand challenges in global mental
+  health}}}.
+\newblock {\emph{\JournalTitle{Nature}}} \textbf{\bibinfo{volume}{475}},
+  \bibinfo{pages}{27--30}, \doiprefix\url{10.1038/475027a}
+  (\bibinfo{year}{2011}).
+
+\bibitem{Waite2017Dec}
+\bibinfo{author}{Waite, T.~D.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{The English national cohort study
+  of flooding and health: cross-sectional analysis of mental health outcomes at
+  year one}}}.
+\newblock {\emph{\JournalTitle{BMC Public Health}}}
+  \textbf{\bibinfo{volume}{17}}, \bibinfo{pages}{1--9},
+  \doiprefix\url{10.1186/s12889-016-4000-2} (\bibinfo{year}{2017}).
+
+\bibitem{Raker2019Dec}
+\bibinfo{author}{Raker, E.~J.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Twelve years later: The long-term
+  mental health consequences of Hurricane Katrina}}}.
+\newblock {\emph{\JournalTitle{Soc. Sci. Med.}}}
+  \textbf{\bibinfo{volume}{242}}, \bibinfo{pages}{112610},
+  \doiprefix\url{10.1016/j.socscimed.2019.112610} (\bibinfo{year}{2019}).
+
+\bibitem{Cunsolo2018Apr}
+\bibinfo{author}{Cunsolo, A.} \& \bibinfo{author}{Ellis, N.~R.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Ecological grief as a mental
+  health response to climate change-related loss}}}.
+\newblock {\emph{\JournalTitle{Nat. Clim. Change}}}
+  \textbf{\bibinfo{volume}{8}}, \bibinfo{pages}{275--281},
+  \doiprefix\url{10.1038/s41558-018-0092-2} (\bibinfo{year}{2018}).
+
+\bibitem{baylis_weather_2018}
+\bibinfo{author}{Baylis, P.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Weather impacts expressed
+  sentiment}}.
+\newblock {\emph{\JournalTitle{PLOS ONE}}} \textbf{\bibinfo{volume}{13}},
+  \bibinfo{pages}{e0195750}, \doiprefix\url{10.1371/journal.pone.0195750}
+  (\bibinfo{year}{2018}).
+
+\bibitem{Mullins2019Dec}
+\bibinfo{author}{Mullins, J.~T.} \& \bibinfo{author}{White, C.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Temperature and mental health:
+  Evidence from the spectrum of mental health outcomes}}}.
+\newblock {\emph{\JournalTitle{J. Health Econ.}}}
+  \textbf{\bibinfo{volume}{68}}, \bibinfo{pages}{102240},
+  \doiprefix\url{10.1016/j.jhealeco.2019.102240} (\bibinfo{year}{2019}).
+
+\bibitem{Li2020Mar}
+\bibinfo{author}{Li, M.}, \bibinfo{author}{Ferreira, S.} \&
+  \bibinfo{author}{Smith, T.~A.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Temperature and self-reported
+  mental health in the United States}}}.
+\newblock {\emph{\JournalTitle{PLoS One}}} \textbf{\bibinfo{volume}{15}},
+  \bibinfo{pages}{e0230316}, \doiprefix\url{10.1371/journal.pone.0230316}
+  (\bibinfo{year}{2020}).
+
+\bibitem{Obradovich2018Oct}
+\bibinfo{author}{Obradovich, N.}, \bibinfo{author}{Migliorini, R.},
+  \bibinfo{author}{Paulus, M.~P.} \& \bibinfo{author}{Rahwan, I.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Empirical evidence of mental
+  health risks posed by climate change}}}.
+\newblock {\emph{\JournalTitle{Proc. Natl. Acad. Sci. U.S.A.}}}
+  \textbf{\bibinfo{volume}{115}}, \bibinfo{pages}{10953--10958},
+  \doiprefix\url{10.1073/pnas.1801528115} (\bibinfo{year}{2018}).
+
+\bibitem{allen2019technical}
+\bibinfo{author}{Allen, M.} \emph{et~al.}
+\newblock \bibinfo{title}{Technical summary: Global warming of 1.5° c. an ipcc
+  special report on the impacts of global warming of 1.5° c above
+  pre-industrial levels and related global greenhouse gas emission pathways, in
+  the context of strengthening the global response to the threat of climate
+  change, sustainable development, and efforts to eradicate poverty}
+  (\bibinfo{year}{2019}).
+
+\bibitem{Palinkas2020Apr}
+\bibinfo{author}{Palinkas, L.~A.} \& \bibinfo{author}{Wong, M.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Global climate change and mental
+  health}}}.
+\newblock {\emph{\JournalTitle{Current Opinion in Psychology}}}
+  \textbf{\bibinfo{volume}{32}}, \bibinfo{pages}{12--16},
+  \doiprefix\url{10.1016/j.copsyc.2019.06.023} (\bibinfo{year}{2020}).
+
+\bibitem{BerryETAL2010}
+\bibinfo{author}{Berry, H.~L.}, \bibinfo{author}{Bowen, K.} \&
+  \bibinfo{author}{Kjellstrom, T.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Climate change and mental health: a
+  causal pathways framework}}.
+\newblock {\emph{\JournalTitle{International Journal of Public Health}}}
+  \textbf{\bibinfo{volume}{55}}, \bibinfo{pages}{123--132},
+  \doiprefix\url{10.1007/s00038-009-0112-0} (\bibinfo{year}{2010}).
+
+\bibitem{Lohmus2018Jul}
+\bibinfo{author}{L{\ifmmode\tilde{o}\else\~{o}\fi}hmus, M.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Possible Biological Mechanisms
+  Linking Mental Health and Heat{\ifmmode---\else\textemdash\fi}A Contemplative
+  Review}}}.
+\newblock {\emph{\JournalTitle{Int. J. Environ. Res. Public Health}}}
+  \textbf{\bibinfo{volume}{15}}, \bibinfo{pages}{1515},
+  \doiprefix\url{10.3390/ijerph15071515} (\bibinfo{year}{2018}).
+
+\bibitem{sadiq_impact_2019}
+\bibinfo{author}{Sadiq, L.~S.}, \bibinfo{author}{Hashim, Z.} \&
+  \bibinfo{author}{Osman, M.}
+\newblock \bibinfo{title}{The {Impact} of {Heat} on {Health} and {Productivity}
+  among {Maize} {Farmers} in a {Tropical} {Climate} {Area}},
+  \doiprefix\url{https://doi.org/10.1155/2019/9896410} (\bibinfo{year}{2019}).
+\newblock \bibinfo{note}{ISSN: 1687-9805 Pages: e9896410 Publisher: Hindawi
+  Volume: 2019}.
+
+\bibitem{Obradovich2017May}
+\bibinfo{author}{Obradovich, N.}, \bibinfo{author}{Migliorini, R.},
+  \bibinfo{author}{Mednick, S.~C.} \& \bibinfo{author}{Fowler, J.~H.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Nighttime temperature and human
+  sleep loss in a changing climate}}}.
+\newblock {\emph{\JournalTitle{Sci. Adv.}}} \textbf{\bibinfo{volume}{3}},
+  \bibinfo{pages}{e1601555}, \doiprefix\url{10.1126/sciadv.1601555}
+  (\bibinfo{year}{2017}).
+
+\bibitem{Berry2007}
+\bibinfo{author}{Berry, H.~L.}
+\newblock \bibinfo{journal}{\bibinfo{title}{'crowded suburbs' and 'killer
+  cities': a brief review of the relationship between urban environments and
+  mental health}}.
+\newblock {\emph{\JournalTitle{N S W Public Health Bull}}}
+  \textbf{\bibinfo{volume}{18}}, \bibinfo{pages}{222--7},
+  \doiprefix\url{10.1071/nb07024} (\bibinfo{year}{2007}).
+
+\bibitem{WHO2007}
+\bibinfo{author}{Organization, W.~H.}
+\newblock \emph{\bibinfo{title}{Our Cities, Our Health, Our Future: Acting on
+  Social Determinants for Health Equity in Urban Settings}}
+  (\bibinfo{publisher}{World Health Organization, Centre for Health
+  Development}, \bibinfo{address}{Kobe, Japan}, \bibinfo{year}{2007}).
+
+\bibitem{kjellstrom_impact_2016}
+\bibinfo{author}{Kjellstrom, T.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Impact of {Climate} {Conditions} on
+  {Occupational} {Health} and {Related} {Economic} {Losses}: {A} {New}
+  {Feature} of {Global} and {Urban} {Health} in the {Context} of {Climate}
+  {Change}}}.
+\newblock {\emph{\JournalTitle{Asia Pacific Journal of Public Health}}}
+  \textbf{\bibinfo{volume}{28}}, \bibinfo{pages}{28S--37S},
+  \doiprefix\url{10.1177/1010539514568711} (\bibinfo{year}{2016}).
+\newblock \bibinfo{note}{Publisher: SAGE Publications Inc}.
+
+\bibitem{Burke2015Nov}
+\bibinfo{author}{Burke, M.}, \bibinfo{author}{Hsiang, S.~M.} \&
+  \bibinfo{author}{Miguel, E.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Global non-linear effect of
+  temperature on economic production}}}.
+\newblock {\emph{\JournalTitle{Nature}}} \textbf{\bibinfo{volume}{527}},
+  \bibinfo{pages}{235--239}, \doiprefix\url{10.1038/nature15725}
+  (\bibinfo{year}{2015}).
+
+\bibitem{Katz1997}
+\bibinfo{author}{Katz, S.~J.}, \bibinfo{author}{Kessler, R.~C.},
+  \bibinfo{author}{Frank, R.~G.}, \bibinfo{author}{Leaf, P.} \&
+  \bibinfo{author}{Lin, E.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Mental Health Care Use, Morbidity,
+  and Socioeconomic Status in the United States and Ontario}}}.
+\newblock {\emph{\JournalTitle{Inquiry}}} \textbf{\bibinfo{volume}{34}},
+  \bibinfo{pages}{38--49} (\bibinfo{year}{1997}).
+
+\bibitem{CohnETAL2004}
+\bibinfo{author}{Cohn, E.~G.}, \bibinfo{author}{Rotton, J.},
+  \bibinfo{author}{Peterson, A.~G.} \& \bibinfo{author}{Tarr, D.~B.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Temperature, city size, and the
+  southern subculture of violence: Support for social escape/avoidance (sea)
+  theory1}}.
+\newblock {\emph{\JournalTitle{Journal of Applied Social Psychology}}}
+  \textbf{\bibinfo{volume}{34}}, \bibinfo{pages}{1652--1674},
+  \doiprefix\url{https://doi.org/10.1111/j.1559-1816.2004.tb02792.x}
+  (\bibinfo{year}{2004}).
+
+\bibitem{BouchamaETAL2007}
+\bibinfo{author}{Bouchama, A.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Prognostic factors in heat
+  wave–related deaths: A meta-analysis}}.
+\newblock {\emph{\JournalTitle{Archives of Internal Medicine}}}
+  \textbf{\bibinfo{volume}{167}}, \bibinfo{pages}{2170--2176},
+  \doiprefix\url{10.1001/archinte.167.20.ira70009} (\bibinfo{year}{2007}).
+
+\bibitem{Burke2018Aug}
+\bibinfo{author}{Burke, M.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Higher temperatures increase
+  suicide rates in the United States and Mexico}}}.
+\newblock {\emph{\JournalTitle{Nat. Clim. Change}}}
+  \textbf{\bibinfo{volume}{8}}, \bibinfo{pages}{723--729},
+  \doiprefix\url{10.1038/s41558-018-0222-x} (\bibinfo{year}{2018}).
+
+\bibitem{Dixon2007May}
+\bibinfo{author}{Dixon, P.~G.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Effects of temperature variation
+  on suicide in five U.S. counties, 1991{\textendash}2001}}}.
+\newblock {\emph{\JournalTitle{Int. J. Biometeorol.}}}
+  \textbf{\bibinfo{volume}{51}}, \bibinfo{pages}{395--403},
+  \doiprefix\url{10.1007/s00484-006-0081-4} (\bibinfo{year}{2007}).
+
+\bibitem{Qi2014Dec}
+\bibinfo{author}{Qi, X.}, \bibinfo{author}{Hu, W.}, \bibinfo{author}{Mengersen,
+  K.} \& \bibinfo{author}{Tong, S.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Socio-environmental drivers and
+  suicide in Australia: Bayesian spatial analysis}}}.
+\newblock {\emph{\JournalTitle{BMC Public Health}}}
+  \textbf{\bibinfo{volume}{14}}, \bibinfo{pages}{1--10},
+  \doiprefix\url{10.1186/1471-2458-14-681} (\bibinfo{year}{2014}).
+
+\bibitem{Page2007Aug}
+\bibinfo{author}{Page, L.~A.}, \bibinfo{author}{Hajat, S.} \&
+  \bibinfo{author}{Kovats, R.~S.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Relationship between daily suicide
+  counts and temperature in England and Wales}}}.
+\newblock {\emph{\JournalTitle{Br. J. Psychiatry}}}
+  \textbf{\bibinfo{volume}{191}}, \bibinfo{pages}{106--112},
+  \doiprefix\url{10.1192/bjp.bp.106.031948} (\bibinfo{year}{2007}).
+
+\bibitem{Likhvar2011Jan}
+\bibinfo{author}{Likhvar, V.}, \bibinfo{author}{Honda, Y.} \&
+  \bibinfo{author}{Ono, M.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Relation between temperature and
+  suicide mortality in Japan in the presence of other confounding factors using
+  time-series analysis with a semiparametric approach}}}.
+\newblock {\emph{\JournalTitle{Environ. Health Preventive Med.}}}
+  \textbf{\bibinfo{volume}{16}}, \bibinfo{pages}{36--43},
+  \doiprefix\url{10.1007/s12199-010-0163-0} (\bibinfo{year}{2011}).
+
+\bibitem{Lee2007Jan}
+\bibinfo{author}{Lee, H.-C.}, \bibinfo{author}{Tsai, S.-Y.} \&
+  \bibinfo{author}{Lin, H.-C.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Seasonal variations in bipolar
+  disorder admissions and the association with climate: A population-based
+  study}}}.
+\newblock {\emph{\JournalTitle{J. Affect. Disord.}}}
+  \textbf{\bibinfo{volume}{97}}, \bibinfo{pages}{61--69},
+  \doiprefix\url{10.1016/j.jad.2006.06.026} (\bibinfo{year}{2007}).
+
+\bibitem{Sung2013Feb}
+\bibinfo{author}{Sung, T.-I.}, \bibinfo{author}{Chen, M.-J.} \&
+  \bibinfo{author}{Su, H.-J.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{A positive relationship between
+  ambient temperature and bipolar disorder identified using a national cohort
+  of psychiatric inpatients}}}.
+\newblock {\emph{\JournalTitle{Soc. Psychiatry Psychiatr. Epidemiol.}}}
+  \textbf{\bibinfo{volume}{48}}, \bibinfo{pages}{295--302},
+  \doiprefix\url{10.1007/s00127-012-0542-5} (\bibinfo{year}{2013}).
+
+\bibitem{Hansen2008Oct}
+\bibinfo{author}{Hansen, A.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{The Effect of Heat Waves on Mental
+  Health in a Temperate Australian City}}}.
+\newblock {\emph{\JournalTitle{Environ. Health Perspect.}}}
+  (\bibinfo{year}{2008}).
+
+\bibitem{Gubernot2014Oct}
+\bibinfo{author}{Gubernot, D.~M.}, \bibinfo{author}{Anderson, G.~B.} \&
+  \bibinfo{author}{Hunting, K.~L.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{The epidemiology of occupational
+  heat exposure in the United States: a review of the literature and assessment
+  of research needs in a changing climate}}}.
+\newblock {\emph{\JournalTitle{Int. J. Biometeorol.}}}
+  \textbf{\bibinfo{volume}{58}}, \bibinfo{pages}{1779--1788},
+  \doiprefix\url{10.1007/s00484-013-0752-x} (\bibinfo{year}{2014}).
+
+\bibitem{Karner2015Dec}
+\bibinfo{author}{Karner, A.}, \bibinfo{author}{Hondula, D.~M.} \&
+  \bibinfo{author}{Vanos, J.~K.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Heat exposure during non-motorized
+  travel: Implications for transportation policy under climate change}}}.
+\newblock {\emph{\JournalTitle{Journal of Transport {\&} Health}}}
+  \textbf{\bibinfo{volume}{2}}, \bibinfo{pages}{451--459},
+  \doiprefix\url{10.1016/j.jth.2015.10.001} (\bibinfo{year}{2015}).
+
+\bibitem{Samuelson2020Jun}
+\bibinfo{author}{Samuelson, H.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Housing as a critical determinant
+  of heat vulnerability and health}}}.
+\newblock {\emph{\JournalTitle{Sci. Total Environ.}}}
+  \textbf{\bibinfo{volume}{720}}, \bibinfo{pages}{137296},
+  \doiprefix\url{10.1016/j.scitotenv.2020.137296} (\bibinfo{year}{2020}).
+
+\bibitem{Belanger2015Mar}
+\bibinfo{author}{B{\ifmmode\acute{e}\else\'{e}\fi}langer, D.},
+  \bibinfo{author}{Gosselin, P.}, \bibinfo{author}{Valois, P.} \&
+  \bibinfo{author}{Abdous, B.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Neighbourhood and dwelling
+  characteristics associated with the self-reported adverse health effects of
+  heat in most deprived urban areas: A cross-sectional study in 9 cities}}}.
+\newblock {\emph{\JournalTitle{Health {\&} Place}}}
+  \textbf{\bibinfo{volume}{32}}, \bibinfo{pages}{8--18},
+  \doiprefix\url{10.1016/j.healthplace.2014.12.014} (\bibinfo{year}{2015}).
+
+\bibitem{Uejio2011Mar}
+\bibinfo{author}{Uejio, C.~K.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Intra-urban societal vulnerability
+  to extreme heat: The role of heat exposure and the built environment,
+  socioeconomics, and neighborhood stability}}}.
+\newblock {\emph{\JournalTitle{Health {\&} Place}}}
+  \textbf{\bibinfo{volume}{17}}, \bibinfo{pages}{498--507},
+  \doiprefix\url{10.1016/j.healthplace.2010.12.005} (\bibinfo{year}{2011}).
+
+\bibitem{ferre2019hurricane}
+\bibinfo{author}{Ferr{\'e}, I.~M.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Hurricane maria’s impact on punta
+  santiago, puerto rico: community needs and mental health assessment six
+  months postimpact}}.
+\newblock {\emph{\JournalTitle{Disaster Med Public Health Prep}}}
+  \textbf{\bibinfo{volume}{13}}, \bibinfo{pages}{18--23}
+  (\bibinfo{year}{2019}).
+
+\bibitem{Gruebner2015Jun}
+\bibinfo{author}{Gruebner, O.}, \bibinfo{author}{Lowe, S.~R.},
+  \bibinfo{author}{Sampson, L.} \& \bibinfo{author}{Galea, S.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{The geography of post-disaster
+  mental health: spatial patterning of psychological vulnerability and
+  resilience factors in New York City after Hurricane Sandy}}}.
+\newblock {\emph{\JournalTitle{Int. J. Health Geographics}}}
+  \textbf{\bibinfo{volume}{14}}, \bibinfo{pages}{16--13},
+  \doiprefix\url{10.1186/s12942-015-0008-6} (\bibinfo{year}{2015}).
+
+\bibitem{Edo-Osagie2020Jul}
+\bibinfo{author}{Edo-Osagie, O.}, \bibinfo{author}{De~La~Iglesia, B.},
+  \bibinfo{author}{Lake, I.} \& \bibinfo{author}{Edeghere, O.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{A scoping review of the use of
+  Twitter for public health research}}}.
+\newblock {\emph{\JournalTitle{Comput. Biol. Med.}}}
+  \textbf{\bibinfo{volume}{122}}, \bibinfo{pages}{103770},
+  \doiprefix\url{10.1016/j.compbiomed.2020.103770} (\bibinfo{year}{2020}).
+
+\bibitem{Sinnenberg2016Dec}
+\bibinfo{author}{Sinnenberg, L.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Twitter as a Tool for Health
+  Research: A Systematic Review}}}.
+\newblock {\emph{\JournalTitle{American Public Health Association (APHA)
+  publications}}}  (\bibinfo{year}{2016}).
+
+\bibitem{Reece2017Oct}
+\bibinfo{author}{Reece, A.~G.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Forecasting the onset and course
+  of mental illness with Twitter data}}}.
+\newblock {\emph{\JournalTitle{Sci. Rep.}}} \textbf{\bibinfo{volume}{7}},
+  \bibinfo{pages}{1--11}, \doiprefix\url{10.1038/s41598-017-12961-9}
+  (\bibinfo{year}{2017}).
+
+\bibitem{Eichstaedt2018Oct}
+\bibinfo{author}{Eichstaedt, J.~C.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Facebook language predicts
+  depression in medical records}}}.
+\newblock {\emph{\JournalTitle{Proc. Natl. Acad. Sci. U.S.A.}}}
+  \textbf{\bibinfo{volume}{115}}, \bibinfo{pages}{11203--11208},
+  \doiprefix\url{10.1073/pnas.1802331115} (\bibinfo{year}{2018}).
+
+\bibitem{Kolliakou2020Feb}
+\bibinfo{author}{Kolliakou, A.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Mental health-related
+  conversations on social media and crisis episodes: a time-series regression
+  analysis}}}.
+\newblock {\emph{\JournalTitle{Sci. Rep.}}} \textbf{\bibinfo{volume}{10}},
+  \bibinfo{pages}{1--7}, \doiprefix\url{10.1038/s41598-020-57835-9}
+  (\bibinfo{year}{2020}).
+
+\bibitem{Mitchell2013May}
+\bibinfo{author}{Mitchell, L.}, \bibinfo{author}{Frank, M.~R.},
+  \bibinfo{author}{Harris, K.~D.}, \bibinfo{author}{Dodds, P.~S.} \&
+  \bibinfo{author}{Danforth, C.~M.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{The Geography of Happiness:
+  Connecting Twitter Sentiment and Expression, Demographics, and Objective
+  Characteristics of Place}}}.
+\newblock {\emph{\JournalTitle{PLoS One}}} \textbf{\bibinfo{volume}{8}},
+  \bibinfo{pages}{e64417}, \doiprefix\url{10.1371/journal.pone.0064417}
+  (\bibinfo{year}{2013}).
+
+\bibitem{hannak_tweetin_2012}
+\bibinfo{author}{Hannak, A.} \emph{et~al.}
+\newblock \bibinfo{title}{Tweetin'in the rain: Exploring societal-scale effects
+  of weather on mood}.
+\newblock In \emph{\bibinfo{booktitle}{Proceedings of the International AAAI
+  Conference on Web and Social Media}}, vol.~\bibinfo{volume}{6}
+  (\bibinfo{year}{2012}).
+
+\bibitem{budd2008wet}
+\bibinfo{author}{Budd, G.~M.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Wet-bulb globe temperature
+  (wbgt)—its history and its limitations}}.
+\newblock {\emph{\JournalTitle{Journal of Science and Medicine in Sport}}}
+  \textbf{\bibinfo{volume}{11}}, \bibinfo{pages}{20--32}
+  (\bibinfo{year}{2008}).
+
+\bibitem{hutto2014vader}
+\bibinfo{author}{Hutto, C.} \& \bibinfo{author}{Gilbert, E.}
+\newblock \bibinfo{title}{Vader: A parsimonious rule-based model for sentiment
+  analysis of social media text}.
+\newblock In \emph{\bibinfo{booktitle}{Proceedings of the International AAAI
+  Conference on Web and Social Media}}, vol.~\bibinfo{volume}{8}
+  (\bibinfo{year}{2014}).
+
+\bibitem{CDC2021}
+\bibinfo{author}{for Disease Control Wide-ranging ONline Data~for Epidemiologic
+  Research (CDC~WONDER), C.}
+\newblock \bibinfo{title}{Underlying cause of death} (\bibinfo{year}{2021}).
+
+\bibitem{Schwartz2017Aug}
+\bibinfo{author}{Schwartz, R.~M.}, \bibinfo{author}{Gillezeau, C.~N.},
+  \bibinfo{author}{Liu, B.}, \bibinfo{author}{Lieberman-Cribbin, W.} \&
+  \bibinfo{author}{Taioli, E.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Longitudinal Impact of Hurricane
+  Sandy Exposure on Mental Health Symptoms}}}.
+\newblock {\emph{\JournalTitle{Int. J. Environ. Res. Public Health}}}
+  \textbf{\bibinfo{volume}{14}}, \bibinfo{pages}{957},
+  \doiprefix\url{10.3390/ijerph14090957} (\bibinfo{year}{2017}).
+
+\bibitem{Schwartz2018May}
+\bibinfo{author}{Schwartz, R.~M.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Preliminary Assessment of
+  Hurricane Harvey Exposures and Mental Health Impact}}}.
+\newblock {\emph{\JournalTitle{Int. J. Environ. Res. Public Health}}}
+  \textbf{\bibinfo{volume}{15}}, \bibinfo{pages}{974},
+  \doiprefix\url{10.3390/ijerph15050974} (\bibinfo{year}{2018}).
+
+\bibitem{Krug1998Feb}
+\bibinfo{author}{Krug, E.~G.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Suicide after Natural
+  Disasters}}}.
+\newblock {\emph{\JournalTitle{N. Engl. J. Med.}}}
+  \textbf{\bibinfo{volume}{338}}, \bibinfo{pages}{373--378},
+  \doiprefix\url{10.1056/NEJM199802053380607} (\bibinfo{year}{1998}).
+
+\bibitem{Thomas2019Mar}
+\bibinfo{author}{Thomas, K.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Explaining differential
+  vulnerability to climate change: A social science review}}}.
+\newblock {\emph{\JournalTitle{WIREs Clim. Change}}}
+  \textbf{\bibinfo{volume}{10}}, \bibinfo{pages}{e565},
+  \doiprefix\url{10.1002/wcc.565} (\bibinfo{year}{2019}).
+
+\bibitem{Raymond2020May}
+\bibinfo{author}{Raymond, C.}, \bibinfo{author}{Matthews, T.} \&
+  \bibinfo{author}{Horton, R.~M.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{The emergence of heat and humidity
+  too severe for human tolerance}}}.
+\newblock {\emph{\JournalTitle{Sci. Adv.}}} \textbf{\bibinfo{volume}{6}},
+  \bibinfo{pages}{eaaw1838}, \doiprefix\url{10.1126/sciadv.aaw1838}
+  (\bibinfo{year}{2020}).
+
+\bibitem{Harrington2020Sep}
+\bibinfo{author}{Harrington, L.~J.} \& \bibinfo{author}{Otto, F. E.~L.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Reconciling theory with the
+  reality of African heatwaves}}}.
+\newblock {\emph{\JournalTitle{Nat. Clim. Change}}}
+  \textbf{\bibinfo{volume}{10}}, \bibinfo{pages}{796--798},
+  \doiprefix\url{10.1038/s41558-020-0851-8} (\bibinfo{year}{2020}).
+
+\bibitem{Biardeau2020Jan}
+\bibinfo{author}{Biardeau, L.~T.}, \bibinfo{author}{Davis, L.~W.},
+  \bibinfo{author}{Gertler, P.} \& \bibinfo{author}{Wolfram, C.}
+\newblock \bibinfo{journal}{\bibinfo{title}{{Heat exposure and global air
+  conditioning}}}.
+\newblock {\emph{\JournalTitle{Nat. Sustainability}}}
+  \textbf{\bibinfo{volume}{3}}, \bibinfo{pages}{25--28},
+  \doiprefix\url{10.1038/s41893-019-0441-9} (\bibinfo{year}{2020}).
+
+\bibitem{Pew2020Sep}
+\bibinfo{title}{{10 facts about Americans and Twitter}} (\bibinfo{year}{2020}).
+\newblock \bibinfo{note}{[Online; accessed 1. May 2021]}.
+
+\bibitem{bullard2012wrong}
+\bibinfo{author}{Bullard, R.~D.} \& \bibinfo{author}{Wright, B.}
+\newblock \emph{\bibinfo{title}{The wrong complexion for protection: How the
+  government response to disaster endangers African American communities}}
+  (\bibinfo{publisher}{NYU Press}, \bibinfo{year}{2012}).
+
+\bibitem{gilbert_vader_2014}
+\bibinfo{author}{Gilbert, C. H.~E.} \& \bibinfo{author}{Hutto, E.}
+\newblock \bibinfo{title}{Vader: {A} parsimonious rule-based model for
+  sentiment analysis of social media text}.
+\newblock In \emph{\bibinfo{booktitle}{Eighth {International} {Conference} on
+  {Weblogs} and {Social} {Media} ({ICWSM}-14). {Available} at (20/04/16)
+  http://comp. social. gatech. edu/papers/icwsm14. vader. hutto. pdf}},
+  vol.~\bibinfo{volume}{81}, \bibinfo{pages}{82} (\bibinfo{year}{2014}).
+
+\bibitem{xia_continental-scale_2012}
+\bibinfo{author}{Xia, Y.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Continental-scale water and energy
+  flux analysis and validation for the {North} {American} {Land} {Data}
+  {Assimilation} {System} project phase 2 ({NLDAS}-2): 1. {Intercomparison} and
+  application of model products}}.
+\newblock {\emph{\JournalTitle{Journal of Geophysical Research: Atmospheres}}}
+  \textbf{\bibinfo{volume}{117}},
+  \doiprefix\url{https://doi.org/10.1029/2011JD016048} (\bibinfo{year}{2012}).
+\newblock \bibinfo{note}{\_eprint:
+  https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2011JD016048}.
+
+\bibitem{rao2020projections}
+\bibinfo{author}{Rao, K.~K.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{projections of heat stress and
+  associated work performance over india in response to global warming}}.
+\newblock {\emph{\JournalTitle{Scientific reports}}}
+  \textbf{\bibinfo{volume}{10}}, \bibinfo{pages}{1--14} (\bibinfo{year}{2020}).
+
+\bibitem{hu2017impact}
+\bibinfo{author}{Hu, X.}, \bibinfo{author}{Wu, J.}, \bibinfo{author}{Chen, P.},
+  \bibinfo{author}{Sun, T.} \& \bibinfo{author}{Li, D.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Impact of climate variability and
+  change on crime rates in tangshan, china}}.
+\newblock {\emph{\JournalTitle{Science of the total environment}}}
+  \textbf{\bibinfo{volume}{609}}, \bibinfo{pages}{1041--1048}
+  (\bibinfo{year}{2017}).
+
+\bibitem{chien2016spatiotemporal}
+\bibinfo{author}{Chien, L.-C.}, \bibinfo{author}{Guo, Y.} \&
+  \bibinfo{author}{Zhang, K.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Spatiotemporal analysis of heat and
+  heat wave effects on elderly mortality in texas, 2006--2011}}.
+\newblock {\emph{\JournalTitle{Science of the Total Environment}}}
+  \textbf{\bibinfo{volume}{562}}, \bibinfo{pages}{845--851}
+  (\bibinfo{year}{2016}).
+
+\bibitem{armstrong2019role}
+\bibinfo{author}{Armstrong, B.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{The role of humidity in
+  associations of high temperature with mortality: a multicountry, multicity
+  study}}.
+\newblock {\emph{\JournalTitle{Environmental health perspectives}}}
+  \textbf{\bibinfo{volume}{127}}, \bibinfo{pages}{097007}
+  (\bibinfo{year}{2019}).
+
+\bibitem{vida2012relationship}
+\bibinfo{author}{Vida, S.}, \bibinfo{author}{Durocher, M.},
+  \bibinfo{author}{Ouarda, T.~B.} \& \bibinfo{author}{Gosselin, P.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Relationship between ambient
+  temperature and humidity and visits to mental health emergency departments in
+  qu{\'e}bec}}.
+\newblock {\emph{\JournalTitle{Psychiatric Services}}}
+  \textbf{\bibinfo{volume}{63}}, \bibinfo{pages}{1150--1153}
+  (\bibinfo{year}{2012}).
+
+\bibitem{ding2016importance}
+\bibinfo{author}{Ding, N.}, \bibinfo{author}{Berry, H.~L.} \&
+  \bibinfo{author}{Bennett, C.~M.}
+\newblock \bibinfo{journal}{\bibinfo{title}{The importance of humidity in the
+  relationship between heat and population mental health: evidence from
+  australia}}.
+\newblock {\emph{\JournalTitle{PloS one}}} \textbf{\bibinfo{volume}{11}},
+  \bibinfo{pages}{e0164190} (\bibinfo{year}{2016}).
+
+\bibitem{bolton_computation_1980}
+\bibinfo{author}{Bolton, D.}
+\newblock \bibinfo{journal}{\bibinfo{title}{The {Computation} of {Equivalent}
+  {Potential} {Temperature}}}.
+\newblock {\emph{\JournalTitle{Monthly Weather Review}}}
+  \textbf{\bibinfo{volume}{108}}, \bibinfo{pages}{1046--1053},
+  \doiprefix\url{10.1175/1520-0493(1980)108<1046:TCOEPT>2.0.CO;2}
+  (\bibinfo{year}{1980}).
+\newblock \bibinfo{note}{Publisher: American Meteorological Society}.
+
+\bibitem{heo2019comparison}
+\bibinfo{author}{Heo, S.}, \bibinfo{author}{Bell, M.~L.} \&
+  \bibinfo{author}{Lee, J.-T.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Comparison of health risks by heat
+  wave definition: Applicability of wet-bulb globe temperature for heat wave
+  criteria}}.
+\newblock {\emph{\JournalTitle{Environmental research}}}
+  \textbf{\bibinfo{volume}{168}}, \bibinfo{pages}{158--170}
+  (\bibinfo{year}{2019}).
+
+\end{thebibliography}
