@@ -126,7 +126,7 @@ ggplot() +
                               'Hurricane\nSandy'='grey30')) + 
   scale_y_continuous(expand=expand_scale(mult=c(0.05, 0))) + 
   scale_x_discrete(position='top') + 
-  labs(x='', y='Decrease in Sentiment') + 
+  labs(x='', y='Decrease in Mood') + 
   guides(fill=FALSE, color=FALSE) + 
   theme_classic() + 
   coord_cartesian(ylim=c(min(plt$min)*1.05, 0), clip='off') + 
