@@ -49,58 +49,58 @@
 \renewcommand{\thefigure}{S\arabic{figure}}
 \renewcommand{\thesection}{S\arabic{section}}
 
-\section{Alternative Sentiment Algorithms}
+\section{Alternative Sentiment Algorithms to Estimate Mood}
 
 \subsection{Hedonometer}
 
-In addition to the Valence Aware Dictionary for sentiment Reasoning (VADER) sentiment analysis method \cite{gilbert_vader_2014}, we also used the hedonometer method \cite{Dodds2011Dec}.  This sentiment metric yielded very similar findings to those presented in the main paper with the VADER method.
+In addition to the Valence Aware Dictionary for Sentiment Reasoning (VADER) method \cite{gilbert_vader_2014}, we also used the hedonometer method \cite{Dodds2011Dec}.  This metric yielded very similar findings to those presented in the main paper with the VADER method.
 
-The Hedonometer \cite{dodds_temporal_2011} is a corpus-based technique to get sentiment score from multi-lingual texts. The core steps are (1) building human evaluations of the happiness of a set of individual words, and (2)using a naive algorithm for scaling up from individual words to texts. For the English corpus, Dodds and others \cite{dodds_temporal_2011} collect 10,222 unique words and used crowd-sourcing platform Amazon Mechanical Turk to get human evaluation of happiness degree for each word in an integer scale from 1 to 9, representing a sad to happy spectrum. Score 5 represents neutral words. Each word will be calculated average score and then the word and happiness score are compiled into a dataset (labMT 1.0). Some illustrative example of words are: 
+The Hedonometer \cite{dodds_temporal_2011} is a corpus-based technique to get mood scores from multi-lingual texts. The core steps are (1) building human evaluations of the happiness of a set of individual words, and (2) using an algorithm for scaling up from individual words to texts. For the English corpus, Dodds and others \cite{dodds_temporal_2011} collect 10,222 unique words and used crowd-sourcing platform Amazon Mechanical Turk to get human evaluation of happiness degree for each word in an integer scale from 1 to 9, representing a sad to happy spectrum. Score 5 represents neutral words. Some illustrative example of words are: 
 
 \[h_{avg} (\text{laughter}) = 8.50 \]
 \[h_{avg} (\text{the}) = 4.98\]
 \[h_{avg} (\text{hate}) = 2.34\]
 
-The sentiment score for single text will be the mean happiness score for all words in the text.
+The score for single text will be the mean happiness score for all words in the text.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{../res/hedono-wbgt.png}
-  \caption{Effects of temperature on sentiment, measured with the hedonometer method.}
+  \caption{Effects of temperature on mood, measured with the hedonometer method.}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{../res/hedono-wbgt-income.png}
-  \caption{Effects of temperature on sentiment and moderated by income, measured with the hedonometer method.}
+  \caption{Effects of temperature on mood and moderated by income, measured with the hedonometer method.}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{../res/hedono-wbgt-race_q.png}
-  \caption{Effects of temperature on sentiment and moderated by race, measured with the hedonometer method.}
+  \caption{Effects of temperature on mood and moderated by race, measured with the hedonometer method.}
 \end{figure}
 
 \subsection{AFINN}
 
-AFINN is another wordlist used in sentiment analysis and designed for microblogs like twitter \cite{nielsen2011new}.
+AFINN is another wordlist used in mood analysis and designed for microblogs like twitter \cite{nielsen2011new}.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{../res/afinn-wbgt.png}
-  \caption{Effects of temperature on sentiment, measured with the AFINN method.}
+  \caption{Effects of temperature on mood, measured with the AFINN method.}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{../res/afinn-wbgt-income.png}
-  \caption{Effects of temperature on sentiment and moderated by income, measured with the AFINN method.}
+  \caption{Effects of temperature on mood and moderated by income, measured with the AFINN method.}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{../res/afinn-wbgt-race_q.png}
-  \caption{Effects of temperature on sentiment and moderated by race, measured with the AFINN method.}
+  \caption{Effects of temperature on mood and moderated by race, measured with the AFINN method.}
 \end{figure}
 
 
@@ -110,13 +110,13 @@ For our main analysis, we treated income as a continuous (log-transformed) varia
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{../res/wbgt-income_q.png}
-  \caption{Effect of temperature on sentiment and moderated by income, with income as a categorical variable.}
+  \caption{Effect of temperature on mood and moderated by income, with income as a categorical variable.}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{../res/wbgt-race.png}
-  \caption{Effect of temperature on sentiment and moderated by race, with race as a continuous variable.}
+  \caption{Effect of temperature on mood and moderated by race, with race as a continuous variable.}
 \end{figure}
 
 \section{Effects of Precipitation and Sunshine}
@@ -125,14 +125,14 @@ While our main variable of interest was temperature as measured by Wet Bulb Glob
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{../res/raining-income.png}
-  \caption{Effect of rain on sentiment and moderated by income.}
+  \caption{Effect of rain on mood and moderated by income.}
   \label{fig:timeseries}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{../res/raining-race_q.png}
-  \caption{Effect of rain on sentiment and moderated by race.}
+  \caption{Effect of rain on mood and moderated by race.}
   \label{fig:timeseries}
 \end{figure}
 
@@ -140,27 +140,27 @@ While our main variable of interest was temperature as measured by Wet Bulb Glob
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{../res/srad-income.png}
-  \caption{Effect of sunshine on sentiment and moderated by income.}
+  \caption{Effect of sunshine on mood and moderated by income.}
   \label{fig:timeseries}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{../res/srad-race_q.png}
-  \caption{Effect of sunshine on sentiment and moderated by race.}
+  \caption{Effect of sunshine on mood and moderated by race.}
   \label{fig:timeseries}
 \end{figure}
 
 \section*{Temperature Effects by Combined Statistical Area}
-To explore whether cultural or environmental baselines may affect the relatinoship between heat and sentiment, we examine the impact of temperature on sentiment across Combined Statistical Areas (CSAs) and Metropolitan Statistical Areas (MSAs) containing over 1 million people (hereafter: city regions). We find that higher temperatures are associated with declining sentiment in 83.6\% of city regions (see Fig. \ref{fig:map}) and the effect is significant in 35.3\% of these. Furthermore, we find no correlation between higher temperatures and increased sentiment in any of the city regions.
+To explore whether cultural or environmental baselines may affect the relationship between heat and mood, we examine the impact of temperature on mood across Combined Statistical Areas (CSAs) and Metropolitan Statistical Areas (MSAs) containing over 1 million people (hereafter: city regions). We find that higher temperatures are associated with declining mood in 83.6\% of city regions (see Fig. \ref{fig:map}) and the effect is significant in 35.3\% of these. Furthermore, we find no significant association between higher temperatures and increased mood in any of the cities.
 
-For this analysis by city, we run models with a similar form to Model \ref{mod:2}, including the same fixed effects, although we fit a linear effect for $f_t()$.  Because we are not accounting for non-linearities in $f_t()$, we exclude tweets with a WBGT of less than 5\textdegree C, as our initial analysis showed that this is the temperature at which sentiment peaks.
+For this analysis by city, we run models with a similar form to Model 2, including the same fixed effects, although we fit a linear effect for $f_t()$.  Because we are not accounting for non-linearities in $f_t()$, we exclude tweets with a WBGT of less than 5\textdegree C, as our initial analysis showed that this is the temperature at which mood peaks.
 
 \begin{figure}[H]
 \centering
   \includegraphics[width=\linewidth]{../res/map_wbgt.png}
   \label{fig:map}
-    \caption{The change in sentiment for a 25-degree increase in WBGT for city regions with a population of over 1 million.  For cities shown with a dark outline, the effect is significant at a 95\% confidence interval.}
+    \caption{The change in mood for a 25-degree increase in WBGT for city regions with a population of over 1 million.  For cities shown with a dark outline, the effect is significant at a 95\% confidence interval.}
 \end{figure}
 
 
