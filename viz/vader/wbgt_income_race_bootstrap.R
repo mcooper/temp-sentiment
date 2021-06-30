@@ -81,13 +81,13 @@ ref_temps <- round(ref_temps)
 #########################################
 preddf <- data.frame(wbgt=seq(-22, 33))
 preddf <- make_groups(preddf, 'income_percap', inc_qs[c(2, 11, 20)])
-preddf <- make_groups(preddf, 'race_black', c(0, .25, 1))
+preddf <- make_groups(preddf, 'race_black', c(0.05, 0.5, 0.95))
 
 preddf$vader <- 1
 
 mm <- model.matrix(as.formula(paste0("vader ~ ", 
                      piece.formula("wbgt", knots[['wbgt']], "income_percap"), ' + ',
-                     piece.formula("wbgt", knots[['wbgt']], ""), ' + ',
+                     #piece.formula("wbgt", knots[['wbgt']], ""), ' + ',
                      piece.formula("wbgt", knots[['wbgt']], "race_black"), ' + ',
                      piece.formula("wbgt", knots[['wbgt']], ""))),
                    data=preddf)
@@ -133,6 +133,10 @@ levels(preddf$race_black) <- preddf$race_black %>%
                                    paste0(., '%')
 
 
+#preddf <- preddf %>%
+#  filter(race_black == '100%')
+
+
 preddf <- preddf %>%
   gather(key, value, -wbgt, -income_percap, -race_black, -vader) %>%
   #Normalize so that graph shows difference from wbgt = X
@@ -146,7 +150,7 @@ preddf <- preddf %>%
 
 (curve <- ggplot(preddf) + 
   geom_line(aes(x=wbgt, y=pred, color=income_percap, linetype=race_black)) + 
-  scale_linetype_manual(values=c('0%'=3, '25%'=2, '100%'=1)) + 
+  scale_linetype_manual(values=c(3, 2, 1)) + 
   geom_ribbon(aes(x=wbgt, ymin=ymin, ymax=ymax, fill=income_percap, grou=race_black), alpha=0.2) + 
   scale_x_continuous(expand=c(0, 0), limits=c(-22, 33)) + 
   scale_fill_manual(values=c("#e31a1c", "#ff7f00", "#33a02c")) + 
