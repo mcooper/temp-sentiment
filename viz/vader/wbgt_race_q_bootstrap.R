@@ -282,7 +282,7 @@ curve <- ggplot(preddf) +
        fill = 'Census Block Majority Race',
        color = 'Census Block Majority Race') +
   theme_classic() + 
-  theme(legend.position=c(0.2, 0.8),
+  theme(#legend.position=c(0.2, 0.8),
         axis.text.x = element_blank(),
         axis.ticks.x = element_blank(),
         plot.margin = unit(c(0.025, 0.025, -1, 0.025), "cm"),
@@ -303,4 +303,4 @@ hist <- ggplot(data[sample(1:nrow(data), nrow(data)*0.01), 'srad']) +
 
 plot_grid(curve, hist, align='v', axis='rl', ncol=1, 
           rel_heights=c(0.8, 0.2))
-ggsave('~/temp-sentiment/res/srad-race_q.png', width=4.5, height=4)
+ggsave('~/temp-sentiment/res/srad-race_q.png', width=5.5, height=4)
