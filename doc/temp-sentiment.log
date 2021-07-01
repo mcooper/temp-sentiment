@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.9.6)  18 MAY 2021 22:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.9.6)  30 JUN 2021 20:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -985,32 +985,33 @@ Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
 \LMex=\skip83
 \LMpt=\skip84
 )
-No file temp-sentiment.aux.
+(./temp-sentiment.aux)
 \openout1 = `temp-sentiment.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 61.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 64.
 LaTeX Font Info:    Trying to load font information for LGR+cmr on input line 6
-1.
+4.
+
 (/usr/share/texlive/texmf-dist/tex/latex/cbfonts-fd/lgrcmr.fd
 File: lgrcmr.fd 2017/07/29 v1.2 Greek European Computer Regular
 )
-LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    ... okay on input line 64.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1078,7 +1079,7 @@ Package: ltcaption 2018/08/26 v1.4a longtable captions (AR)
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box59
-Package hyperref Info: Link coloring ON on input line 61.
+Package hyperref Info: Link coloring ON on input line 64.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -1091,23 +1092,25 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count316
 )
-LaTeX Info: Redefining \ref on input line 61.
-LaTeX Info: Redefining \pageref on input line 61.
-LaTeX Info: Redefining \nameref on input line 61.
+LaTeX Info: Redefining \ref on input line 64.
+LaTeX Info: Redefining \pageref on input line 64.
+LaTeX Info: Redefining \nameref on input line 64.
+
+(./temp-sentiment.out) (./temp-sentiment.out)
 \@outlinefile=\write3
 \openout3 = `temp-sentiment.out'.
 
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 61.
-LaTeX Info: Redefining \microtypecontext on input line 61.
+(lastpage)             ! on input line 64.
+LaTeX Info: Redefining \microtypecontext on input line 64.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `basictext'.
-LaTeX Info: Redefining \showhyphens on input line 61.
+LaTeX Info: Redefining \showhyphens on input line 64.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1115,7 +1118,7 @@ Package microtype Info: No adjustment of character kerning.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 65
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 68
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
@@ -1126,7 +1129,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OT1+phv on input line 6
-5.
+8.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
@@ -1136,7 +1139,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
- 65.
+ 68.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
@@ -1146,19 +1149,19 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line
- 65.
+ 68.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line
- 65.
+ 68.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line
- 65.
+ 68.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
@@ -1170,447 +1173,127 @@ File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 6
-5.
+8.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 68.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 68.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 68.
 
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
 
-LaTeX Warning: Citation `pachauri2014climate' on page 1 undefined on input line
- 69.
+ []
 
-
-LaTeX Warning: Citation `Berry2018Apr' on page 1 undefined on input line 69.
-
-
-LaTeX Warning: Citation `hayes_climate_2018' on page 1 undefined on input line 
-69.
-
-
-LaTeX Warning: Citation `Collins2011Jul' on page 1 undefined on input line 69.
-
-
-LaTeX Warning: Citation `Berry2018Apr' on page 1 undefined on input line 69.
-
-
-LaTeX Warning: Citation `Collins2011Jul' on page 1 undefined on input line 69.
-
-
-LaTeX Warning: Citation `Waite2017Dec' on page 1 undefined on input line 69.
-
-
-LaTeX Warning: Citation `Raker2019Dec' on page 1 undefined on input line 69.
-
-
-LaTeX Warning: Citation `Cunsolo2018Apr' on page 1 undefined on input line 69.
-
-
-LaTeX Warning: Citation `baylis_weather_2018' on page 1 undefined on input line
- 69.
-
-
-LaTeX Warning: Citation `Mullins2019Dec' on page 1 undefined on input line 69.
-
-
-LaTeX Warning: Citation `Li2020Mar' on page 1 undefined on input line 69.
-
-
-LaTeX Warning: Citation `Obradovich2018Oct' on page 1 undefined on input line 6
-9.
-
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 6
-9.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 7
+2.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
-
-LaTeX Warning: Citation `allen2019technical' on page 1 undefined on input line 
-69.
-
-
-LaTeX Warning: Citation `Berry2018Apr' on page 1 undefined on input line 72.
-
-
-LaTeX Warning: Citation `Palinkas2020Apr' on page 1 undefined on input line 72.
-
-
-
-LaTeX Warning: Citation `BerryETAL2010' on page 1 undefined on input line 72.
-
-
-LaTeX Warning: Citation `Lohmus2018Jul' on page 1 undefined on input line 72.
-
-
-LaTeX Warning: Citation `sadiq_impact_2019' on page 1 undefined on input line 7
-2.
-
-
-LaTeX Warning: Citation `Obradovich2017May' on page 1 undefined on input line 7
-2.
-
-
-LaTeX Warning: Citation `Mullins2019Dec' on page 1 undefined on input line 72.
-
-
-LaTeX Warning: Citation `Berry2007' on page 1 undefined on input line 72.
-
-
-LaTeX Warning: Citation `WHO2007' on page 1 undefined on input line 72.
-
-
-LaTeX Warning: Citation `kjellstrom_impact_2016' on page 1 undefined on input l
-ine 72.
-
-
-LaTeX Warning: Citation `Burke2015Nov' on page 1 undefined on input line 72.
-
-
-LaTeX Warning: Citation `Katz1997' on page 1 undefined on input line 72.
-
-
-LaTeX Warning: Citation `CohnETAL2004' on page 1 undefined on input line 72.
-
-
-LaTeX Warning: Citation `BouchamaETAL2007' on page 1 undefined on input line 72
-.
-
-
-LaTeX Warning: Citation `Burke2018Aug' on page 1 undefined on input line 75.
-
-
-LaTeX Warning: Citation `Mullins2019Dec' on page 1 undefined on input line 75.
-
-
-LaTeX Warning: Citation `Dixon2007May' on page 1 undefined on input line 75.
-
-
-LaTeX Warning: Citation `Qi2014Dec' on page 1 undefined on input line 75.
-
-
-LaTeX Warning: Citation `Page2007Aug' on page 1 undefined on input line 75.
-
-
-LaTeX Warning: Citation `Likhvar2011Jan' on page 1 undefined on input line 75.
-
-
-LaTeX Warning: Citation `Obradovich2018Oct' on page 1 undefined on input line 7
-5.
-
-
-LaTeX Warning: Citation `Mullins2019Dec' on page 1 undefined on input line 75.
-
-
-LaTeX Warning: Citation `Lee2007Jan' on page 1 undefined on input line 75.
-
-
-LaTeX Warning: Citation `Sung2013Feb' on page 1 undefined on input line 75.
-
-
-LaTeX Warning: Citation `Hansen2008Oct' on page 1 undefined on input line 75.
-
-
-LaTeX Warning: Citation `Burke2018Aug' on page 1 undefined on input line 77.
-
-
-LaTeX Warning: Citation `Mullins2019Dec' on page 1 undefined on input line 77.
-
-[1
+) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Citation `Gubernot2014Oct' on page 2 undefined on input line 79.
-
-
-
-LaTeX Warning: Citation `Karner2015Dec' on page 2 undefined on input line 79.
-
-
-LaTeX Warning: Citation `Samuelson2020Jun' on page 2 undefined on input line 79
-.
-
-
-LaTeX Warning: Citation `Belanger2015Mar' on page 2 undefined on input line 79.
-
-
-
-LaTeX Warning: Citation `Uejio2011Mar' on page 2 undefined on input line 79.
-
-
-LaTeX Warning: Citation `ferre2019hurricane' on page 2 undefined on input line 
-79.
-
-
-LaTeX Warning: Citation `Gruebner2015Jun' on page 2 undefined on input line 79.
-
-
-
-LaTeX Warning: Citation `Edo-Osagie2020Jul' on page 2 undefined on input line 8
-1.
-
-
-LaTeX Warning: Citation `Sinnenberg2016Dec' on page 2 undefined on input line 8
-1.
-
-
-LaTeX Warning: Citation `Reece2017Oct' on page 2 undefined on input line 81.
-
-
-LaTeX Warning: Citation `Eichstaedt2018Oct' on page 2 undefined on input line 8
-1.
-
-
-LaTeX Warning: Citation `Kolliakou2020Feb' on page 2 undefined on input line 81
-.
-
-
-LaTeX Warning: Citation `Mitchell2013May' on page 2 undefined on input line 81.
-
-
-
-LaTeX Warning: Citation `baylis_weather_2018' on page 2 undefined on input line
- 81.
-
-
-LaTeX Warning: Citation `hannak_tweetin_2012' on page 2 undefined on input line
- 81.
-
-
-LaTeX Warning: Citation `Burke2018Aug' on page 2 undefined on input line 81.
-
-
-LaTeX Warning: Citation `budd2008wet' on page 2 undefined on input line 86.
-
-
-LaTeX Warning: Reference `fig:wbgt' on page 2 undefined on input line 86.
-
-<../res/wbgt.png, id=13, 325.215pt x 289.08pt>
+<../res/wbgt.png, id=89, 325.215pt x 289.08pt>
 File: ../res/wbgt.png Graphic file (type png)
 <use ../res/wbgt.png>
-Package pdftex.def Info: ../res/wbgt.png  used on input line 90.
+Package pdftex.def Info: ../res/wbgt.png  used on input line 91.
 (pdftex.def)             Requested size: 250.24199pt x 222.4423pt.
-
-LaTeX Warning: Reference `LastPage' on page 2 undefined on input line 94.
-
-[2]
-
-LaTeX Warning: Reference `fig:hetero' on page 3 undefined on input line 95.
-
-
-LaTeX Warning: Reference `fig:hetero' on page 3 undefined on input line 97.
-
-<../res/wbgt_combined.png, id=18, 650.43pt x 289.08pt>
+ [2 <../res/wbgt.png>]
+<../res/wbgt_combined.png, id=119, 650.43pt x 289.08pt>
 File: ../res/wbgt_combined.png Graphic file (type png)
 <use ../res/wbgt_combined.png>
-Package pdftex.def Info: ../res/wbgt_combined.png  used on input line 103.
+Package pdftex.def Info: ../res/wbgt_combined.png  used on input line 102.
 (pdftex.def)             Requested size: 500.484pt x 222.4423pt.
-
-LaTeX Warning: Reference `LastPage' on page 3 undefined on input line 107.
-
-[3 <../res/wbgt.png>]
-
-LaTeX Warning: Citation `hutto2014vader' on page 4 undefined on input line 110.
-
+<../res/wbgt-income-race.png, id=121, 397.485pt x 289.08pt>
+File: ../res/wbgt-income-race.png Graphic file (type png)
+<use ../res/wbgt-income-race.png>
+Package pdftex.def Info: ../res/wbgt-income-race.png  used on input line 111.
+(pdftex.def)             Requested size: 325.31154pt x 236.5972pt.
 
 
-LaTeX Warning: Reference `fig:compare' on page 4 undefined on input line 110.
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 112.
+See the caption package documentation for explanation.
 
 
-LaTeX Warning: Citation `CDC2021' on page 4 undefined on input line 110.
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 127.
+See the caption package documentation for explanation.
 
 
-LaTeX Warning: Citation `Schwartz2017Aug' on page 4 undefined on input line 110
-.
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 109--130
+[]$[]$ $[]$ 
+ []
 
-
-LaTeX Warning: Citation `Schwartz2018May' on page 4 undefined on input line 110
-.
-
-
-LaTeX Warning: Citation `Krug1998Feb' on page 4 undefined on input line 110.
-
-<../res/comparison_plot.png, id=26, 361.35pt x 180.675pt>
+[3 <../res/wbgt_combined.png>]
+<../res/comparison_plot.png, id=134, 361.35pt x 180.675pt>
 File: ../res/comparison_plot.png Graphic file (type png)
 <use ../res/comparison_plot.png>
-Package pdftex.def Info: ../res/comparison_plot.png  used on input line 114.
+Package pdftex.def Info: ../res/comparison_plot.png  used on input line 138.
 (pdftex.def)             Requested size: 330.32126pt x 165.1616pt.
+ [4 <../res/wbgt-income-race.png (PNG copy)>]
+<../res/ts_heat.png, id=147, 325.215pt x 289.08pt>
+File: ../res/ts_heat.png Graphic file (type png)
+<use ../res/ts_heat.png>
+Package pdftex.def Info: ../res/ts_heat.png  used on input line 150.
+(pdftex.def)             Requested size: 250.24199pt x 222.4423pt.
 
-LaTeX Warning: Reference `LastPage' on page 4 undefined on input line 120.
-
-[4 <../res/wbgt_combined.png> <../res/comparison_plot.png (PNG copy)>]
-<../res/map_combined.png, id=34, 809.424pt x 1555.4913pt>
-File: ../res/map_combined.png Graphic file (type png)
-<use ../res/map_combined.png>
-Package pdftex.def Info: ../res/map_combined.png  used on input line 133.
-(pdftex.def)             Requested size: 250.24199pt x 480.8919pt.
-
-
-LaTeX Warning: Reference `LastPage' on page 5 undefined on input line 137.
-
-[5]
-
-LaTeX Warning: Citation `Burke2018Aug' on page 6 undefined on input line 140.
-
-
-LaTeX Warning: Citation `Mullins2019Dec' on page 6 undefined on input line 140.
-
-
-
-LaTeX Warning: Reference `LastPage' on page 6 undefined on input line 144.
-
-[6 <../res/map_combined.png>]
-
-LaTeX Warning: Citation `CDC2021' on page 7 undefined on input line 146.
-
-
-LaTeX Warning: Citation `Mullins2019Dec' on page 7 undefined on input line 150.
-
-
-
-LaTeX Warning: Citation `Thomas2019Mar' on page 7 undefined on input line 159.
-
-
-LaTeX Warning: Citation `Raymond2020May' on page 7 undefined on input line 159.
-
-
-
-LaTeX Warning: Citation `Harrington2020Sep' on page 7 undefined on input line 1
-59.
-
-
-LaTeX Warning: Citation `Biardeau2020Jan' on page 7 undefined on input line 159
-.
-
-
-LaTeX Warning: Citation `Pew2020Sep' on page 7 undefined on input line 162.
-
-
-LaTeX Warning: Reference `LastPage' on page 7 undefined on input line 163.
-
-[7]
-
-LaTeX Warning: Citation `bullard2012wrong' on page 8 undefined on input line 16
-5.
-
-
-LaTeX Warning: Citation `gilbert_vader_2014' on page 8 undefined on input line 
-171.
-
-<smiling-face-with-smiling-eyes_1f60a.png, id=52, 120.45pt x 120.45pt>
+[5 <../res/comparison_plot.png (PNG copy)> <../res/ts_heat.png (PNG copy)>]
+[6]
+<smiling-face-with-smiling-eyes_1f60a.png, id=184, 120.45pt x 120.45pt>
 File: smiling-face-with-smiling-eyes_1f60a.png Graphic file (type png)
 <use smiling-face-with-smiling-eyes_1f60a.png>
 Package pdftex.def Info: smiling-face-with-smiling-eyes_1f60a.png  used on inpu
-t line 178.
+t line 190.
 (pdftex.def)             Requested size: 120.44969pt x 120.44969pt.
 File: smiling-face-with-smiling-eyes_1f60a.png Graphic file (type png)
 <use smiling-face-with-smiling-eyes_1f60a.png>
 Package pdftex.def Info: smiling-face-with-smiling-eyes_1f60a.png  used on inpu
-t line 178.
+t line 190.
 (pdftex.def)             Requested size: 120.44969pt x 120.44969pt.
-
-LaTeX Warning: Citation `xia_continental-scale_2012' on page 8 undefined on inp
-ut line 185.
-
-
-LaTeX Warning: Citation `budd2008wet' on page 8 undefined on input line 187.
-
-
-LaTeX Warning: Citation `rao2020projections' on page 8 undefined on input line 
-187.
+ [7 <./smiling-face-with-smiling-eyes_1f60a.png>] [8] [9] [10]
+Underfull \hbox (badness 2073) in paragraph at lines 719--729
+[]\T1/ptm/m/n/10 (+20) Xia, Y. \T1/ptm/m/it/10 (+20) et al.  \T1/ptm/m/n/10 (+2
+0) Continental-scale wa-ter and en-ergy flux anal-y-sis and val-i-da-tion for t
+he North Amer-i-can
+ []
 
 
-LaTeX Warning: Citation `hu2017impact' on page 8 undefined on input line 187.
+Underfull \hbox (badness 1394) in paragraph at lines 719--729
+\T1/ptm/m/n/10 (+20) Land Data As-sim-i-la-tion Sys-tem project phase 2 (NLDAS-
+2): 1. In-ter-com-par-i-son and ap-pli-ca-tion of model
+ []
 
 
-LaTeX Warning: Citation `chien2016spatiotemporal' on page 8 undefined on input 
-line 187.
+Underfull \hbox (badness 1331) in paragraph at lines 719--729
+\T1/ptm/m/n/10 (+20) prod-ucts.  \T1/ptm/m/it/10 (+20) J. Geo-phys. Res. At-mo-
+spheres \T1/ptm/b/n/10 117\T1/ptm/m/n/10 (+20) , DOI: [][]$https : / / doi . or
+g / 10 . 1029 / 2011JD016048$[][] (2012).  _eprint:
+ []
 
-
-LaTeX Warning: Citation `armstrong2019role' on page 8 undefined on input line 1
-87.
-
-
-LaTeX Warning: Citation `vida2012relationship' on page 8 undefined on input lin
-e 187.
-
-
-LaTeX Warning: Citation `ding2016importance' on page 8 undefined on input line 
-187.
-
-
-LaTeX Warning: Citation `bolton_computation_1980' on page 8 undefined on input 
-line 189.
-
-
-LaTeX Warning: Citation `heo2019comparison' on page 8 undefined on input line 1
-89.
-
-
-LaTeX Warning: Reference `LastPage' on page 8 undefined on input line 192.
-
-[8 <./smiling-face-with-smiling-eyes_1f60a.png>]
-
-LaTeX Warning: Reference `fig:wbgt' on page 9 undefined on input line 205.
-
-
-LaTeX Warning: Reference `mod:2' on page 9 undefined on input line 223.
-
-No file temp-sentiment.bbl.
-
-LaTeX Warning: Reference `LastPage' on page 9 undefined on input line 234.
-
-[9]
-
-Package lastpage Warning: Rerun to get the references right on input line 239.
-
-
+[11] 
 AED: lastpage setting LastPage
-
-LaTeX Warning: Reference `LastPage' on page 10 undefined on input line 239.
-
-[10]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 239.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 239.
+[12]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 823.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 823.
  (./temp-sentiment.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 239.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 239.
-
-
-Package rerunfilecheck Warning: File `temp-sentiment.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `temp-sentiment.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 239.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 823.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 823.
+Package rerunfilecheck Info: File `temp-sentiment.out' has not changed.
+(rerunfilecheck)             Checksum: 84C61B5D2355D3C7BF05F425231D5784;48.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 823.
  ) 
 Here is how much of TeX's memory you used:
- 21491 strings out of 483107
- 408750 string characters out of 5964631
- 718019 words of memory out of 5000000
- 35963 multiletter control sequences out of 15000+600000
- 604432 words of font info for 233 fonts, out of 8000000 for 9000
+ 21916 strings out of 483107
+ 419315 string characters out of 5964631
+ 724569 words of memory out of 5000000
+ 36296 multiletter control sequences out of 15000+600000
+ 590053 words of font info for 220 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 49i,11n,49p,1739b,385s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 49i,12n,72p,1839b,486s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/
@@ -1620,10 +1303,10 @@ syr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/urw/times/utmri8a.pfb>
-Output written on temp-sentiment.pdf (10 pages, 2245210 bytes).
+Output written on temp-sentiment.pdf (12 pages, 851832 bytes).
 PDF statistics:
- 107 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
- 17 named destinations out of 1000 (max. 500000)
- 46618 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 353 PDF objects out of 1000 (max. 8388607)
+ 317 compressed objects within 4 object streams
+ 86 named destinations out of 1000 (max. 500000)
+ 30759 words of extra memory for PDF output out of 35830 (max. 10000000)
 

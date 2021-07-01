@@ -1,0 +1,202 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{gilbert_vader_2014}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=c70579fa744fbc0a95884d8434e66fb3}{%
+           family={Gilbert},
+           familyi={G\bibinitperiod},
+           given={C.\bibnamedelimi H.\bibnamedelimi E.},
+           giveni={C\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=b01dd0927a4c71c6620c925a890bd992}{%
+           family={Hutto},
+           familyi={H\bibinitperiod},
+           given={Erric},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{819c82b895f087ba841020f0eb0ea96d}
+      \strng{fullhash}{819c82b895f087ba841020f0eb0ea96d}
+      \strng{bibnamehash}{819c82b895f087ba841020f0eb0ea96d}
+      \strng{authorbibnamehash}{819c82b895f087ba841020f0eb0ea96d}
+      \strng{authornamehash}{819c82b895f087ba841020f0eb0ea96d}
+      \strng{authorfullhash}{819c82b895f087ba841020f0eb0ea96d}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The inherent nature of social media content poses serious challenges to practical applications of sentiment analysis. We present VADER, a simple rule-based model for general sentiment analysis, and compare its effectiveness to eleven typical state-of-practice benchmarks including LIWC, ANEW, the General Inquirer, SentiWordNet, and machine learning oriented techniques relying on Naive Bayes, Maximum Entropy, and Support Vector Machine (SVM) algorithms. Using a combination of qualitative and quantitative methods, we first construct and empirically validate a goldstandard list of lexical features (along with their associated sentiment intensity measures) which are specifically attuned to sentiment in microblog-like contexts. We then combine these lexical features with consideration for five general rules that embody grammatical and syntactical conventions for expressing and emphasizing sentiment intensity. Interestingly, using our parsimonious rule-based model to assess the sentiment of tweets, we find that VADER outperforms individual human raters (F1 Classification Accuracy = 0.96 and 0.84, respectively), and generalizes more favorably across contexts than any of our benchmarks.}
+      \field{booktitle}{Eighth {International} {Conference} on {Weblogs} and {Social} {Media} ({ICWSM}-14). {Available} at (20/04/16) http://comp. social. gatech. edu/papers/icwsm14. vader. hutto. pdf}
+      \field{title}{Vader: {A} parsimonious rule-based model for sentiment analysis of social media text}
+      \field{volume}{81}
+      \field{year}{2014}
+      \field{pages}{82}
+      \range{pages}{1}
+      \verb{urlraw}
+      \verb http://eegilbert.org/papers/icwsm14.vader.hutto.pdf
+      \endverb
+      \verb{url}
+      \verb http://eegilbert.org/papers/icwsm14.vader.hutto.pdf
+      \endverb
+    \endentry
+    \entry{Dodds2011Dec}{article}{}
+      \name{author}{5}{}{%
+        {{hash=7a0ebfc1f40f4fc5072be319b050d506}{%
+           family={Dodds},
+           familyi={D\bibinitperiod},
+           given={Peter\bibnamedelima Sheridan},
+           giveni={P\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=2a105f53ff0e7744eca9f6e51d52009c}{%
+           family={Harris},
+           familyi={H\bibinitperiod},
+           given={Kameron\bibnamedelima Decker},
+           giveni={K\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=e07bb7954a4d6f60c0150b7e4b1bb002}{%
+           family={Kloumann},
+           familyi={K\bibinitperiod},
+           given={Isabel\bibnamedelima M.},
+           giveni={I\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=ae3ffd41872ffcc0242cdabde4003c04}{%
+           family={Bliss},
+           familyi={B\bibinitperiod},
+           given={Catherine\bibnamedelima A.},
+           giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=5fc866d4ae873b776e72f5bac184a570}{%
+           family={Danforth},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima M.},
+           giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Public Library of Science}%
+      }
+      \strng{namehash}{1d6b87971ce5571ba5b35b7b4b75e6ce}
+      \strng{fullhash}{2e3aabc1b6a59da9cba7b247ce7513d3}
+      \strng{bibnamehash}{1d6b87971ce5571ba5b35b7b4b75e6ce}
+      \strng{authorbibnamehash}{1d6b87971ce5571ba5b35b7b4b75e6ce}
+      \strng{authornamehash}{1d6b87971ce5571ba5b35b7b4b75e6ce}
+      \strng{authorfullhash}{2e3aabc1b6a59da9cba7b247ce7513d3}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1932-6203}
+      \field{journaltitle}{PLOS One}
+      \field{month}{12}
+      \field{number}{12}
+      \field{title}{{Temporal Patterns of Happiness and Information in a Global Social Network: Hedonometrics and Twitter}}
+      \field{volume}{6}
+      \field{year}{2011}
+      \field{pages}{e26752}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1371/journal.pone.0026752
+      \endverb
+    \endentry
+    \entry{dodds_temporal_2011}{article}{}
+      \name{author}{5}{}{%
+        {{hash=7a0ebfc1f40f4fc5072be319b050d506}{%
+           family={Dodds},
+           familyi={D\bibinitperiod},
+           given={Peter\bibnamedelima Sheridan},
+           giveni={P\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=2a105f53ff0e7744eca9f6e51d52009c}{%
+           family={Harris},
+           familyi={H\bibinitperiod},
+           given={Kameron\bibnamedelima Decker},
+           giveni={K\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=e07bb7954a4d6f60c0150b7e4b1bb002}{%
+           family={Kloumann},
+           familyi={K\bibinitperiod},
+           given={Isabel\bibnamedelima M.},
+           giveni={I\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=ae3ffd41872ffcc0242cdabde4003c04}{%
+           family={Bliss},
+           familyi={B\bibinitperiod},
+           given={Catherine\bibnamedelima A.},
+           giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=5fc866d4ae873b776e72f5bac184a570}{%
+           family={Danforth},
+           familyi={D\bibinitperiod},
+           given={Christopher\bibnamedelima M.},
+           giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{1d6b87971ce5571ba5b35b7b4b75e6ce}
+      \strng{fullhash}{2e3aabc1b6a59da9cba7b247ce7513d3}
+      \strng{bibnamehash}{1d6b87971ce5571ba5b35b7b4b75e6ce}
+      \strng{authorbibnamehash}{1d6b87971ce5571ba5b35b7b4b75e6ce}
+      \strng{authornamehash}{1d6b87971ce5571ba5b35b7b4b75e6ce}
+      \strng{authorfullhash}{2e3aabc1b6a59da9cba7b247ce7513d3}
+      \field{extraname}{2}
+      \field{sortinit}{3}
+      \field{sortinithash}{a37a8ef248a93c322189792c34fc68c9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Individual happiness is a fundamental societal metric. Normally measured through self-report, happiness has often been indirectly characterized and overshadowed by more readily quantifiable economic indicators such as gross domestic product. Here, we examine expressions made on the online, global microblog and social networking service Twitter, uncovering and explaining temporal variations in happiness and information levels over timescales ranging from hours to years. Our data set comprises over 46 billion words contained in nearly 4.6 billion expressions posted over a 33 month span by over 63 million unique users. In measuring happiness, we construct a tunable, real-time, remote-sensing, and non-invasive, text-based hedonometer. In building our metric, made available with this paper, we conducted a survey to obtain happiness evaluations of over 10,000 individual words, representing a tenfold size improvement over similar existing word sets. Rather than being ad hoc, our word list is chosen solely by frequency of usage, and we show how a highly robust and tunable metric can be constructed and defended.}
+      \field{journaltitle}{PLOS One}
+      \field{month}{12}
+      \field{number}{12}
+      \field{shorttitle}{Temporal {Patterns} of {Happiness} and {Information} in a {Global} {Social} {Network}}
+      \field{title}{Temporal {Patterns} of {Happiness} and {Information} in a {Global} {Social} {Network}: {Hedonometrics} and {Twitter}}
+      \field{urlday}{27}
+      \field{urlmonth}{1}
+      \field{urlyear}{2016}
+      \field{volume}{6}
+      \field{year}{2011}
+      \field{urldateera}{ce}
+      \field{pages}{e26752}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1371/journal.pone.0026752
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1371/journal.pone.0026752
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1371/journal.pone.0026752
+      \endverb
+    \endentry
+    \entry{nielsen2011new}{article}{}
+      \name{author}{1}{}{%
+        {{hash=9d181c11442d86e7f6f407e54f629162}{%
+           family={Nielsen},
+           familyi={N\bibinitperiod},
+           given={Finn\bibnamedelima {Å}rup},
+           giveni={F\bibinitperiod\bibinitdelim Å\bibinitperiod}}}%
+      }
+      \strng{namehash}{9d181c11442d86e7f6f407e54f629162}
+      \strng{fullhash}{9d181c11442d86e7f6f407e54f629162}
+      \strng{bibnamehash}{9d181c11442d86e7f6f407e54f629162}
+      \strng{authorbibnamehash}{9d181c11442d86e7f6f407e54f629162}
+      \strng{authornamehash}{9d181c11442d86e7f6f407e54f629162}
+      \strng{authorfullhash}{9d181c11442d86e7f6f407e54f629162}
+      \field{sortinit}{5}
+      \field{sortinithash}{5dd416adbafacc8226114bc0202d5fdd}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:1103.2903}
+      \field{title}{A new ANEW: Evaluation of a word list for sentiment analysis in microblogs}
+      \field{year}{2011}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

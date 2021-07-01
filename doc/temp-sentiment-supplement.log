@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.9.6)  8 JUN 2021 12:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.9.6)  30 JUN 2021 19:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -990,7 +990,17 @@ File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count421
 \l__pdf_internal_box=\box55
 )
-No file temp-sentiment-supplement.aux.
+(./temp-sentiment-supplement.aux
+
+LaTeX Warning: Label `fig:timeseries' multiply defined.
+
+
+LaTeX Warning: Label `fig:timeseries' multiply defined.
+
+
+LaTeX Warning: Label `fig:timeseries' multiply defined.
+
+)
 \openout1 = `temp-sentiment-supplement.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
@@ -1012,7 +1022,7 @@ LaTeX Font Info:    ... okay on input line 40.
 LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 40.
 LaTeX Font Info:    Trying to load font information for LGR+cmr on input line 4
 0.
-(/usr/share/texlive/texmf-dist/tex/latex/cbfonts-fd/lgrcmr.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/cbfonts-fd/lgrcmr.fd
 File: lgrcmr.fd 2017/07/29 v1.2 Greek European Computer Regular
 )
 LaTeX Font Info:    ... okay on input line 40.
@@ -1064,6 +1074,8 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 40.
 LaTeX Info: Redefining \pageref on input line 40.
 LaTeX Info: Redefining \nameref on input line 40.
+
+(./temp-sentiment-supplement.out) (./temp-sentiment-supplement.out)
 \@outlinefile=\write4
 \openout4 = `temp-sentiment-supplement.out'.
 
@@ -1122,197 +1134,131 @@ Package biblatex Info: Automatic encoding selection.
 \openout3 = `temp-sentiment-supplement.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'temp-sentiment-supplement.bbl' not found.
+Package biblatex Info: ... file 'temp-sentiment-supplement.bbl' found.
 
-No file temp-sentiment-supplement.bbl.
+(./temp-sentiment-supplement.bbl)
 Package biblatex Info: Reference section=0 on input line 40.
 Package biblatex Info: Reference segment=0 on input line 40.
-
-LaTeX Warning: Citation 'gilbert_vader_2014' on page 1 undefined on input line 
-56.
-
-
-LaTeX Warning: Citation 'Dodds2011Dec' on page 1 undefined on input line 56.
-
-
-LaTeX Warning: Citation 'dodds_temporal_2011' on page 1 undefined on input line
- 58.
-
-
-LaTeX Warning: Citation 'dodds_temporal_2011' on page 1 undefined on input line
- 58.
-
-<../res/hedono-wbgt.png, id=4, 325.215pt x 289.08pt>
+<../res/hedono-wbgt.png, id=32, 325.215pt x 289.08pt>
 File: ../res/hedono-wbgt.png Graphic file (type png)
 <use ../res/hedono-wbgt.png>
 Package pdftex.def Info: ../res/hedono-wbgt.png  used on input line 68.
 (pdftex.def)             Requested size: 271.7835pt x 241.60368pt.
-<../res/hedono-wbgt-income.png, id=5, 325.215pt x 289.08pt>
+<../res/hedono-wbgt-income.png, id=33, 397.485pt x 289.08pt>
 File: ../res/hedono-wbgt-income.png Graphic file (type png)
 <use ../res/hedono-wbgt-income.png>
 Package pdftex.def Info: ../res/hedono-wbgt-income.png  used on input line 74.
-(pdftex.def)             Requested size: 271.7835pt x 241.60368pt.
-[1
+(pdftex.def)             Requested size: 271.7835pt x 197.66571pt.
+ [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <../res/hedono-wbgt.png>]
-<../res/hedono-wbgt-race_q.png, id=23, 325.215pt x 289.08pt>
+<../res/hedono-wbgt-race_q.png, id=51, 397.485pt x 289.08pt>
 File: ../res/hedono-wbgt-race_q.png Graphic file (type png)
 <use ../res/hedono-wbgt-race_q.png>
 Package pdftex.def Info: ../res/hedono-wbgt-race_q.png  used on input line 80.
+(pdftex.def)             Requested size: 271.7835pt x 197.66571pt.
+<../res/afinn-wbgt.png, id=53, 325.215pt x 289.08pt>
+File: ../res/afinn-wbgt.png Graphic file (type png)
+<use ../res/afinn-wbgt.png>
+Package pdftex.def Info: ../res/afinn-wbgt.png  used on input line 90.
 (pdftex.def)             Requested size: 271.7835pt x 241.60368pt.
-<../res/wbgt-income_q.png, id=24, 325.215pt x 289.08pt>
+ [2 <../res/hedono-wbgt-income.png (PNG copy)> <../res/hedono-wbgt-race_q.png (
+PNG copy)>]
+<../res/afinn-wbgt-income.png, id=61, 397.485pt x 289.08pt>
+File: ../res/afinn-wbgt-income.png Graphic file (type png)
+<use ../res/afinn-wbgt-income.png>
+Package pdftex.def Info: ../res/afinn-wbgt-income.png  used on input line 96.
+(pdftex.def)             Requested size: 271.7835pt x 197.66571pt.
+<../res/afinn-wbgt-race_q.png, id=62, 397.485pt x 289.08pt>
+File: ../res/afinn-wbgt-race_q.png Graphic file (type png)
+<use ../res/afinn-wbgt-race_q.png>
+Package pdftex.def Info: ../res/afinn-wbgt-race_q.png  used on input line 102.
+(pdftex.def)             Requested size: 271.7835pt x 197.66571pt.
+ [3 <../res/afinn-wbgt.png> <../res/afinn-wbgt-income.png (PNG copy)>]
+<../res/wbgt-income_q.png, id=70, 397.485pt x 289.08pt>
 File: ../res/wbgt-income_q.png Graphic file (type png)
 <use ../res/wbgt-income_q.png>
-Package pdftex.def Info: ../res/wbgt-income_q.png  used on input line 91.
-(pdftex.def)             Requested size: 271.7835pt x 241.60368pt.
-[2 <../res/hedono-wbgt-income.png (PNG copy)> <../res/hedono-wbgt-race_q.png (P
-NG copy)>]
-<../res/wbgt-race.png, id=33, 325.215pt x 289.08pt>
+Package pdftex.def Info: ../res/wbgt-income_q.png  used on input line 112.
+(pdftex.def)             Requested size: 271.7835pt x 197.66571pt.
+<../res/wbgt-race.png, id=71, 397.485pt x 289.08pt>
 File: ../res/wbgt-race.png Graphic file (type png)
 <use ../res/wbgt-race.png>
-Package pdftex.def Info: ../res/wbgt-race.png  used on input line 97.
-(pdftex.def)             Requested size: 271.7835pt x 241.60368pt.
-<../res/raining-income.png, id=34, 325.215pt x 289.08pt>
+Package pdftex.def Info: ../res/wbgt-race.png  used on input line 118.
+(pdftex.def)             Requested size: 271.7835pt x 197.66571pt.
+ [4 <../res/afinn-wbgt-race_q.png (PNG copy)> <../res/wbgt-income_q.png (PNG co
+py)>]
+<../res/raining-income.png, id=78, 325.215pt x 289.08pt>
 File: ../res/raining-income.png Graphic file (type png)
 <use ../res/raining-income.png>
-Package pdftex.def Info: ../res/raining-income.png  used on input line 106.
+Package pdftex.def Info: ../res/raining-income.png  used on input line 127.
 (pdftex.def)             Requested size: 271.7835pt x 241.60368pt.
- [3 <../res/wbgt-income_q.png (PNG copy)> <../res/wbgt-race.png (PNG copy)>]
-<../res/raining-race_q.png, id=43, 325.215pt x 289.08pt>
+<../res/raining-race_q.png, id=79, 325.215pt x 289.08pt>
 File: ../res/raining-race_q.png Graphic file (type png)
 <use ../res/raining-race_q.png>
-Package pdftex.def Info: ../res/raining-race_q.png  used on input line 113.
+Package pdftex.def Info: ../res/raining-race_q.png  used on input line 134.
 (pdftex.def)             Requested size: 271.7835pt x 241.60368pt.
-<../res/srad-income.png, id=44, 325.215pt x 289.08pt>
+ [5 <../res/wbgt-race.png (PNG copy)> <../res/raining-income.png (PNG copy)>]
+<../res/srad-income.png, id=87, 397.485pt x 289.08pt>
 File: ../res/srad-income.png Graphic file (type png)
 <use ../res/srad-income.png>
-Package pdftex.def Info: ../res/srad-income.png  used on input line 121.
-(pdftex.def)             Requested size: 271.7835pt x 241.60368pt.
- [4 <../res/raining-income.png (PNG copy)> <../res/raining-race_q.png (PNG copy
-)>]
-<../res/srad-race_q.png, id=51, 325.215pt x 289.08pt>
+Package pdftex.def Info: ../res/srad-income.png  used on input line 142.
+(pdftex.def)             Requested size: 271.7835pt x 197.66571pt.
+<../res/srad-race_q.png, id=88, 397.485pt x 289.08pt>
 File: ../res/srad-race_q.png Graphic file (type png)
 <use ../res/srad-race_q.png>
-Package pdftex.def Info: ../res/srad-race_q.png  used on input line 128.
-(pdftex.def)             Requested size: 271.7835pt x 241.60368pt.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.141     \beta
-               _0 + f_t(t) + f_{m_{i}t}(m_{i} t) + f_{m_{r}t}(m_{r} t) +
-? 
-! Extra }, or forgotten $.
-<template> \unskip \hfil }
-                          \hskip \tabcolsep \endtemplate 
-l.145     \beta
-               _s s + \beta_{m_{i} s} m_{i} s +
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.145     \beta
-               _s s + \beta_{m_{i} s} m_{i} s +
-? 
-! Missing } inserted.
-<inserted text> 
-                }
-l.145     \beta
-               _s s + \beta_{m_{i} s} m_{i} s +
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.145     \beta
-               _s s + \beta_{m_{i} s} m_{i} s +
-? 
-! Extra }, or forgotten $.
-<template> \unskip \hfil }
-                          \hskip \tabcolsep \endtemplate 
-l.148     \end{tabular}
-                       
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.148     \end{tabular}
-                       
-? 
-! Missing } inserted.
-<inserted text> 
-                }
-l.148     \end{tabular}
-                       
-? 
-[5 <../res/srad-income.png (PNG copy)> <../res/srad-race_q.png (PNG copy)>]
-<../res/wbgt-income-race.png, id=59, 397.485pt x 289.08pt>
-File: ../res/wbgt-income-race.png Graphic file (type png)
-<use ../res/wbgt-income-race.png>
-Package pdftex.def Info: ../res/wbgt-income-race.png  used on input line 158.
+Package pdftex.def Info: ../res/srad-race_q.png  used on input line 149.
 (pdftex.def)             Requested size: 271.7835pt x 197.66571pt.
-
-[6 <../res/wbgt-income-race.png (PNG copy)>]
-
-LaTeX Warning: Empty bibliography on input line 167.
-
+ [6 <../res/raining-race_q.png (PNG copy)> <../res/srad-income.png (PNG copy)>]
+<../res/map_wbgt.png, id=96, 867.24pt x 578.16pt>
+File: ../res/map_wbgt.png Graphic file (type png)
+<use ../res/map_wbgt.png>
+Package pdftex.def Info: ../res/map_wbgt.png  used on input line 161.
+(pdftex.def)             Requested size: 452.9679pt x 301.97705pt.
+ [7 <../res/srad-race_q.png (PNG copy)>] [8 <../res/map_wbgt.png (PNG copy)>]
 
 Package caption Warning: Unused \captionsetup[sub] on input line 18.
 See the caption package documentation for explanation.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 169.
-[7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 169.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 173.
+[9]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 173.
  (./temp-sentiment-supplement.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 169.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 169.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 173.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 173.
+Package rerunfilecheck Info: File `temp-sentiment-supplement.out' has not chang
+ed.
+(rerunfilecheck)             Checksum: A0E01960C967FF90FE8E512AFAFD36AF;386.
 
 
-Package rerunfilecheck Warning: File `temp-sentiment-supplement.out' has change
-d.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `temp-sentiment-supplement.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  583B90595310159348693FBA3760AAC4;439.
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                temp-sentiment-supplement
-(biblatex)                and rerun LaTeX afterwards.
+LaTeX Warning: There were multiply-defined labels.
 
 Package logreq Info: Writing requests to 'temp-sentiment-supplement.run.xml'.
 \openout1 = `temp-sentiment-supplement.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 169.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 173.
  ) 
 Here is how much of TeX's memory you used:
- 16416 strings out of 483107
- 282382 string characters out of 5964631
- 922180 words of memory out of 5000000
- 31195 multiletter control sequences out of 15000+600000
- 535350 words of font info for 34 fonts, out of 8000000 for 9000
+ 16488 strings out of 483107
+ 284168 string characters out of 5964631
+ 920909 words of memory out of 5000000
+ 31246 multiletter control sequences out of 15000+600000
+ 535511 words of font info for 35 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 48i,12n,46p,3111b,1127s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 48i,11n,46p,3111b,1275s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/mattcoop/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.
-600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmti10.pfb>
-Output written on temp-sentiment-supplement.pdf (7 pages, 1370616 bytes).
+600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmtt10.pfb>
+Output written on temp-sentiment-supplement.pdf (9 pages, 2334069 bytes).
 PDF statistics:
- 115 PDF objects out of 1000 (max. 8388607)
- 84 compressed objects within 1 object stream
- 27 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 166 PDF objects out of 1000 (max. 8388607)
+ 128 compressed objects within 2 object streams
+ 36 named destinations out of 1000 (max. 500000)
+ 114 words of extra memory for PDF output out of 10000 (max. 10000000)
 
