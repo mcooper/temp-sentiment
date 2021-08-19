@@ -1,0 +1,21 @@
+\begin{thebibliography}{1}
+
+\bibitem{gilbert_vader_2014}
+CHE Gilbert, E Hutto, Vader: {A} parsimonious rule-based model for sentiment
+  analysis of social media text in {\em Eighth {International} {Conference} on
+  {Weblogs} and {Social} {Media} ({ICWSM}-14). {Available} at (20/04/16)
+  http://comp. social. gatech. edu/papers/icwsm14. vader. hutto. pdf}.
+\newblock Vol.{}~81, p.~82 (2014).
+
+\bibitem{Dodds2011Dec}
+PS Dodds, KD Harris, IM Kloumann, CA Bliss, CM Danforth, {Temporal Patterns of
+  Happiness and Information in a Global Social Network: Hedonometrics and
+  Twitter}.
+\newblock {\em\protect\JournalTitle{PLOS One}} \textbf{6}, e26752 (2011).
+
+\bibitem{nielsen2011new}
+F{\AA} Nielsen, A new anew: Evaluation of a word list for sentiment analysis in
+  microblogs.
+\newblock {\em\protect\JournalTitle{arXiv preprint arXiv:1103.2903}} (2011).
+
+\end{thebibliography}

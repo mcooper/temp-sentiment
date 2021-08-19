@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: PNAS-template-supplement.aux
+The style file: pnas-new.bst
+format.journal is an unknown function---line 563 of file pnas-new.bst
+Database file #1: TextDataClimateShocks.bib
+You can't pop an empty literal stack for entry nielsen2011new
+while executing---line 1013 of file pnas-new.bst
+You've used 3 entries,
+            1811 wiz_defined-function locations,
+            494 strings with 4471 characters,
+and the built_in function-call counts, 697 in all, are:
+= -- 63
+> -- 37
+< -- 2
++ -- 11
+- -- 8
+* -- 50
+:= -- 112
+add.period$ -- 6
+call.type$ -- 3
+change.case$ -- 3
+chr.to.int$ -- 0
+cite$ -- 3
+duplicate$ -- 37
+empty$ -- 60
+format.name$ -- 8
+if$ -- 161
+int.to.chr$ -- 0
+int.to.str$ -- 3
+missing$ -- 3
+newline$ -- 15
+num.names$ -- 3
+pop$ -- 11
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 21
+stack$ -- 0
+substring$ -- 22
+swap$ -- 10
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 5
+width$ -- 4
+write$ -- 33
+(There were 2 error messages)

@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: PNAS-template-main.aux
+The style file: pnas-new.bst
+Database file #1: TextDataClimateShocks.bib
+You've used 63 entries,
+            1837 wiz_defined-function locations,
+            901 strings with 20080 characters,
+and the built_in function-call counts, 13972 in all, are:
+= -- 1149
+> -- 686
+< -- 3
++ -- 210
+- -- 147
+* -- 1227
+:= -- 2125
+add.period$ -- 126
+call.type$ -- 63
+change.case$ -- 60
+chr.to.int$ -- 0
+cite$ -- 63
+duplicate$ -- 637
+empty$ -- 1368
+format.name$ -- 147
+if$ -- 3000
+int.to.chr$ -- 0
+int.to.str$ -- 63
+missing$ -- 63
+newline$ -- 255
+num.names$ -- 62
+pop$ -- 117
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 313
+stack$ -- 0
+substring$ -- 1115
+swap$ -- 133
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 148
+width$ -- 65
+write$ -- 623

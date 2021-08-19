@@ -1,0 +1,329 @@
+\documentclass[9pt,twocolumn,twoside,lineno]{pnas-new}
+% Use the lineno option to display guide line numbers if required.
+
+\templatetype{pnasresearcharticle} % Choose template 
+% {pnasresearcharticle} = Template for a two-column research article
+% {pnasmathematics} %= Template for a one-column mathematics article
+% {pnasinvited} %= Template for a PNAS invited submission
+
+\title{Fine-scale Data Reveals Neighborhood Inequalities In Effects of Heat on Expressed Mood}
+
+% Use letters for affiliations, numbers to show equal authorship (if applicable) and to indicate the corresponding author
+\author[a]{Matthew Cooper}
+\author[b]{Jeremiah Osborne-Gowey}
+\author[c]{Zheng Liu}
+\author[d]{Portia Adade Williams}
+\author[e]{Jie Liu}
+\author[f]{Aaron Schwartz}
+\author[g]{Patrick Baylis} 
+
+\affil[a]{T.H. Chan School of Public Health, Harvard University, 677 Huntington Avenue, Boston, MA 02115, USA}
+\affil[b]{Environmental Studies Program, University of Colorado Boulder, 4001 Discoverty Drive, Boulder, CO 80303, USA}
+\affil[c]{Department of Geographical Sciences, University of Maryland College Park, 7251 Preinkert Drive, College Park, MD 20742, USA}
+\affil[d]{CSIR-Science and Technology Policy Research Institute, Agostinho Neto Road, Accra, Ghana}
+\affil[e]{School of Business, East China University of Science and Technology, Meilonglu Street 130, Shanghai 2000237, China} 
+\affil[f]{Department of Ecology \& Evolutionary Biology, University of Colorado Boulder, 1900 Pleasant Street, Boulder, CO 80309, USA}
+\affil[g]{Vancouver School of Economics, University of British Columbia, 6000 Iona Drive
+Vancouver, BC, V6T 1L4, Canada}
+
+% Please give the surname of the lead author for the running footer
+\leadauthor{Cooper} 
+
+% Please add here a significance statement to explain the relevance of your work
+\significancestatement{Higher temperatures are known affect many mental health outcomes, including suicides, hospitalizations, and expressed mood in social media.  However, work to date has found that heat affects mental health uniformly across all populations.  This is surprising, given that people vary greatly in their exposure to heat based on their working, commuting, and housing conditions.  We draw on fine-scale twitter data to show that temperature does not affect the mental health of all populations the same, and that people in poor and Black neighbors are much more affected by the heat.}
+
+% Please include corresponding author, author contribution and author declaration information
+\authorcontributions{M.C., J.O.-G., A.S. and P.B. designed the research and modeling strategy; A.S. provided data; M.C and Z.L. prepared data; M.C. and J.O.-G. analyzed data; and M.C., J.O.-G., P.A.W., and J.L. wrote the paper.}
+\authordeclaration{We have no competing interests to decalre.}
+\correspondingauthor{\textsuperscript{2}To whom correspondence should be addressed. E-mail: mcooper@hsph.harvard.edu}
+
+% Keywords are not mandatory, but authors are strongly encouraged to provide them. If provided, please include two to five keywords, separated by the pipe symbol, e.g:
+\keywords{Heat $|$ Mental Health $|$ Inequity $|$ Big Data} 
+
+\begin{abstract}
+  %Up to 250 words
+Higher temperatures associated with climate change are expected to have major impacts on human mental health, and previous work has found strong associations between heat and mental well-being. However, these previous studies typically used data reported at the city or county level, and, to date, have found no difference in vulnerability based on income or race.  We therefore use expressed mood in a quarter of a billion geolocated tweets as a proxy for mental health status available at fine spatial and temporal scales, and pair each tweet with data on local temperature and neighborhood demographics.  We show that heat affects expressed mood in all areas, but find that this effect is much stronger in poor and Black neighborhoods.  We also find that the effect of heat on expressed mood is greatest in the early morning, supporting the hypothesis that heat affects mental health through a sleep quality pathway. This paper presents the first evidence of neighborhood heterogeneity in the vulnerability of mental health to heat.
+\end{abstract}
+
+\dates{This manuscript was compiled on \today}
+\doi{\url{www.pnas.org/cgi/doi/10.1073/pnas.XXXXXXXXXX}}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{firststyle}
+\ifthenelse{\boolean{shortarticle}}{\ifthenelse{\boolean{singlecolumn}}{\abscontentformatted}{\abscontent}}{}
+
+% If your first paragraph (i.e. with the \dropcap) contains a list environment (quote, quotation, theorem, definition, enumerate, itemize...), the line after the list may have some extra indentation. If this is the case, add \parshape=0 to the end of the list environment.
+
+%Overview
+\dropcap{C}limate change is impacting many aspects of human well-being. A large body of research has explored the ongoing impacts of climate change on agricultural outcomes, economic growth, and physical health \cite{pachauri2014climate}. However, academic and medical researchers have highlighted the relative paucity of empirical studies on the impacts of climate change on mental health \cite{Berry2018Apr, Berrang-Ford2021}. While mental health is under-studied, it accounts for up 13\% of the global burden of disease, representing a major share of total human suffering \cite{Collins2011Jul}, leading to calls for more research into potential linkages between climate change and mental health \cite{Berry2018Apr, Collins2011Jul}. Researchers have begun to answer these calls, finding associations between climate disasters and post-traumatic stress \cite{Schwartz2017Aug}, as well as linkages between higher temperatures and a variety of mental health outcomes \cite{baylis_weather_2018, Mullins2019Dec, Obradovich2018Oct}. Nevertheless, with average global temperatures projected to increase by 1.5\textdegree C within a decade \cite{allen2019technical}, more research is needed into the impacts of increased heat on mental health, especially for identifying the most vulnerable communities.
+
+%Theoretical: frameworks and pathways
+Researchers have proposed a number pathways by which temperature can affect mental health \cite{Berry2018Apr, Palinkas2020Apr}. Work on biological mechanisms emphasizes the mental health effects from dehydration and other consequences of maintaining stable body temperature in high heat \cite{Lohmus2018Jul}. Other studies point to worsened mental health as a second-order effect of the direct impacts of increased temperature on overall physical health and risk of injury \cite{Berry2007}, as well as productivity and income \cite{Burke2015Nov}.
+
+%Empirical: Heat and mental health
+Drawing on these frameworks, results from an emerging literature are beginning to document linkages between higher temperatures worsened mental health outcomes. Multiple studies find strong evidence that higher temperatures are associated with increases in suicides in the United States \cite{Burke2018Aug, Mullins2019Dec, Dixon2007May} with other studies finding a similar relationship in locations around the world \cite{Qi2014Dec, Likhvar2011Jan}. Higher temperatures are also correlated with increased hospitalizations related to general mental health issues \cite{Obradovich2018Oct, Mullins2019Dec} and incidents related specific conditions like bipolar disorder and schizophrenia \cite{Lee2007Jan, Sung2013Feb}. Higher temperatures are also linked to increased mortality among people with pre-existing mental health disorders \cite{Hansen2008Oct}.  Finally, recent studies find nighttime temperatures affect sleep quality, with consequences for mental health \cite{Obradovich2017May, Mullins2019Dec}, although these studies have relied on retrospective survey data and have not used data from across the diurnal cycle. 
+
+The effects of heat exposure on mental health are by now relatively well established, yet results from research conducted at national scales indicates surprisingly little heterogeneity in impacts, with consequences for our understanding of groups that are most vulnerable as well as potential adaptations to future heat stress. For example, a large study of temperature and suicide in the USA and Mexico found ``no significant difference in suicide response to temperature between rich and poor municipalities or counties'' \cite{Burke2018Aug}. Similarly, a national study found no effect of income as modifier of the effect of temperature on suicides, emergency department visits, or self-reported mental health status across the USA \cite{Mullins2019Dec}. A major challenge for these studies, however, is their reliance on data that is typically aggregated to the municipality or county level. As a consequence, these studies are often restricted to between-county metrics of vulnerability and cannot take into account heterogeneity at more local scales.
+
+These findings of uniform vulnerability to heat are surprising given that minority groups and low-income people are more likely to be exposed to undesirable temperatures and less able to mitigate the effects of higher heat. For example, people from poorer socio-economic backgrounds are more likely to work outside rather than indoors \cite{Gubernot2014Oct}; more likely to rely on public transportation, bicycling, or walking instead of commuting in their own air-conditioned car \cite{Karner2015Dec}; and more likely to live in housing that is less insulated with poorer quality air-conditioning \cite{Samuelson2020Jun}. Many of these factors that expose low-income people to heat may be exacerbated and compounded for racial minorities. For example, Black Americans face discrimination in employment \cite{Kang2016, Penner2008} and housing access \cite{Desmond2015, Akbar2019}, forcing them into jobs and homes that may expose them to more heat. Additionally, policymakers have historically been less likely to take measures to address environmental hazards in Black neighborhoods \cite{Banzhaf2019}. Some studies find large differences in vulnerability between neighborhoods for a variety of impacts of heat on physical health \cite{Belanger2015Mar, Uejio2011Mar}, as well as for vulnerability to other types of climate shocks like hurricanes \cite{ferre2019hurricane, Gruebner2015Jun}. Thus, there are theoretical reasons to expect heterogeneity in the impact of heat on mental health outcomes for different populations, particularly where socioeconomic, racial and other social inequities intersect, although there is little evidence of this to date. 
+
+While public health data on mental health outcomes is not available at the neighborhood scale, spontaneous, in situ data from the social media platform Twitter can provide an important, inexpensive and timely proxy for mental health at extremely precise spatial and temporal scales. Many studies use the mood expressed in social media posts as an indicator of mental health \cite{Edo-Osagie2020Jul, Sinnenberg2016Dec}. For example, studies have used Twitter data to identify the onset of Post Traumatic Stress Disorder (PTSD) in individuals even before their formal diagnosis \cite{Reece2017Oct}. Similar methods applied to posts on Facebook can predict the onset of depression \cite{Eichstaedt2018Oct}. In London, day-to-day changes in mental health indicators derived from the text of tweets were associated with changes in mental health crisis episodes \cite{Kolliakou2020Feb}. Across the USA, more positive tweets are associated with a variety of metrics of human well-being \cite{Mitchell2013May}, and twitter has provided insight into population-level patterns of happiness over the course of the day \cite{Dodds2011}. Finally, the mood expressed in tweets has been strongly associated with local weather conditions \cite{baylis_weather_2018} and been used as evidence to support the temperature-suicide relationship \cite{Burke2018Aug}. Thus, posts on Twitter provide an proxy for mental health at fine enough spatial scales to examine neighborhood effects on vulnerability to higher temperatures. To explore how neighborhood conditions affect the relationship between heat and mental heath, we draw on a data set of 243 million geolocated tweets from across the continental United States covering the period 2009-2019, each paired with data on local weather and neighborhood conditions.
+
+\section*{Results}
+\subsection*{Effect of Heat on Sentiment}
+We examine the relationship between the mood expressed in tweets and the prevailing Wet Bulb Globe Temperature (WBGT), a temperature metric that accounts for dry-bulb temperature, humidity, wind speed, and solar radiation to more accurately describe the effects of heat on the human body \cite{budd2008wet}. We find higher temperatures are associated with worsened mood (Fig. \ref{fig:wbgt}) after controlling for a variety of fixed effects across all tweets. Mood is highest at 5\textdegree C WBGT (associated in our data set with a median dry bulb temperature on 12\textdegree C/54\textdegree F) with the largest declines between 20\textdegree -25\textdegree C WBGT (dry bulb 29\textdegree-36\textdegree C/84\textdegree-97\textdegree F). Mood also declines with colder temperatures (below 5\textdegree C WBGT), although only slightly. Dis-aggregating our analysis by metropolitan area and using alternative methods to estimate expressed mood all yield similar results (see Supplement).
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\linewidth]{../../res/wbgt.png}
+ \caption{Relationship between Wet Bulb Globe Temperature (WBGT) and expressed mood in tweets. As temperatures increase above 5\textdegree C WBGT, mood rapidly declines.}
+ \label{fig:wbgt}
+\end{figure}
+
+We find that mean neighborhood income strongly moderates the relationship between temperature and mood (Figs. \ref{fig:income}), with large differences in mood between the poorest (5th percentile) and wealthiest (95th percentile) neighborhoods. As temperatures increase to a modest 20\textdegree C WBGT (29\textdegree C/84\textdegree F), mood increases in the wealthiest neighborhoods but decreases in the median and lowest income neighborhoods. The wealthiest neighborhoods do not see decreases in mood until temperatures exceed 20\textdegree C WBGT (29\textdegree C/84\textdegree F), at which point mood decreases relatively evenly regardless of neighborhood income percentile.
+
+We also explored how neighborhood racial characteristics affect the relationship between temperature and mood, and we find the effects of heat are felt disproportionately in neighborhoods that are majority Black (Fig. \ref{fig:race}). Relative to an optimum temperature of 5\textdegree C WBGT (12\textdegree C/54\textdegree F), as temperatures increase to 30\textdegree C WBGT (42\textdegree C/108\textdegree F), the mood of tweets in majority Black neighborhoods decrease four times as much as the mood of people in other neighborhoods. Additionally, at mild to warm temperatures of 10\textdegree C WBGT (19\textdegree C/66\textdegree F) to 25\textdegree C WBGT (36\textdegree C/97\textdegree F), people in majority Hispanic neighborhoods have slightly lower mood than people in majority white or other neighborhoods, although this gap narrows at higher temperatures.
+
+\begin{figure}[H]
+\centering
+ \includegraphics[width=0.8\linewidth]{../../res/wbgt-income.png}
+ \caption{Effect of changes in WBGT on expressed mood as moderated by neighborhood income per capita.}
+\label{fig:income}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+ \includegraphics[width=0.8\linewidth]{../../res/wbgt-race_q.png}
+ \caption{Effect of changes in WBGT on expressed mood as moderated by neighborhood majority race.}
+\label{fig:race}
+\end{figure}
+
+\subsection*{Comparison With Other Events}
+We compared the change in expressed mood from heat exposure to two other events associated with impacts on mood and other mental health outcomes: the weekly change from Saturday to Monday, as well as the impact of a major natural disaster (see Fig. \ref{fig:compare}). For this comparison, we define heat impact as the changes in mood associated with temperatures increasing from 5\textdegree C WBGT (12\textdegree C/54\textdegree F) to 25\textdegree C WBGT (36\textdegree C/97\textdegree F); we define weekly changes as the difference between the mean Saturday mood and the mean Monday mood, calculated across the entire data set; and we define the impact of Hurricane Sandy as the change in mood from the week before the hurricane made landfall to the week after, calculated for only impacted counties. Both of these events are associated with mental health impacts: the decrease in expressed mood on Twitter from Saturdays to Mondays mirrors mirrors the weekly dynamics of suicide rates \cite{CDC2021}, while Hurricane Sandy was associated with mental health effects on victims including increased anxiety, PTSD, and depression \cite{Schwartz2017Aug, Lieberman-Cribbin2017}.
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=0.9\linewidth]{../../res/comparison_plot.png}
+ \caption{Decline in mood as temperature changes from mild (5\textdegree C WBGT) to high (25\textdegree C WBGT) across different neighborhood types, compared with the impacts of the change from Saturday to Monday, as well as the change associated with Hurricane Sandy.}
+ \label{fig:compare}
+\end{figure}
+
+We find that the decline in mood in wealthier and majority white neighborhoods from exposure to increasing temperatures is less than the average weekly change in mood from Saturday to Monday (see Fig. \ref{fig:compare}). Conversely, the effects of exposure to increasing temperatures in poorer and majority Black neighborhoods are much larger than the average weekly change in mood. Additionally, the impacts of exposure to these changes in temperature for the more vulnerable neighborhoods are close in severity to the average impact on mood of experiencing a major hurricane.
+
+\subsection*{Effect of Heat by Time of Day}
+In addition to providing data with high spatial resolution, Twitter data also comes with very high temporal resolution as each tweet is time-stamped. Thus, we were able to examine the impact of heat on mood over the course of the day (Fig. \ref{fig:ts-wbgt}). We found that heat is associated with improved mood for a brief period in the late morning, and then has a negative effect on mood during the latter half of the day, with a consistent effect from noon until 9pm. This effect weakens in the early evening through midnight, and then increases substantially throughout the night. Heat has the greatest effect on expressed mood at 6am, an effect over twice as large as during the day.
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=0.8\linewidth]{../../res/ts_heat.png}
+ \caption{Effects of rising temperatures on mood by hour of the day, with a 95\% confidence interval. The value shown is the predicted change in VADER score for a 10\textdegree C WBGT increase in temperatures.}
+ \label{fig:ts-wbgt}
+\end{figure}
+
+\section*{Discussion}
+% Compare weekly changes in mood to weekly changes in suicides
+We found that the change from an optimum temperature to a higher temperature is associated with an overall decrease in mood similar in magnitude to the degree of change in mood from Monday to Saturday, a weekly change associated with an increase in suicides of 23\% over the course of the study period \cite{CDC2021}, and that the same level of heat in a poor or Black neighborhood is associated with a change in mood nearly matching the impact of a major Hurricane, an event associated with suicides and PTSD \cite{Schwartz2017Aug, Lieberman-Cribbin2017}.  Thus, while research on linkages between expressed mood and other mental health outcomes like suicides and hospitalizations is still nascent, there are clear similarities in patters of expressed mood and mental health at specific time scales and following certain events.  This suggests that the changes in expressed mood we observe at neighborhood scales is indicative of other mental health outcomes such as suicides and hospitalizations that cannot be measured with neighborhood-scale precision.
+
+% Discuss the NOVELTY: quote Burke and Mullins, refute their interpretations, people have said XX, but we have shown ~XX.
+% Variations in vulnerability also indicates ADAPTATION
+Previous work conducted with county-scale data found no heterogeneity in mental health vulnerability by income. Such analyses have led to conclusions that the mental health effects of climate change will be uniform, at least in developed countries, and that adaptation with technologies like air-conditioning will not mitigate the mental health effects of climate change. For example, Mullins et al. conclude that ``individuals have not been able to successfully reduce the negative effects of higher temperatures on mental health'' \cite{Mullins2019Dec}. Contrary to these analyses, we found large heterogeneity in vulnerability by neighborhood racial composition and per-capita income. This suggests that the mental health effects of climate change will not be uniform and, like other impacts, will fall disproportionately on the vulnerable and marginalized. More positively, it does suggest that adaptation is possible, and, for communities with infrastructure and working conditions similar to those of higher-income Americans, the effects of high temperatures on mental health may be addressable.
+
+Examining the role of race in vulnerability, we find that majority Black non-Hispanic neighborhoods are much more affected by higher temperatures than neighborhoods with a non-Black majority. Surprisingly, we did not find an effect for people with Hispanic ethnicity, given that Hispanic peoples can be marginalized in employment and housing. These findings may be because the ethnic category of Hispanic is more broad and encompasses many more groups with more diverse histories and living conditions than Black Americans. It may also be due to that fact that more marginalized and heat-vulnerable Hispanic people were more likely to tweet in the Spanish language, which we did not include our analysis. Additionally, there are many other marginalized groups in the United States, particularly indigenous people, that we did not have sufficient data to examine with respect to heat and mental health. Examining the effects of both race and income, we find that race is more important for vulnerability than income. This probably due in part to the fact that Black Americans have historically been forced through redlining into neighborhoods with fewer trees that are much more impacted by heat \cite{Hoffman2020, Locke2021}.  This suggests that racism and patterns of housing discrimination contribute to making Black Americans more vulnerable to heat, even at similar levels of income as other groups, and that reducing existing discrimination in housing and employment is an important adaptation strategy.
+
+% Connect to bigger literature on vulnerability
+This study shows the importance of examining heterogeneities in vulnerability in analyses of climate change impacts.  Additionally, it shows how measuring outcomes at fine spatial scales is necessary for understanding how factors like race and income matter for vulnerability \cite{Tong2021}. Even within a relatively wealthy nation, we find that high temperatures affect certain populations to the same degree as a major hurricane. Thus, it is likely that heat waves have a much greater mental health impact throughout the developing world, where temperatures are expected to be much higher \cite{Raymond2020May}, heat waves are already under-counted \cite{Harrington2020Sep}, and adaptive technologies like air conditioning are more scarce \cite{Biardeau2020Jan}.
+
+In addition to exploring heterogeneities in vulnerability, using twitter data lets us explore how the effect of heat varies by time of day and infer possible important pathways in the heat-mental health relationship. Recent research has suggested that the impacts of heat on sleep quality may play a large role in the observed mental health effects of heat \cite{Obradovich2017May, Mullins2019Dec}, and our temporal analysis largely supports this hypothesis.  We found much stronger effects of heat on expressed sentiment in the early morning, adding weight to the sleep quality pathway linking heat and mental health that other authors have found.  This suggests that efforts to improve mental health during heat waves may have the largest impact by focusing on providing electricity and air conditioning at night.
+
+% Caveats
+% Mood is a fuzzy indicator but we have BIG DATA
+While these findings are robust to different model specifications and metrics of mood, there are important considerations in this analysis.  One caveat associated with this data is that we were only able to locate the tweets within the census block from which the tweet was sent, and in some cases the income level of a census block may be only weakly indicative of the wealth of the people who are found that census block. For example, some public spaces are estimated to have very low income levels even though people from a variety of income levels may occupy those spaces throughout the day. These issues may in fact lead us to under-estimate the true effect of heat on mental health for poor and Black people. Another issue with using Twitter data is that, while Twitter is used by more than one in five Americans and at similar rates across racial groups, Twitter users may not be representative of the general population, as they are typically younger, wealthier, and more educated \cite{Pew2020Sep}. Nevertheless, we found a large volume of tweets across all neighborhood types.
+
+% NCC doesnt have a "conclusion" section, but this is intended as an overall summary paragraph
+While climate change will have widespread and severe impacts on human well-being, our work emphasizes just how unevenly these impacts will be distributed. People with more money, access to aid and infrastructure, and who belong to ethnic groups in power are less affected by climate shocks and natural disasters and more able to adapt \cite{bullard2012wrong}. While the physical health impacts of these shocks are more visible and easy to measure, the mental health impacts of climate change are also causing severe human suffering and there is no reason to believe they will not also be highly unevenly distributed. Thus, there is strong theoretical justification behind the hypothesis that low-income and marginalized people are more vulnerable to the mental health impacts of higher temperatures, even though previous work at coarse spatial scales had not found such an effect. By using fine-scale Twitter data, we show that there are indeed stark differences in the mental health impacts of heat among neighborhoods in the United States. These findings have significant implications for urban planning, climate and environmental justice, and mental health.
+
+\section*{Materials and methods}
+% from NCC: methods section should be written as concisely as possible and "typically do not exceed 3,000 words"
+\subsection*{Tweets \& Mood}
+We used data from 243 million geo-located English-language tweets from the continental United States from the years 2009 to 2019. The Twitter data consists of publicly posted messages, or tweets, that are short status messages users post to the platform. We only considered users’ original content, thus did not include retweets in our analysis. Additionally, we excluded all tweets that contained weather-related terms, to ensure that the mood expressed in the tweets was reflective of a user's mental state, and not a commentary on the weather.
+
+Expressed mood (also called sentiment) is a widely used metric to assess mental health and well-being from posts on social media platforms. We use the VADER metric to assess the mood of Twitter posts as it was specifically designed for microblogs like Twitter \cite{hutto2014vader}. The VADER (Valence Aware Dictionary for Sentiment Reasoning) corpus \cite{gilbert_vader_2014} is a lexical, rule-based sentiment analysis tool that is specifically attuned to moods expressed on social media and includes several features, as: incorporating lexical features common to informal media, such as slang (``sux''), and acronyms (``lol''); negations (``\textit{not} good'', ``\textit{wasn't} bad''); punctuation (``Good!!!''); word shape, such as capitalization (``The movie was AMAZING''); emoticons and emojis (``:-)''); and degree modifiers (``very excellent'' or ``kind of crappy'').
+
+The VADER method yields a value for the mood of a tweet, with a score of 0 for neutral tweets, a score $> 0$ for positive-mood tweets and a score $< 0$ for negative-mood tweets. We also conducted analyses using the Hedonometer and AFINN mood analysis methods, with similar results (See Supplement).
+
+\subsection*{Weather}
+We used data on local weather conditions from the North American Land Data Assimilation System (NLDAS), a gridded product developed by several collaborative institutions, including NOAA, NASA, Princeton University, and the University of Washington. This dataset is available at an hourly temporal resolution, and at 1/8th decimal degree spatial resolution, and integrates a large quantity of observation-based and modeled data \cite{xia_continental-scale_2012}. We extracted temperature, specific humidity, air pressure, total precipitation, shortwave radiation, and wind speed for the exact hour and location of each tweet. 
+
+We calculated the Wet Bulb Globe Temperature (WBGT) at the time and location of each tweet. The WBGT is the temperature that a wet globe thermometer would read in direct sunlight, and gives a reading lower than a dry bulb temperature due to evaporative cooling. The WBGT can be estimated given normal temperature, relative humidity, solar radiation, and wind speed. Because evaporative cooling is how humans cool themselves through perspiration, this temperature better indicates the heat stress that people are experiencing \cite{budd2008wet}. Metrics like WBGT that account for the effects of humidity and other factors on heat stress have been associated with diminished economic output \cite{rao2020projections}, increased crime \cite{hu2017impact}, increased mortality \cite{chien2016spatiotemporal, armstrong2019role}, and worsened mental health outcomes \cite{vida2012relationship, ding2016importance}.
+
+We derived relative humidity using methods described by Bolton et al. \cite{bolton_computation_1980} which use temperature, specific humidity, and pressure. We then calculated the WBGT using the formula described by Heo et al. \cite{heo2019comparison}.  Throughout the paper we give the median dry bulb temperature observed at each given wet bulb degree across our data set. It should be noted, however, that a wide range of dry bulb temperatures can be associated with a given wet bulb globe temperature, depending on humidity, wind speed, and sunlight.
+
+\subsection*{Socio-Economic Data}
+We used data from the American Community Survey (ACS) administered by the US Census to estimate income levels and the racial composition of neighborhoods where tweets were located. Data was at the level of the census block group, the smallest unit for which the US Census releases public data. Following Census categories, we report racial characteristics of neighborhoods as majority population of four broad racial categories - non-Hispanic Black, non-Hispanic white, Hispanic of any race, and other, which includes Native American, multi-racial, Asian-American and Pacific Islander. 
+
+The ACS data covers five-year periods. We therefore matched each tweet with census block group data from the year at the middle year of each survey's five-year range. For example, tweets from 2014 were matched to data from the 2012-2016 ACS. Because the most recent available ACS was from 2014-2018, all tweets from year years greater than 2016 were matched to this dataset. We used data from the Integrated Public Use Microdata Series (IPUMS USA) National Historical Geographic Information System (NHGIS) service provided by the University of Minnesota \cite{ruggles2018ipums}.
+
+We use the mean annual income per capita from the ACS, standardized so that values for each year are in 2019 dollars. For racial categories, we combined the various categories provided by the ACS into four racial groups: non-Hispanic white, non-Hispanic Black, Hispanic of any race, and an ``other'' category for non-Hispanic people who were neither Black nor white, such as Asian, Native American, or mixed-race people.
+
+We present income and percentiles based on the observed percentiles across all tweets in our data set.
+ 
+\subsection*{Modeling}
+We assessed how expressed mood is affected by Wet Bulb Globe Temperature using segmented regressions, controlling for precipitation, shortwave solar radiation (sunshine), as well as the following spatio-temporal fixed effects: day of the week, time of day, day of the year, year, month, and county. 
+
+Our initial model (for Fig. \ref{fig:wbgt}) takes the following form:
+
+\begin{equation}
+ y = \beta_0 + f_t(t) + \beta_p p + \beta_s s + \Phi + \epsilon
+ \label{mod:1}
+\end{equation}
+
+Where $y$ is the mood of a tweet, $t$ is the wet bulb globe temperature at the hour of the tweet, $p$ is a binary variable indicating whether it rained at the hour of the tweet, $s$ is the incoming shortwave radiation, or sunshine, in $W/m^2$, at the hour of the tweet, $\Phi$ is the spatio-temporal fixed effects, $\epsilon$ is the normally-distributed errors, and $f_t$ represents the segmented effect for $t$, with knots at -10\textdegree, 0\textdegree, 5\textdegree, 10\textdegree, 15\textdegree, 20\textdegree, and 25\textdegree C WBGT. We estimate the 95\% confidence interval of all our models using 80-fold bootstrapping. 
+
+To examine how income and racial groups moderate the effect of heat on mood, we extend our model to the following form:
+
+\begin{equation}
+  \begin{align*}
+    y = & \beta_0 + f_t(t) + f_{mt}(m t) + \beta_p p + \beta_{mp} m p + \\
+       & \beta_s s + \beta_{ms} m s + \Phi + \epsilon
+ \label{mod:2}
+  \end{align*}
+\end{equation}
+
+% \begin{align*}
+% (x+y)^3&=(x+y)(x+y)^2\\
+%        &=(x+y)(x^2+2xy+y^2) \numberthis \label{eqn:example} \\
+%        &=x^3+3x^2y+3xy^3+x^3. 
+% \end{align*}
+
+Where $m$ is either the log-transformed average income in the census block where the tweet originated, or a dummy variable for the four racial categories. We specify alternative models where income is a dummy variable in three bins and were race is a continuous variable for the percent of a census block population that is white These alternative specifications yield similar results. We also examine the effects of rainfall and sunshine on mood by income and race. These alternative specifications and analysis of rainfall and sunshine effects are available in the Supplement.
+
+Finally, we fit a model for how heat affects mood by time of day. For this analysis, we used a varying-coefficient model, where the effect of heat is linear, but the coefficient for the effect varies non-linearly as a function of the time of day. Because we modeled the effect of heat as linear, we excluded all tweets with an observed temperatures less than 5\textdegree C WBGT so that we were only including values at which our previous analyses suggested the heat-mood relationship is monotonic. This final model took the following form:
+
+\begin{equation}
+ y = \beta_0 + f_h(h)t + \beta_p p + \beta_s s + \Phi + \epsilon
+ \label{mod:tod}
+\end{equation}
+
+In this final model, $f_{h}$ is the coefficient for temperature, $t$, and varies non-linearly by time of day, $h$. To ensure that the effect $f_{h}$ is cyclical, we estimated $f_{h}$ using 2nd-order B-splines, also known as a tent function basis \cite[Chapter~4.2]{wood2017generalized}, with knots every two hours.
+
+\section*{Acknowledgments}
+This work was supported by the National Socio-Environmental Synthesis Center (SESYNC) under funding received from the National Science Foundation DBI-1639145. Additionally, computational resources for this project were provided for the Microsoft Azure cloud through Microsoft's AI for Earth program.
+
+This data came from Twitter via the University of Vermont’s (UVM) agreement with Twitter to access its streaming API. The UVM special agreement with Twitter allows for access to this data for research and analysis purposes and this work complies with all the terms of service for Twitter and UVM. 
+
+\section*{References}
+
+% \section*{Guide to using this template on Overleaf}
+% 
+% Please note that whilst this template provides a preview of the typeset manuscript for submission, to help in this preparation, it will not necessarily be the final publication layout. For more detailed information please see the \href{http://www.pnas.org/site/authors/format.xhtml}{PNAS Information for Authors}.
+% 
+% If you have a question while using this template on Overleaf, please use the help menu (``?'') on the top bar to search for \href{https://www.overleaf.com/help}{help and tutorials}. You can also \href{https://www.overleaf.com/contact}{contact the Overleaf support team} at any time with specific questions about your manuscript or feedback on the template.
+% 
+% \subsection*{Submitting Manuscripts}
+% 
+% All authors must submit their articles at \href{http://www.pnascentral.org/cgi-bin/main.plex}{PNAScentral}. If you are using Overleaf to write your article, you can use the ``Submit to PNAS'' option in the top bar of the editor window. 
+% 
+% \subsection*{Manuscript Length}
+% 
+% PNAS generally uses a two-column format averaging 67 characters, including spaces, per line. The maximum length of a Direct Submission research article is six pages and a Direct Submission Plus research article is ten pages including all text, spaces, and the number of characters displaced by figures, tables, and equations.  When submitting tables, figures, and/or equations in addition to text, keep the text for your manuscript under 39,000 characters (including spaces) for Direct Submissions and 72,000 characters (including spaces) for Direct Submission Plus.
+% 
+% \subsection*{References}
+% 
+% References should be cited in numerical order as they appear in text; this will be done automatically via bibtex, e.g. \cite{belkin2002using} and \cite{berard1994embedding,coifman2005geometric}. All references should be included in the main manuscript file.  
+% 
+% \begin{figure}%[tbhp]
+% \centering
+% \includegraphics[width=.8\linewidth]{frog}
+% \caption{Placeholder image of a frog with a long example caption to show justification setting.}
+% \label{fig:frog}
+% \end{figure}
+% 
+% 
+% \begin{SCfigure*}[\sidecaptionrelwidth][t]
+% \centering
+% \includegraphics[width=11.4cm,height=11.4cm]{frog}
+% \caption{This caption would be placed at the side of the figure, rather than below it.}\label{fig:side}
+% \end{SCfigure*}
+% 
+% \subsection*{Digital Figures}
+% 
+% Only TIFF, EPS, and high-resolution PDF for Mac or PC are allowed for figures that will appear in the main text, and images must be final size. Authors may submit U3D or PRC files for 3D images; these must be accompanied by 2D representations in TIFF, EPS, or high-resolution PDF format.  Color images must be in RGB (red, green, blue) mode. Include the font files for any text. 
+% 
+% Figures and Tables should be labelled and referenced in the standard way using the \verb|\label{}| and \verb|\ref{}| commands.
+% 
+% Figure \ref{fig:frog} shows an example of how to insert a column-wide figure. To insert a figure wider than one column, please use the \verb|\begin{figure*}...\end{figure*}| environment. Figures wider than one column should be sized to 11.4 cm or 17.8 cm wide. Use \verb|\begin{SCfigure*}...\end{SCfigure*}| for a wide figure with side captions.
+% 
+% \subsection*{Tables}
+% In addition to including your tables within this manuscript file, PNAS requires that each table be uploaded to the submission separately as a “Table” file.  Please ensure that each table .tex file contains a preamble, the \verb|\begin{document}| command, and the \verb|\end{document}| command. This is necessary so that the submission system can convert each file to PDF.
+% 
+% \subsection*{Single column equations}
+% 
+% Authors may use 1- or 2-column equations in their article, according to their preference.
+% 
+% To allow an equation to span both columns, use the \verb|\begin{figure*}...\end{figure*}| environment mentioned above for figures.
+% 
+% Note that the use of the \verb|widetext| environment for equations is not recommended, and should not be used. 
+% 
+% \begin{figure*}[bt!]
+% \begin{align*}
+% (x+y)^3&=(x+y)(x+y)^2\\
+%        &=(x+y)(x^2+2xy+y^2) \numberthis \label{eqn:example} \\
+%        &=x^3+3x^2y+3xy^3+x^3. 
+% \end{align*}
+% \end{figure*}
+% 
+% 
+% \begin{table}%[tbhp]
+% \centering
+% \caption{Comparison of the fitted potential energy surfaces and ab initio benchmark electronic energy calculations}
+% \begin{tabular}{lrrr}
+% Species & CBS & CV & G3 \\
+% \midrule
+% 1. Acetaldehyde & 0.0 & 0.0 & 0.0 \\
+% 2. Vinyl alcohol & 9.1 & 9.6 & 13.5 \\
+% 3. Hydroxyethylidene & 50.8 & 51.2 & 54.0\\
+% \bottomrule
+% \end{tabular}
+% 
+% \addtabletext{nomenclature for the TSs refers to the numbered species in the table.}
+% \end{table}
+% 
+% \subsection*{Supporting Information (SI)}
+% 
+% Authors should submit SI as a single separate PDF file, combining all text, figures, tables, movie legends, and SI references.  PNAS will publish SI uncomposed, as the authors have provided it.  Additional details can be found here: \href{http://www.pnas.org/page/authors/journal-policies}{policy on SI}.  For SI formatting instructions click \href{https://www.pnascentral.org/cgi-bin/main.plex?form_type=display_auth_si_instructions}{here}.  The PNAS Overleaf SI template can be found \href{https://www.overleaf.com/latex/templates/pnas-template-for-supplementary-information/wqfsfqwyjtsd}{here}.  Refer to the SI Appendix in the manuscript at an appropriate point in the text. Number supporting figures and tables starting with S1, S2, etc.
+% 
+% Authors who place detailed materials and methods in an SI Appendix must provide sufficient detail in the main text methods to enable a reader to follow the logic of the procedures and results and also must reference the SI methods. If a paper is fundamentally a study of a new method or technique, then the methods must be described completely in the main text.
+% 
+% \subsubsection*{SI Datasets} 
+% 
+% Supply Excel (.xls), RTF, or PDF files. This file type will be published in raw format and will not be edited or composed.
+% 
+% 
+% \subsubsection*{SI Movies}
+% 
+% Supply Audio Video Interleave (avi), Quicktime (mov), Windows Media (wmv), animated GIF (gif), or MPEG files and submit a brief legend for each movie in a Word or RTF file. All movies should be submitted at the desired reproduction size and length. Movies should be no more than 10 MB in size.
+% 
+% 
+% \subsubsection*{3D Figures}
+% 
+% Supply a composable U3D or PRC file so that it may be edited and composed. Authors may submit a PDF file but please note it will be published in raw format and will not be edited or composed.
+% 
+% 
+% \matmethods{Please describe your materials and methods here. This can be more than one paragraph, and may contain subsections and equations as required. Authors should include a statement in the methods section describing how readers will be able to access the data in the paper. 
+% 
+% \subsection*{Subsection for Method}
+% Example text for subsection.
+% }
+% 
+% \showmatmethods{} % Display the Materials and Methods section
+% 
+% \acknow{Please include your acknowledgments here, set in a single paragraph. Please do not include any acknowledgments in the Supporting Information, or anywhere else in the manuscript.}
+% 
+% \showacknow{} % Display the acknowledgments section
+
+% Bibliography
+\bibliography{TextDataClimateShocks}
+
+\end{document}
