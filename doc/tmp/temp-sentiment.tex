@@ -29,9 +29,11 @@
 
 \DeclareFieldFormat{labelalphawidth}{#1}
 
+\bibliographystyle{plain}
+
 \linenumbers
 
-\addbibresource{TextDataClimateShocks.bib}
+%\addbibresource{TextDataClimateShocks.bib}
 
 % To be able to use emojis
 \NewDocumentCommand\emojismile{}{
@@ -100,7 +102,7 @@ While public health data on mental health outcomes is not available at the neigh
 \section*{Methods}
 % from NCC: methods section should be written as concisely as possible and "typically do not exceed 3,000 words"
 \subsection*{Tweets \& Mood}
-We used data from 243 million geo-located English-language tweets from the continental United States from the years 2009 to 2019. The data were collected by the University of Vermont through a special agreement with Twitter, and represent a random sample from the population of geolocated tweets.  The Twitter data consists of publicly posted messages, or tweets, that are short status messages users post to the platform. We only considered users’ original content, thus did not include retweets in our analysis. Additionally, we excluded all tweets that contained weather-related terms, to ensure that the mood expressed in the tweets was reflective of a user's mental state, and not a commentary on the weather, yielding a final dataset of 236 million tweets used in our analysis.
+We used data from 243 million geo-located English-language tweets from the continental United States from the years 2009 to 2019. The data were collected by the University of Vermont through a special agreement with Twitter, and represent a random sample from the population of geolocated tweets.  The Twitter data consists of publicly posted messages, or tweets, that are short status messages users post to the platform. We only considered users’ original content, thus did not include retweets in our analysis. Additionally, we excluded all tweets that contained weather-related terms, to ensure that the mood expressed in the tweets was reflective of a user's mental state, and not a commentary on the weather.
 
 Expressed mood is a widely used metric to assess mental health and well-being from posts on social media platforms. We use the VADER metric to assess the mood of Twitter posts as it was specifically designed for microblogs like Twitter \citep{hutto2014vader}. The VADER (Valence Aware Dictionary for Sentiment Reasoning) corpus \citep{gilbert_vader_2014} is a lexical, rule-based sentiment analysis tool that is specifically attuned to moods expressed on social media and includes several features, as:
 
@@ -168,7 +170,7 @@ We examine the relationship between the mood expressed in tweets and the prevail
 
 \begin{figure}[H]
  \centering
-% \includegraphics[width=\linewidth]{Xfigure1.pdf}
+ \includegraphics[width=\linewidth]{Xfigure1.pdf}
  \caption{Relationship between Wet Bulb Globe Temperature (WBGT) and expressed mood in tweets. As temperatures increase above 5\textdegree C WBGT, mood rapidly declines.  Shaded area shows the 95\% confidence interval estimated with bootstrapping.}
  \label{fig:wbgt}
 \end{figure}
@@ -179,7 +181,7 @@ We also explored how neighborhood racial characteristics affect the relationship
 
 \begin{figure}[H]
   %\makebox[\textwidth][c]{\includegraphics[width=1.4\textwidth]{Xfigure2.pdf}}
-%  \includegraphics[width=\textwidth]{Xfigure2.pdf}
+  \includegraphics[width=\textwidth]{Xfigure2.pdf}
   \caption{Effect of changes in WBGT on expressed mood as moderated by neighborhood income (a) and race (b). Shaded area shows the 95\% confidence interval estimated with bootstrapping.}
 \label{fig:hetero}
 \end{figure}
@@ -189,7 +191,7 @@ We compared the expressed mood from exposure to temperatures to two other events
 
 \begin{figure}[H]
  \centering
- %\includegraphics[width=\linewidth]{Xfigure3.pdf}
+ \includegraphics[width=\linewidth]{Xfigure3.pdf}
  \caption{Decline in mood as temperature changes from mild (5\textdegree C WBGT) high (25\textdegree C WBGT) across different neighborhood types, compared with the impacts of the change from Saturday to Monday, as well as the change associated with Hurricane Sandy.  Error bars show the 95\% confidence interval estimated with bootstrapping.}
  \label{fig:compare}
 \end{figure}
@@ -201,7 +203,7 @@ In addition to providing data with high spatial resolution, Twitter data also co
 
 \begin{figure}[H]
  \centering
-% \includegraphics[width=\linewidth]{figure4.pdf}
+ \includegraphics[width=\linewidth]{Xfigure4.pdf}
  \caption{Effects of rising temperatures on mood by hour of the day, with a 95\% confidence interval. The value shown is the predicted change in VADER score for a 10\textdegree C WBGT increase in temperatures. Shaded area shows the 95\% confidence interval estimated with bootstrapping.}
  \label{fig:ts-wbgt}
 \end{figure}
@@ -241,5 +243,6 @@ Author contributions: M.C., J.O.-G., A.S. and P.B. designed the research and mod
 
 \noindent This paper was the result of a SESYNC graduate pursuits project co-lead by M.C. and J.O.-G.
 
-\printbibliography
+%\printbibliography
+\input{temp-sentiment.bbl}
 \end{document}

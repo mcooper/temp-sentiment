@@ -1,0 +1,5 @@
+[0] Config.pm:304> INFO - This is Biber 2.14 (beta)
+[0] Config.pm:307> INFO - Logfile is 'temp-sentiment.tex.blg'
+[76] biber:322> INFO - === Thu Sep 16, 2021, 10:05:08
+[152] Utils.pm:309> ERROR - Cannot find 'temp-sentiment.tex.bcf'!
+[152] Biber.pm:132> INFO - ERRORS: 1

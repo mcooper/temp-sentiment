@@ -1,0 +1,5728 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.9.6)  16 SEP 2021 10:07
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**temp-sentiment.tex
+(./temp-sentiment.tex
+LaTeX2e <2020-02-02> patch level 2
+L3 programming layer <2020-02-14>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
+)
+\c@part=\count167
+\c@section=\count168
+\c@subsection=\count169
+\c@subsubsection=\count170
+\c@paragraph=\count171
+\c@subparagraph=\count172
+\c@figure=\count173
+\c@table=\count174
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen134
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2020/02/11 v2.0o Standard LaTeX package
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen135
+\Gin@req@width=\dimen136
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2020/01/14 v7.00d Hypertext links for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2019/11/07 v1.0c TeX engine tests
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2019/11/24 v0.31 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
+)
+\@linkdim=\dimen137
+\Hy@linkcounter=\count175
+\Hy@pagecounter=\count176
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2020/01/14 v7.00d Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count177
+\pdfmajorversion=\count178
+Package hyperref Info: Hyper figures OFF on input line 4547.
+Package hyperref Info: Link nesting OFF on input line 4552.
+Package hyperref Info: Hyper index ON on input line 4555.
+Package hyperref Info: Plain pages OFF on input line 4562.
+Package hyperref Info: Backreferencing OFF on input line 4567.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4800.
+\c@Hy@tempcnt=\count179
+
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5159.
+\XeTeXLinkMargin=\dimen138
+
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count180
+\Field@Width=\dimen139
+\Fld@charsize=\dimen140
+Package hyperref Info: Hyper figures OFF on input line 6430.
+Package hyperref Info: Link nesting OFF on input line 6435.
+Package hyperref Info: Hyper index ON on input line 6438.
+Package hyperref Info: backreferencing OFF on input line 6445.
+Package hyperref Info: Link coloring OFF on input line 6450.
+Package hyperref Info: Link coloring with OCG OFF on input line 6455.
+Package hyperref Info: PDF/A mode OFF on input line 6460.
+LaTeX Info: Redefining \ref on input line 6500.
+LaTeX Info: Redefining \pageref on input line 6504.
+
+(/usr/share/texlive/texmf-dist/tex/generic/atbegshi/atbegshi.sty
+Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
+)
+\Hy@abspage=\count181
+\c@Item=\count182
+\c@Hfootnote=\count183
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2020/01/14 v7.00d Hyperref driver for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/atveryend/atveryend.sty
+Package: atveryend 2019-12-11 v1.11 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+)
+\Fld@listcount=\count184
+\c@bookmark@seq@number=\count185
+
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+)
+\Hy@SectionHShift=\skip49
+)
+(/usr/share/texlive/texmf-dist/tex/latex/breakcites/breakcites.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count186
+\float@exts=\toks17
+\float@box=\box45
+\@float@everytoks=\toks18
+\@floatcapt=\box46
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2020/01/20 v2.17e AMS math features
+\@mathmargin=\skip50
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks19
+\ex@=\dimen141
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen142
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count187
+LaTeX Info: Redefining \frac on input line 227.
+\uproot@=\count188
+\leftroot@=\count189
+LaTeX Info: Redefining \overline on input line 389.
+\classnum@=\count190
+\DOTSCASE@=\count191
+LaTeX Info: Redefining \ldots on input line 486.
+LaTeX Info: Redefining \dots on input line 489.
+LaTeX Info: Redefining \cdots on input line 610.
+\Mathstrutbox@=\box47
+\strutbox@=\box48
+\big@size=\dimen143
+LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
+\macc@depth=\count192
+\c@MaxMatrixCols=\count193
+\dotsspace@=\muskip17
+\c@parentequation=\count194
+\dspbrk@lvl=\count195
+\tag@help=\toks20
+\row@=\count196
+\column@=\count197
+\maxfields@=\count198
+\andhelp@=\toks21
+\eqnshift@=\dimen144
+\alignsep@=\dimen145
+\tagshift@=\dimen146
+\tagwidth@=\dimen147
+\totwidth@=\dimen148
+\lineht@=\dimen149
+\@envbody=\toks22
+\multlinegap=\skip51
+\multlinetaggap=\skip52
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2859.
+LaTeX Info: Redefining \] on input line 2860.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/textgreek/textgreek.sty
+Package: textgreek 2011/10/09 v0.7 Greek symbols in text
+Package textgreek Info: Loading the definitions for the Greek fontencoding. on 
+input line 39.
+
+(/usr/share/texlive/texmf-dist/tex/latex/greek-fontenc/lgrenc.def
+File: lgrenc.def 2019/07/09 v0.13.3 LGR Greek font encoding definitions
+Now handling font encoding LGR ...
+... processing UTF-8 mapping file for font encoding LGR
+
+(/usr/share/texlive/texmf-dist/tex/latex/greek-inputenc/lgrenc.dfu
+File: lgrenc.dfu 2019/07/11 1.7 UTF-8 support for Greek
+   defining Unicode char U+00A8 (decimal 168)
+   defining Unicode char U+00AB (decimal 171)
+   defining Unicode char U+00AF (decimal 175)
+   defining Unicode char U+00B4 (decimal 180)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+00BB (decimal 187)
+   defining Unicode char U+0259 (decimal 601)
+   defining Unicode char U+02D8 (decimal 728)
+   defining Unicode char U+0374 (decimal 884)
+   defining Unicode char U+0375 (decimal 885)
+   defining Unicode char U+037A (decimal 890)
+   defining Unicode char U+037E (decimal 894)
+   defining Unicode char U+0384 (decimal 900)
+   defining Unicode char U+0385 (decimal 901)
+   defining Unicode char U+0386 (decimal 902)
+   defining Unicode char U+0387 (decimal 903)
+   defining Unicode char U+0388 (decimal 904)
+   defining Unicode char U+0389 (decimal 905)
+   defining Unicode char U+038A (decimal 906)
+   defining Unicode char U+038C (decimal 908)
+   defining Unicode char U+038E (decimal 910)
+   defining Unicode char U+038F (decimal 911)
+   defining Unicode char U+0390 (decimal 912)
+   defining Unicode char U+0391 (decimal 913)
+   defining Unicode char U+0392 (decimal 914)
+   defining Unicode char U+0393 (decimal 915)
+   defining Unicode char U+0394 (decimal 916)
+   defining Unicode char U+0395 (decimal 917)
+   defining Unicode char U+0396 (decimal 918)
+   defining Unicode char U+0397 (decimal 919)
+   defining Unicode char U+0398 (decimal 920)
+   defining Unicode char U+0399 (decimal 921)
+   defining Unicode char U+039A (decimal 922)
+   defining Unicode char U+039B (decimal 923)
+   defining Unicode char U+039C (decimal 924)
+   defining Unicode char U+039D (decimal 925)
+   defining Unicode char U+039E (decimal 926)
+   defining Unicode char U+039F (decimal 927)
+   defining Unicode char U+03A0 (decimal 928)
+   defining Unicode char U+03A1 (decimal 929)
+   defining Unicode char U+03A3 (decimal 931)
+   defining Unicode char U+03A4 (decimal 932)
+   defining Unicode char U+03A5 (decimal 933)
+   defining Unicode char U+03A6 (decimal 934)
+   defining Unicode char U+03A7 (decimal 935)
+   defining Unicode char U+03A8 (decimal 936)
+   defining Unicode char U+03A9 (decimal 937)
+   defining Unicode char U+03AA (decimal 938)
+   defining Unicode char U+03AB (decimal 939)
+   defining Unicode char U+03AC (decimal 940)
+   defining Unicode char U+03AD (decimal 941)
+   defining Unicode char U+03AE (decimal 942)
+   defining Unicode char U+03AF (decimal 943)
+   defining Unicode char U+03B0 (decimal 944)
+   defining Unicode char U+03B1 (decimal 945)
+   defining Unicode char U+03B2 (decimal 946)
+   defining Unicode char U+03B3 (decimal 947)
+   defining Unicode char U+03B4 (decimal 948)
+   defining Unicode char U+03B5 (decimal 949)
+   defining Unicode char U+03B6 (decimal 950)
+   defining Unicode char U+03B7 (decimal 951)
+   defining Unicode char U+03B8 (decimal 952)
+   defining Unicode char U+03B9 (decimal 953)
+   defining Unicode char U+03BA (decimal 954)
+   defining Unicode char U+03BB (decimal 955)
+   defining Unicode char U+03BC (decimal 956)
+   defining Unicode char U+03BD (decimal 957)
+   defining Unicode char U+03BE (decimal 958)
+   defining Unicode char U+03BF (decimal 959)
+   defining Unicode char U+03C0 (decimal 960)
+   defining Unicode char U+03C1 (decimal 961)
+   defining Unicode char U+03C2 (decimal 962)
+   defining Unicode char U+03C3 (decimal 963)
+   defining Unicode char U+03C4 (decimal 964)
+   defining Unicode char U+03C5 (decimal 965)
+   defining Unicode char U+03C6 (decimal 966)
+   defining Unicode char U+03C7 (decimal 967)
+   defining Unicode char U+03C8 (decimal 968)
+   defining Unicode char U+03C9 (decimal 969)
+   defining Unicode char U+03CA (decimal 970)
+   defining Unicode char U+03CB (decimal 971)
+   defining Unicode char U+03CC (decimal 972)
+   defining Unicode char U+03CD (decimal 973)
+   defining Unicode char U+03CE (decimal 974)
+   defining Unicode char U+03D0 (decimal 976)
+   defining Unicode char U+03D1 (decimal 977)
+   defining Unicode char U+03D5 (decimal 981)
+   defining Unicode char U+03D6 (decimal 982)
+   defining Unicode char U+03D8 (decimal 984)
+   defining Unicode char U+03D9 (decimal 985)
+   defining Unicode char U+03DA (decimal 986)
+   defining Unicode char U+03DB (decimal 987)
+   defining Unicode char U+03DC (decimal 988)
+   defining Unicode char U+03DD (decimal 989)
+   defining Unicode char U+03DF (decimal 991)
+   defining Unicode char U+03E0 (decimal 992)
+   defining Unicode char U+03E1 (decimal 993)
+   defining Unicode char U+03F0 (decimal 1008)
+   defining Unicode char U+03F1 (decimal 1009)
+   defining Unicode char U+03F4 (decimal 1012)
+   defining Unicode char U+03F5 (decimal 1013)
+   defining Unicode char U+1F00 (decimal 7936)
+   defining Unicode char U+1F01 (decimal 7937)
+   defining Unicode char U+1F02 (decimal 7938)
+   defining Unicode char U+1F03 (decimal 7939)
+   defining Unicode char U+1F04 (decimal 7940)
+   defining Unicode char U+1F05 (decimal 7941)
+   defining Unicode char U+1F06 (decimal 7942)
+   defining Unicode char U+1F07 (decimal 7943)
+   defining Unicode char U+1F08 (decimal 7944)
+   defining Unicode char U+1F09 (decimal 7945)
+   defining Unicode char U+1F0A (decimal 7946)
+   defining Unicode char U+1F0B (decimal 7947)
+   defining Unicode char U+1F0C (decimal 7948)
+   defining Unicode char U+1F0D (decimal 7949)
+   defining Unicode char U+1F0E (decimal 7950)
+   defining Unicode char U+1F0F (decimal 7951)
+   defining Unicode char U+1F10 (decimal 7952)
+   defining Unicode char U+1F11 (decimal 7953)
+   defining Unicode char U+1F12 (decimal 7954)
+   defining Unicode char U+1F13 (decimal 7955)
+   defining Unicode char U+1F14 (decimal 7956)
+   defining Unicode char U+1F15 (decimal 7957)
+   defining Unicode char U+1F18 (decimal 7960)
+   defining Unicode char U+1F19 (decimal 7961)
+   defining Unicode char U+1F1A (decimal 7962)
+   defining Unicode char U+1F1B (decimal 7963)
+   defining Unicode char U+1F1C (decimal 7964)
+   defining Unicode char U+1F1D (decimal 7965)
+   defining Unicode char U+1F20 (decimal 7968)
+   defining Unicode char U+1F21 (decimal 7969)
+   defining Unicode char U+1F22 (decimal 7970)
+   defining Unicode char U+1F23 (decimal 7971)
+   defining Unicode char U+1F24 (decimal 7972)
+   defining Unicode char U+1F25 (decimal 7973)
+   defining Unicode char U+1F26 (decimal 7974)
+   defining Unicode char U+1F27 (decimal 7975)
+   defining Unicode char U+1F28 (decimal 7976)
+   defining Unicode char U+1F29 (decimal 7977)
+   defining Unicode char U+1F2A (decimal 7978)
+   defining Unicode char U+1F2B (decimal 7979)
+   defining Unicode char U+1F2C (decimal 7980)
+   defining Unicode char U+1F2D (decimal 7981)
+   defining Unicode char U+1F2E (decimal 7982)
+   defining Unicode char U+1F2F (decimal 7983)
+   defining Unicode char U+1F30 (decimal 7984)
+   defining Unicode char U+1F31 (decimal 7985)
+   defining Unicode char U+1F32 (decimal 7986)
+   defining Unicode char U+1F33 (decimal 7987)
+   defining Unicode char U+1F34 (decimal 7988)
+   defining Unicode char U+1F35 (decimal 7989)
+   defining Unicode char U+1F36 (decimal 7990)
+   defining Unicode char U+1F37 (decimal 7991)
+   defining Unicode char U+1F38 (decimal 7992)
+   defining Unicode char U+1F39 (decimal 7993)
+   defining Unicode char U+1F3A (decimal 7994)
+   defining Unicode char U+1F3B (decimal 7995)
+   defining Unicode char U+1F3C (decimal 7996)
+   defining Unicode char U+1F3D (decimal 7997)
+   defining Unicode char U+1F3E (decimal 7998)
+   defining Unicode char U+1F3F (decimal 7999)
+   defining Unicode char U+1F40 (decimal 8000)
+   defining Unicode char U+1F41 (decimal 8001)
+   defining Unicode char U+1F42 (decimal 8002)
+   defining Unicode char U+1F43 (decimal 8003)
+   defining Unicode char U+1F44 (decimal 8004)
+   defining Unicode char U+1F45 (decimal 8005)
+   defining Unicode char U+1F48 (decimal 8008)
+   defining Unicode char U+1F49 (decimal 8009)
+   defining Unicode char U+1F4A (decimal 8010)
+   defining Unicode char U+1F4B (decimal 8011)
+   defining Unicode char U+1F4C (decimal 8012)
+   defining Unicode char U+1F4D (decimal 8013)
+   defining Unicode char U+1F50 (decimal 8016)
+   defining Unicode char U+1F51 (decimal 8017)
+   defining Unicode char U+1F52 (decimal 8018)
+   defining Unicode char U+1F53 (decimal 8019)
+   defining Unicode char U+1F54 (decimal 8020)
+   defining Unicode char U+1F55 (decimal 8021)
+   defining Unicode char U+1F56 (decimal 8022)
+   defining Unicode char U+1F57 (decimal 8023)
+   defining Unicode char U+1F59 (decimal 8025)
+   defining Unicode char U+1F5B (decimal 8027)
+   defining Unicode char U+1F5D (decimal 8029)
+   defining Unicode char U+1F5F (decimal 8031)
+   defining Unicode char U+1F60 (decimal 8032)
+   defining Unicode char U+1F61 (decimal 8033)
+   defining Unicode char U+1F62 (decimal 8034)
+   defining Unicode char U+1F63 (decimal 8035)
+   defining Unicode char U+1F64 (decimal 8036)
+   defining Unicode char U+1F65 (decimal 8037)
+   defining Unicode char U+1F66 (decimal 8038)
+   defining Unicode char U+1F67 (decimal 8039)
+   defining Unicode char U+1F68 (decimal 8040)
+   defining Unicode char U+1F69 (decimal 8041)
+   defining Unicode char U+1F6A (decimal 8042)
+   defining Unicode char U+1F6B (decimal 8043)
+   defining Unicode char U+1F6C (decimal 8044)
+   defining Unicode char U+1F6D (decimal 8045)
+   defining Unicode char U+1F6E (decimal 8046)
+   defining Unicode char U+1F6F (decimal 8047)
+   defining Unicode char U+1F70 (decimal 8048)
+   defining Unicode char U+1F71 (decimal 8049)
+   defining Unicode char U+1F72 (decimal 8050)
+   defining Unicode char U+1F73 (decimal 8051)
+   defining Unicode char U+1F74 (decimal 8052)
+   defining Unicode char U+1F75 (decimal 8053)
+   defining Unicode char U+1F76 (decimal 8054)
+   defining Unicode char U+1F77 (decimal 8055)
+   defining Unicode char U+1F78 (decimal 8056)
+   defining Unicode char U+1F79 (decimal 8057)
+   defining Unicode char U+1F7A (decimal 8058)
+   defining Unicode char U+1F7B (decimal 8059)
+   defining Unicode char U+1F7C (decimal 8060)
+   defining Unicode char U+1F7D (decimal 8061)
+   defining Unicode char U+1F80 (decimal 8064)
+   defining Unicode char U+1F81 (decimal 8065)
+   defining Unicode char U+1F82 (decimal 8066)
+   defining Unicode char U+1F83 (decimal 8067)
+   defining Unicode char U+1F84 (decimal 8068)
+   defining Unicode char U+1F85 (decimal 8069)
+   defining Unicode char U+1F86 (decimal 8070)
+   defining Unicode char U+1F87 (decimal 8071)
+   defining Unicode char U+1F88 (decimal 8072)
+   defining Unicode char U+1F89 (decimal 8073)
+   defining Unicode char U+1F8A (decimal 8074)
+   defining Unicode char U+1F8B (decimal 8075)
+   defining Unicode char U+1F8C (decimal 8076)
+   defining Unicode char U+1F8D (decimal 8077)
+   defining Unicode char U+1F8E (decimal 8078)
+   defining Unicode char U+1F8F (decimal 8079)
+   defining Unicode char U+1F90 (decimal 8080)
+   defining Unicode char U+1F91 (decimal 8081)
+   defining Unicode char U+1F92 (decimal 8082)
+   defining Unicode char U+1F93 (decimal 8083)
+   defining Unicode char U+1F94 (decimal 8084)
+   defining Unicode char U+1F95 (decimal 8085)
+   defining Unicode char U+1F96 (decimal 8086)
+   defining Unicode char U+1F97 (decimal 8087)
+   defining Unicode char U+1F98 (decimal 8088)
+   defining Unicode char U+1F99 (decimal 8089)
+   defining Unicode char U+1F9A (decimal 8090)
+   defining Unicode char U+1F9B (decimal 8091)
+   defining Unicode char U+1F9C (decimal 8092)
+   defining Unicode char U+1F9D (decimal 8093)
+   defining Unicode char U+1F9E (decimal 8094)
+   defining Unicode char U+1F9F (decimal 8095)
+   defining Unicode char U+1FA0 (decimal 8096)
+   defining Unicode char U+1FA1 (decimal 8097)
+   defining Unicode char U+1FA2 (decimal 8098)
+   defining Unicode char U+1FA3 (decimal 8099)
+   defining Unicode char U+1FA4 (decimal 8100)
+   defining Unicode char U+1FA5 (decimal 8101)
+   defining Unicode char U+1FA6 (decimal 8102)
+   defining Unicode char U+1FA7 (decimal 8103)
+   defining Unicode char U+1FA8 (decimal 8104)
+   defining Unicode char U+1FA9 (decimal 8105)
+   defining Unicode char U+1FAA (decimal 8106)
+   defining Unicode char U+1FAB (decimal 8107)
+   defining Unicode char U+1FAC (decimal 8108)
+   defining Unicode char U+1FAD (decimal 8109)
+   defining Unicode char U+1FAE (decimal 8110)
+   defining Unicode char U+1FAF (decimal 8111)
+   defining Unicode char U+1FB0 (decimal 8112)
+   defining Unicode char U+1FB1 (decimal 8113)
+   defining Unicode char U+1FB2 (decimal 8114)
+   defining Unicode char U+1FB3 (decimal 8115)
+   defining Unicode char U+1FB4 (decimal 8116)
+   defining Unicode char U+1FB6 (decimal 8118)
+   defining Unicode char U+1FB7 (decimal 8119)
+   defining Unicode char U+1FB8 (decimal 8120)
+   defining Unicode char U+1FB9 (decimal 8121)
+   defining Unicode char U+1FBA (decimal 8122)
+   defining Unicode char U+1FBB (decimal 8123)
+   defining Unicode char U+1FBC (decimal 8124)
+   defining Unicode char U+1FBD (decimal 8125)
+   defining Unicode char U+1FBE (decimal 8126)
+   defining Unicode char U+1FBF (decimal 8127)
+   defining Unicode char U+1FC0 (decimal 8128)
+   defining Unicode char U+1FC1 (decimal 8129)
+   defining Unicode char U+1FC2 (decimal 8130)
+   defining Unicode char U+1FC3 (decimal 8131)
+   defining Unicode char U+1FC4 (decimal 8132)
+   defining Unicode char U+1FC6 (decimal 8134)
+   defining Unicode char U+1FC7 (decimal 8135)
+   defining Unicode char U+1FC8 (decimal 8136)
+   defining Unicode char U+1FC9 (decimal 8137)
+   defining Unicode char U+1FCA (decimal 8138)
+   defining Unicode char U+1FCB (decimal 8139)
+   defining Unicode char U+1FCC (decimal 8140)
+   defining Unicode char U+1FCD (decimal 8141)
+   defining Unicode char U+1FCE (decimal 8142)
+   defining Unicode char U+1FCF (decimal 8143)
+   defining Unicode char U+1FD0 (decimal 8144)
+   defining Unicode char U+1FD1 (decimal 8145)
+   defining Unicode char U+1FD2 (decimal 8146)
+   defining Unicode char U+1FD3 (decimal 8147)
+   defining Unicode char U+1FD6 (decimal 8150)
+   defining Unicode char U+1FD7 (decimal 8151)
+   defining Unicode char U+1FD8 (decimal 8152)
+   defining Unicode char U+1FD9 (decimal 8153)
+   defining Unicode char U+1FDA (decimal 8154)
+   defining Unicode char U+1FDB (decimal 8155)
+   defining Unicode char U+1FDD (decimal 8157)
+   defining Unicode char U+1FDE (decimal 8158)
+   defining Unicode char U+1FDF (decimal 8159)
+   defining Unicode char U+1FE0 (decimal 8160)
+   defining Unicode char U+1FE1 (decimal 8161)
+   defining Unicode char U+1FE2 (decimal 8162)
+   defining Unicode char U+1FE3 (decimal 8163)
+   defining Unicode char U+1FE4 (decimal 8164)
+   defining Unicode char U+1FE5 (decimal 8165)
+   defining Unicode char U+1FE6 (decimal 8166)
+   defining Unicode char U+1FE7 (decimal 8167)
+   defining Unicode char U+1FE8 (decimal 8168)
+   defining Unicode char U+1FE9 (decimal 8169)
+   defining Unicode char U+1FEA (decimal 8170)
+   defining Unicode char U+1FEB (decimal 8171)
+   defining Unicode char U+1FEC (decimal 8172)
+   defining Unicode char U+1FED (decimal 8173)
+   defining Unicode char U+1FEE (decimal 8174)
+   defining Unicode char U+1FEF (decimal 8175)
+   defining Unicode char U+1FF2 (decimal 8178)
+   defining Unicode char U+1FF3 (decimal 8179)
+   defining Unicode char U+1FF4 (decimal 8180)
+   defining Unicode char U+1FF6 (decimal 8182)
+   defining Unicode char U+1FF7 (decimal 8183)
+   defining Unicode char U+1FF8 (decimal 8184)
+   defining Unicode char U+1FF9 (decimal 8185)
+   defining Unicode char U+1FFA (decimal 8186)
+   defining Unicode char U+1FFB (decimal 8187)
+   defining Unicode char U+1FFC (decimal 8188)
+   defining Unicode char U+1FFD (decimal 8189)
+   defining Unicode char U+1FFE (decimal 8190)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201A (decimal 8218)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2039 (decimal 8249)
+   defining Unicode char U+203A (decimal 8250)
+   defining Unicode char U+20AC (decimal 8364)
+   defining Unicode char U+2126 (decimal 8486)
+   defining Unicode char U+10144 (decimal 65860)
+   defining Unicode char U+10145 (decimal 65861)
+   defining Unicode char U+10146 (decimal 65862)
+   defining Unicode char U+10147 (decimal 65863)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/greek-fontenc/greek-fontenc.def
+File: greek-fontenc.def 2015/08/04 v0.13.4 Common Greek font encoding definitio
+ns
+))
+Package textgreek Info: Loaded fontmap: {eur/*/*}{U/eur/*/*} {phv/*/*}{U/psy/*/
+*}. on input line 69.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/preprint/authblk.sty
+Package: authblk 2001/02/27 1.3 (PWD)
+\affilsep=\skip53
+\@affilsep=\skip54
+\c@Maxaffil=\count199
+\c@authors=\count266
+\c@affil=\count267
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/rotating.sty
+Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count268
+\rotFPtop=\skip55
+\rotFPbot=\skip56
+\rot@float@box=\box49
+\rot@mess@toks=\toks24
+)
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen150
+\lightrulewidth=\dimen151
+\cmidrulewidth=\dimen152
+\belowrulesep=\dimen153
+\belowbottomsep=\dimen154
+\aboverulesep=\dimen155
+\abovetopsep=\dimen156
+\cmidrulesep=\dimen157
+\cmidrulekern=\dimen158
+\defaultaddspace=\dimen159
+\@cmidla=\count269
+\@cmidlb=\count270
+\@aboverulesep=\dimen160
+\@belowrulesep=\dimen161
+\@thisruleclass=\count271
+\@lastruleclass=\count272
+\@thisrulewidth=\dimen162
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
+\LTleft=\skip57
+\LTright=\skip58
+\LTpre=\skip59
+\LTpost=\skip60
+\LTchunksize=\count273
+\LTcapwidth=\dimen163
+\LT@head=\box50
+\LT@firsthead=\box51
+\LT@foot=\box52
+\LT@lastfoot=\box53
+\LT@cols=\count274
+\LT@rows=\count275
+\c@LT@tables=\count276
+\c@LT@chunks=\count277
+\LT@p@ftn=\toks25
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
+Package: lineno 2005/11/02 line numbers on paragraphs v4.41
+\linenopenalty=\count278
+\output=\toks26
+\linenoprevgraf=\count279
+\linenumbersep=\dimen164
+\linenumberwidth=\dimen165
+\c@linenumber=\count280
+\c@pagewiselinenumber=\count281
+\c@LN@truepage=\count282
+\c@internallinenumber=\count283
+\c@internallinenumbers=\count284
+\quotelinenumbersep=\dimen166
+\bframerule=\dimen167
+\bframesep=\dimen168
+\bframebox=\box54
+LaTeX Info: Redefining \\ on input line 3056.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.sty
+Package: biblatex 2019/12/01 v3.14 programmable bibliographies (PK/MW)
+
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count285
+)
+(/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.sty
+Package: logreq 2010/08/04 v1.0 xml request logger
+\lrq@indent=\count286
+
+(/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.def
+File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
+))
+\c@tabx@nest=\count287
+\c@listtotal=\count288
+\c@listcount=\count289
+\c@liststart=\count290
+\c@liststop=\count291
+\c@citecount=\count292
+\c@citetotal=\count293
+\c@multicitecount=\count294
+\c@multicitetotal=\count295
+\c@instcount=\count296
+\c@maxnames=\count297
+\c@minnames=\count298
+\c@maxitems=\count299
+\c@minitems=\count300
+\c@citecounter=\count301
+\c@maxcitecounter=\count302
+\c@savedcitecounter=\count303
+\c@uniquelist=\count304
+\c@uniquename=\count305
+\c@refsection=\count306
+\c@refsegment=\count307
+\c@maxextratitle=\count308
+\c@maxextratitleyear=\count309
+\c@maxextraname=\count310
+\c@maxextradate=\count311
+\c@maxextraalpha=\count312
+\c@abbrvpenalty=\count313
+\c@highnamepenalty=\count314
+\c@lownamepenalty=\count315
+\c@maxparens=\count316
+\c@parenlevel=\count317
+\blx@tempcnta=\count318
+\blx@tempcntb=\count319
+\blx@tempcntc=\count320
+\blx@maxsection=\count321
+\blx@maxsegment@0=\count322
+\blx@notetype=\count323
+\blx@parenlevel@text=\count324
+\blx@parenlevel@foot=\count325
+\blx@sectionciteorder@0=\count326
+\blx@entrysetcounter=\count327
+\labelnumberwidth=\skip61
+\labelalphawidth=\skip62
+\biblabelsep=\skip63
+\bibitemsep=\skip64
+\bibnamesep=\skip65
+\bibinitsep=\skip66
+\bibparsep=\skip67
+\bibhang=\skip68
+\blx@bcfin=\read2
+\blx@bcfout=\write3
+\blx@langwohyphens=\language7
+\c@mincomprange=\count328
+\c@maxcomprange=\count329
+\c@mincompwidth=\count330
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-dm.def
+File: blx-dm.def 2019/12/01 v3.14 biblatex localization (PK/MW)
+)
+Package biblatex Info: Trying to load biblatex style data model...
+Package biblatex Info: ... file 'alphabetic.dbx' not found.
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+\c@afterword=\count331
+\c@savedafterword=\count332
+\c@annotator=\count333
+\c@savedannotator=\count334
+\c@author=\count335
+\c@savedauthor=\count336
+\c@bookauthor=\count337
+\c@savedbookauthor=\count338
+\c@commentator=\count339
+\c@savedcommentator=\count340
+\c@editor=\count341
+\c@savededitor=\count342
+\c@editora=\count343
+\c@savededitora=\count344
+\c@editorb=\count345
+\c@savededitorb=\count346
+\c@editorc=\count347
+\c@savededitorc=\count348
+\c@foreword=\count349
+\c@savedforeword=\count350
+\c@holder=\count351
+\c@savedholder=\count352
+\c@introduction=\count353
+\c@savedintroduction=\count354
+\c@namea=\count355
+\c@savednamea=\count356
+\c@nameb=\count357
+\c@savednameb=\count358
+\c@namec=\count359
+\c@savednamec=\count360
+\c@translator=\count361
+\c@savedtranslator=\count362
+\c@shortauthor=\count363
+\c@savedshortauthor=\count364
+\c@shorteditor=\count365
+\c@savedshorteditor=\count366
+\c@labelname=\count367
+\c@savedlabelname=\count368
+\c@institution=\count369
+\c@savedinstitution=\count370
+\c@lista=\count371
+\c@savedlista=\count372
+\c@listb=\count373
+\c@savedlistb=\count374
+\c@listc=\count375
+\c@savedlistc=\count376
+\c@listd=\count377
+\c@savedlistd=\count378
+\c@liste=\count379
+\c@savedliste=\count380
+\c@listf=\count381
+\c@savedlistf=\count382
+\c@location=\count383
+\c@savedlocation=\count384
+\c@organization=\count385
+\c@savedorganization=\count386
+\c@origlocation=\count387
+\c@savedoriglocation=\count388
+\c@origpublisher=\count389
+\c@savedorigpublisher=\count390
+\c@publisher=\count391
+\c@savedpublisher=\count392
+\c@language=\count393
+\c@savedlanguage=\count394
+\c@origlanguage=\count395
+\c@savedoriglanguage=\count396
+\c@pageref=\count397
+\c@savedpageref=\count398
+\shorthandwidth=\skip69
+\shortjournalwidth=\skip70
+\shortserieswidth=\skip71
+\shorttitlewidth=\skip72
+\shortauthorwidth=\skip73
+\shorteditorwidth=\skip74
+\locallabelnumberwidth=\skip75
+\locallabelalphawidth=\skip76
+\localshorthandwidth=\skip77
+\localshortjournalwidth=\skip78
+\localshortserieswidth=\skip79
+\localshorttitlewidth=\skip80
+\localshortauthorwidth=\skip81
+\localshorteditorwidth=\skip82
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-compat.def
+File: blx-compat.def 2019/12/01 v3.14 biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.def
+File: biblatex.def 2019/12/01 v3.14 biblatex compatibility (PK/MW)
+\c@textcitecount=\count399
+\c@textcitetotal=\count400
+\c@textcitemaxnames=\count401
+\c@biburlbigbreakpenalty=\count402
+\c@biburlbreakpenalty=\count403
+\c@biburlnumpenalty=\count404
+\c@biburlucpenalty=\count405
+\c@biburllcpenalty=\count406
+\biburlbigskip=\muskip18
+\biburlnumskip=\muskip19
+\biburlucskip=\muskip20
+\biburllcskip=\muskip21
+\c@smartand=\count407
+)
+Package biblatex Info: Trying to load natbib compatibility...
+Package biblatex Info: ... file 'blx-natbib.def' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-natbib.def
+File: blx-natbib.def 2019/12/01 v3.14 biblatex compatibility (PK/MW)
+Package biblatex Info: Delimiter 'nameyeardelim' in context '' already defined,
+ overwriting.
+)
+Package biblatex Info: Trying to load bibliography style 'authortitle'...
+Package biblatex Info: ... file 'authortitle.bbx' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/bbx/authortitle.bbx
+File: authortitle.bbx 2019/12/01 v3.14 biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
+File: standard.bbx 2019/12/01 v3.14 biblatex bibliography style (PK/MW)
+\c@bbx:relatedcount=\count408
+\c@bbx:relatedtotal=\count409
+))
+Package biblatex Info: Trying to load citation style 'authoryear'...
+Package biblatex Info: ... file 'authoryear.cbx' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/cbx/authoryear.cbx
+File: authoryear.cbx 2019/12/01 v3.14 biblatex citation style (PK/MW)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+)
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.cfg
+File: biblatex.cfg 
+))
+(/usr/share/texlive/texmf-dist/tex/latex/scalerel/scalerel.sty
+Package: scalerel 2016/12/29 v1.8 Routines for constrained scaling and stretchi
+ng of objects, relative to a reference object or in absolute terms
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count410
+\calc@Bcount=\count411
+\calc@Adimen=\dimen169
+\calc@Bdimen=\dimen170
+\calc@Askip=\skip83
+\calc@Bskip=\skip84
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count412
+\calc@Cskip=\skip85
+)
+\thesrwidth=\skip86
+\thesrheight=\skip87
+\srblobheight=\skip88
+\srblobdepth=\skip89
+\mnxsrwidth=\skip90
+\LMex=\skip91
+\LMpt=\skip92
+)
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2020-02-14 L3 programming layer (loader) 
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
+File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count413
+\l__pdf_internal_box=\box55
+))
+Package: xparse 2020-02-14 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count414
+\g__xparse_grabber_int=\count415
+\l__xparse_m_args_int=\count416
+\l__xparse_v_nesting_int=\count417
+)
+
+! Package biblatex Error: '\bibliographystyle' invalid.
+
+See the biblatex package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.32 \bibliographystyle{plain}
+                              
+? 
+\@quotelevel=\count418
+\@quotereset=\count419
+(./temp-sentiment.aux)
+\openout1 = `temp-sentiment.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 45.
+LaTeX Font Info:    Trying to load font information for LGR+cmr on input line 4
+5.
+
+(/usr/share/texlive/texmf-dist/tex/latex/cbfonts-fd/lgrcmr.fd
+File: lgrcmr.fd 2017/07/29 v1.2 Greek European Computer Regular
+)
+LaTeX Font Info:    ... okay on input line 45.
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count420
+\scratchdimen=\dimen171
+\scratchbox=\box56
+\nofMPsegments=\count421
+\nofMParguments=\count422
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count423
+\MPscratchDim=\dimen172
+\MPnumerator=\count424
+\makeMPintoPDFobject=\count425
+\everyMPtoPDFconversion=\toks28
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\AtBeginShipoutBox=\box57
+Package hyperref Info: Link coloring OFF on input line 45.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count426
+)
+LaTeX Info: Redefining \ref on input line 45.
+LaTeX Info: Redefining \pageref on input line 45.
+LaTeX Info: Redefining \nameref on input line 45.
+
+(./temp-sentiment.out) (./temp-sentiment.out)
+\@outlinefile=\write4
+\openout4 = `temp-sentiment.out'.
+
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/english.lbx
+File: english.lbx 2019/12/01 v3.14 biblatex localization (PK/MW)
+)
+Package biblatex Info: Input encoding 'utf8' detected.
+Package biblatex Info: Automatic encoding selection.
+(biblatex)             Assuming data encoding 'utf8'.
+\openout3 = `temp-sentiment.bcf'.
+
+Package biblatex Info: Trying to load bibliographic data...
+Package biblatex Info: ... file 'temp-sentiment.bbl' found.
+
+(./temp-sentiment.bbl)
+Package biblatex Info: Reference section=0 on input line 45.
+Package biblatex Info: Reference segment=0 on input line 45.
+LaTeX Font Info:    Trying to load font information for T1+cmss on input line 6
+9.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmss.fd
+File: t1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+) [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (4.74792pt too wide) in paragraph at lines 77--78
+\T1/cmr/m/n/10 paired with cen-sus block data on neigh-bor-hood char-ac-ter-is-
+tics and hourly weather
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.84 \end{abstract}
+                    [1]pdfTeX warning (ext4): destination with the same identif
+ier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.97 
+      [1] [2]
+
+LaTeX Warning: File `smiling-face-with-smiling-eyes_1f60a.png' not found on inp
+ut line 114.
+
+
+! Package pdftex.def Error: File `smiling-face-with-smiling-eyes_1f60a.png' not
+ found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.114 ...oticons and emojis (``:-)", ``\emojismile
+                                                  ")
+? 
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
+14.
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+
+LaTeX Warning: File `smiling-face-with-smiling-eyes_1f60a.png' not found on inp
+ut line 114.
+
+
+! Package pdftex.def Error: File `smiling-face-with-smiling-eyes_1f60a.png' not
+ found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.114 ...oticons and emojis (``:-)", ``\emojismile
+                                                  ")
+? 
+[3] [4] [5]
+
+LaTeX Warning: File `Xfigure1.pdf' not found on input line 173.
+
+
+! Package pdftex.def Error: File `Xfigure1.pdf' not found: using draft setting.
+
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.173 ...egraphics[width=\linewidth]{Xfigure1.pdf}
+                                                  
+? 
+[6] [7pdfTeX warning (ext4): destination with the same identifier (name{figure.
+1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.181 
+      ]
+
+LaTeX Warning: File `Xfigure2.pdf' not found on input line 184.
+
+
+! Package pdftex.def Error: File `Xfigure2.pdf' not found: using draft setting.
+
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.184 ...egraphics[width=\textwidth]{Xfigure2.pdf}
+                                                  
+? 
+[8pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.191 
+      ]
+
+LaTeX Warning: File `Xfigure3.pdf' not found on input line 194.
+
+
+! Package pdftex.def Error: File `Xfigure3.pdf' not found: using draft setting.
+
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.194 ...egraphics[width=\linewidth]{Xfigure3.pdf}
+                                                  
+? 
+[9] [10pdfTeX warning (ext4): destination with the same identifier (name{figure
+.3}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.201 \subsection*{Effect of Heat by Time of Day}
+                                                 ]
+
+LaTeX Warning: File `Xfigure4.pdf' not found on input line 206.
+
+
+! Package pdftex.def Error: File `Xfigure4.pdf' not found: using draft setting.
+
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.206 ...egraphics[width=\linewidth]{Xfigure4.pdf}
+                                                  
+? 
+[11] [12pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.4}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.214 
+      ] [13] [14] (./temp-sentiment.bbl
+\blx@maxsegment@1=\count427
+\blx@sectionciteorder@1=\count428
+Package biblatex Info: Reference section=1 on input line 20.
+Package biblatex Info: Setting label 'refsection:1' on input line 20.
+
+! Undefined control sequence.
+l.21   \datalist
+                [entry]{nyt/global//global/global}
+? 
+! Undefined control sequence.
+l.22     \entry
+               {Pew2020Sep}{misc}{}
+? 
+! Undefined control sequence.
+l.23       \field
+                 {sortinit}{1}
+? 
+! Undefined control sequence.
+l.24       \field
+                 {sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+? 
+! Undefined control sequence.
+l.25       \field
+                 {extradatescope}{labelyear}
+? 
+! Undefined control sequence.
+l.26       \field
+                 {labeldatesource}{year}
+? 
+! Undefined control sequence.
+l.27       \field
+                 {labeltitlesource}{title}
+? 
+! Undefined control sequence.
+l.28       \field
+                 {journaltitle}{Pew Research Center}
+? 
+! Undefined control sequence.
+l.29       \field
+                 {month}{9}
+? 
+! Undefined control sequence.
+l.30       \field
+                 {note}{[Online; accessed 1. May 2021]}
+? 
+! Undefined control sequence.
+l.31       \field
+                 {title}{{10 facts about Americans and Twitter}}
+? 
+! Undefined control sequence.
+l.32       \field
+                 {year}{2020}
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.33       \verb{urlraw}
+                        
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.34 ...08/02/10-facts-about-americans-and-twitter
+                                                  
+? 
+! Undefined control sequence.
+l.35       \endverb
+                   
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.36       \verb{url}
+                     
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.37 ...08/02/10-facts-about-americans-and-twitter
+                                                  
+? 
+! Undefined control sequence.
+l.38       \endverb
+                   
+? 
+! Undefined control sequence.
+l.39     \endentry
+                  
+? 
+! Undefined control sequence.
+l.40     \entry
+               {Akbar2019}{article}{}
+? 
+! Undefined control sequence.
+l.41       \name
+                {author}{4}{}{%
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.44            familyi={A\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.46            giveni={P\bibinitperiod
+                                       \bibinitdelim A\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.46 ...bibinitperiod\bibinitdelim A\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.50            familyi={L\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.52            giveni={S\bibinitperiod
+                                       },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.56            familyi={S\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.58            giveni={A\bibinitperiod
+                                       },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.62            familyi={W\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.64            giveni={R\bibinitperiod
+                                       \bibinitdelim P\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.64 ...bibinitperiod\bibinitdelim P\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+l.67       \strng
+                 {namehash}{0bdcfe4af10d7002e21302cc59d1f7ec}
+? 
+! Undefined control sequence.
+l.68       \strng
+                 {fullhash}{b060141567f6ebc2cee6ad879e2c48df}
+? 
+! Undefined control sequence.
+l.69       \strng
+                 {bibnamehash}{0bdcfe4af10d7002e21302cc59d1f7ec}
+? 
+! Undefined control sequence.
+l.70       \strng
+                 {authorbibnamehash}{0bdcfe4af10d7002e21302cc59d1f7ec}
+? 
+! Undefined control sequence.
+l.71       \strng
+                 {authornamehash}{0bdcfe4af10d7002e21302cc59d1f7ec}
+? 
+! Undefined control sequence.
+l.72       \strng
+                 {authorfullhash}{b060141567f6ebc2cee6ad879e2c48df}
+? 
+! Undefined control sequence.
+l.73       \field
+                 {sortinit}{A}
+? 
+! Undefined control sequence.
+l.74       \field
+                 {sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+? 
+! Undefined control sequence.
+l.75       \field
+                 {extradatescope}{labelyear}
+? 
+! Undefined control sequence.
+l.76       \field
+                 {labeldatesource}{year}
+? 
+! Undefined control sequence.
+l.77       \field
+                 {labelnamesource}{author}
+? 
+! Undefined control sequence.
+l.78       \field
+                 {labeltitlesource}{title}
+? 
+! Undefined control sequence.
+l.79       \field
+                 {journaltitle}{NBER}
+? 
+! Undefined control sequence.
+l.80       \field
+                 {month}{5}
+? 
+! Undefined control sequence.
+l.81       \field
+                 {title}{{Racial Segregation in Housing Markets and the Eros...
+
+? 
+! Undefined control sequence.
+l.82       \field
+                 {year}{2019}
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.83       \verb{doi}
+                     
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.84       \verb 10.3386/w25805
+                               
+? 
+! Undefined control sequence.
+l.85       \endverb
+                   
+? 
+! Undefined control sequence.
+l.86     \endentry
+                  
+? 
+! Undefined control sequence.
+l.87     \entry
+               {allen2019technical}{misc}{}
+? 
+! Undefined control sequence.
+l.88       \true
+                {moreauthor}
+? 
+! Undefined control sequence.
+l.89       \true
+                {morelabelname}
+? 
+! Undefined control sequence.
+l.90       \name
+                {author}{10}{}{%
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.93            familyi={A\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.95            giveni={M\bibinitperiod
+                                       },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.99 ...ilyi={A\bibinithyphendelim A\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.101            giveni={P\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.105 ...lyi={A\bibinithyphendelim D\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.107            giveni={F\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.111            familyi={B\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.113            giveni={M\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.117            familyi={B\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.119            giveni={P\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.123            familyi={B\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.125            giveni={M\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.129            familyi={B\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.131            giveni={S\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.135            familyi={B\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.137            giveni={M\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.141            familyi={C\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.143            giveni={I\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.147            familyi={C\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.149            giveni={A\bibinitperiod
+                                        },
+? 
+
+Overfull \hbox (142.27356pt too wide) in paragraph at lines 20--152
+[]\T1/cmr/m/n/10 0 [en-try]nyt/global//global/global Pew2020Sepmisc sor-tinit1 
+sor-tinithash50c6687d7fc80f50136d75228e3c59ba
+ []
+
+
+Overfull \hbox (1.77643pt too wide) in paragraph at lines 20--152
+\T1/cmr/m/n/10 ex-tra-datescopela-belyear la-bel-date-sourceyear la-belti-tle-s
+ourceti-tle journalti-tlePew
+ []
+
+
+Overfull \hbox (821.27075pt too wide) in paragraph at lines 20--152
+\T1/cmr/m/n/10 Amer-i-cans and Twit-ter year2020 [][]\T1/cmtt/m/n/10 urlraw}[]h
+ttps://www.pewresearch.org/fact-tank/2019/08/02/10-facts-about-americans-and-tw
+itter[]url}[]https://www.pewresearch.org/fact-tank/2019/08/02/10-facts-about-am
+ericans-and-twitter[]\T1/cmr/m/n/10 Akbar2019article
+ []
+
+
+Overfull \hbox (46.48773pt too wide) in paragraph at lines 20--152
+\T1/cmr/m/n/10 au-thor4un=0,uniquepart=base,hash=40b6501330d3034236e3a11b761980
+55family=Akbar,
+ []
+
+
+Overfull \hbox (223.72113pt too wide) in paragraph at lines 20--152
+\T1/cmr/m/n/10 fam-i-lyi=A, given=Prottoy A., giveni=P A, give-nun=0un=0,unique
+part=base,hash=c028361a87c147dce8ec4856c715b179family=Li,
+ []
+
+
+Overfull \hbox (205.69885pt too wide) in paragraph at lines 20--152
+\T1/cmr/m/n/10 fam-i-lyi=L, given=Sijie, giveni=S, give-nun=0un=0,uniquepart=ba
+se,hash=c7a36f78d6d8494eff302df5df44889bfamily=Shertzer,
+ []
+
+
+Overfull \hbox (212.00287pt too wide) in paragraph at lines 20--152
+\T1/cmr/m/n/10 fam-i-lyi=S, given=Allison, giveni=A, give-nun=0un=0,uniquepart=
+base,hash=f9e7deada3e77ca676a184caf3a35aa7family=Walsh,
+ []
+
+
+Overfull \hbox (88.22644pt too wide) in paragraph at lines 20--152
+\T1/cmr/m/n/10 fam-i-lyi=W, given=Randall P., giveni=R P, give-nun=0 name-hash0
+bdcfe4af10d7002e21302cc59d1f7ec
+ []
+
+
+Overfull \hbox (55.84656pt too wide) in paragraph at lines 20--152
+\T1/cmr/m/n/10 full-hashb060141567f6ebc2cee6ad879e2c48df bib-name-hash0bdcfe4af
+10d7002e21302cc59d1f7ec
+ []
+
+
+Overfull \hbox (121.16394pt too wide) in paragraph at lines 20--152
+\T1/cmr/m/n/10 au-thor-bib-name-hash0bdcfe4af10d7002e21302cc59d1f7ec au-thor-na
+me-hash0bdcfe4af10d7002e21302cc59d1f7ec
+ []
+
+
+Overfull \hbox (125.18964pt too wide) in paragraph at lines 20--152
+\T1/cmr/m/n/10 au-thor-full-hashb060141567f6ebc2cee6ad879e2c48df sor-tinitA sor
+-tinithasha3dcedd53b04d1adfd5ac303ecd5e6fa
+ []
+
+
+Overfull \hbox (47.9596pt too wide) in paragraph at lines 20--152
+\T1/cmr/m/n/10 kets and the Ero-sion of Black Wealth year2019 [][]\T1/cmtt/m/n/
+10 doi}[]10.3386/w25805[]\T1/cmr/m/n/10 allen2019technicalmisc
+ []
+
+
+Overfull \hbox (170.9018pt too wide) in paragraph at lines 20--152
+\T1/cmr/m/n/10 more-au-thor more-la-bel-name au-thor10un=1,uniquepart=given,has
+h=c90b63bacbb886e6b6a1fc3b71bc70b7family=Allen,
+ []
+
+
+Overfull \hbox (191.6745pt too wide) in paragraph at lines 20--152
+\T1/cmr/m/n/10 fam-i-lyi=A, given=M, giveni=M, givenun=1un=0,uniquepart=base,ha
+sh=c4b58bef566be24cf17d6c6c1f979f46family=Antwi-
+ []
+
+
+Overfull \hbox (241.91223pt too wide) in paragraph at lines 20--152
+\T1/cmr/m/n/10 Agyei, familyi=A.[]A, given=P, giveni=P, givenun=0un=0,uniquepar
+t=base,hash=05386c88e68226632523f4aa51d67dc4family=Aragon-
+ []
+
+
+Overfull \hbox (253.18726pt too wide) in paragraph at lines 20--152
+\T1/cmr/m/n/10 Durand, familyi=A.[]D, given=F, giveni=F, give-nun=0un=0,uniquep
+art=base,hash=561cb30bdc23a6f0c3a8d5a69d112133family=Babiker,
+ []
+
+
+Overfull \hbox (203.36609pt too wide) in paragraph at lines 20--152
+\T1/cmr/m/n/10 fam-i-lyi=B, given=M, giveni=M, give-nun=0un=0,uniquepart=base,h
+ash=f8b76b6761d86f8a4ea40f0977351a17family=Bertoldi,
+ []
+
+
+Overfull \hbox (186.39801pt too wide) in paragraph at lines 20--152
+\T1/cmr/m/n/10 fam-i-lyi=B, given=P, giveni=P, give-nun=0un=0,uniquepart=base,h
+ash=300818cb7c2a889b83071386586aafe6family=Bind,
+ []
+
+
+Overfull \hbox (201.42212pt too wide) in paragraph at lines 20--152
+\T1/cmr/m/n/10 fam-i-lyi=B, given=M, giveni=M, give-nun=0un=0,uniquepart=base,h
+ash=bb1a7d287de0f9859917d1283ba3ea09family=Brown,
+ []
+
+
+Overfull \hbox (214.19678pt too wide) in paragraph at lines 20--152
+\T1/cmr/m/n/10 fam-i-lyi=B, given=S, giveni=S, give-nun=0un=0,uniquepart=base,h
+ash=675e1c9bbb2ddd9e68bf78945d169713family=Buckeridge,
+ []
+
+
+Overfull \hbox (208.47595pt too wide) in paragraph at lines 20--152
+\T1/cmr/m/n/10 fam-i-lyi=B, given=M, giveni=M, give-nun=0un=0,uniquepart=base,h
+ash=fb42f1d6ee410f235c23728cf83dbd9bfamily=Camilloni,
+ []
+
+
+Overfull \hbox (210.61432pt too wide) in paragraph at lines 20--152
+\T1/cmr/m/n/10 fam-i-lyi=C, given=I, giveni=I, give-nun=0un=0,uniquepart=base,h
+ash=5b255668da97cc8bedd40af860a5bb8bfamily=Cartwright,
+ []
+
+[15]
+! Undefined control sequence.
+l.155       \strng
+                  {namehash}{988c1f536f546bb4ce46728d3f361600}
+? 
+! Undefined control sequence.
+l.156       \strng
+                  {fullhash}{f3bddef84992b1fe8da4e7a24dcbb450}
+? 
+! Undefined control sequence.
+l.157       \strng
+                  {bibnamehash}{988c1f536f546bb4ce46728d3f361600}
+? 
+! Undefined control sequence.
+l.158       \strng
+                  {authorbibnamehash}{988c1f536f546bb4ce46728d3f361600}
+? 
+! Undefined control sequence.
+l.159       \strng
+                  {authornamehash}{988c1f536f546bb4ce46728d3f361600}
+? 
+! Undefined control sequence.
+l.160       \strng
+                  {authorfullhash}{f3bddef84992b1fe8da4e7a24dcbb450}
+? 
+! Undefined control sequence.
+l.161       \field
+                  {sortinit}{A}
+? 
+! Undefined control sequence.
+l.162       \field
+                  {sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+? 
+! Undefined control sequence.
+l.163       \field
+                  {extradatescope}{labelyear}
+? 
+! Undefined control sequence.
+l.164       \field
+                  {labeldatesource}{year}
+? 
+! Undefined control sequence.
+l.165       \field
+                  {labelnamesource}{author}
+? 
+! Undefined control sequence.
+l.166       \field
+                  {labeltitlesource}{title}
+? 
+! Undefined control sequence.
+l.167       \field
+                  {title}{Technical Summary: Global warming of 1.5° C. An I...
+
+? 
+! Undefined control sequence.
+l.168       \field
+                  {year}{2019}
+? 
+! Undefined control sequence.
+l.169     \endentry
+                   
+? 
+! Undefined control sequence.
+l.170     \entry
+                {armstrong2019role}{article}{}
+? 
+! Undefined control sequence.
+l.171       \true
+                 {moreauthor}
+? 
+! Undefined control sequence.
+l.172       \true
+                 {morelabelname}
+? 
+! Undefined control sequence.
+l.173       \name
+                 {author}{10}{}{%
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.176            familyi={A\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.178            giveni={B\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.182            familyi={S\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.184            giveni={F\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.188 ...lyi={V\bibinithyphendelim C\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.190            giveni={A\bibinitperiod
+                                        \bibinitdelim M\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.190 ...ibinitperiod\bibinitdelim M\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.194            familyi={A\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.196            giveni={R\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.200            familyi={Å\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.202            giveni={D\bibinitperiod
+                                        \bibinitdelim O\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.202 ...ibinitperiod\bibinitdelim O\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.206            familyi={B\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.208            giveni={M\bibinitperiod
+                                        \bibinitdelim L\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.208 ...ibinitperiod\bibinitdelim L\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.212            familyi={C\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.214 ...eni={B\bibinithyphendelim Y\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.218            familyi={S\bibinitperiod
+                                         \bibinitdelim Z\bibinitperiod\bibin...
+
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.218 ...ibinitperiod\bibinitdelim Z\bibinitperiod
+                                                  \bibinitdelim S\bibinitper...
+
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.218 ...ibinitperiod\bibinitdelim S\bibinitperiod
+                                                  \bibinitdelim C\bibinitper...
+
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.218 ...ibinitperiod\bibinitdelim C\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.220            giveni={M\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.223            prefixi={d\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.227            familyi={C\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.229            giveni={P\bibinitperiod
+                                        \bibinitdelim M\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.229 ...ibinitperiod\bibinitdelim M\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.233            familyi={D\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.235            giveni={T\bibinitperiod
+                                        \bibinitdelim N\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.235 ...ibinitperiod\bibinitdelim N\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+l.238       \strng
+                  {namehash}{5d68e8f2cbe56721331188512d71ff9b}
+? 
+! Undefined control sequence.
+l.239       \strng
+                  {fullhash}{84358da3d5f521098f25ae78719f9983}
+? 
+! Undefined control sequence.
+l.240       \strng
+                  {bibnamehash}{5d68e8f2cbe56721331188512d71ff9b}
+? 
+! Undefined control sequence.
+l.241       \strng
+                  {authorbibnamehash}{5d68e8f2cbe56721331188512d71ff9b}
+? 
+! Undefined control sequence.
+l.242       \strng
+                  {authornamehash}{5d68e8f2cbe56721331188512d71ff9b}
+? 
+! Undefined control sequence.
+l.243       \strng
+                  {authorfullhash}{84358da3d5f521098f25ae78719f9983}
+? 
+! Undefined control sequence.
+l.244       \field
+                  {sortinit}{A}
+? 
+! Undefined control sequence.
+l.245       \field
+                  {sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+? 
+! Undefined control sequence.
+l.246       \field
+                  {extradatescope}{labelyear}
+? 
+! Undefined control sequence.
+l.247       \field
+                  {labeldatesource}{year}
+? 
+! Undefined control sequence.
+l.248       \field
+                  {labelnamesource}{author}
+? 
+! Undefined control sequence.
+l.249       \field
+                  {labeltitlesource}{title}
+? 
+! Undefined control sequence.
+l.250       \field
+                  {journaltitle}{Environmental health perspectives}
+? 
+! Undefined control sequence.
+l.251       \field
+                  {number}{9}
+? 
+! Undefined control sequence.
+l.252       \field
+                  {title}{The role of humidity in associations of high tempe...
+
+? 
+! Undefined control sequence.
+l.253       \field
+                  {volume}{127}
+? 
+! Undefined control sequence.
+l.254       \field
+                  {year}{2019}
+? 
+! Undefined control sequence.
+l.255       \field
+                  {pages}{097007}
+? 
+! Undefined control sequence.
+l.256       \range
+                  {pages}{1}
+? 
+! Undefined control sequence.
+l.257     \endentry
+                   
+? 
+! Undefined control sequence.
+l.258     \entry
+                {Banzhaf2019}{article}{}
+? 
+! Undefined control sequence.
+l.259       \name
+                 {author}{3}{}{%
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.262            familyi={B\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.264            giveni={S\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.268            familyi={M\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.270            giveni={L\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.274            familyi={T\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.276            giveni={C\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+l.279       \strng
+                  {namehash}{2fb4eced72aa9b7182994d8000e233d8}
+? 
+! Undefined control sequence.
+l.280       \strng
+                  {fullhash}{2fb4eced72aa9b7182994d8000e233d8}
+? 
+! Undefined control sequence.
+l.281       \strng
+                  {bibnamehash}{2fb4eced72aa9b7182994d8000e233d8}
+? 
+! Undefined control sequence.
+l.282       \strng
+                  {authorbibnamehash}{2fb4eced72aa9b7182994d8000e233d8}
+? 
+! Undefined control sequence.
+l.283       \strng
+                  {authornamehash}{2fb4eced72aa9b7182994d8000e233d8}
+? 
+! Undefined control sequence.
+l.284       \strng
+                  {authorfullhash}{2fb4eced72aa9b7182994d8000e233d8}
+? 
+! Undefined control sequence.
+l.285       \field
+                  {sortinit}{B}
+? 
+! Undefined control sequence.
+l.286       \field
+                  {sortinithash}{8de16967003c7207dae369d874f1456e}
+? 
+! Undefined control sequence.
+l.287       \field
+                  {extradatescope}{labelyear}
+? 
+! Undefined control sequence.
+l.288       \field
+                  {labeldatesource}{year}
+? 
+! Undefined control sequence.
+l.289       \field
+                  {labelnamesource}{author}
+? 
+! Undefined control sequence.
+l.290       \field
+                  {labeltitlesource}{title}
+? 
+! Undefined control sequence.
+l.291       \field
+                  {issn}{0895-3309}
+? 
+! Undefined control sequence.
+l.292       \field
+                  {journaltitle}{J. Econ. Perspect.}
+? 
+! Undefined control sequence.
+l.293       \field
+                  {month}{2}
+? 
+! Undefined control sequence.
+l.294       \field
+                  {number}{1}
+? 
+! Undefined control sequence.
+l.295       \field
+                  {title}{{Environmental Justice: The Economics of Race, Pla...
+
+? 
+! Undefined control sequence.
+l.296       \field
+                  {volume}{33}
+? 
+! Undefined control sequence.
+l.297       \field
+                  {year}{2019}
+? 
+! Undefined control sequence.
+l.298       \field
+                  {pages}{185\bibrangedash 208}
+? 
+! Undefined control sequence.
+l.299       \range
+                  {pages}{24}
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.300       \verb{doi}
+                      
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.301       \verb 10.1257/jep.33.1.185
+                                      
+? 
+! Undefined control sequence.
+l.302       \endverb
+                    
+? 
+! Undefined control sequence.
+l.303     \endentry
+                   
+? 
+! Undefined control sequence.
+l.304     \entry
+                {baylis_weather_2018}{article}{}
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.304     \entry{baylis_
+                        weather_2018}{article}{}
+? 
+! Extra }, or forgotten $.
+l.304     \entry{baylis_weather_2018}
+                                     {article}{}
+? 
+! Undefined control sequence.
+l.305       \name
+                 {author}{8}{}{%
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.308            familyi={B\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.310            giveni={P\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.314            familyi={O\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.316            giveni={N\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.320            familyi={K\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.322            giveni={Y\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.326            familyi={C\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.328            giveni={H\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.332            familyi={C\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.334            giveni={L\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.338            familyi={M\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.340            giveni={E\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.344            familyi={C\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.346            giveni={M\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.350            familyi={F\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.352            giveni={J\bibinitperiod
+                                        \bibinitdelim H\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.352 ...ibinitperiod\bibinitdelim H\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+l.355       \name
+                 {editor}{1}{}{%
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.358            familyi={P\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.360            giveni={T\bibinitperiod
+                                        }}}%
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.362       \list{language}{1}
+                              {%
+? 
+! Undefined control sequence.
+l.365       \strng
+                  {namehash}{d85108a5e86d6a9dc772706f1ffd8241}
+? 
+! Undefined control sequence.
+l.366       \strng
+                  {fullhash}{249b743aaa99b3d445ded6c3a795cf26}
+? 
+! Undefined control sequence.
+l.367       \strng
+                  {bibnamehash}{d85108a5e86d6a9dc772706f1ffd8241}
+? 
+! Undefined control sequence.
+l.368       \strng
+                  {authorbibnamehash}{d85108a5e86d6a9dc772706f1ffd8241}
+? 
+! Undefined control sequence.
+l.369       \strng
+                  {authornamehash}{d85108a5e86d6a9dc772706f1ffd8241}
+? 
+! Undefined control sequence.
+l.370       \strng
+                  {authorfullhash}{249b743aaa99b3d445ded6c3a795cf26}
+? 
+! Undefined control sequence.
+l.371       \strng
+                  {editorbibnamehash}{695bebb2c50e61cc78db9f51e2d1ca75}
+? 
+! Undefined control sequence.
+l.372       \strng
+                  {editornamehash}{695bebb2c50e61cc78db9f51e2d1ca75}
+? 
+! Undefined control sequence.
+l.373       \strng
+                  {editorfullhash}{695bebb2c50e61cc78db9f51e2d1ca75}
+? 
+! Undefined control sequence.
+l.374       \field
+                  {sortinit}{B}
+? 
+! Undefined control sequence.
+l.375       \field
+                  {sortinithash}{8de16967003c7207dae369d874f1456e}
+? 
+! Undefined control sequence.
+l.376       \field
+                  {extradatescope}{labelyear}
+? 
+! Undefined control sequence.
+l.377       \field
+                  {labeldatesource}{year}
+? 
+! Undefined control sequence.
+l.378       \field
+                  {labelnamesource}{author}
+? 
+! Undefined control sequence.
+l.379       \field
+                  {labeltitlesource}{title}
+? 
+! Undefined control sequence.
+l.380       \field
+                  {annotation}{     }
+? 
+! Undefined control sequence.
+l.381       \field
+                  {issn}{1932-6203}
+? 
+! Undefined control sequence.
+l.382       \field
+                  {journaltitle}{PLOS One}
+? 
+! Undefined control sequence.
+l.383       \field
+                  {month}{4}
+? 
+! Undefined control sequence.
+l.384       \field
+                  {number}{4}
+? 
+! Undefined control sequence.
+l.385       \field
+                  {title}{Weather impacts expressed sentiment}
+? 
+! Undefined control sequence.
+l.386       \field
+                  {urlday}{26}
+? 
+! Undefined control sequence.
+l.387       \field
+                  {urlmonth}{6}
+? 
+! Undefined control sequence.
+l.388       \field
+                  {urlyear}{2019}
+? 
+! Undefined control sequence.
+l.389       \field
+                  {volume}{13}
+? 
+! Undefined control sequence.
+l.390       \field
+                  {year}{2018}
+? 
+! Undefined control sequence.
+l.391       \field
+                  {urldateera}{ce}
+? 
+! Undefined control sequence.
+l.392       \field
+                  {pages}{e0195750}
+? 
+! Undefined control sequence.
+l.393       \range
+                  {pages}{-1}
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.394       \verb{doi}
+                      
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.395       \verb 10.1371/journal.pone.0195750
+                                              
+? 
+! Undefined control sequence.
+l.396       \endverb
+                    
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.397       \verb{file}
+                       
+? 
+! Undefined control sequence.
+l.399       \endverb
+                    
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.400       \verb{urlraw}
+                         
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.401 .../dx.plos.org/10.1371/journal.pone.0195750
+                                                  
+? 
+! Undefined control sequence.
+l.402       \endverb
+                    
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.403       \verb{url}
+                      
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.404 .../dx.plos.org/10.1371/journal.pone.0195750
+                                                  
+? 
+! Undefined control sequence.
+l.405       \endverb
+                    
+? 
+! Undefined control sequence.
+l.406     \endentry
+                   
+? 
+! Undefined control sequence.
+l.407     \entry
+                {Belanger2015Mar}{article}{}
+? 
+! Undefined control sequence.
+l.408       \name
+                 {author}{4}{}{%
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.411            familyi={B\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.413            giveni={D\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.417            familyi={G\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.419            giveni={P\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.423            familyi={V\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.425            giveni={P\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.429            familyi={A\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.431            giveni={B\bibinitperiod
+                                        },
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.434       \list{publisher}{1}
+                               {%
+? 
+! Undefined control sequence.
+l.437       \strng
+                  {namehash}{5e2870477f7fea26e0dde174fb02ebe5}
+? 
+! Undefined control sequence.
+l.438       \strng
+                  {fullhash}{b581900134417fb88ce4fc829889e05e}
+? 
+! Undefined control sequence.
+l.439       \strng
+                  {bibnamehash}{5e2870477f7fea26e0dde174fb02ebe5}
+? 
+! Undefined control sequence.
+l.440       \strng
+                  {authorbibnamehash}{5e2870477f7fea26e0dde174fb02ebe5}
+? 
+! Undefined control sequence.
+l.441       \strng
+                  {authornamehash}{5e2870477f7fea26e0dde174fb02ebe5}
+? 
+! Undefined control sequence.
+l.442       \strng
+                  {authorfullhash}{b581900134417fb88ce4fc829889e05e}
+? 
+! Undefined control sequence.
+l.443       \field
+                  {sortinit}{B}
+? 
+! Undefined control sequence.
+l.444       \field
+                  {sortinithash}{8de16967003c7207dae369d874f1456e}
+? 
+! Undefined control sequence.
+l.445       \field
+                  {extradatescope}{labelyear}
+? 
+! Undefined control sequence.
+l.446       \field
+                  {labeldatesource}{year}
+? 
+! Undefined control sequence.
+l.447       \field
+                  {labelnamesource}{author}
+? 
+! Undefined control sequence.
+l.448       \field
+                  {labeltitlesource}{title}
+? 
+! Undefined control sequence.
+l.449       \field
+                  {issn}{1353-8292}
+? 
+! Undefined control sequence.
+l.450       \field
+                  {journaltitle}{Health {\&} Place}
+? 
+! Undefined control sequence.
+l.451       \field
+                  {month}{3}
+? 
+! Undefined control sequence.
+l.452       \field
+                  {title}{{Neighbourhood and dwelling characteristics associ...
+
+? 
+! Undefined control sequence.
+l.453       \field
+                  {volume}{32}
+? 
+! Undefined control sequence.
+l.454       \field
+                  {year}{2015}
+? 
+! Undefined control sequence.
+l.455       \field
+                  {pages}{8\bibrangedash 18}
+? 
+
+LaTeX Warning: Command \textendash invalid in math mode on input line 455.
+
+! Undefined control sequence.
+l.456       \range
+                  {pages}{11}
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.457       \verb{doi}
+                      
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.458 ...  \verb 10.1016/j.healthplace.2014.12.014
+                                                  
+? 
+! Undefined control sequence.
+l.459       \endverb
+                    
+? 
+! Undefined control sequence.
+l.460     \endentry
+                   
+? 
+! Undefined control sequence.
+l.461     \entry
+                {Berrang-Ford2021}{article}{}
+? 
+! Undefined control sequence.
+l.462       \name
+                 {author}{8}{}{%
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.465 ...lyi={B\bibinithyphendelim F\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.467            giveni={L\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.471            familyi={S\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.473            giveni={A\bibinitperiod
+                                        \bibinitdelim J\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.473 ...ibinitperiod\bibinitdelim J\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.477            familyi={C\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.479            giveni={M\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.483            familyi={M\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.485            giveni={J\bibinitperiod
+                                        \bibinitdelim C\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.485 ...ibinitperiod\bibinitdelim C\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.489            familyi={S\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.491            giveni={P\bibinitperiod
+                                        \bibinitdelim F\bibinitperiod\bibini...
+
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.491 ...ibinitperiod\bibinitdelim F\bibinitperiod
+                                                  \bibinitdelim D\bibinitper...
+
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.491 ...ibinitperiod\bibinitdelim D\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.495            familyi={H\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.497            giveni={N\bibinitperiod
+                                        \bibinitdelim R\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.497 ...ibinitperiod\bibinitdelim R\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.501            familyi={H\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.503            giveni={A\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.507            familyi={D\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.509            giveni={A\bibinitperiod
+                                        \bibinitdelim D\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.509 ...ibinitperiod\bibinitdelim D\bibinitperiod
+                                                  },
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.512       \list{publisher}{1}
+                               {%
+? 
+! Undefined control sequence.
+l.515       \strng
+                  {namehash}{079105d33b828e087fb776738d426c51}
+? 
+! Undefined control sequence.
+l.516       \strng
+                  {fullhash}{cc8cca46ca3530537574653fab45961c}
+? 
+! Undefined control sequence.
+l.517       \strng
+                  {bibnamehash}{079105d33b828e087fb776738d426c51}
+? 
+! Undefined control sequence.
+l.518       \strng
+                  {authorbibnamehash}{079105d33b828e087fb776738d426c51}
+? 
+! Undefined control sequence.
+l.519       \strng
+                  {authornamehash}{079105d33b828e087fb776738d426c51}
+? 
+! Undefined control sequence.
+l.520       \strng
+                  {authorfullhash}{cc8cca46ca3530537574653fab45961c}
+? 
+! Undefined control sequence.
+l.521       \field
+                  {sortinit}{B}
+? 
+! Undefined control sequence.
+l.522       \field
+                  {sortinithash}{8de16967003c7207dae369d874f1456e}
+? 
+! Undefined control sequence.
+l.523       \field
+                  {extradatescope}{labelyear}
+? 
+! Undefined control sequence.
+l.524       \field
+                  {labeldatesource}{year}
+? 
+! Undefined control sequence.
+l.525       \field
+                  {labelnamesource}{author}
+? 
+! Undefined control sequence.
+l.526       \field
+                  {labeltitlesource}{title}
+? 
+! Undefined control sequence.
+l.527       \field
+                  {issn}{2542-5196}
+? 
+! Undefined control sequence.
+l.528       \field
+                  {journaltitle}{Lancet Planetary Health}
+? 
+! Undefined control sequence.
+l.529       \field
+                  {month}{8}
+? 
+! Undefined control sequence.
+l.530       \field
+                  {number}{8}
+? 
+! Undefined control sequence.
+l.531       \field
+                  {title}{{Systematic mapping of global research on climate ...
+
+? 
+! Undefined control sequence.
+l.532       \field
+                  {volume}{5}
+? 
+! Undefined control sequence.
+l.533       \field
+                  {year}{2021}
+? 
+! Undefined control sequence.
+l.534       \field
+                  {pages}{e514\bibrangedash e525}
+? 
+
+LaTeX Warning: Command \textendash invalid in math mode on input line 534.
+
+! Undefined control sequence.
+l.535       \range
+                  {pages}{-1}
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.536       \verb{doi}
+                      
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.537       \verb 10.1016/S2542-5196(21)00179-0
+                                               
+? 
+! Undefined control sequence.
+l.538       \endverb
+                    
+? 
+! Undefined control sequence.
+l.539     \endentry
+                   
+? 
+! Undefined control sequence.
+l.540     \entry
+                {Berry2007}{article}{}
+? 
+! Undefined control sequence.
+l.541       \name
+                 {author}{1}{}{%
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.544            familyi={B\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.546            giveni={H\bibinitperiod
+                                        \bibinitdelim L\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.546 ...ibinitperiod\bibinitdelim L\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+l.549       \strng
+                  {namehash}{a18db37e858a23dabcb4a5e062aab4a1}
+? 
+! Undefined control sequence.
+l.550       \strng
+                  {fullhash}{a18db37e858a23dabcb4a5e062aab4a1}
+? 
+! Undefined control sequence.
+l.551       \strng
+                  {bibnamehash}{a18db37e858a23dabcb4a5e062aab4a1}
+? 
+! Undefined control sequence.
+l.552       \strng
+                  {authorbibnamehash}{a18db37e858a23dabcb4a5e062aab4a1}
+? 
+! Undefined control sequence.
+l.553       \strng
+                  {authornamehash}{a18db37e858a23dabcb4a5e062aab4a1}
+? 
+! Undefined control sequence.
+l.554       \strng
+                  {authorfullhash}{a18db37e858a23dabcb4a5e062aab4a1}
+? 
+! Undefined control sequence.
+l.555       \field
+                  {sortinit}{B}
+? 
+! Undefined control sequence.
+l.556       \field
+                  {sortinithash}{8de16967003c7207dae369d874f1456e}
+? 
+! Undefined control sequence.
+l.557       \field
+                  {extradatescope}{labelyear}
+? 
+! Undefined control sequence.
+l.558       \field
+                  {labeldatesource}{year}
+? 
+! Undefined control sequence.
+l.559       \field
+                  {labelnamesource}{author}
+? 
+! Undefined control sequence.
+l.560       \field
+                  {labeltitlesource}{title}
+? 
+! Undefined control sequence.
+l.561       \field
+                  {issn}{1034-7674 (Print) 1034-7674}
+? 
+! Undefined control sequence.
+l.562       \field
+                  {journaltitle}{N S W Public Health Bull}
+? 
+! Undefined control sequence.
+l.563       \field
+                  {number}{11-12}
+? 
+! Undefined control sequence.
+l.564       \field
+                  {title}{'Crowded suburbs' and 'killer cities': a brief rev...
+
+? 
+! Undefined control sequence.
+l.565       \field
+                  {type}{Journal Article}
+? 
+! Undefined control sequence.
+l.566       \field
+                  {volume}{18}
+? 
+! Undefined control sequence.
+l.567       \field
+                  {year}{2007}
+? 
+! Undefined control sequence.
+l.568       \field
+                  {pages}{222\bibrangedash 7}
+? 
+
+LaTeX Warning: Command \textendash invalid in math mode on input line 568.
+
+! Undefined control sequence.
+l.569       \range
+                  {pages}{6}
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.570       \verb{doi}
+                      
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.571       \verb 10.1071/nb07024
+                                 
+? 
+! Undefined control sequence.
+l.572       \endverb
+                    
+? 
+! Undefined control sequence.
+l.573     \endentry
+                   
+? 
+! Undefined control sequence.
+l.574     \entry
+                {Berry2018Apr}{article}{}
+? 
+! Undefined control sequence.
+l.575       \name
+                 {author}{5}{}{%
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.578            familyi={B\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.580            giveni={H\bibinitperiod
+                                        \bibinitdelim L\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.580 ...ibinitperiod\bibinitdelim L\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.584            familyi={W\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.586            giveni={T\bibinitperiod
+                                        \bibinitdelim D\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.586 ...ibinitperiod\bibinitdelim D\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.590            familyi={D\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.592            giveni={K\bibinitperiod
+                                        \bibinitdelim B\bibinitperiod\bibini...
+
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.592 ...ibinitperiod\bibinitdelim B\bibinitperiod
+                                                  \bibinitdelim G\bibinitper...
+
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.592 ...ibinitperiod\bibinitdelim G\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.596            familyi={C\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.598            giveni={A\bibinitperiod
+                                        \bibinitdelim G\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.598 ...ibinitperiod\bibinitdelim G\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.602            familyi={M\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.604            giveni={V\bibinitperiod
+                                        },
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.607       \list{publisher}{1}
+                               {%
+? 
+! Undefined control sequence.
+l.610       \strng
+                  {namehash}{40c9e1d86798e3dbb0b7a86339f196b9}
+? 
+! Undefined control sequence.
+l.611       \strng
+                  {fullhash}{ee7f9768f1b9ea20532bc971aa8487f2}
+? 
+! Undefined control sequence.
+l.612       \strng
+                  {bibnamehash}{40c9e1d86798e3dbb0b7a86339f196b9}
+? 
+! Undefined control sequence.
+l.613       \strng
+                  {authorbibnamehash}{40c9e1d86798e3dbb0b7a86339f196b9}
+? 
+! Undefined control sequence.
+l.614       \strng
+                  {authornamehash}{40c9e1d86798e3dbb0b7a86339f196b9}
+? 
+! Undefined control sequence.
+l.615       \strng
+                  {authorfullhash}{ee7f9768f1b9ea20532bc971aa8487f2}
+? 
+! Undefined control sequence.
+l.616       \field
+                  {sortinit}{B}
+? 
+! Undefined control sequence.
+l.617       \field
+                  {sortinithash}{8de16967003c7207dae369d874f1456e}
+? 
+! Undefined control sequence.
+l.618       \field
+                  {extradatescope}{labelyear}
+? 
+! Undefined control sequence.
+l.619       \field
+                  {labeldatesource}{year}
+? 
+! Undefined control sequence.
+l.620       \field
+                  {labelnamesource}{author}
+? 
+! Undefined control sequence.
+l.621       \field
+                  {labeltitlesource}{title}
+? 
+! Undefined control sequence.
+l.622       \field
+                  {issn}{1758-6798}
+? 
+! Undefined control sequence.
+l.623       \field
+                  {journaltitle}{Nat. Clim. Change}
+? 
+! Undefined control sequence.
+l.624       \field
+                  {month}{4}
+? 
+! Undefined control sequence.
+l.625       \field
+                  {number}{4}
+? 
+! Undefined control sequence.
+l.626       \field
+                  {title}{{The case for systems thinking about climate chang...
+
+? 
+! Undefined control sequence.
+l.627       \field
+                  {volume}{8}
+? 
+! Undefined control sequence.
+l.628       \field
+                  {year}{2018}
+? 
+! Undefined control sequence.
+l.629       \field
+                  {pages}{282\bibrangedash 290}
+? 
+
+LaTeX Warning: Command \textendash invalid in math mode on input line 629.
+
+! Undefined control sequence.
+l.630       \range
+                  {pages}{9}
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.631       \verb{doi}
+                      
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.632       \verb 10.1038/s41558-018-0102-4
+                                           
+? 
+! Undefined control sequence.
+l.633       \endverb
+                    
+? 
+! Undefined control sequence.
+l.634     \endentry
+                   
+? 
+! Undefined control sequence.
+l.635     \entry
+                {Biardeau2020Jan}{article}{}
+? 
+! Undefined control sequence.
+l.636       \name
+                 {author}{4}{}{%
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.639            familyi={B\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.641            giveni={L\bibinitperiod
+                                        \bibinitdelim T\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.641 ...ibinitperiod\bibinitdelim T\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.645            familyi={D\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.647            giveni={L\bibinitperiod
+                                        \bibinitdelim W\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.647 ...ibinitperiod\bibinitdelim W\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.651            familyi={G\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.653            giveni={P\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.657            familyi={W\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.659            giveni={C\bibinitperiod
+                                        },
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.662       \list{publisher}{1}
+                               {%
+? 
+! Undefined control sequence.
+l.665       \strng
+                  {namehash}{ce7cf00b66f6195e32afb0803e5f61ba}
+? 
+! Undefined control sequence.
+l.666       \strng
+                  {fullhash}{af495fe63abd960e7f18d7dfc87f3df4}
+? 
+! Undefined control sequence.
+l.667       \strng
+                  {bibnamehash}{ce7cf00b66f6195e32afb0803e5f61ba}
+? 
+! Undefined control sequence.
+l.668       \strng
+                  {authorbibnamehash}{ce7cf00b66f6195e32afb0803e5f61ba}
+? 
+! Undefined control sequence.
+l.669       \strng
+                  {authornamehash}{ce7cf00b66f6195e32afb0803e5f61ba}
+? 
+! Undefined control sequence.
+l.670       \strng
+                  {authorfullhash}{af495fe63abd960e7f18d7dfc87f3df4}
+? 
+! Undefined control sequence.
+l.671       \field
+                  {sortinit}{B}
+? 
+! Undefined control sequence.
+l.672       \field
+                  {sortinithash}{8de16967003c7207dae369d874f1456e}
+? 
+! Undefined control sequence.
+l.673       \field
+                  {extradatescope}{labelyear}
+? 
+! Undefined control sequence.
+l.674       \field
+                  {labeldatesource}{year}
+? 
+! Undefined control sequence.
+l.675       \field
+                  {labelnamesource}{author}
+? 
+! Undefined control sequence.
+l.676       \field
+                  {labeltitlesource}{title}
+? 
+! Undefined control sequence.
+l.677       \field
+                  {issn}{2398-9629}
+? 
+! Undefined control sequence.
+l.678       \field
+                  {journaltitle}{Nat. Sustainability}
+? 
+! Undefined control sequence.
+l.679       \field
+                  {month}{1}
+? 
+! Undefined control sequence.
+l.680       \field
+                  {number}{1}
+? 
+! Undefined control sequence.
+l.681       \field
+                  {title}{{Heat exposure and global air conditioning}}
+? 
+! Undefined control sequence.
+l.682       \field
+                  {volume}{3}
+? 
+! Undefined control sequence.
+l.683       \field
+                  {year}{2020}
+? 
+! Undefined control sequence.
+l.684       \field
+                  {pages}{25\bibrangedash 28}
+? 
+
+LaTeX Warning: Command \textendash invalid in math mode on input line 684.
+
+! Undefined control sequence.
+l.685       \range
+                  {pages}{4}
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.686       \verb{doi}
+                      
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.687       \verb 10.1038/s41893-019-0441-9
+                                           
+? 
+! Undefined control sequence.
+l.688       \endverb
+                    
+? 
+! Undefined control sequence.
+l.689     \endentry
+                   
+? 
+! Undefined control sequence.
+l.690     \entry
+                {bolton_computation_1980}{article}{}
+? 
+! Undefined control sequence.
+l.691       \name
+                 {author}{1}{}{%
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.694            familyi={B\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.696            giveni={D\bibinitperiod
+                                        },
+? 
+
+! LaTeX Error: Too deeply nested.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.699       \list{language}{1}
+                              {%
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.699       \list{language}{1}
+                              {%
+? 
+! Undefined control sequence.
+l.702       \strng
+                  {namehash}{0b5c90fed25bb933b938e1b917503c58}
+? 
+! Undefined control sequence.
+l.703       \strng
+                  {fullhash}{0b5c90fed25bb933b938e1b917503c58}
+? 
+! Undefined control sequence.
+l.704       \strng
+                  {bibnamehash}{0b5c90fed25bb933b938e1b917503c58}
+? 
+! Undefined control sequence.
+l.705       \strng
+                  {authorbibnamehash}{0b5c90fed25bb933b938e1b917503c58}
+? 
+! Undefined control sequence.
+l.706       \strng
+                  {authornamehash}{0b5c90fed25bb933b938e1b917503c58}
+? 
+! Undefined control sequence.
+l.707       \strng
+                  {authorfullhash}{0b5c90fed25bb933b938e1b917503c58}
+? 
+! Undefined control sequence.
+l.708       \field
+                  {sortinit}{B}
+? 
+! Undefined control sequence.
+l.709       \field
+                  {sortinithash}{8de16967003c7207dae369d874f1456e}
+? 
+! Undefined control sequence.
+l.710       \field
+                  {extradatescope}{labelyear}
+? 
+! Undefined control sequence.
+l.711       \field
+                  {labeldatesource}{year}
+? 
+! Undefined control sequence.
+l.712       \field
+                  {labelnamesource}{author}
+? 
+! Undefined control sequence.
+l.713       \field
+                  {labeltitlesource}{title}
+? 
+! Undefined control sequence.
+l.714       \field
+                  {issn}{0027-0644}
+? 
+! Undefined control sequence.
+l.715       \field
+                  {journaltitle}{Monthly Weather Review}
+? 
+! Undefined control sequence.
+l.716       \field
+                  {month}{7}
+? 
+! Undefined control sequence.
+l.717       \field
+                  {note}{Publisher: American Meteorological Society}
+? 
+! Undefined control sequence.
+l.718       \field
+                  {number}{7}
+? 
+! Undefined control sequence.
+l.719       \field
+                  {title}{The {Computation} of {Equivalent} {Potential} {Tem...
+
+? 
+! Undefined control sequence.
+l.720       \field
+                  {urlday}{5}
+? 
+! Undefined control sequence.
+l.721       \field
+                  {urlmonth}{11}
+? 
+! Undefined control sequence.
+l.722       \field
+                  {urlyear}{2020}
+? 
+! Undefined control sequence.
+l.723       \field
+                  {volume}{108}
+? 
+! Undefined control sequence.
+l.724       \field
+                  {year}{1980}
+? 
+! Undefined control sequence.
+l.725       \field
+                  {urldateera}{ce}
+? 
+! Undefined control sequence.
+l.726       \field
+                  {pages}{1046\bibrangedash 1053}
+? 
+
+LaTeX Warning: Command \textendash invalid in math mode on input line 726.
+
+! Undefined control sequence.
+l.727       \range
+                  {pages}{8}
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.728       \verb{doi}
+                      
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.729 ...5/1520-0493(1980)108<1046:TCOEPT>2.0.CO;2
+                                                  
+? 
+! Undefined control sequence.
+l.730       \endverb
+                    
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.731       \verb{file}
+                       
+? 
+! Undefined control sequence.
+l.733       \endverb
+                    
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.734       \verb{urlraw}
+                         
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.735 ...5/The-Computation-of-Equivalent-Potential
+                                                  
+? 
+! Undefined control sequence.
+l.736       \endverb
+                    
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.737       \verb{url}
+                      
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.738 ...5/The-Computation-of-Equivalent-Potential
+                                                  
+? 
+! Undefined control sequence.
+l.739       \endverb
+                    
+? 
+! Undefined control sequence.
+l.740     \endentry
+                   
+? 
+! Undefined control sequence.
+l.741     \entry
+                {budd2008wet}{article}{}
+? 
+! Undefined control sequence.
+l.742       \name
+                 {author}{1}{}{%
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.745            familyi={B\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.747            giveni={G\bibinitperiod
+                                        \bibinitdelim M\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.747 ...ibinitperiod\bibinitdelim M\bibinitperiod
+                                                  },
+? 
+
+! LaTeX Error: Too deeply nested.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.750       \list{publisher}{1}
+                               {%
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.750       \list{publisher}{1}
+                               {%
+? 
+! Undefined control sequence.
+l.753       \strng
+                  {namehash}{6a2d9899d224ad550913e55698acde80}
+? 
+! Undefined control sequence.
+l.754       \strng
+                  {fullhash}{6a2d9899d224ad550913e55698acde80}
+? 
+! Undefined control sequence.
+l.755       \strng
+                  {bibnamehash}{6a2d9899d224ad550913e55698acde80}
+? 
+! Undefined control sequence.
+l.756       \strng
+                  {authorbibnamehash}{6a2d9899d224ad550913e55698acde80}
+? 
+! Undefined control sequence.
+l.757       \strng
+                  {authornamehash}{6a2d9899d224ad550913e55698acde80}
+? 
+! Undefined control sequence.
+l.758       \strng
+                  {authorfullhash}{6a2d9899d224ad550913e55698acde80}
+? 
+! Undefined control sequence.
+l.759       \field
+                  {sortinit}{B}
+? 
+! Undefined control sequence.
+l.760       \field
+                  {sortinithash}{8de16967003c7207dae369d874f1456e}
+? 
+! Undefined control sequence.
+l.761       \field
+                  {extradatescope}{labelyear}
+? 
+! Undefined control sequence.
+l.762       \field
+                  {labeldatesource}{year}
+? 
+! Undefined control sequence.
+l.763       \field
+                  {labelnamesource}{author}
+? 
+! Undefined control sequence.
+l.764       \field
+                  {labeltitlesource}{title}
+? 
+! Undefined control sequence.
+l.765       \field
+                  {journaltitle}{Journal of Science and Medicine in Sport}
+? 
+! Undefined control sequence.
+l.766       \field
+                  {number}{1}
+? 
+! Undefined control sequence.
+l.767       \field
+                  {title}{Wet-bulb globe temperature (WBGT)—its history an...
+
+? 
+
+LaTeX Warning: Command \textemdash invalid in math mode on input line 767.
+
+! Undefined control sequence.
+l.768       \field
+                  {volume}{11}
+? 
+! Undefined control sequence.
+l.769       \field
+                  {year}{2008}
+? 
+! Undefined control sequence.
+l.770       \field
+                  {pages}{20\bibrangedash 32}
+? 
+
+LaTeX Warning: Command \textendash invalid in math mode on input line 770.
+
+! Undefined control sequence.
+l.771       \range
+                  {pages}{13}
+? 
+! Undefined control sequence.
+l.772     \endentry
+                   
+? 
+! Undefined control sequence.
+l.773     \entry
+                {bullard2012wrong}{book}{}
+? 
+! Undefined control sequence.
+l.774       \name
+                 {author}{2}{}{%
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.777            familyi={B\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.779            giveni={R\bibinitperiod
+                                        \bibinitdelim D\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.779 ...ibinitperiod\bibinitdelim D\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.783            familyi={W\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.785            giveni={B\bibinitperiod
+                                        },
+? 
+
+! LaTeX Error: Too deeply nested.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.788       \list{publisher}{1}
+                               {%
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.788       \list{publisher}{1}
+                               {%
+? 
+! Undefined control sequence.
+l.791       \strng
+                  {namehash}{7cca69fa6d5c1cbe7519b217aa6c02ac}
+? 
+! Undefined control sequence.
+l.792       \strng
+                  {fullhash}{7cca69fa6d5c1cbe7519b217aa6c02ac}
+? 
+! Undefined control sequence.
+l.793       \strng
+                  {bibnamehash}{7cca69fa6d5c1cbe7519b217aa6c02ac}
+? 
+! Undefined control sequence.
+l.794       \strng
+                  {authorbibnamehash}{7cca69fa6d5c1cbe7519b217aa6c02ac}
+? 
+! Undefined control sequence.
+l.795       \strng
+                  {authornamehash}{7cca69fa6d5c1cbe7519b217aa6c02ac}
+? 
+! Undefined control sequence.
+l.796       \strng
+                  {authorfullhash}{7cca69fa6d5c1cbe7519b217aa6c02ac}
+? 
+! Undefined control sequence.
+l.797       \field
+                  {sortinit}{B}
+? 
+! Undefined control sequence.
+l.798       \field
+                  {sortinithash}{8de16967003c7207dae369d874f1456e}
+? 
+! Undefined control sequence.
+l.799       \field
+                  {extradatescope}{labelyear}
+? 
+! Undefined control sequence.
+l.800       \field
+                  {labeldatesource}{year}
+? 
+! Undefined control sequence.
+l.801       \field
+                  {labelnamesource}{author}
+? 
+! Undefined control sequence.
+l.802       \field
+                  {labeltitlesource}{title}
+? 
+! Undefined control sequence.
+l.803       \field
+                  {title}{The wrong complexion for protection: How the gover...
+
+? 
+! Undefined control sequence.
+l.804       \field
+                  {year}{2012}
+? 
+! Undefined control sequence.
+l.805     \endentry
+                   
+? 
+! Undefined control sequence.
+l.806     \entry
+                {Burke2018Aug}{article}{}
+? 
+! Undefined control sequence.
+l.807       \name
+                 {author}{7}{ul=2}{%
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.810            familyi={B\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.812            giveni={M\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.816            familyi={G\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.818            giveni={F\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.822            familyi={B\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.824            giveni={P\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.828 ...lyi={H\bibinithyphendelim N\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.830            giveni={S\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.834            familyi={B\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.836            giveni={C\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.840            familyi={B\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.842            giveni={S\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.846            familyi={H\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.848            giveni={S\bibinitperiod
+                                        },
+? 
+
+! LaTeX Error: Too deeply nested.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.851       \list{publisher}{1}
+                               {%
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.851       \list{publisher}{1}
+                               {%
+? 
+! Undefined control sequence.
+l.854       \strng
+                  {namehash}{9b98a807f6a4d055a232843a76825b1b}
+? 
+! Undefined control sequence.
+l.855       \strng
+                  {fullhash}{d1ae3459fdf18aaaf90189695e1f46e8}
+? 
+! Undefined control sequence.
+l.856       \strng
+                  {bibnamehash}{9b98a807f6a4d055a232843a76825b1b}
+? 
+! Undefined control sequence.
+l.857       \strng
+                  {authorbibnamehash}{9b98a807f6a4d055a232843a76825b1b}
+? 
+! Undefined control sequence.
+l.858       \strng
+                  {authornamehash}{9b98a807f6a4d055a232843a76825b1b}
+? 
+! Undefined control sequence.
+l.859       \strng
+                  {authorfullhash}{d1ae3459fdf18aaaf90189695e1f46e8}
+? 
+! Undefined control sequence.
+l.860       \field
+                  {sortinit}{B}
+? 
+! Undefined control sequence.
+l.861       \field
+                  {sortinithash}{8de16967003c7207dae369d874f1456e}
+? 
+! Undefined control sequence.
+l.862       \field
+                  {extradatescope}{labelyear}
+? 
+! Undefined control sequence.
+l.863       \field
+                  {labeldatesource}{year}
+? 
+! Undefined control sequence.
+l.864       \field
+                  {labelnamesource}{author}
+? 
+! Undefined control sequence.
+l.865       \field
+                  {labeltitlesource}{title}
+? 
+! Undefined control sequence.
+l.866       \field
+                  {issn}{1758-6798}
+? 
+! Undefined control sequence.
+l.867       \field
+                  {journaltitle}{Nat. Clim. Change}
+? 
+! Undefined control sequence.
+l.868       \field
+                  {month}{8}
+? 
+! Undefined control sequence.
+l.869       \field
+                  {number}{8}
+? 
+! Undefined control sequence.
+l.870       \field
+                  {title}{{Higher temperatures increase suicide rates in the...
+
+? 
+! Undefined control sequence.
+l.871       \field
+                  {volume}{8}
+? 
+! Undefined control sequence.
+l.872       \field
+                  {year}{2018}
+? 
+! Undefined control sequence.
+l.873       \field
+                  {pages}{723\bibrangedash 729}
+? 
+
+LaTeX Warning: Command \textendash invalid in math mode on input line 873.
+
+! Undefined control sequence.
+l.874       \range
+                  {pages}{7}
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.875       \verb{doi}
+                      
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.876       \verb 10.1038/s41558-018-0222-x
+                                           
+? 
+! Undefined control sequence.
+l.877       \endverb
+                    
+? 
+! Undefined control sequence.
+l.878     \endentry
+                   
+? 
+! Undefined control sequence.
+l.879     \entry
+                {Burke2015Nov}{article}{}
+? 
+! Undefined control sequence.
+l.880       \name
+                 {author}{3}{}{%
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.883            familyi={B\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.885            giveni={M\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.889            familyi={H\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.891            giveni={S\bibinitperiod
+                                        \bibinitdelim M\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.891 ...ibinitperiod\bibinitdelim M\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.895            familyi={M\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.897            giveni={E\bibinitperiod
+                                        },
+? 
+
+! LaTeX Error: Too deeply nested.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.900       \list{publisher}{1}
+                               {%
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.900       \list{publisher}{1}
+                               {%
+? 
+! Undefined control sequence.
+l.903       \strng
+                  {namehash}{ef393d41e2f467cb5c55a87f83ad45da}
+? 
+! Undefined control sequence.
+l.904       \strng
+                  {fullhash}{ef393d41e2f467cb5c55a87f83ad45da}
+? 
+! Undefined control sequence.
+l.905       \strng
+                  {bibnamehash}{ef393d41e2f467cb5c55a87f83ad45da}
+? 
+! Undefined control sequence.
+l.906       \strng
+                  {authorbibnamehash}{ef393d41e2f467cb5c55a87f83ad45da}
+? 
+! Undefined control sequence.
+l.907       \strng
+                  {authornamehash}{ef393d41e2f467cb5c55a87f83ad45da}
+? 
+! Undefined control sequence.
+l.908       \strng
+                  {authorfullhash}{ef393d41e2f467cb5c55a87f83ad45da}
+? 
+! Undefined control sequence.
+l.909       \field
+                  {sortinit}{B}
+? 
+! Undefined control sequence.
+l.910       \field
+                  {sortinithash}{8de16967003c7207dae369d874f1456e}
+? 
+! Undefined control sequence.
+l.911       \field
+                  {extradatescope}{labelyear}
+? 
+! Undefined control sequence.
+l.912       \field
+                  {labeldatesource}{year}
+? 
+! Undefined control sequence.
+l.913       \field
+                  {labelnamesource}{author}
+? 
+! Undefined control sequence.
+l.914       \field
+                  {labeltitlesource}{title}
+? 
+! Undefined control sequence.
+l.915       \field
+                  {issn}{1476-4687}
+? 
+! Undefined control sequence.
+l.916       \field
+                  {journaltitle}{Nature}
+? 
+! Undefined control sequence.
+l.917       \field
+                  {month}{11}
+? 
+! Undefined control sequence.
+l.918       \field
+                  {number}{7577}
+? 
+! Undefined control sequence.
+l.919       \field
+                  {title}{{Global non-linear effect of temperature on econom...
+
+? 
+! Undefined control sequence.
+l.920       \field
+                  {volume}{527}
+? 
+! Undefined control sequence.
+l.921       \field
+                  {year}{2015}
+? 
+! Undefined control sequence.
+l.922       \field
+                  {pages}{235\bibrangedash 239}
+? 
+
+LaTeX Warning: Command \textendash invalid in math mode on input line 922.
+
+! Undefined control sequence.
+l.923       \range
+                  {pages}{5}
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.924       \verb{doi}
+                      
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.925       \verb 10.1038/nature15725
+                                     
+? 
+! Undefined control sequence.
+l.926       \endverb
+                    
+? 
+! Undefined control sequence.
+l.927     \endentry
+                   
+? 
+! Undefined control sequence.
+l.928     \entry
+                {chien2016spatiotemporal}{article}{}
+? 
+! Undefined control sequence.
+l.929       \name
+                 {author}{3}{}{%
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.932            familyi={C\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.934 ...eni={L\bibinithyphendelim C\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.938            familyi={G\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.940            giveni={Y\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.944            familyi={Z\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.946            giveni={K\bibinitperiod
+                                        },
+? 
+
+! LaTeX Error: Too deeply nested.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.949       \list{publisher}{1}
+                               {%
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.949       \list{publisher}{1}
+                               {%
+? 
+! Undefined control sequence.
+l.952       \strng
+                  {namehash}{8da419fab1321310a4241eeb4a3e4bba}
+? 
+! Undefined control sequence.
+l.953       \strng
+                  {fullhash}{8da419fab1321310a4241eeb4a3e4bba}
+? 
+! Undefined control sequence.
+l.954       \strng
+                  {bibnamehash}{8da419fab1321310a4241eeb4a3e4bba}
+? 
+! Undefined control sequence.
+l.955       \strng
+                  {authorbibnamehash}{8da419fab1321310a4241eeb4a3e4bba}
+? 
+! Undefined control sequence.
+l.956       \strng
+                  {authornamehash}{8da419fab1321310a4241eeb4a3e4bba}
+? 
+! Undefined control sequence.
+l.957       \strng
+                  {authorfullhash}{8da419fab1321310a4241eeb4a3e4bba}
+? 
+! Undefined control sequence.
+l.958       \field
+                  {sortinit}{C}
+? 
+! Undefined control sequence.
+l.959       \field
+                  {sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+? 
+! Undefined control sequence.
+l.960       \field
+                  {extradatescope}{labelyear}
+? 
+! Undefined control sequence.
+l.961       \field
+                  {labeldatesource}{year}
+? 
+! Undefined control sequence.
+l.962       \field
+                  {labelnamesource}{author}
+? 
+! Undefined control sequence.
+l.963       \field
+                  {labeltitlesource}{title}
+? 
+! Undefined control sequence.
+l.964       \field
+                  {journaltitle}{Science of the Total Environment}
+? 
+! Undefined control sequence.
+l.965       \field
+                  {title}{Spatiotemporal analysis of heat and heat wave effe...
+
+? 
+! Undefined control sequence.
+l.966       \field
+                  {volume}{562}
+? 
+! Undefined control sequence.
+l.967       \field
+                  {year}{2016}
+? 
+! Undefined control sequence.
+l.968       \field
+                  {pages}{845\bibrangedash 851}
+? 
+
+LaTeX Warning: Command \textendash invalid in math mode on input line 968.
+
+! Undefined control sequence.
+l.969       \range
+                  {pages}{7}
+? 
+! Undefined control sequence.
+l.970     \endentry
+                   
+? 
+! Undefined control sequence.
+l.971     \entry
+                {Collins2011Jul}{article}{}
+? 
+! Undefined control sequence.
+l.972       \name
+                 {author}{32}{}{%
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.975            familyi={C\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.977            giveni={P\bibinitperiod
+                                        \bibinitdelim Y\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.977 ...ibinitperiod\bibinitdelim Y\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.981            familyi={P\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.983            giveni={V\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.987            familyi={J\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.989            giveni={S\bibinitperiod
+                                        \bibinitdelim S\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.989 ...ibinitperiod\bibinitdelim S\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.993            familyi={M\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.995            giveni={D\bibinitperiod
+                                        },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.999            familyi={I\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1001            giveni={T\bibinitperiod
+                                         \bibinitdelim R\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1001 ...binitperiod\bibinitdelim R\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1005            familyi={D\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1007            giveni={A\bibinitperiod
+                                         \bibinitdelim S\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1007 ...binitperiod\bibinitdelim S\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1011            familyi={B\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1013            giveni={I\bibinitperiod
+                                         \bibinitdelim A\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1013 ...binitperiod\bibinitdelim A\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1017            familyi={C\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1019            giveni={E\bibinitperiod
+                                         \bibinitdelim J\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1019 ...binitperiod\bibinitdelim J\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1023            familyi={D\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1025            giveni={M\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1029            familyi={F\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1031            giveni={C\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1035            familyi={G\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1037            giveni={R\bibinitperiod
+                                         \bibinitdelim I\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1037 ...binitperiod\bibinitdelim I\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1041            familyi={H\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1043            giveni={W\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1047            familyi={H\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1049            giveni={Y\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1053            familyi={H\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1055            giveni={S\bibinitperiod
+                                         \bibinitdelim E\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1055 ...binitperiod\bibinitdelim E\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1059            familyi={J\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1061            giveni={K\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1065            familyi={K\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1067            giveni={S\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1071            familyi={K\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1073            giveni={S\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1077            familyi={K\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1079            giveni={A\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1083            familyi={O\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1085            giveni={A\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1089 ...yi={O\bibinithyphendelim O\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1091            giveni={A\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1095            familyi={P\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1097 ...ni={M\bibinithyphendelim M\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1101            familyi={R\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1103            giveni={V\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1107            familyi={S\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1109            giveni={B\bibinitperiod
+                                         \bibinitdelim J\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1109 ...binitperiod\bibinitdelim J\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1113            familyi={S\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1115            giveni={S\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1119            familyi={S\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1121            giveni={P\bibinitperiod
+                                         \bibinitdelim A\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1121 ...binitperiod\bibinitdelim A\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1125            familyi={S\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1127            giveni={D\bibinitperiod
+                                         \bibinitdelim J\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1127 ...binitperiod\bibinitdelim J\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1131            familyi={A\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1133            giveni={W\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1137            familyi={D\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1139            giveni={M\bibinitperiod
+                                         \bibinitdelim A\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1139 ...binitperiod\bibinitdelim A\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1143            familyi={E\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1145            giveni={W\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1149            familyi={P\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1151            giveni={A\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1155            familyi={S\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1157            giveni={S\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1161            familyi={W\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1163            giveni={M\bibinitperiod
+                                         },
+? 
+
+! LaTeX Error: Too deeply nested.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1166       \list{publisher}{1}
+                                {%
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1166       \list{publisher}{1}
+                                {%
+? 
+! Undefined control sequence.
+l.1169       \strng
+                   {namehash}{8feefb4b0a61c97f9dad74ab8587bd82}
+? 
+! Undefined control sequence.
+l.1170       \strng
+                   {fullhash}{f24f57db004db31c9f5df2cdf084e2b9}
+? 
+! Undefined control sequence.
+l.1171       \strng
+                   {bibnamehash}{8feefb4b0a61c97f9dad74ab8587bd82}
+? 
+! Undefined control sequence.
+l.1172       \strng
+                   {authorbibnamehash}{8feefb4b0a61c97f9dad74ab8587bd82}
+? 
+! Undefined control sequence.
+l.1173       \strng
+                   {authornamehash}{8feefb4b0a61c97f9dad74ab8587bd82}
+? 
+! Undefined control sequence.
+l.1174       \strng
+                   {authorfullhash}{f24f57db004db31c9f5df2cdf084e2b9}
+? 
+! Undefined control sequence.
+l.1175       \field
+                   {sortinit}{C}
+? 
+! Undefined control sequence.
+l.1176       \field
+                   {sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+? 
+! Undefined control sequence.
+l.1177       \field
+                   {extradatescope}{labelyear}
+? 
+! Undefined control sequence.
+l.1178       \field
+                   {labeldatesource}{year}
+? 
+! Undefined control sequence.
+l.1179       \field
+                   {labelnamesource}{author}
+? 
+! Undefined control sequence.
+l.1180       \field
+                   {labeltitlesource}{title}
+? 
+! Undefined control sequence.
+l.1181       \field
+                   {issn}{1476-4687}
+? 
+! Undefined control sequence.
+l.1182       \field
+                   {journaltitle}{Nature}
+? 
+! Undefined control sequence.
+l.1183       \field
+                   {month}{7}
+? 
+! Undefined control sequence.
+l.1184       \field
+                   {number}{7354}
+? 
+! Undefined control sequence.
+l.1185       \field
+                   {title}{{Grand challenges in global mental health}}
+? 
+! Undefined control sequence.
+l.1186       \field
+                   {volume}{475}
+? 
+! Undefined control sequence.
+l.1187       \field
+                   {year}{2011}
+? 
+! Undefined control sequence.
+l.1188       \field
+                   {pages}{27\bibrangedash 30}
+? 
+
+LaTeX Warning: Command \textendash invalid in math mode on input line 1188.
+
+! Undefined control sequence.
+l.1189       \range
+                   {pages}{4}
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1190       \verb{doi}
+                       
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1191       \verb 10.1038/475027a
+                                  
+? 
+! Undefined control sequence.
+l.1192       \endverb
+                     
+? 
+! Undefined control sequence.
+l.1193     \endentry
+                    
+? 
+! Undefined control sequence.
+l.1194     \entry
+                 {Desmond2015}{article}{}
+? 
+! Undefined control sequence.
+l.1195       \name
+                  {author}{2}{}{%
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1198            familyi={D\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1200            giveni={M\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1204            familyi={S\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1206            giveni={T\bibinitperiod
+                                         },
+? 
+
+! LaTeX Error: Too deeply nested.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1209       \list{publisher}{1}
+                                {%
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1209       \list{publisher}{1}
+                                {%
+? 
+! Undefined control sequence.
+l.1212       \strng
+                   {namehash}{5a30025a01bd5f1477fe1d601297f2a0}
+? 
+! Undefined control sequence.
+l.1213       \strng
+                   {fullhash}{5a30025a01bd5f1477fe1d601297f2a0}
+? 
+! Undefined control sequence.
+l.1214       \strng
+                   {bibnamehash}{5a30025a01bd5f1477fe1d601297f2a0}
+? 
+! Undefined control sequence.
+l.1215       \strng
+                   {authorbibnamehash}{5a30025a01bd5f1477fe1d601297f2a0}
+? 
+! Undefined control sequence.
+l.1216       \strng
+                   {authornamehash}{5a30025a01bd5f1477fe1d601297f2a0}
+? 
+! Undefined control sequence.
+l.1217       \strng
+                   {authorfullhash}{5a30025a01bd5f1477fe1d601297f2a0}
+? 
+! Undefined control sequence.
+l.1218       \field
+                   {sortinit}{D}
+? 
+! Undefined control sequence.
+l.1219       \field
+                   {sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+? 
+! Undefined control sequence.
+l.1220       \field
+                   {extradatescope}{labelyear}
+? 
+! Undefined control sequence.
+l.1221       \field
+                   {labeldatesource}{year}
+? 
+! Undefined control sequence.
+l.1222       \field
+                   {labelnamesource}{author}
+? 
+! Undefined control sequence.
+l.1223       \field
+                   {labeltitlesource}{title}
+? 
+! Undefined control sequence.
+l.1224       \field
+                   {issn}{1533-7790}
+? 
+! Undefined control sequence.
+l.1225       \field
+                   {journaltitle}{Demography}
+? 
+! Undefined control sequence.
+l.1226       \field
+                   {month}{10}
+? 
+! Undefined control sequence.
+l.1227       \field
+                   {number}{5}
+? 
+! Undefined control sequence.
+l.1228       \field
+                   {title}{{Forced Displacement From Rental Housing: Prevale...
+
+? 
+! Undefined control sequence.
+l.1229       \field
+                   {volume}{52}
+? 
+! Undefined control sequence.
+l.1230       \field
+                   {year}{2015}
+? 
+! Undefined control sequence.
+l.1231       \field
+                   {pages}{1751\bibrangedash 1772}
+? 
+
+LaTeX Warning: Command \textendash invalid in math mode on input line 1231.
+
+! Undefined control sequence.
+l.1232       \range
+                   {pages}{22}
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1233       \verb{doi}
+                       
+? 
+
+! LaTeX Error: \verb ended by end of line.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1234       \verb 10.1007/s13524-015-0419-9
+                                            
+? 
+! Undefined control sequence.
+l.1235       \endverb
+                     
+? 
+! Undefined control sequence.
+l.1236     \endentry
+                    
+? 
+! Undefined control sequence.
+l.1237     \entry
+                 {ding2016importance}{article}{}
+? 
+! Undefined control sequence.
+l.1238       \name
+                  {author}{3}{}{%
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1241            familyi={D\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1243            giveni={N\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1247            familyi={B\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1249            giveni={H\bibinitperiod
+                                         \bibinitdelim L\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1249 ...binitperiod\bibinitdelim L\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1253            familyi={B\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1255            giveni={C\bibinitperiod
+                                         \bibinitdelim M\bibinitperiod},
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1255 ...binitperiod\bibinitdelim M\bibinitperiod
+                                                  },
+? 
+
+! LaTeX Error: Too deeply nested.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1258       \list{publisher}{1}
+                                {%
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1258       \list{publisher}{1}
+                                {%
+? 
+! Undefined control sequence.
+l.1261       \strng
+                   {namehash}{912ac52326d1fc488b457cb9976ece5b}
+? 
+! Undefined control sequence.
+l.1262       \strng
+                   {fullhash}{912ac52326d1fc488b457cb9976ece5b}
+? 
+! Undefined control sequence.
+l.1263       \strng
+                   {bibnamehash}{912ac52326d1fc488b457cb9976ece5b}
+? 
+! Undefined control sequence.
+l.1264       \strng
+                   {authorbibnamehash}{912ac52326d1fc488b457cb9976ece5b}
+? 
+! Undefined control sequence.
+l.1265       \strng
+                   {authornamehash}{912ac52326d1fc488b457cb9976ece5b}
+? 
+! Undefined control sequence.
+l.1266       \strng
+                   {authorfullhash}{912ac52326d1fc488b457cb9976ece5b}
+? 
+! Undefined control sequence.
+l.1267       \field
+                   {sortinit}{D}
+? 
+! Undefined control sequence.
+l.1268       \field
+                   {sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+? 
+! Undefined control sequence.
+l.1269       \field
+                   {extradatescope}{labelyear}
+? 
+! Undefined control sequence.
+l.1270       \field
+                   {labeldatesource}{year}
+? 
+! Undefined control sequence.
+l.1271       \field
+                   {labelnamesource}{author}
+? 
+! Undefined control sequence.
+l.1272       \field
+                   {labeltitlesource}{title}
+? 
+! Undefined control sequence.
+l.1273       \field
+                   {journaltitle}{PLOS One}
+? 
+! Undefined control sequence.
+l.1274       \field
+                   {number}{10}
+? 
+! Undefined control sequence.
+l.1275       \field
+                   {title}{The importance of humidity in the relationship be...
+
+? 
+! Undefined control sequence.
+l.1276       \field
+                   {volume}{11}
+? 
+! Undefined control sequence.
+l.1277       \field
+                   {year}{2016}
+? 
+! Undefined control sequence.
+l.1278       \field
+                   {pages}{e0164190}
+? 
+! Undefined control sequence.
+l.1279       \range
+                   {pages}{-1}
+? 
+! Undefined control sequence.
+l.1280     \endentry
+                    
+? 
+! Undefined control sequence.
+l.1281     \entry
+                 {CDC2021}{misc}{}
+? 
+! Undefined control sequence.
+l.1282       \name
+                  {author}{1}{}{%
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1285            familyi={D\bibinitperiod
+                                          \bibinitdelim C\bibinitperiod\bibi...
+
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1285 ...binitperiod\bibinitdelim C\bibinitperiod
+                                                  \bibinitdelim W\bibinithyp...
+
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1285 ...lim W\bibinithyphendelim r\bibinitperiod
+                                                  \bibinitdelim O\bibinitper...
+
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1285 ...binitperiod\bibinitdelim O\bibinitperiod
+                                                  \bibinitdelim D\bibinitper...
+
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1285 ...binitperiod\bibinitdelim D\bibinitperiod
+                                                  \bibinitdelim f\bibinitper...
+
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1285 ...binitperiod\bibinitdelim f\bibinitperiod
+                                                  \bibinitdelim E\bibinitper...
+
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1285 ...binitperiod\bibinitdelim E\bibinitperiod
+                                                  \bibinitdelim R\bibinitper...
+
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1285 ...binitperiod\bibinitdelim R\bibinitperiod
+                                                  \bibinitdelim (\bibinitper...
+
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1285 ...binitperiod\bibinitdelim (\bibinitperiod
+                                                  \bibinitdelim W\bibinitper...
+
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1285 ...binitperiod\bibinitdelim W\bibinitperiod
+                                                  },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1287            giveni={C\bibinitperiod
+                                         },
+? 
+! Undefined control sequence.
+\bibinitperiod ->\adddot 
+                         
+l.1290            prefixi={f\bibinitperiod
+                                          },
+? 
+! Undefined control sequence.
+l.1293       \strng
+                   {namehash}{50549dfc19cb3cdb1bdd4ecad19997b8}
+? 
+! Undefined control sequence.
+l.1294       \strng
+                   {fullhash}{50549dfc19cb3cdb1bdd4ecad19997b8}
+? 
+! Undefined control sequence.
+l.1295       \strng
+                   {bibnamehash}{50549dfc19cb3cdb1bdd4ecad19997b8}
+? 
+! Undefined control sequence.
+l.1296       \strng
+                   {authorbibnamehash}{50549dfc19cb3cdb1bdd4ecad19997b8}
+? 
+! Undefined control sequence.
+l.1297       \strng
+                   {authornamehash}{50549dfc19cb3cdb1bdd4ecad19997b8}
+? 
+! Undefined control sequence.
+l.1298       \strng
+                   {authorfullhash}{50549dfc19cb3cdb1bdd4ecad19997b8}
+? 
+! Undefined control sequence.
+l.1299       \field
+                   {sortinit}{D}
+? 
+! Undefined control sequence.
+l.1300       \field
+                   {sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+? 
+! Undefined control sequence.
+l.1301       \field
+                   {extradatescope}{labelyear}
+? 
+! Undefined control sequence.
+l.1302       \field
+                   {labeldatesource}{year}
+? 
+! Undefined control sequence.
+l.1303       \field
+                   {labelnamesource}{author}
+? 
+! Undefined control sequence.
+l.1304       \field
+                   {labeltitlesource}{title}
+? 
+! Undefined 
